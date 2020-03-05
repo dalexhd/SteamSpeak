@@ -7,6 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
+    "start": "node src/backend/index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -20,6 +21,7 @@
   },
   "license": "MIT",
   "dependencies": {
+    "express": "^4.17.1",
     "globaloffensive": "^2.0.2",
     "mysql": "^2.18.1",
     "steam": "^1.4.1",
@@ -35,7 +37,7 @@
   "homepage": "https://github.com/dalexhd/SteamSpeak#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-eslint": "^10.1.0",
+    "babel-eslint": "10.0.3",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.20.1",
