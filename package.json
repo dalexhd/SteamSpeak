@@ -1,6 +1,6 @@
 {
   "name": "steamspeak",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "Steam and TeamSpeak integration, done right!",
   "main": "index.js",
   "directories": {
@@ -8,7 +8,9 @@
   },
   "scripts": {
     "start": "node src/backend/index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "front:start": "npm start --prefix src/frontend",
+    "front:build": "npm build --prefix src/frontend",
+    "front:test": "npm test --prefix src/frontend"
   },
   "repository": {
     "type": "git",
@@ -21,8 +23,10 @@
   },
   "license": "MIT",
   "dependencies": {
+    "chalk": "^3.0.0",
     "express": "^4.17.1",
     "globaloffensive": "^2.0.2",
+    "moment": "^2.24.0",
     "mysql": "^2.18.1",
     "steam": "^1.4.1",
     "steam-totp": "^2.1.1",
@@ -40,8 +44,12 @@
     "babel-eslint": "10.0.3",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-flowtype": "^4.6.0",
+    "eslint-plugin-html": "^6.0.0",
     "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-vue": "^6.2.1",
-    "eslint-plugin-html": "^6.0.0"
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.18.3",
+    "eslint-plugin-react-hooks": "^2.5.0",
+    "eslint-plugin-vue": "^6.2.1"
   }
 }

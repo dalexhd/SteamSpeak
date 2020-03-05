@@ -1,12 +1,12 @@
 const teamspeak = {
   ip: '127.0.0.1',
-  query_port: 10011,
+  query_port: 10022,
   port: 9987,
   login: 'serveradmin',
-  password: '',
+  password: 'HkpaFnxN',
   name: 'SteamSpeak',
   server_id: 1,
-  default_channel: 1,
+  channel_id: 1,
 };
 
 module.exports = teamspeak;

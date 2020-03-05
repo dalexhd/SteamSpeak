@@ -1,9 +1,9 @@
 const database = {
-  ip: '127.0.0.1',
+  ip: '172.17.0.3',
   user: 'root',
-  password: '',
+  password: ',4leLluPelyjAx3d$EhMepPIbUq',
   database: 'steam_speak',
-  debug: false,
+  debug: true,
 };
 
 module.exports = database;
