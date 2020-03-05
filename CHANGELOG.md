@@ -6,9 +6,5 @@
 
 ### Features
 
-* Added working changelog.
-
-### Pull Requests
-
-* Merge pull request [#1](https://github.com/dalexhd/SteamSpeak/issues/1) from dalexhd/add-code-of-conduct-1
+* Added frontend environment.
 
