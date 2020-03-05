@@ -5,6 +5,3 @@
   <a href="https://github.com/dalexhd/SteamSpeak/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/dalexhd/SteamSpeak?label=Forks"></a>
   <a href="https://github.com/dalexhd/SteamSpeak"><img alt="GitHub license" src="https://img.shields.io/github/license/dalexhd/SteamSpeak?label=License"></a>
 </p>
-<h2 align="center">
-  Powerfull documentation comming soon...
-</h2>
