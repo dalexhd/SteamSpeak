@@ -16,9 +16,6 @@
     "ecmaVersion": 2018,
     "sourceType": "module"
   },
-  "plugins": [
-    "vue"
-  ],
   "rules": {
     "no-plusplus": [
       "error",
