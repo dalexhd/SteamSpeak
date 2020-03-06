@@ -2,15 +2,24 @@
 
 ## [Unreleased](https://github.com/dalexhd/SteamSpeak/tree/HEAD)
 
-[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.1...HEAD)
+[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.2...HEAD)
 
 **Closed issues:**
 
-- Better Changelog system. [\#2](https://github.com/dalexhd/SteamSpeak/issues/2)
+- Fix license image url. [\#5](https://github.com/dalexhd/SteamSpeak/issues/5)
 
 **Merged pull requests:**
 
+- Updated changelog. [\#4](https://github.com/dalexhd/SteamSpeak/pull/4) ([dalexhd](https://github.com/dalexhd))
 - Removed old Changelog system. [\#3](https://github.com/dalexhd/SteamSpeak/pull/3) ([dalexhd](https://github.com/dalexhd))
+
+## [v0.0.2](https://github.com/dalexhd/SteamSpeak/tree/v0.0.2) (2020-03-06)
+
+[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.1...v0.0.2)
+
+**Implemented enhancements:**
+
+- Better Changelog system. [\#2](https://github.com/dalexhd/SteamSpeak/issues/2)
 
 ## [v0.0.1](https://github.com/dalexhd/SteamSpeak/tree/v0.0.1) (2020-03-06)
 
