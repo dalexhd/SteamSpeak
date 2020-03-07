@@ -4,12 +4,18 @@
 
 [Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.2...HEAD)
 
+**Implemented enhancements:**
+
+- Add TeamSpeak docker environment. [\#7](https://github.com/dalexhd/SteamSpeak/issues/7)
+
 **Closed issues:**
 
 - Fix license image url. [\#5](https://github.com/dalexhd/SteamSpeak/issues/5)
 
 **Merged pull requests:**
 
+- Added Docker TeamSpeak3 environment. [\#8](https://github.com/dalexhd/SteamSpeak/pull/8) ([dalexhd](https://github.com/dalexhd))
+- Merge Dev into Master. [\#6](https://github.com/dalexhd/SteamSpeak/pull/6) ([dalexhd](https://github.com/dalexhd))
 - Updated changelog. [\#4](https://github.com/dalexhd/SteamSpeak/pull/4) ([dalexhd](https://github.com/dalexhd))
 - Removed old Changelog system. [\#3](https://github.com/dalexhd/SteamSpeak/pull/3) ([dalexhd](https://github.com/dalexhd))
 
