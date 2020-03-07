@@ -1,12 +1,13 @@
 # Changelog
 
-## [Unreleased](https://github.com/dalexhd/SteamSpeak/tree/HEAD)
+## [v0.0.3](https://github.com/dalexhd/SteamSpeak/tree/v0.0.3) (2020-03-07)
 
-[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.2...HEAD)
+[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.2...v0.0.3)
 
 **Implemented enhancements:**
 
 - Add TeamSpeak docker environment. [\#7](https://github.com/dalexhd/SteamSpeak/issues/7)
+- Updated changelog. [\#9](https://github.com/dalexhd/SteamSpeak/pull/9) ([dalexhd](https://github.com/dalexhd))
 
 **Closed issues:**
 
