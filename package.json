@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "node src/backend/index.js",
+    "test": "jest tests/ --runInBand --forceExit",
     "front:start": "react-scripts start --prefix src/frontend",
     "front:build": "react-scripts build --prefix src/frontend",
     "front:test": "react-scripts test --prefix src/frontend",
@@ -15,7 +16,6 @@
     "front:debug": "react-scripts --inspect-brk test --runInBand --prefix src/frontend",
     "front:eject": "react-scripts eject --prefix src/frontend",
     "docs:serve": "docsify serve docs --port 4000"
-
   },
   "repository": {
     "type": "git",
@@ -31,8 +31,11 @@
     "chalk": "^3.0.0",
     "express": "^4.17.1",
     "globaloffensive": "^2.0.2",
+    "mock-require": "^3.0.3",
     "moment": "^2.24.0",
     "mysql": "^2.18.1",
+    "should": "^13.2.3",
+    "sinon": "^9.0.0",
     "steam": "^1.4.1",
     "steam-totp": "^2.1.1",
     "steam-user": "^4.13.0",
@@ -43,6 +46,9 @@
   "bugs": {
     "url": "https://github.com/dalexhd/SteamSpeak/issues"
   },
+  "jest": {
+    "preset": "react-native"
+  },
   "homepage": "https://github.com/dalexhd/SteamSpeak#readme",
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -52,6 +58,7 @@
     "eslint-plugin-flowtype": "^4.6.0",
     "eslint-plugin-html": "^6.0.0",
     "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-jsx-a11y": "^6.2.3"
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "jest": "^25.1.0"
   }
 }

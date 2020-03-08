@@ -1,0 +1,18 @@
+language: node
+node_js:
+  - 10
+  - 12
+  - 13
+services:
+  - docker
+before_install:
+  - docker pull teamspeak
+  - make ts
+install:
+  - rm package-lock.json
+  - npm install
+  - npm install --prefix src/frontend
+script:
+  - npm run test
+after_script:
+  - docker stop teamspeak
