@@ -1,7 +1,7 @@
 /* global describe beforeEach it */
 
 const { TeamSpeak } = require('ts3-nodejs-library');
-const config = require('../../src/backend/config/teamspeak');
+const config = require('../../src/backend/config/teamspeak').teamspeak;
 
 const ts3 = new TeamSpeak({
   protocol: 'ssh',
