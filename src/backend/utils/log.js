@@ -3,10 +3,10 @@ const moment = require('moment');
 
 class Log {
   /**
-     * Returns timestamp string.
-     *
-     * @returns {string}
-     */
+    * Returns timestamp string.
+    *
+    * @returns {string}
+    */
   static time() {
     const date = new moment();
 
@@ -14,34 +14,36 @@ class Log {
   }
 
   /**
-     * Print a log message with a customizable color.
-     *
-     * @param {string} log
-     * @param {string} color
-     */
+  * Print a log message with a customizable color.
+  *
+  * @param {string} log
+  * @param {string} color
+  */
   static print(log, color, type = false) {
+    let prefix;
     if (type != false) {
       switch (type.toLowerCase()) {
         case 'steam':
-          var prefix = chalk.cyan(`[${this.time()}]${chalk.red.bold(` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`)}`);
+          prefix = chalk.cyan(`[${this.time()}]${chalk.red.bold(` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`)}`);
           break;
         case 'ts3':
-          var prefix = chalk.cyan(`[${this.time()}]${chalk.blue.bold(` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`)}`);
+          prefix = chalk.cyan(`[${this.time()}]${chalk.blue.bold(` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`)}`);
           break;
         case 'csgo':
-          var prefix = chalk.cyan(`[${this.time()}]${chalk.magenta.bold(` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`)}`);
+          prefix = chalk.cyan(`[${this.time()}]${chalk.magenta.bold(` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`)}`);
           break;
         default:
-          var prefix = chalk.cyan(`[${this.time()}]` + ` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`);
+          prefix = chalk.cyan(`[${this.time()}]` + ` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`);
           break;
       }
     } else {
-      var prefix = chalk.cyan(`[${this.time()}]`);
+      prefix = chalk.cyan(`[${this.time()}]`);
     }
     let message = log;
 
-    if (color) { message = chalk[color](message); }
-
+    if (color) {
+      message = chalk[color](message);
+    }
     console.log(`${prefix} ${message}`);
   }
 
@@ -73,19 +75,19 @@ class Log {
   }
 
   /**
-     * Print a success log message with a timestamp.
-     *
-     * @param {string} log
-     */
+    * Print a success log message with a timestamp.
+    *
+    * @param {string} log
+    */
   static success(log, type = false) {
     this.print(log, 'green', type);
   }
 
   /**
-     * Print a event log message with a timestamp.
-     *
-     * @param {string} log
-     */
+    * Print a event log message with a timestamp.
+    *
+    * @param {string} log
+    */
   static event(log, type = false) {
     this.print(log, 'magenta', type);
   }
