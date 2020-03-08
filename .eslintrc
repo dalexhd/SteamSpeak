@@ -28,6 +28,7 @@
       {
         "props": false
       }
-    ]
+    ],
+    "no-console":"off"
   }
 }

@@ -2,19 +2,15 @@ const {
   EventEmitter,
 } = require('events');
 const mysql = require('mysql');
-const log = require('../utils/log.js');
-const config = require('../config/database.js');
+const log = require('../../utils/log.js');
+const config = require('../../config/database.js');
 
 /* !fix Problema al renombrar los nombres...
 Parece que los nombres o algo no cuadrán con la cache que esta bien.
 */
 class Database extends EventEmitter {
   /**
-   * Construct the Ts3 class.
-   *
-   * @param {string} host
-   * @param {number} port
-   * @param {number} serverID
+   * Construct the Database class.
    */
   constructor() {
     super();
@@ -30,7 +26,7 @@ class Database extends EventEmitter {
       this.emit('connection_error', error);
     }
     setInterval(() => {
-      database.query('SELECT 1');
+      this.database.query('SELECT 1');
       log.debug('Sent query to prevent disconnect ^^');
     }, 600000);
   }
