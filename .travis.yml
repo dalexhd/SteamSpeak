@@ -5,8 +5,6 @@ services:
   - docker
 before_install:
   - docker pull teamspeak
-  - sudo apt update
-  - sudo apt install pbcopy
   - make ts
 install:
   - npm install
