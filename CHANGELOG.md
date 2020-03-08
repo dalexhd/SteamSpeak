@@ -2,7 +2,15 @@
 
 ## [Unreleased](https://github.com/dalexhd/SteamSpeak/tree/HEAD)
 
-[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.4...HEAD)
+[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.5...HEAD)
+
+**Implemented enhancements:**
+
+- Added the first Plugin: AFKChecker [\#13](https://github.com/dalexhd/SteamSpeak/pull/13) ([dalexhd](https://github.com/dalexhd))
+
+## [v0.0.5](https://github.com/dalexhd/SteamSpeak/tree/v0.0.5) (2020-03-08)
+
+[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.4...v0.0.5)
 
 **Merged pull requests:**
 
