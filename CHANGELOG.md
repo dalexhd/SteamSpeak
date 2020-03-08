@@ -1,5 +1,21 @@
 # Changelog
 
+## [Unreleased](https://github.com/dalexhd/SteamSpeak/tree/HEAD)
+
+[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.4...HEAD)
+
+**Merged pull requests:**
+
+- Added travis testing environment. [\#11](https://github.com/dalexhd/SteamSpeak/pull/11) ([dalexhd](https://github.com/dalexhd))
+
+## [v0.0.4](https://github.com/dalexhd/SteamSpeak/tree/v0.0.4) (2020-03-08)
+
+[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.3...v0.0.4)
+
+**Implemented enhancements:**
+
+- Add testing environment. [\#10](https://github.com/dalexhd/SteamSpeak/issues/10)
+
 ## [v0.0.3](https://github.com/dalexhd/SteamSpeak/tree/v0.0.3) (2020-03-07)
 
 [Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.2...v0.0.3)
