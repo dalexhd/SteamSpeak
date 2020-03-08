@@ -1,4 +1,5 @@
 /* global describe beforeEach it */
+jest.setTimeout(30000);
 
 const { TeamSpeak } = require('ts3-nodejs-library');
 const config = require('../../src/backend/config/teamspeak');
