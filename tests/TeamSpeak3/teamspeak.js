@@ -20,23 +20,27 @@ describe('TeamSpeak3', () => {
     await ts3.quit();
   });
   describe('Conection', () => {
-    it('Check if we have connection...', async () => {
+    it('Check if we have connection...', async (done) => {
       const data = await ts3.whoami();
       expect(data).not.toBe(null);
+      done();
     });
-    it('should verify parameters of #hostInfo()', async () => {
+    it('should verify parameters of #hostInfo()', async (done) => {
       const data = await ts3.hostInfo();
       expect(data).not.toBe(null);
+      done();
     });
   });
   describe('Commands', () => {
-    it('should verify parameters of #serverGroupClientList()', async () => {
+    it('should verify parameters of #serverGroupClientList()', async (done) => {
       const data = ts3.serverGroupClientList(1);
       expect(data).not.toBe(null);
+      done();
     });
-    it('should verify parameters of #sendTextMessage()', async () => {
+    it('should verify parameters of #sendTextMessage()', async (done) => {
       const data = await ts3.sendTextMessage(10, 2, 'Test message');
       expect(data).not.toBe(null);
+      done();
     });
   });
 });
