@@ -3,7 +3,8 @@ services:
   - docker
 before_install:
   - docker pull teamspeak
-  - sudo apt-get install build-essential
+  - sudo apt-get update
+  - sudo apt-get install make
   - meke ts
 install:
   - npm install
