@@ -24,7 +24,6 @@
     "enzyme-adapter-react-16": "^1.15.2",
     "flag-icon-css": "^3.4.6",
     "font-awesome": "^4.7.0",
-    "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-app-polyfill": "^1.0.6",
@@ -37,6 +36,7 @@
     "simple-line-icons": "^2.4.1"
   },
   "devDependencies": {
+    "node-sass": "^4.13.1",
     "react-scripts": "^3.4.0"
   },
   "scripts": {
