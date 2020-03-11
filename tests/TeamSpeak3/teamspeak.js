@@ -38,9 +38,5 @@ describe("TeamSpeak3", () => {
       const data = await ts3.sendTextMessage(10, 2, "Test message");
       expect(data).not.toBe(null);
     });
-    it("should verify parameters of #addGroups()", async () => {
-      const data = await ts3.clientAddServerGroup(3, 6);
-      expect(data).not.toBe(null);
-    });
   });
 });
