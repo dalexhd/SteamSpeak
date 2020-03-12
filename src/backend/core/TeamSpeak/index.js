@@ -5,34 +5,28 @@ const { TeamSpeak } = require('ts3-nodejs-library');
 
 const { loadPlugins } = require('./plugins');
 const log = require('../../utils/log.js');
-const config = require('../../config/teamspeak.js');
+const config = require('../../config/teamspeak.js').teamspeak;
 
-/* !fix Problema al renombrar los nombres...
-Parece que los nombres o algo no cuadrán con la cache que esta bien.
-*/
 class Ts3 extends EventEmitter {
   /**
    * Construct the Ts3 class.
-   *
-   * @class cache
    */
-  constructor(cache) {
+  constructor() {
     super();
     try {
-      this.cache = cache;
-      this.teamSpeakClient = new TeamSpeak({
+      this.ts = new TeamSpeak({
         protocol: 'ssh',
-        host: config.teamspeak.ip,
-        queryport: config.teamspeak.query_port,
-        serverport: config.teamspeak.port,
-        username: config.teamspeak.login,
-        password: config.teamspeak.password,
-        nickname: config.teamspeak.name,
+        host: config.ip,
+        queryport: config.query_port,
+        serverport: config.port,
+        username: config.login,
+        password: config.password,
+        nickname: config.name,
         antispam: true,
         antispamtimer: 350,
       });
     } catch (error) {
-      this.emit('connection_error', error);
+      this.ts.emit('error', error);
       return;
     }
     this.initEvents();
@@ -43,15 +37,20 @@ class Ts3 extends EventEmitter {
    *
    */
   async onReady() {
-    this.teamSpeakClient.useBySid(config.teamspeak.server_id).catch((error) => this.emit('error', error));
-    this.teamSpeakClient.whoami().then((info) => {
-      if (info.client_channel_id !== config.teamspeak.channel_id) {
-        this.teamSpeakClient.clientMove(parseInt(info.client_id, 10), parseInt(config.teamspeak.channel_id, 10)).catch((error) => this.emit('error', error));
-      }
-    });
+    this.ts.useBySid(config.server_id)
+      .then(() => {
+        log.success(`Selected Server Nº ${config.server_id}.`, 'ts3');
+        this.ts.whoami().then((info) => {
+          if (info.client_channel_id !== config.channel_id) {
+            this.ts.clientMove(info.client_id, config.channel_id).catch((error) => this.ts.emit('error', error));
+          }
+        });
+      }).catch((err) => {
+        log.error(err);
+      });
     log.success('Connected to the ts3 server', 'ts3');
     this.subscribeEvents();
-    loadPlugins(this.teamSpeakClient, this.cache);
+    loadPlugins(this.ts, this.cache);
   }
 
 
@@ -59,14 +58,14 @@ class Ts3 extends EventEmitter {
    * Initialize event listeners.
    */
   initEvents() {
-    this.teamSpeakClient.on('ready', this.onReady.bind(this));
-    this.teamSpeakClient.on('timeout', Ts3.onTimeout.bind(this));
-    this.teamSpeakClient.on('close', Ts3.onClose);
-    this.teamSpeakClient.on('error', Ts3.onError);
-    if (config.teamspeak.debug) {
-      this.teamSpeakClient.on('debug', Ts3.onDebug);
+    this.ts.on('ready', this.onReady.bind(this));
+    this.ts.on('timeout', Ts3.onTimeout.bind(this));
+    this.ts.on('close', Ts3.onClose);
+    this.ts.on('error', Ts3.bind(this));
+    if (config.debug) {
+      this.ts.on('debug', Ts3.onDebug);
     }
-    this.teamSpeakClient.on('flooding', (time) => console.log('Flood protection activated', time));
+    this.ts.on('flooding', (time) => console.log('Flood protection activated', time));
   }
 
   /**
@@ -76,11 +75,11 @@ class Ts3 extends EventEmitter {
    */
   subscribeEvents() {
     Promise.all([
-      this.teamSpeakClient.registerEvent('server'),
-      this.teamSpeakClient.registerEvent('channel', 0),
-      this.teamSpeakClient.registerEvent('textserver'),
-      this.teamSpeakClient.registerEvent('textchannel'),
-      this.teamSpeakClient.registerEvent('textprivate'),
+      this.ts.registerEvent('server'),
+      this.ts.registerEvent('channel', 0),
+      this.ts.registerEvent('textserver'),
+      this.ts.registerEvent('textchannel'),
+      this.ts.registerEvent('textprivate'),
     ])
       .then(() => {
         log.success('Subscribed to all Events', 'ts3');
@@ -92,10 +91,7 @@ class Ts3 extends EventEmitter {
    * Listen events
    */
   async listenEvents() {
-    this.teamSpeakClient.on('error', (e) => {
-      console.log('Error', e.message);
-    });
-    this.teamSpeakClient.on('close', (e) => {
+    this.ts.on('close', (e) => {
       log.error('Connection has been closed!', 'ts3');
       process.exit();
     });
@@ -106,11 +102,11 @@ class Ts3 extends EventEmitter {
    * Before exit
    */
   beforeExit() {
-    process.on('exit', () => this.teamSpeakClient.quit());
-    process.on('SIGINT', () => this.teamSpeakClient.quit());
-    process.on('SIGUSR1', () => this.teamSpeakClient.quit());
-    process.on('SIGUSR2', () => this.teamSpeakClient.quit());
-    process.on('uncaughtException', () => this.teamSpeakClient.quit());
+    process.on('exit', () => this.ts.quit());
+    process.on('SIGINT', () => this.ts.quit());
+    process.on('SIGUSR1', () => this.ts.quit());
+    process.on('SIGUSR2', () => this.ts.quit());
+    process.on('uncaughtException', () => this.ts.quit());
   }
 
   /**

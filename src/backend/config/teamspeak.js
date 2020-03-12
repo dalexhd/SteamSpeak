@@ -7,7 +7,7 @@ const teamspeak = {
   name: 'SteamSpeak',
   server_id: 1,
   channel_id: 1,
-  debug: false,
+  debug: true,
 };
 
 const plugins = {
