@@ -6,32 +6,40 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint",
-    "lint:css": "stylelint src/**/*.vue --fix"
+    "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "core-js": "^2.6.5",
-    "vue": "^2.6.10",
-    "vue-router": "^3.0.3",
-    "vuex": "^3.0.1"
+    "@mdi/font": "^5.0.45",
+    "core-js": "^3.6.4",
+    "material-design-iconic-font": "^2.2.0",
+    "material-design-icons-iconfont": "^5.0.1",
+    "push.js": "^1.0.12",
+    "register-service-worker": "^1.6.2",
+    "vue": "^2.6.11",
+    "vue-router": "^3.1.5",
+    "vue-toasted": "^1.1.28",
+    "vuex": "^3.1.2"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.12.0",
-    "@vue/cli-plugin-eslint": "^3.12.0",
-    "@vue/cli-plugin-unit-jest": "^3.12.0",
-    "@vue/cli-service": "^3.12.0",
-    "@vue/eslint-config-airbnb": "^4.0.0",
-    "@vue/test-utils": "1.0.0-beta.29",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "^10.0.1",
-    "babel-jest": "^23.6.0",
-    "eslint": "^5.16.0",
-    "eslint-plugin-vue": "^5.0.0",
-    "lint-staged": "^8.1.5",
+    "@vue/cli-plugin-babel": "~4.2.0",
+    "@vue/cli-plugin-eslint": "~4.2.0",
+    "@vue/cli-plugin-pwa": "~4.2.0",
+    "@vue/cli-plugin-router": "~4.2.0",
+    "@vue/cli-plugin-unit-jest": "~4.2.0",
+    "@vue/cli-plugin-vuex": "~4.2.0",
+    "@vue/cli-service": "~4.2.0",
+    "@vue/eslint-config-airbnb": "^5.0.2",
+    "@vue/test-utils": "1.0.0-beta.31",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "eslint-plugin-import": "^2.20.1",
+    "eslint-plugin-vue": "^6.1.2",
+    "lint-staged": "^9.5.0",
     "node-sass": "^4.12.0",
-    "sass-loader": "^8.0.0",
+    "sass-loader": "^8.0.2",
+    "stylelint": "^13.2.1",
     "stylelint-config-standard": "^20.0.0",
-    "vue-template-compiler": "^2.6.10"
+    "vue-template-compiler": "^2.6.11"
   },
   "eslintConfig": {
     "root": true,
@@ -39,16 +47,18 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/recommended",
+      "plugin:vue/essential",
       "@vue/airbnb"
     ],
     "parserOptions": {
       "parser": "babel-eslint"
     },
+    "rules": {},
     "overrides": [
       {
         "files": [
-          "**/__tests__/*.{j,t}s?(x)"
+          "**/__tests__/*.{j,t}s?(x)",
+          "**/tests/unit/**/*.spec.{j,t}s?(x)"
         ],
         "env": {
           "jest": true
@@ -56,55 +66,23 @@
       }
     ]
   },
-  "postcss": {
-    "plugins": {
-      "autoprefixer": {}
-    }
-  },
   "browserslist": [
     "> 1%",
     "last 2 versions"
   ],
   "jest": {
-    "moduleFileExtensions": [
-      "js",
-      "jsx",
-      "json",
-      "vue"
-    ],
-    "transform": {
-      "^.+\\.vue$": "vue-jest",
-      ".+\\.(css|styl|less|sass|scss|svg|png|jpg|ttf|woff|woff2)$": "jest-transform-stub",
-      "^.+\\.jsx?$": "babel-jest"
-    },
-    "transformIgnorePatterns": [
-      "/node_modules/"
-    ],
-    "moduleNameMapper": {
-      "^@/(.*)$": "<rootDir>/src/$1"
-    },
-    "snapshotSerializers": [
-      "jest-serializer-vue"
-    ],
-    "testMatch": [
-      "**/tests/unit/**/*.spec.(js|jsx|ts|tsx)|**/__tests__/*.(js|jsx|ts|tsx)"
-    ],
-    "testURL": "http://localhost/",
-    "watchPlugins": [
-      "jest-watch-typeahead/filename",
-      "jest-watch-typeahead/testname"
-    ]
+    "preset": "@vue/cli-plugin-unit-jest"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
   },
-  "stylelint": {
-    "extends": "stylelint-config-standard"
-  },
   "lint-staged": {
-    "*.{js,vue}": [
+    "*.{js,jsx,vue}": [
       "vue-cli-service lint",
       "git add"
     ]
+  },
+  "stylelint": {
+    "extends": "stylelint-config-standard"
   }
 }
