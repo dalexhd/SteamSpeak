@@ -21,6 +21,10 @@ module.exports = {
     workboxOptions: {
       swSrc: 'src/service-worker.js',
     },
+    exclude: [
+      /\.map$/,
+      /manifest\.json$/,
+    ],
   },
   integrity: true,
 };
