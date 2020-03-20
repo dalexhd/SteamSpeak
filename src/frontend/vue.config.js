@@ -10,7 +10,8 @@ module.exports = {
   },
   pwa: {
     name: 'SteamSpeak',
-    themeColor: '#448aff',
+    background_color: '#448aff',
+    themeColor: '#000000',
     msTileColor: '#da532c',
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black',
