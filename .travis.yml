@@ -14,5 +14,6 @@ install:
   - npm install --prefix src/frontend
 script:
   - npm run test
+  - npm run front:test
 after_script:
   - docker stop teamspeak

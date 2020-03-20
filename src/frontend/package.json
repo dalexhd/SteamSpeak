@@ -70,6 +70,9 @@
     "> 1%",
     "last 2 versions"
   ],
+  "jest": {
+    "preset": "@vue/cli-plugin-unit-jest"
+  },
   "gitHooks": {
     "pre-commit": "lint-staged"
   },

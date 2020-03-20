@@ -9,12 +9,9 @@
   "scripts": {
     "start": "node src/backend/index.js",
     "test": "jest tests/ --runInBand",
-    "front:start": "react-scripts start --prefix src/frontend",
-    "front:build": "react-scripts build --prefix src/frontend",
-    "front:test": "react-scripts test --prefix src/frontend",
-    "front:cov": "npm test -- --coverage --watchAll=false --prefix src/frontend",
-    "front:debug": "react-scripts --inspect-brk test --runInBand --prefix src/frontend",
-    "front:eject": "react-scripts eject --prefix src/frontend",
+    "front:start": "npm run serve --prefix src/frontend",
+    "front:build": "npm run build --prefix src/frontend",
+    "front:test": "npm run test:unit --prefix src/frontend",
     "docs:serve": "docsify serve docs --port 4000"
   },
   "repository": {
