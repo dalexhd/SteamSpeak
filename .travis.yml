@@ -9,6 +9,7 @@ before_install:
   - docker pull teamspeak
   - make ts
 install:
+  - rm package-lock.json
   - npm install
   - npm install --prefix src/frontend
 script:
