@@ -71,10 +71,7 @@
     "last 2 versions"
   ],
   "jest": {
-    "preset": "@vue/cli-plugin-unit-jest",
-    "transformIgnorePatterns": [
-      "node_modules/(?!(babel-jest|jest-vue-preprocessor)/)"
-    ]
+    "preset": "@vue/cli-plugin-unit-jest"
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
