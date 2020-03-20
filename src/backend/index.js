@@ -21,5 +21,5 @@ app.listen(port);
 
 console.log(`App is listening on port ${port}`);
 const { cache } = new Cache();
-const { teamSpeakClient } = new TeamSpeakClient(cache);
+const { ts } = new TeamSpeakClient();
 const { database } = new Database();

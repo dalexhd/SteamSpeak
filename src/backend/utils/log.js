@@ -1,17 +1,16 @@
 const chalk = require('chalk');
 const moment = require('moment');
 
-class Log {
+const Log = {
   /**
     * Returns timestamp string.
     *
     * @returns {string}
     */
-  static time() {
+  time() {
     const date = new moment();
-
     return date.format('DD-MM-YYYY HH:mm:ss.SSS');
-  }
+  },
 
   /**
   * Print a log message with a customizable color.
@@ -19,9 +18,9 @@ class Log {
   * @param {string} log
   * @param {string} color
   */
-  static print(log, color, type = false) {
+  print(log, color, type = false) {
     let prefix;
-    if (type != false) {
+    if (type !== false) {
       switch (type.toLowerCase()) {
         case 'steam':
           prefix = chalk.cyan(`[${this.time()}]${chalk.red.bold(` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`)}`);
@@ -45,52 +44,62 @@ class Log {
       message = chalk[color](message);
     }
     console.log(`${prefix} ${message}`);
-  }
+  },
 
   /**
      * Print a log message with a timestamp.
      *
      * @param {string} log
      */
-  static info(log, type = false) {
+  info(log, type = false) {
     this.print(log, 'gray', type);
-  }
+  },
 
   /**
      * Print a log message with a timestamp.
      *
      * @param {string} log
      */
-  static debug(log, type = false) {
+  debug(log, type = false) {
+    this.print(log, 'cyan', type);
+  },
+
+
+  /**
+     * Print a log message with a timestamp.
+     *
+     * @param {string} log
+     */
+  warn(log, type = false) {
     this.print(log, 'yellow', type);
-  }
+  },
 
   /**
      * Print an error log message with a timestamp.
      *
      * @param {string} log
      */
-  static error(log, type = false) {
+  error(log, type = false) {
     this.print(log, 'red', type);
-  }
+  },
 
   /**
     * Print a success log message with a timestamp.
     *
     * @param {string} log
     */
-  static success(log, type = false) {
+  success(log, type = false) {
     this.print(log, 'green', type);
-  }
+  },
 
   /**
     * Print a event log message with a timestamp.
     *
     * @param {string} log
     */
-  static event(log, type = false) {
+  event(log, type = false) {
     this.print(log, 'magenta', type);
-  }
-}
+  },
+};
 
 module.exports = Log;
