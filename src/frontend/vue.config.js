@@ -10,14 +10,14 @@ module.exports = {
   },
   pwa: {
     name: 'SteamSpeak',
-    themeColor: '#000000',
+    themeColor: '#448aff',
     msTileColor: '#da532c',
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black',
     gcm_sender_id: '1021489007211',
     manifestOptions: {
-      background_color: "#448aff"
-    }
+      background_color: '#448aff',
+    },
     // configure the workbox plugin
     workboxPluginMode: 'InjectManifest',
     workboxOptions: {
