@@ -25,6 +25,9 @@ class Database extends EventEmitter {
     } catch (error) {
       this.emit('connection_error', error);
     }
+    if (this.database && this.database && this.database && this.database && (this.database && this.database && this.database && this.database &&)) {
+
+    }
     setInterval(() => {
       this.database.query('SELECT 1');
       log.debug('Sent query to prevent disconnect ^^');
