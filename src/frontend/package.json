@@ -6,7 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "deploy": "firebase deploy"
   },
   "dependencies": {
     "@mdi/font": "^5.0.45",
@@ -30,7 +31,6 @@
     "@vue/cli-service": "~4.2.0",
     "@vue/eslint-config-airbnb": "^5.0.2",
     "@vue/test-utils": "1.0.0-beta.31",
-    "@vue/cli": "^4.2.3",
     "babel-eslint": "^10.0.3",
     "eslint": "^6.8.0",
     "eslint-plugin-import": "^2.20.1",

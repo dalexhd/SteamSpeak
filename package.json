@@ -12,8 +12,8 @@
     "front:start": "npm run serve --prefix src/frontend",
     "front:build": "npm run build --prefix src/frontend",
     "front:test": "npm run test:unit --prefix src/frontend",
-    "docs:serve": "docsify serve docs --port 4000",
-    "postinstall": "npm i --prefix src/frontend"
+    "front:deploy": "npm run deploy --prefix src/frontend",
+    "docs:serve": "docsify serve docs --port 4000"
   },
   "repository": {
     "type": "git",
