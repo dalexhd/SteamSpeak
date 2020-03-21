@@ -6,12 +6,23 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="SteamSpeak - Steam and TeamSpeak integration, done right!">
     <meta name="author" content="DalexHD, https://github.com/dalexhd">
+    <link rel="stylesheet" type="text/css" href="<%= BASE_URL %>css/loader.css">
     <title><%= htmlWebpackPlugin.options.title %></title>
   </head>
   <body>
     <noscript>
       <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
     </noscript>
+    <div id="loading-bg">
+      <div class="loading-logo">
+        <img src="<%= BASE_URL %>img/logo.png" alt="Logo" height="75" width="75">
+      </div>
+      <div class="loading">
+        <div class="effect-1 effects"></div>
+        <div class="effect-2 effects"></div>
+        <div class="effect-3 effects"></div>
+      </div>
+    </div>
     <div id="app"></div>
     <!-- built files will be auto injected -->
   </body>
