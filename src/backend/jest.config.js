@@ -156,9 +156,7 @@ module.exports = {
     '/tests/',
   ],
 
-  testPathIgnorePatterns: [
-    '<rootDir>/src/',
-  ],
+  // testPathIgnorePatterns: [],
 
   // This option allows the use of a custom results processor
   // testResultsProcessor: undefined,
