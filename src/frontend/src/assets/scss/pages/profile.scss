@@ -1,0 +1,28 @@
+#profile-page {
+  .profile-img-container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    bottom: -3.6rem;
+    left: 10%;
+    width: 80%;
+    justify-content: space-between;
+  }
+
+  .user-profile-img {
+    border: 0.3rem solid #fff;
+    box-shadow: 0 0 10px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  .user-latest-image {
+    transition: all 0.2s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  .profile-header-nav {
+    background-color: #fff;
+  }
+}
