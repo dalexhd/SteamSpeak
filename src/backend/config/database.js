@@ -3,5 +3,5 @@ module.exports = {
   user: 'root',
   password: '1234',
   database: 'steam_speak',
-  debug: false,
+  debug: false
 };

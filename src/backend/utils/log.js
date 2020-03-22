@@ -81,6 +81,15 @@ const Log = {
    *
    * @param {string} log
    */
+  verbose(log, type = false) {
+    this.info(log, type);
+  },
+
+  /**
+   * Print a log message with a timestamp.
+   *
+   * @param {string} log
+   */
   debug(log, type = false) {
     this.print(log, 'cyan', type);
   },
@@ -119,7 +128,7 @@ const Log = {
    */
   event(log, type = false) {
     this.print(log, 'magenta', type);
-  },
+  }
 };
 
 module.exports = Log;

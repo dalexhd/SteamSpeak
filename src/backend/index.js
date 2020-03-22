@@ -5,7 +5,6 @@ const TeamSpeakClient = require('./core/TeamSpeak');
 const Database = require('./core/Database');
 const Cache = require('./core/Cache');
 
-
 const app = express();
 
 // Serve the static files from the React app
@@ -21,4 +20,5 @@ app.listen(port);
 
 console.log(`App is listening on port ${port}`);
 const { cache } = new Cache();
-const { ts } = new TeamSpeakClient();
+// eslint-disable-next-line no-unused-vars
+const { ts } = new TeamSpeakClient(cache, Database);

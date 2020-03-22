@@ -69,7 +69,7 @@ ts:		##@Misc Run docker image
 			$(DOCKER) logs teamspeak 2>&1 | grep login | awk '{split($$0, i, ", "); print i[2]}' | tr -d '\t\r\" ' | cut -d "=" -f 2 | xargs -I {} echo "${B}Password: ${W}${BOLD}"{}${X}
 			@echo
 			@sleep 0.5
-			$(DOCKER) logs teamspeak 2>&1 | grep token | sed 's/.*token=//' | sed 's/\r//g' | head -1 | tr -d '\n" ' | pbcopy | echo $(shell pbpaste) | xargs -I {} echo "${B}Token: ${G}${BOLD}{}${X}  📋 Token has been copied to your clipboard"
+			$(DOCKER) logs teamspeak 2>&1 | grep token | sed 's/.*token=//' | sed 's/\r//g' | head -1 | tr -d '\n" ' | xargs -I {} echo "${B}Token: ${G}${BOLD}"{}${X}
 			@echo
 
 clean:		##@Misc Clean docker image

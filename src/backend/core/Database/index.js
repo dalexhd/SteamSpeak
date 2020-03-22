@@ -1,4 +1,3 @@
-const { EventEmitter } = require('events');
 const mysql = require('mysql');
 const log = require('../../utils/log.js');
 const config = require('../../config/database.js');
@@ -12,7 +11,7 @@ const Database = mysql.createConnection({
   user: config.user,
   password: config.password,
   database: config.database,
-  debug: config.debug,
+  debug: config.debug
 });
 Database.connect((err) => {
   if (err) {

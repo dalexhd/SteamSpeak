@@ -1,27 +1,28 @@
 const log = require('../../../utils/log');
-const { config } = require('../../../config/teamspeak').plugins.afkChecker;
 const { convertToMiliseconds } = require('../../../utils/time');
+var loaded = false;
 
-const afkChecker = (ts3, cache) => {
-  setInterval(async () => {
+module.exports.load = async (ts3, cache) => {
+  const { data, interval } = this.info.config;
+  loaded = setInterval(async () => {
     const clients = await ts3.clientList({ client_type: 0 });
     clients.forEach(async (client) => {
       if (
-        client.idleTime > convertToMiliseconds(config.minTime) &&
+        client.idleTime > convertToMiliseconds(data.minTime) &&
         (client.outputMuted === 1 || client.away === 1) &&
-        client.cid !== config.dest
+        client.cid !== data.dest
       ) {
         cache.set(`afkChecker:${client.databaseId}`, client.cid);
-        client.move(config.dest);
+        client.move(data.dest);
         client.poke('You have been moved to an AFK channel!');
         log.info(
           `${client.nickname} (DBID: ${client.databaseId}) has been moved to the afk channel.`,
           'ts3'
         );
       } else if (
-        client.idleTime < convertToMiliseconds(config.minTime) &&
+        client.idleTime < convertToMiliseconds(data.minTime) &&
         (client.outputMuted === 0 || client.away === 0) &&
-        client.cid === config.dest
+        client.cid === data.dest
       ) {
         const cid = cache.get(`afkChecker:${client.databaseId}`);
         if (cid !== undefined) {
@@ -34,24 +35,42 @@ const afkChecker = (ts3, cache) => {
         }
       }
     });
-  }, convertToMiliseconds(config.interval));
+  }, convertToMiliseconds(interval));
 };
 
-const listenEvents = (ts3, cache) => {
-  ts3.on('clientdisconnect', (ev) => {
-    const { client } = ev;
-    if (client.type !== 1) {
-      cache.del(`afkChecker:${client.databaseId}`);
+module.exports.unload = () => {
+  clearInterval(loaded);
+};
+
+module.exports.clientdisconnect = async (ev, ts3, cache) => {
+  const { client } = ev;
+  if (client.type !== 1) {
+    cache.del(`afkChecker:${client.databaseId}`);
+  }
+};
+
+module.exports.info = {
+  name: 'afkChecker',
+  desc: 'Moves client to desired channel if AFK.',
+  config: {
+    enabled: false,
+    data: {
+      goBack: true,
+      dest: 2,
+      minTime: {
+        weeks: 0,
+        days: 0,
+        hours: 0,
+        minutes: 0,
+        seconds: 5
+      }
+    },
+    interval: {
+      weeks: 0,
+      days: 0,
+      hours: 0,
+      minutes: 0,
+      seconds: 5
     }
-  });
-};
-
-const enable = (client, cache) => {
-  afkChecker(client, cache);
-  listenEvents(client, cache);
-};
-
-module.exports = {
-  afkChecker,
-  enable,
+  }
 };

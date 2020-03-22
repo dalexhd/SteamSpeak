@@ -1,8 +1,5 @@
-const {
-  EventEmitter,
-} = require('events');
+const { EventEmitter } = require('events');
 const NodeCache = require('node-cache');
-const log = require('../../utils/log.js');
 const config = require('../../config/cache');
 
 class Cache extends EventEmitter {

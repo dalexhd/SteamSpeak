@@ -17,6 +17,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module"
   },
+  ignorePatterns: ["node_modules/"],
   rules: {
     "no-plusplus": [
       "error",
@@ -30,7 +31,8 @@ module.exports = {
         props: false
       }
     ],
+    "prefer-template": "error",
     "no-console":"off",
-    'prettier/prettier': ['error', { singleQuote: true }]
+    'prettier/prettier': ['error', { singleQuote: true, trailingComma: "none" }]
   }
 }

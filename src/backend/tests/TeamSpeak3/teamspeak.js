@@ -1,4 +1,4 @@
-/* global describe beforeEach it */
+/* eslint-disable no-undef */
 
 const { TeamSpeak } = require('ts3-nodejs-library');
 const config = require('../../config/teamspeak').teamspeak;
@@ -12,7 +12,7 @@ const ts3 = new TeamSpeak({
   password: config.password,
   nickname: config.name,
   antispam: true,
-  antispamtimer: 350,
+  antispamtimer: 350
 });
 
 describe('TeamSpeak3', () => {
