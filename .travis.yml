@@ -13,6 +13,6 @@ install:
   - npm install --prefix src/frontend
 script:
   - npm run test --prefix src/backend
-  - npm run unit:test --prefix src/frontend
+  - npm run test:unit --prefix src/frontend
 after_script:
   - docker stop teamspeak
