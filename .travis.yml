@@ -9,10 +9,10 @@ before_install:
   - docker pull teamspeak
   - make ts
 install:
-  - npm install
+  - npm install --prefix src/backend
   - npm install --prefix src/frontend
 script:
-  - npm run test
-  - npm run front:test
+  - npm run test --prefix src/backend
+  - npm run unit:test --prefix src/frontend
 after_script:
   - docker stop teamspeak
