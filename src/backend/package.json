@@ -7,12 +7,9 @@
     "doc": "docs"
   },
   "scripts": {
-    "start": "node src/backend/index.js",
+    "start": "node index.js",
+    "serve": "npm run start",
     "test": "jest tests/ --runInBand",
-    "front:start": "npm run serve --prefix src/frontend",
-    "front:build": "npm run build --prefix src/frontend",
-    "front:test": "npm run test:unit --prefix src/frontend",
-    "front:deploy": "npm run deploy --prefix src/frontend",
     "docs:serve": "docsify serve docs --port 4000"
   },
   "repository": {
@@ -52,9 +49,12 @@
     "babel-jest": "^25.1.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
+    "eslint-config-prettier": "^6.10.1",
     "eslint-plugin-flowtype": "^4.6.0",
     "eslint-plugin-import": "^2.20.1",
     "eslint-plugin-jsx-a11y": "^6.2.3",
-    "jest": "^25.1.0"
+    "eslint-plugin-prettier": "^3.1.2",
+    "jest": "^25.1.0",
+    "prettier": "^2.0.1"
   }
 }

@@ -1,8 +1,5 @@
-const {
-  EventEmitter,
-} = require('events');
+const { EventEmitter } = require('events');
 const { TeamSpeak } = require('ts3-nodejs-library');
-
 const { loadPlugins } = require('./plugins');
 const log = require('../../utils/log.js');
 const config = require('../../config/teamspeak.js').teamspeak;
@@ -37,22 +34,25 @@ class Ts3 extends EventEmitter {
    *
    */
   async onReady() {
-    this.ts.useBySid(config.server_id)
+    this.ts
+      .useBySid(config.server_id)
       .then(() => {
         log.success(`Selected Server Nº ${config.server_id}.`, 'ts3');
         this.ts.whoami().then((info) => {
           if (info.client_channel_id !== config.channel_id) {
-            this.ts.clientMove(info.client_id, config.channel_id).catch((error) => this.ts.emit('error', error));
+            this.ts
+              .clientMove(info.client_id, config.channel_id)
+              .catch((error) => this.ts.emit('error', error));
           }
         });
-      }).catch((err) => {
+      })
+      .catch((err) => {
         log.error(err);
       });
     log.success('Connected to the ts3 server', 'ts3');
     this.subscribeEvents();
     loadPlugins(this.ts, this.cache);
   }
-
 
   /**
    * Initialize event listeners.
@@ -84,7 +84,8 @@ class Ts3 extends EventEmitter {
       .then(() => {
         log.success('Subscribed to all Events', 'ts3');
         this.listenEvents();
-      }).catch((error) => log.error(error));
+      })
+      .catch((error) => log.error(error));
   }
 
   /**

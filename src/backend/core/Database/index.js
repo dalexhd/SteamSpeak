@@ -1,6 +1,4 @@
-const {
-  EventEmitter,
-} = require('events');
+const { EventEmitter } = require('events');
 const mysql = require('mysql');
 const log = require('../../utils/log.js');
 const config = require('../../config/database.js');
@@ -8,31 +6,24 @@ const config = require('../../config/database.js');
 /* !fix Problema al renombrar los nombres...
 Parece que los nombres o algo no cuadrán con la cache que esta bien.
 */
-class Database extends EventEmitter {
-  /**
-   * Construct the Database class.
-   */
-  constructor() {
-    super();
-    try {
-      this.database = mysql.createConnection({
-        host: config.ip,
-        user: config.user,
-        password: config.database.password,
-        database: config.database,
-        debug: config.debug,
-      });
-    } catch (error) {
-      this.emit('connection_error', error);
-    }
-    if (this.database && this.database && this.database && this.database && (this.database && this.database && this.database && this.database &&)) {
 
-    }
-    setInterval(() => {
-      this.database.query('SELECT 1');
-      log.debug('Sent query to prevent disconnect ^^');
-    }, 600000);
+const Database = mysql.createConnection({
+  host: config.ip,
+  user: config.user,
+  password: config.password,
+  database: config.database,
+  debug: config.debug,
+});
+Database.connect((err) => {
+  if (err) {
+    log.error(err.message, 'database');
+    process.exit();
   }
-}
+  log.success('Connected to the database!', 'database');
+  setInterval(() => {
+    Database.query('SELECT 1');
+    log.debug('Sent query to prevent disconnect ^^');
+  }, 600000);
+});
 
 module.exports = Database;

@@ -1,9 +1,7 @@
-const database = {
-  ip: '172.17.0.3',
+module.exports = {
+  ip: '127.0.0.1',
   user: 'root',
-  password: ',4leLluPelyjAx3d$EhMepPIbUq',
+  password: '1234',
   database: 'steam_speak',
-  debug: true,
+  debug: false,
 };
-
-module.exports = database;

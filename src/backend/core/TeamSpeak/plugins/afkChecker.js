@@ -7,21 +7,21 @@ const afkChecker = (ts3, cache) => {
     const clients = await ts3.clientList({ client_type: 0 });
     clients.forEach(async (client) => {
       if (
-        client.idleTime > convertToMiliseconds(config.minTime)
-        && (client.outputMuted === 1 || client.away === 1)
-        && client.cid !== config.dest
+        client.idleTime > convertToMiliseconds(config.minTime) &&
+        (client.outputMuted === 1 || client.away === 1) &&
+        client.cid !== config.dest
       ) {
         cache.set(`afkChecker:${client.databaseId}`, client.cid);
         client.move(config.dest);
         client.poke('You have been moved to an AFK channel!');
         log.info(
           `${client.nickname} (DBID: ${client.databaseId}) has been moved to the afk channel.`,
-          'ts3',
+          'ts3'
         );
       } else if (
-        client.idleTime < convertToMiliseconds(config.minTime)
-        && (client.outputMuted === 0 || client.away === 0)
-        && client.cid === config.dest
+        client.idleTime < convertToMiliseconds(config.minTime) &&
+        (client.outputMuted === 0 || client.away === 0) &&
+        client.cid === config.dest
       ) {
         const cid = cache.get(`afkChecker:${client.databaseId}`);
         if (cid !== undefined) {
@@ -29,7 +29,7 @@ const afkChecker = (ts3, cache) => {
           cache.del(`afkChecker:${client.databaseId}`);
           log.info(
             `${client.nickname} (DBID: ${client.databaseId}) has been moved back to previous channel.`,
-            'ts3',
+            'ts3'
           );
         }
       }
