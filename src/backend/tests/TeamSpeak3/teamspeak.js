@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 
 const { TeamSpeak } = require('ts3-nodejs-library');
-const config = require('../../config/teamspeak').teamspeak;
+const config = require('../../config/teamspeak');
 
 const ts3 = new TeamSpeak({
   protocol: 'ssh',
