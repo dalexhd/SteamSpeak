@@ -1,18 +1,21 @@
 const log = require('../../../utils/log');
 const { convertToMiliseconds } = require('../../../utils/time');
+const Cache = require('../../Cache');
+const Ts3 = require('../../TeamSpeak');
+
 var loaded = false;
 
-module.exports.load = async (ts3, cache) => {
+module.exports.load = async () => {
   const { data, interval } = this.info.config;
   loaded = setInterval(async () => {
-    const clients = await ts3.clientList({ client_type: 0 });
+    const clients = await Ts3.clientList({ client_type: 0 });
     clients.forEach(async (client) => {
       if (
         client.idleTime > convertToMiliseconds(data.minTime) &&
         (client.outputMuted === 1 || client.away === 1) &&
         client.cid !== data.dest
       ) {
-        cache.set(`afkChecker:${client.databaseId}`, client.cid);
+        Cache.set(`afkChecker:${client.databaseId}`, client.cid);
         client.move(data.dest);
         client.poke('You have been moved to an AFK channel!');
         log.info(
@@ -24,10 +27,10 @@ module.exports.load = async (ts3, cache) => {
         (client.outputMuted === 0 || client.away === 0) &&
         client.cid === data.dest
       ) {
-        const cid = cache.get(`afkChecker:${client.databaseId}`);
+        const cid = Cache.get(`afkChecker:${client.databaseId}`);
         if (cid !== undefined) {
           client.move(cid);
-          cache.del(`afkChecker:${client.databaseId}`);
+          Cache.del(`afkChecker:${client.databaseId}`);
           log.info(
             `${client.nickname} (DBID: ${client.databaseId}) has been moved back to previous channel.`,
             'ts3'
@@ -42,10 +45,10 @@ module.exports.unload = () => {
   clearInterval(loaded);
 };
 
-module.exports.clientdisconnect = async (ev, ts3, cache) => {
+module.exports.clientdisconnect = async (ev) => {
   const { client } = ev;
   if (client.type !== 1) {
-    cache.del(`afkChecker:${client.databaseId}`);
+    Cache.del(`afkChecker:${client.databaseId}`);
   }
 };
 
@@ -53,7 +56,7 @@ module.exports.info = {
   name: 'afkChecker',
   desc: 'Moves client to desired channel if AFK.',
   config: {
-    enabled: false,
+    enabled: true,
     data: {
       goBack: true,
       dest: 2,

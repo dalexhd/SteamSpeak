@@ -1,4 +1,4 @@
-const teamspeak = {
+module.exports = {
   ip: '127.0.0.1',
   query_port: 10022,
   port: 9987,
@@ -8,8 +8,4 @@ const teamspeak = {
   server_id: 1,
   channel_id: 1,
   debug: false
-};
-
-module.exports = {
-  teamspeak
 };

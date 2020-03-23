@@ -1,11 +1,13 @@
-module.exports.clientconnect = async (ev, ts3) => {
+const Ts3 = require('../../TeamSpeak');
+
+module.exports.clientconnect = async (ev) => {
   const { client } = ev;
   if (client.type !== 1) {
     const { data } = this.info.config;
     if (data.type === 'poke') {
-      ts3.clientPoke(client.clid, data.message);
+      Ts3.clientPoke(client.clid, data.message);
     } else if (data.type === 'private') {
-      ts3.sendTextMessage(client.clid, 1, data.message);
+      Ts3.sendTextMessage(client.clid, 1, data.message);
     }
   }
 };
