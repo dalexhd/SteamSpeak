@@ -1,50 +1,50 @@
-OUTPUT				=	SteamSpeak
+OUTPUT							=	SteamSpeak
 
-DOCKER				=	@docker
-SH					=	@bash
-RM					=	@/bin/rm -rf
+DOCKER							=	@docker
+SH									=	@bash
+RM									=	@/bin/rm -rf
 
-AUTHOR				=	DalexHD
-LAST_COMMIT_DATE	=	$(shell git log -1 --date=format:"%m/%d/%y %T" --format="%ad   [%cr]")
-LAST_COMMIT_HASH	=	$(shell git log -1 --date=format:"%m/%d/%y %T" --format="%H")
+AUTHOR							=	DalexHD
+LAST_COMMIT_DATE		=	$(shell git log -1 --date=format:"%m/%d/%y %T" --format="%ad   [%cr]")
+LAST_COMMIT_HASH		=	$(shell git log -1 --date=format:"%m/%d/%y %T" --format="%H")
 LAST_COMMIT_MESSAGE	=	$(shell git log -1 --date=format:"%m/%d/%y %T" --format="%s")
-TEAMSPEAK_TOKEN=$(shell docker logs teamspeak 2>&1 | grep token | sed 's/.*token=//' | sed 's/\r//g' | head -1)
+TEAMSPEAK_TOKEN			=	$(shell docker logs teamspeak 2>&1 | grep token | sed 's/.*token=//' | sed 's/\r//g' | head -1)
 
 # Functions
-disp_indent			=	for I in `seq 1 $(MAKELEVEL)`; do \
-						test "$(MAKELEVEL)" '!=' '0' && printf "\t"; \
-						done
+disp_indent					=	for I in `seq 1 $(MAKELEVEL)`; do \
+												test "$(MAKELEVEL)" '!=' '0' && printf "\t"; \
+											done
 
-disp_title			=	$(call disp_indent); \
-						echo $(1)$(2) $(3) $(4) $(5) $(6) $(7) $(8) $(9) $(10)"\033[31m"; \
-						$(2) $(3) $(4) $(5) $(6) $(7) $(8) $(9) $(10)
+disp_title					=	$(call disp_indent); \
+											echo $(1)$(2) $(3) $(4) $(5) $(6) $(7) $(8) $(9) $(10)"\033[31m"; \
+											$(2) $(3) $(4) $(5) $(6) $(7) $(8) $(9) $(10)
 
-disp_title			=	$(call disp_indent); \
-						echo "\033[38;5;$(2);m[  $(1) \#$(MAKELEVEL)  ]\033[0m"
+disp_title					=	$(call disp_indent); \
+											echo "\033[38;5;$(2);m[  $(1) \#$(MAKELEVEL)  ]\033[0m"
 
 
 ################
 ##   COLORS   ##
 ################
 
-Y					=	$(shell printf "\033[33m")
-R					=	$(shell printf "\033[31m")
-G					=	$(shell printf "\033[32m")
-CYAN				=	$(shell printf "\033[36m")
-B					=	$(shell printf "\033[34m")
-X					=	$(shell printf "\033[0m")
-UP					=	$(shell printf "\033[A")
-CUT					=	$(shell printf "\033[K")
-W					=	$(shell printf "\033[37m")
-UND					=	$(shell printf "\033[4m")
-BLINK				=	$(shell printf "\033[5m")
-BOLD				=	$(shell printf "\033[1m")
-UP					=	$(shell printf "\033[5A")
+Y										=	$(shell printf "\033[33m")
+R										=	$(shell printf "\033[31m")
+G										=	$(shell printf "\033[32m")
+CYAN								=	$(shell printf "\033[36m")
+B										=	$(shell printf "\033[34m")
+X										=	$(shell printf "\033[0m")
+UP									=	$(shell printf "\033[A")
+CUT									=	$(shell printf "\033[K")
+W										=	$(shell printf "\033[37m")
+UND									=	$(shell printf "\033[4m")
+BLINK								=	$(shell printf "\033[5m")
+BOLD								=	$(shell printf "\033[1m")
+UP									=	$(shell printf "\033[5A")
 
-NORM_COLOR			=	153
-NORM_COLOR_T		=	141
-NORM_COLOR_ERR		=	160
-NORM_COLOR_WAR		=	214
+NORM_COLOR					=	153
+NORM_COLOR_T				=	141
+NORM_COLOR_ERR			=	160
+NORM_COLOR_WAR			=	214
 
 all:		##@Build Build all files
 			@make ts
@@ -53,12 +53,11 @@ all:		##@Build Build all files
 TOKEN_SCRIPT = \
 			$(bash echo "Waiting while servertoken is generated..." \
 			while true; do \
-			a = $(docker logs teamspeak 2>&1 | grep token | sed 's/.*token=//' | sed 's/\r//g' | head -1) \
-			echo a \
-			if [ ! -z a ] \
-			then \
-					break \
-			fi \
+				a = $(docker logs teamspeak 2>&1 | grep token | sed 's/.*token=//' | sed 's/\r//g' | head -1) \
+				echo a \
+				if [ ! -z a ]; then \
+						break \
+				fi \
 			done)
 
 
@@ -70,7 +69,7 @@ ts:		##@Misc Run docker image
 			$(DOCKER) logs teamspeak 2>&1 | grep login | awk '{split($$0, i, ", "); print i[2]}' | tr -d '\t\r\" ' | cut -d "=" -f 2 | xargs -I {} echo "${B}Password: ${W}${BOLD}"{}${X}
 			@echo
 			@sleep 0.5
-			$(DOCKER) logs teamspeak 2>&1 | grep token | sed 's/.*token=//' | sed 's/\r//g' | head -1 | tr -d '\n" ' | pbcopy | echo $(shell pbpaste) | xargs -I {} echo "${B}Token: ${G}${BOLD}{}${X}  📋 Token has been copied to your clipboard"
+			$(DOCKER) logs teamspeak 2>&1 | grep token | sed 's/.*token=//' | sed 's/\r//g' | head -1 | tr -d '\n" ' | xargs -I {} echo "${B}Token: ${G}${BOLD}"{}${X}
 			@echo
 
 clean:		##@Misc Clean docker image

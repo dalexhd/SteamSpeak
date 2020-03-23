@@ -3,5 +3,9 @@
     "source.fixAll.eslint": true,
     "source.fixAll.stylelint": true
   },
-  "eslint.alwaysShowStatus": true
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ]
 }

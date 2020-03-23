@@ -1,5 +1,20 @@
-/* ===== Custom File ======= */
-@import "custom";
+@import "variables";
+@import "layout";
+@import "typography";
+@import "misc";
+@import "extraComponents";
+@import "themes";
+@import "transitions";
+@import "customClasses";
 
-/* ===== Vendor File ======= */
+// Vuesax fixes and enhancments
+@import "fixesVuesax";
+
+// Vendor files
 @import "vendor";
+
+// Tailwind Fixes
+@import "tailwindFix";
+
+// rtl
+@import "rtl";

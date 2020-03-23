@@ -1,12 +1,22 @@
 # Changelog
 
-## [Unreleased](https://github.com/dalexhd/SteamSpeak/tree/HEAD)
+## [v0.0.6](https://github.com/dalexhd/SteamSpeak/tree/v0.0.6) (2020-03-23)
 
-[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.5...HEAD)
+[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.5...v0.0.6)
 
 **Implemented enhancements:**
 
+- Added Vue frontend. [\#14](https://github.com/dalexhd/SteamSpeak/pull/14) ([dalexhd](https://github.com/dalexhd))
 - Added the first Plugin: AFKChecker [\#13](https://github.com/dalexhd/SteamSpeak/pull/13) ([dalexhd](https://github.com/dalexhd))
+
+**Fixed bugs:**
+
+- Installation problems. [\#16](https://github.com/dalexhd/SteamSpeak/issues/16)
+
+**Merged pull requests:**
+
+- Downgraded steam package version. [\#17](https://github.com/dalexhd/SteamSpeak/pull/17) ([dalexhd](https://github.com/dalexhd))
+- Added VueJS frontend. [\#15](https://github.com/dalexhd/SteamSpeak/pull/15) ([dalexhd](https://github.com/dalexhd))
 
 ## [v0.0.5](https://github.com/dalexhd/SteamSpeak/tree/v0.0.5) (2020-03-08)
 

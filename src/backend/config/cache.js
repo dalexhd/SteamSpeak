@@ -1,6 +1,4 @@
-const cache = {
+module.exports = {
   stdTTL: 0,
-  checkperiod: 120,
+  checkperiod: 120
 };
-
-module.exports = cache;
