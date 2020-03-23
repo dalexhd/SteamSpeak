@@ -1,14 +1,13 @@
 const express = require('express');
 const path = require('path');
 
-const TeamSpeakClient = require('./core/TeamSpeak');
+const Ts3 = require('./core/TeamSpeak');
 const Database = require('./core/Database');
-const Cache = require('./core/Cache');
 
 const app = express();
 
 // Serve the static files from the React app
-app.use(express.static(path.join(__dirname, '../frontend/build')));
+app.use(express.static(path.join(__dirname, '../frontend/dist')));
 
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) => {
@@ -19,6 +18,3 @@ const port = process.env.PORT || 5000;
 app.listen(port);
 
 console.log(`App is listening on port ${port}`);
-const { cache } = new Cache();
-// eslint-disable-next-line no-unused-vars
-const { ts } = new TeamSpeakClient(cache, Database);
