@@ -1,0 +1,24 @@
+.dropdown-login {
+  z-index: 55000;
+
+  .vs-dropdown--custom {
+    display: flex;
+    align-items: center;
+    flex-flow: column;
+    padding: 20px !important;
+  }
+}
+
+.dropdown-button-container {
+  display: flex;
+  align-items: center;
+
+  .btnx {
+    border-radius: 5px 0 0 5px;
+  }
+
+  .btn-drop {
+    border-radius: 0 5px 5px 0;
+    border-left: 1px solid rgba(255, 255, 255, 0.2);
+  }
+}

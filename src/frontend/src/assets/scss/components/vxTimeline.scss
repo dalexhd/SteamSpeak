@@ -1,0 +1,33 @@
+@import '../_variables.scss';
+
+.vx-timeline {
+  margin-left: 1.5rem;
+  padding-left: 40px;
+  border-left: 2px solid #e5e8eb;
+
+  .theme-dark & {
+    border-color: $theme-dark-border-color;
+  }
+
+  li {
+    position: relative;
+    margin-bottom: 20px;
+
+    .timeline-icon {
+      position: absolute;
+      top: 0;
+      left: -4.3rem;
+      border-radius: 50%;
+      padding: 0.75rem;
+      padding-bottom: 0.4rem;
+    }
+
+    .activity-desc {
+      font-size: 0.9rem;
+    }
+
+    .activity-e-time {
+      font-size: 0.8rem;
+    }
+  }
+}

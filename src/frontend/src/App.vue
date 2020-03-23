@@ -1,33 +1,85 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view/>
+  <div id="app" :class="vueAppClasses">
+    <router-view @setAppClasses="setAppClasses" />
   </div>
 </template>
 
+<script>
+import themeConfig from '@/../themeConfig';
+import jwt from '@/http/requests/auth/jwt/index';
 
-<style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
+export default {
+  data() {
+    return {
+      vueAppClasses: []
+    };
+  },
+  watch: {
+    '$store.state.theme': function(val) {
+      this.toggleClassInBody(val);
+    },
+    '$vs.rtl': function(val) {
+      document.documentElement.setAttribute('dir', val ? 'rtl' : 'ltr');
+    }
+  },
+  mounted() {
+    this.toggleClassInBody(themeConfig.theme);
+    this.$store.commit('UPDATE_WINDOW_WIDTH', window.innerWidth);
 
-#nav {
-  padding: 30px;
+    const vh = window.innerHeight * 0.01;
+    // Then we set the value in the --vh custom property to the root of the document
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  },
+  async created() {
+    // jwt
+    jwt.init();
 
-  a {
-    font-weight: bold;
-    color: #2c3e50;
+    const dir = this.$vs.rtl ? 'rtl' : 'ltr';
+    document.documentElement.setAttribute('dir', dir);
 
-    &.router-link-exact-active {
-      color: #42b983;
+    window.addEventListener('resize', this.handleWindowResize);
+    window.addEventListener('scroll', this.handleScroll);
+
+    // Auth0
+    try {
+      await this.$auth.renewTokens();
+    } catch (e) {
+      console.error(e);
+    }
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.handleWindowResize);
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  methods: {
+    toggleClassInBody(className) {
+      if (className === 'dark') {
+        if (document.body.className.match('theme-semi-dark'))
+          document.body.classList.remove('theme-semi-dark');
+        document.body.classList.add('theme-dark');
+      } else if (className === 'semi-dark') {
+        if (document.body.className.match('theme-dark'))
+          document.body.classList.remove('theme-dark');
+        document.body.classList.add('theme-semi-dark');
+      } else {
+        if (document.body.className.match('theme-dark'))
+          document.body.classList.remove('theme-dark');
+        if (document.body.className.match('theme-semi-dark'))
+          document.body.classList.remove('theme-semi-dark');
+      }
+    },
+    setAppClasses(classesStr) {
+      this.vueAppClasses.push(classesStr);
+    },
+    handleWindowResize() {
+      this.$store.commit('UPDATE_WINDOW_WIDTH', window.innerWidth);
+
+      // Set --vh property
+      document.documentElement.style.setProperty('--vh', `${window.innerHeight * 0.01}px`);
+    },
+    handleScroll() {
+      this.$store.commit('UPDATE_WINDOW_SCROLL_Y', window.scrollY);
     }
   }
-}
-</style>
+};
+</script>
