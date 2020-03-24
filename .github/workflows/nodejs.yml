@@ -24,15 +24,14 @@ jobs:
         image: mysql:5.7
         env:
           MYSQL_ROOT_PASSWORD: 1234
+          MYSQL_DATABASE: steam_speak
         ports:
          - 33306:3306
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
     steps:
     - uses: actions/checkout@v2
-    - name: Create database
-      run: |
-        sudo systemctl start mysql
-        mysql -u root -p1234 -e "create database steam_speak; SHOW DATABASES;"
+    - name: Start MySQL
+      run: sudo systemctl start mysql
     - name: Create TeamSpeak server
       run: |
         docker pull teamspeak
