@@ -30,7 +30,9 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Create database
-      run: mysql -u root -p1234 -e "create database steam_speak; SHOW DATABASES;"
+      run: |
+        sudo systemctl start mysql
+        mysql -u root -p1234 -e "create database steam_speak; SHOW DATABASES;"
     - name: Create TeamSpeak server
       run: |
         docker pull teamspeak
