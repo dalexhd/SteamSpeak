@@ -1,11 +1,11 @@
 import Vue from 'vue';
 
-Vue.filter('capitalize', value => {
+Vue.filter('capitalize', (value) => {
   if (!value) return '';
   value = value.toString();
   const arr = value.split(' ');
   const capitalized_array = [];
-  arr.forEach(word => {
+  arr.forEach((word) => {
     const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
     capitalized_array.push(capitalized);
   });
@@ -18,7 +18,7 @@ Vue.filter('title', (value, replacer = '_') => {
 
   const arr = value.split(replacer);
   const capitalized_array = [];
-  arr.forEach(word => {
+  arr.forEach((word) => {
     const capitalized = word.charAt(0).toUpperCase() + word.slice(1);
     capitalized_array.push(capitalized);
   });
@@ -29,6 +29,7 @@ Vue.filter('truncate', (value, limit) => value.substring(0, limit));
 
 Vue.filter('tailing', (value, tail) => value + tail);
 
+// eslint-disable-next-line consistent-return
 Vue.filter('time', (value, is24HrFormat = false) => {
   if (value) {
     const date = new Date(Date.parse(value));
@@ -63,8 +64,8 @@ Vue.filter('month', (val, showYear = true) => {
   return `${regx.exec(val)[1]} ${regx.exec(val)[2]}`;
 });
 
-Vue.filter('csv', value => value.join(', '));
+Vue.filter('csv', (value) => value.join(', '));
 
-Vue.filter('filter_tags', value => value.replace(/<\/?[^>]+(>|$)/g, ''));
+Vue.filter('filter_tags', (value) => value.replace(/<\/?[^>]+(>|$)/g, ''));
 
-Vue.filter('k_formatter', num => (num > 999 ? `${(num / 1000).toFixed(1)}k` : num));
+Vue.filter('k_formatter', (num) => (num > 999 ? `${(num / 1000).toFixed(1)}k` : num));

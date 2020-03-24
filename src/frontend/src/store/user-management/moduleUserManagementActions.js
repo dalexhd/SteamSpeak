@@ -15,11 +15,11 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .get('/api/user-management/users')
-        .then(response => {
+        .then((response) => {
           commit('SET_USERS', response.data);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -28,10 +28,10 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .get(`/api/user-management/users/${userId}`)
-        .then(response => {
+        .then((response) => {
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -40,11 +40,11 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .delete(`/api/user-management/users/${userId}`)
-        .then(response => {
+        .then((response) => {
           commit('REMOVE_RECORD', userId);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });

@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-restricted-globals */
 /* eslint-disable no-undef */
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 
@@ -16,7 +18,7 @@ workbox.routing.registerRoute(
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
 // install new service worker when ok, then reload page.
-self.addEventListener('message', msg => {
+self.addEventListener('message', (msg) => {
   if (msg.data.action === 'skipWaiting') {
     self.skipWaiting();
   }

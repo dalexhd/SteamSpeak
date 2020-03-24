@@ -24,13 +24,13 @@ const getUserInfo = () => {
   const userInfo = {};
 
   // Update property in user
-  Object.keys(userDefaults).forEach(key => {
+  Object.keys(userDefaults).forEach((key) => {
     // If property is defined in localStorage => Use that
     userInfo[key] = userInfoLocalStorage[key] ? userInfoLocalStorage[key] : userDefaults[key];
   });
 
   // Include properties from localStorage
-  Object.keys(userInfoLocalStorage).forEach(key => {
+  Object.keys(userInfoLocalStorage).forEach((key) => {
     if (userInfo[key] === undefined && userInfoLocalStorage[key] !== null) {
       userInfo[key] = userInfoLocalStorage[key];
     }
@@ -44,7 +44,7 @@ const getUserInfo = () => {
 // Using Dynamic components
 const isTouchDevice = () => {
   const prefixes = ' -webkit- -moz- -o- -ms- '.split(' ');
-  const mq = query => window.matchMedia(query).matches;
+  const mq = (query) => window.matchMedia(query).matches;
 
   if ('ontouchstart' in window || window.DocumentTouch) {
     return true;
@@ -72,11 +72,11 @@ const state = {
   verticalNavMenuWidth: 'default',
   verticalNavMenuItemsMin: false,
   scrollY: 0,
-  starredPages: navbarSearchAndPinList.pages.data.filter(page => page.is_bookmarked),
+  starredPages: navbarSearchAndPinList.pages.data.filter((page) => page.is_bookmarked),
   theme: themeConfig.theme || 'light',
   themePrimaryColor: colors.primary,
 
-  //Used to get the current App version
+  // Used to get the current App version
   version: process.env.VERSION || '0',
 
   // Can be used to get current window with

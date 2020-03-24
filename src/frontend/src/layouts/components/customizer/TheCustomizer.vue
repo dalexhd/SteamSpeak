@@ -348,7 +348,7 @@ export default {
       return this.$store.state.theme === 'dark' ? '#10163a' : '#fff';
     },
     navbarColorOptionClasses() {
-      return color => {
+      return (color) => {
         const classes = {};
         if (color === this.navbarColorLocal) classes['shadow-outline'] = true;
         if (this.navbarTypeLocal === 'static') classes['cursor-not-allowed'] = true;
@@ -443,11 +443,6 @@ export default {
         if (this.navbarType === 'hidden') this.navbarTypeLocal = 'floating';
         this.$emit('updateNavbarColor', '#fff');
       }
-    }
-  },
-  events: {
-    'toggle-customizer': function() {
-      this.toggleCustomizer();
     }
   },
   methods: {

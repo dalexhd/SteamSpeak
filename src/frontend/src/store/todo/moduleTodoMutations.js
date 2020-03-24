@@ -17,7 +17,7 @@ export default {
     state.tasks.unshift(task);
   },
   UPDATE_TASK(state, task) {
-    const taskIndex = state.tasks.findIndex(t => t.id === task.id);
+    const taskIndex = state.tasks.findIndex((t) => t.id === task.id);
     Object.assign(state.tasks[taskIndex], task);
   }
 };
