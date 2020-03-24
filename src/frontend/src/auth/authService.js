@@ -26,6 +26,7 @@ class AuthService extends EventEmitter {
   tokenExpiry = null;
 
   // Starts the user login flow
+  // eslint-disable-next-line class-methods-use-this
   login(customState) {
     webAuth.authorize({
       appState: customState
@@ -73,7 +74,7 @@ class AuthService extends EventEmitter {
 
   renewTokens() {
     // reject can be used as parameter in promise for using reject
-    return new Promise(resolve => {
+    return new Promise((resolve) => {
       if (localStorage.getItem(localStorageKey) !== 'true') {
         // return reject("Not logged in");
       }
@@ -105,6 +106,7 @@ class AuthService extends EventEmitter {
     this.emit(loginEvent, { loggedIn: false });
   }
 
+  // eslint-disable-next-line class-methods-use-this
   isAuthenticated() {
     return (
       new Date(Date.now()) < new Date(localStorage.getItem(tokenExpiryKey)) &&

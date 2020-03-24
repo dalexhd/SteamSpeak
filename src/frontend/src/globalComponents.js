@@ -19,7 +19,7 @@ Vue.component(VxInputGroup.name, VxInputGroup);
 // Set the components prop default to return our fresh components
 vSelect.props.components.default = () => ({
   Deselect: {
-    render: createElement =>
+    render: (createElement) =>
       createElement('feather-icon', {
         props: {
           icon: 'XIcon',
@@ -28,7 +28,7 @@ vSelect.props.components.default = () => ({
       })
   },
   OpenIndicator: {
-    render: createElement =>
+    render: (createElement) =>
       createElement('feather-icon', {
         props: {
           icon: 'ChevronDownIcon',

@@ -1,7 +1,7 @@
 export default {
-  filteredMails: state =>
+  filteredMails: (state) =>
     state.mails.filter(
-      mail =>
+      (mail) =>
         (state.mail_filter === 'starred'
           ? mail.isStarred
           : state.mail_filter === mail.mailFolder || mail.labels.includes(state.mail_filter)) &&
@@ -10,5 +10,5 @@ export default {
           mail.subject.toLowerCase().includes(state.mailSearchQuery.toLowerCase()) ||
           mail.message.toLowerCase().includes(state.mailSearchQuery.toLowerCase()))
     ),
-  getMail: state => emailId => state.mails.find(email => email.id === emailId)
+  getMail: (state) => (emailId) => state.mails.find((email) => email.id === emailId)
 };

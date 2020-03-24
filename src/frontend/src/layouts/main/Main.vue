@@ -158,7 +158,7 @@
               <transition :name="routerTransition" mode="out-in">
                 <router-view
                   @changeRouteTitle="changeRouteTitle"
-                  @setAppClasses="classesStr => $emit('setAppClasses', classesStr)"
+                  @setAppClasses="(classesStr) => $emit('setAppClasses', classesStr)"
                 />
               </transition>
             </div>
@@ -302,7 +302,7 @@ export default {
     // Dynamic Watchers for tour
     // Reason: Once tour is disabled it is not required to enable it.
     // So, watcher is required for just disabling it.
-    this.dynamicWatchers.windowWidth = this.$watch('$store.state.windowWidth', val => {
+    this.dynamicWatchers.windowWidth = this.$watch('$store.state.windowWidth', (val) => {
       if (val < 1200) {
         this.disableThemeTour = true;
         this.dynamicWatchers.windowWidth();
@@ -323,7 +323,7 @@ export default {
     });
   },
   beforeDestroy() {
-    Object.keys(this.dynamicWatchers).map(i => {
+    Object.keys(this.dynamicWatchers).map((i) => {
       this.dynamicWatchers[i]();
       return delete this.dynamicWatchers[i];
     });

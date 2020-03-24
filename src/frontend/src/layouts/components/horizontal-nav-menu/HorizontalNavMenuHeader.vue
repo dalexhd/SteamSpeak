@@ -90,7 +90,7 @@ export default {
       let active = false;
       const routeParent = this.$route.meta ? this.$route.meta.parent : undefined;
 
-      this.header.items.forEach(item => {
+      this.header.items.forEach((item) => {
         // If item is group
         if (item.submenu) {
           if (this.checkGrpChildrenActive(item)) {
@@ -125,7 +125,7 @@ export default {
       const routeParent = this.$route.meta ? this.$route.meta.parent : undefined;
 
       if (group.submenu) {
-        group.submenu.forEach(item => {
+        group.submenu.forEach((item) => {
           if ((path === item.url || routeParent === item.slug) && item.slug) active = true;
           else if (item.submenu) {
             if (this.checkGrpChildrenActive(item)) active = true;
@@ -138,7 +138,7 @@ export default {
     hovered(val = true) {
       this.isHovered = val;
       if (this.openOnHover) {
-        val ? (this.showChildren = true) : (this.showChildren = false);
+        this.showChildren = val;
       }
     }
   }

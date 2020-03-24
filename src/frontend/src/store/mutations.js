@@ -26,7 +26,7 @@ const mutations = {
   UPDATE_STARRED_PAGE(state, payload) {
     // find item index in search list state
     const index = state.navbarSearchAndPinList.pages.data.findIndex(
-      item => item.url === payload.url
+      (item) => item.url === payload.url
     );
 
     // update the main list
@@ -37,7 +37,7 @@ const mutations = {
       state.starredPages.push(state.navbarSearchAndPinList.pages.data[index]);
     } else {
       // find item index from starred pages
-      const index = state.starredPages.findIndex(item => item.url === payload.url);
+      const index = state.starredPages.findIndex((item) => item.url === payload.url);
 
       // remove item using index
       state.starredPages.splice(index, 1);
@@ -56,7 +56,7 @@ const mutations = {
     const starredPagesLimited = state.starredPages.slice(0, 10);
     state.starredPages = starredPagesLimited.concat(list);
 
-    state.starredPages.slice(0, 10).map(i => {
+    state.starredPages.slice(0, 10).foreach((i) => {
       if (list.indexOf(i) > -1) downToUp = true;
     });
 
@@ -101,7 +101,6 @@ const mutations = {
       if (payload[property] !== null) {
         // If some of user property is null - user default property defined in state.AppActiveUser
         state.AppActiveUser[property] = payload[property];
-
         // Update key in localStorage
         userInfo[property] = payload[property];
       }

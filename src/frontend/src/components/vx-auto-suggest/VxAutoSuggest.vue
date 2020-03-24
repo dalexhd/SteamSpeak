@@ -84,7 +84,7 @@ export default {
     },
     initalData: {
       type: Object,
-      default: () => new Object()
+      default: () => {}
     },
     inputClassses: {
       type: [String, Object, Array]
@@ -131,7 +131,7 @@ export default {
         });
 
         // Check if any of group has at least one queried item
-        if (!Object.values(queried_data).some(obj => obj.length)) {
+        if (!Object.values(queried_data).some((obj) => obj.length)) {
           this.currentSelected = -1;
         }
 
@@ -165,11 +165,11 @@ export default {
       this.searchQuery = '';
     },
     filter_grp(grp) {
-      const exactEle = grp.data.filter(item =>
+      const exactEle = grp.data.filter((item) =>
         item[grp.key].toLowerCase().startsWith(this.searchQuery.toLowerCase())
       );
       const containEle = grp.data.filter(
-        item =>
+        (item) =>
           !item[grp.key].toLowerCase().startsWith(this.searchQuery.toLowerCase()) &&
           item[grp.key].toLowerCase().indexOf(this.searchQuery.toLowerCase()) > -1
       );
@@ -212,7 +212,7 @@ export default {
       /* eslint-disable no-lonely-if */
 
       // If there's no matching items
-      if (!Object.values(this.filteredData).some(grp_items => grp_items.length)) return;
+      if (!Object.values(this.filteredData).some((grp_items) => grp_items.length)) return;
 
       const [grp_i, item_i] = this.currentSelected.split('.');
 
