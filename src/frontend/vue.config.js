@@ -5,7 +5,7 @@ module.exports = {
       return args;
     });
     config.plugin('define').tap(args => {
-      args[0]['process.env']['VERSION'] = JSON.stringify(require('../../package.json').version);
+      args[0]['process.env']['VERSION'] = JSON.stringify(require('../backend/package.json').version);
       return args;
     });
   },
