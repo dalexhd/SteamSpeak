@@ -1,5 +1,18 @@
 # Changelog
 
+## [Unreleased](https://github.com/dalexhd/SteamSpeak/tree/HEAD)
+
+[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.6...HEAD)
+
+**Implemented enhancements:**
+
+- Add serverName plugin. [\#19](https://github.com/dalexhd/SteamSpeak/issues/19)
+
+**Merged pull requests:**
+
+- Added ServerName TeamSpeak3 plugin. [\#20](https://github.com/dalexhd/SteamSpeak/pull/20) ([dalexhd](https://github.com/dalexhd))
+- Merge Dev into Master. [\#18](https://github.com/dalexhd/SteamSpeak/pull/18) ([dalexhd](https://github.com/dalexhd))
+
 ## [v0.0.6](https://github.com/dalexhd/SteamSpeak/tree/v0.0.6) (2020-03-23)
 
 [Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.5...v0.0.6)
