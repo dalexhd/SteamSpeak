@@ -85,16 +85,16 @@ export default {
     return (-c / 2) * (Math.cos((Math.PI * t) / d) - 1) + b;
   },
   easeInExpo(t, b, c, d) {
-    return c * Math.pow(2, 10 * (t / d - 1)) + b;
+    return c * 2 ** 10 * (t / d - 1) + b;
   },
   easeOutExpo(t, b, c, d) {
-    return c * (-Math.pow(2, (-10 * t) / d) + 1) + b;
+    return c * (-(2 ** (-10 * t) / d) + 1) + b;
   },
   easeInOutExpo(t, b, c, d) {
     t /= d / 2;
-    if (t < 1) return (c / 2) * Math.pow(2, 10 * (t - 1)) + b;
+    if (t < 1) return (c / 2) * 2 ** 10 * (t - 1) + b;
     t--;
-    return (c / 2) * (-Math.pow(2, -10 * t) + 2) + b;
+    return (c / 2) * (-(2 ** -10 * t) + 2) + b;
   },
   easeInCirc(t, b, c, d) {
     t /= d;

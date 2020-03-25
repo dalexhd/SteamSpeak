@@ -106,19 +106,20 @@ export default {
       return { maxHeight: this.maxHeight };
     },
     itemIcon() {
-      return index => {
+      // eslint-disable-next-line consistent-return
+      return (index) => {
         if (!((index.match(/\./g) || []).length > 1)) return 'CircleIcon';
       };
     },
     isGroupActive() {
-      return item => {
+      return (item) => {
         const path = this.$route.fullPath;
         let open = false;
         const routeParent = this.$route.meta ? this.$route.meta.parent : undefined;
 
-        const func = item => {
+        const func = (item) => {
           if (item.submenu) {
-            item.submenu.forEach(item => {
+            item.submenu.forEach((item) => {
               if ((path === item.url || routeParent === item.slug) && item.url) {
                 open = true;
               } else if (item.submenu) {
@@ -159,6 +160,7 @@ export default {
       this.openItems = this.maxHeight !== '0px';
     },
     // OPEN AND CLOSES DROPDOWN MENU ON NavMenu COLLAPSE AND DEFAULT VIEW
+    // eslint-disable-next-line func-names
     '$store.state.verticalNavMenuItemsMin': function(val) {
       const { scrollHeight } = this.$refs.items;
 
@@ -204,7 +206,7 @@ export default {
           }, 50);
         }
 
-        this.$parent.$children.map(child => {
+        this.$parent.$children.forEach((child) => {
           if (child.isGroupActive) {
             if (child !== this && !child.open && child.maxHeight !== '0px') {
               setTimeout(() => {

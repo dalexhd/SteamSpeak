@@ -1,10 +1,10 @@
 // Vuex Store
-process.env.VERSION = JSON.stringify(require('../../../../package.json').version);
-
 import Vuex from 'vuex';
 import { shallowMount, createLocalVue } from '@vue/test-utils';
 import TheFooter from '@/layouts/components/TheFooter.vue';
 import '@/globalComponents';
+
+process.env.VERSION = JSON.stringify(require('../../../../package.json').version);
 
 const localVue = createLocalVue();
 
@@ -15,7 +15,7 @@ const store = new Vuex.Store({
     version: process.env.VERSION || '0'
   },
   getters: {
-    version: state => state.version
+    version: (state) => state.version
   }
 });
 
