@@ -5,11 +5,11 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .post('/api/data-list/products/', { item })
-        .then(response => {
+        .then((response) => {
           commit('ADD_ITEM', Object.assign(item, { id: response.data.id }));
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -18,11 +18,11 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .get('/api/data-list/products')
-        .then(response => {
+        .then((response) => {
           commit('SET_PRODUCTS', response.data);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -41,11 +41,11 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .post(`/api/data-list/products/${item.id}`, { item })
-        .then(response => {
+        .then((response) => {
           commit('UPDATE_PRODUCT', response.data);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -54,11 +54,11 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .delete(`/api/data-list/products/${itemId}`)
-        .then(response => {
+        .then((response) => {
           commit('REMOVE_ITEM', itemId);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });

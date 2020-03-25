@@ -1,8 +1,7 @@
-import jwt from '../../http/requests/auth/jwt/index';
-
-import firebase from 'firebase/app';
-import 'firebase/auth';
 import router from '@/router';
+import firebase from 'firebase/app';
+import jwt from '../../http/requests/auth/jwt/index';
+import 'firebase/auth';
 
 export default {
   loginAttempt({ dispatch }, payload) {
@@ -26,7 +25,7 @@ export default {
         })
 
         // If error notify
-        .catch(err => {
+        .catch((err) => {
           // Close animation if passed as payload
           if (payload.closeAnimation) payload.closeAnimation();
 
@@ -65,7 +64,7 @@ export default {
       .signInWithEmailAndPassword(payload.userDetails.email, payload.userDetails.password)
 
       .then(
-        result => {
+        (result) => {
           // Set FLAG username update required for updating username
           let isUsernameUpdateRequired = false;
 
@@ -94,7 +93,7 @@ export default {
             commit('UPDATE_USER_INFO', result.user.providerData[0], { root: true });
           }
         },
-        err => {
+        (err) => {
           // Close animation if passed as payload
           if (payload.closeAnimation) payload.closeAnimation();
 
@@ -126,11 +125,11 @@ export default {
     return firebase
       .auth()
       .signInWithPopup(provider)
-      .then(result => {
+      .then((result) => {
         router.push(router.currentRoute.query.to || '/');
         commit('UPDATE_USER_INFO', result.user.providerData[0], { root: true });
       })
-      .catch(err => {
+      .catch((err) => {
         payload.notify({
           time: 2500,
           title: 'Error',
@@ -159,11 +158,11 @@ export default {
     return firebase
       .auth()
       .signInWithPopup(provider)
-      .then(result => {
+      .then((result) => {
         router.push(router.currentRoute.query.to || '/');
         commit('UPDATE_USER_INFO', result.user.providerData[0], { root: true });
       })
-      .catch(err => {
+      .catch((err) => {
         payload.notify({
           time: 2500,
           title: 'Error',
@@ -192,11 +191,11 @@ export default {
     return firebase
       .auth()
       .signInWithPopup(provider)
-      .then(result => {
+      .then((result) => {
         router.push(router.currentRoute.query.to || '/');
         commit('UPDATE_USER_INFO', result.user.providerData[0], { root: true });
       })
-      .catch(err => {
+      .catch((err) => {
         payload.notify({
           time: 2500,
           title: 'Error',
@@ -225,11 +224,11 @@ export default {
     return firebase
       .auth()
       .signInWithPopup(provider)
-      .then(result => {
+      .then((result) => {
         router.push(router.currentRoute.query.to || '/');
         commit('UPDATE_USER_INFO', result.user.providerData[0], { root: true });
       })
-      .catch(err => {
+      .catch((err) => {
         payload.notify({
           time: 2500,
           title: 'Error',
@@ -262,7 +261,7 @@ export default {
           };
           dispatch('login', newPayload);
         },
-        error => {
+        (error) => {
           payload.notify({
             title: 'Error',
             text: error.message,
@@ -291,7 +290,7 @@ export default {
           router.push(router.currentRoute.query.to || '/');
         }
       })
-      .catch(err => {
+      .catch((err) => {
         payload.notify({
           time: 8800,
           title: 'Error',
@@ -308,7 +307,7 @@ export default {
     return new Promise((resolve, reject) => {
       jwt
         .login(payload.userDetails.email, payload.userDetails.password)
-        .then(response => {
+        .then((response) => {
           // If there's user data in response
           if (response.data.userData) {
             // Navigate User to homepage
@@ -325,10 +324,11 @@ export default {
 
             resolve(response);
           } else {
+            // eslint-disable-next-line prefer-promise-reject-errors
             reject({ message: 'Wrong Email or Password' });
           }
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -339,12 +339,13 @@ export default {
     return new Promise((resolve, reject) => {
       // Check confirm password
       if (password !== confirmPassword) {
+        // eslint-disable-next-line prefer-promise-reject-errors
         reject({ message: "Password doesn't match. Please try again." });
       }
 
       jwt
         .registerUser(displayName, email, password)
-        .then(response => {
+        .then((response) => {
           // Redirect User
           router.push(router.currentRoute.query.to || '/');
 
@@ -354,14 +355,14 @@ export default {
 
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
   },
   fetchAccessToken() {
-    return new Promise(resolve => {
-      jwt.refreshToken().then(response => {
+    return new Promise((resolve) => {
+      jwt.refreshToken().then((response) => {
         resolve(response);
       });
     });

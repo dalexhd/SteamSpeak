@@ -128,14 +128,14 @@ export default {
       return 'CircleIcon';
     },
     isGroupActive() {
-      return item => {
+      return (item) => {
         const path = this.$route.fullPath;
         let open = false;
         const routeParent = this.$route.meta ? this.$route.meta.parent : undefined;
 
-        const func = item => {
+        const func = (item) => {
           if (item.submenu) {
-            item.submenu.forEach(item => {
+            item.submenu.forEach((item) => {
               if ((path === item.url || routeParent === item.slug) && item.url) {
                 open = true;
               } else if (item.submenu) {
