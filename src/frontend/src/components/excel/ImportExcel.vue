@@ -90,14 +90,15 @@ export default {
           icon: 'icon-alert-circle',
           color: 'warning'
         });
+        // eslint-disable-next-line consistent-return
         return false;
       }
       this.uploadFile(rawFile);
     },
     readerData(rawFile) {
-      return new Promise(resolve => {
+      return new Promise((resolve) => {
         const reader = new FileReader();
-        reader.onload = e => {
+        reader.onload = (e) => {
           const data = e.target.result;
           const workbook = XLSX.read(data, { type: 'array' });
           const firstSheetName = workbook.SheetNames[0];

@@ -109,7 +109,7 @@ export default {
     'click-outside': {
       bind(el, binding) {
         const { bubble } = binding.modifiers;
-        const handler = e => {
+        const handler = (e) => {
           /* eslint-disable no-mixed-operators */
           if (bubble || (!el.contains(e.target) && el !== e.target)) {
             /* eslint-enable no-mixed-operators */

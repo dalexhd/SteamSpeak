@@ -3,9 +3,9 @@ export default {
     const f = color.split(',');
     const t = percent < 0 ? 0 : 255;
     const p = percent < 0 ? percent * -1 : percent;
-    const R = parseInt(f[0].slice(4));
-    const G = parseInt(f[1]);
-    const B = parseInt(f[2]);
+    const R = parseInt(f[0].slice(4), 10);
+    const G = parseInt(f[1], 10);
+    const B = parseInt(f[2], 10);
     return `rgb(${Math.round((t - R) * p) + R},${Math.round((t - G) * p) + G},${Math.round(
       (t - B) * p
     ) + B})`;
@@ -15,18 +15,18 @@ export default {
     if (/^[#]/.test(colorx)) {
       const c = this.hexToRgb(colorx);
 
-      if (alphax == 1) {
+      if (alphax === 1) {
         colorx = `rgb(${c.r},${c.g},${c.b})`;
       } else {
         colorx = `rgba(${c.r},${c.g},${c.b},${alphax})`;
       }
     } else if (/^rgba/.test(colorx)) {
-      if (colorx.search(/.([0-9]\))$/) == -1 && !defaultx) {
+      if (colorx.search(/.([0-9]\))$/) === -1 && !defaultx) {
         colorx = colorx.replace(/.?([0-9]\))$/, `${alphax})`);
       }
     } else if (/^(rgb)/.test(colorx)) {
       // change rgb and rgba
-      if (alphax != 1) {
+      if (alphax !== 1) {
         colorx = colorx.replace(/^(rgb)/, 'rgba');
         colorx = colorx.replace(/\)$/, `,${alphax})`);
       }

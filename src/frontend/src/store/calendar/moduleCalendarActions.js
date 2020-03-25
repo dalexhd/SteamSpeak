@@ -5,11 +5,11 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .post('/api/apps/calendar/events/', { event })
-        .then(response => {
+        .then((response) => {
           commit('ADD_EVENT', Object.assign(event, { id: response.data.id }));
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -18,11 +18,11 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .get('/api/apps/calendar/events')
-        .then(response => {
+        .then((response) => {
           commit('SET_EVENTS', response.data);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -31,11 +31,11 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .get('/api/apps/calendar/labels')
-        .then(response => {
+        .then((response) => {
           commit('SET_LABELS', response.data);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -44,7 +44,7 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .post(`/api/apps/calendar/event/${event.id}`, { event })
-        .then(response => {
+        .then((response) => {
           // Convert Date String to Date Object
           const event = response.data;
           event.startDate = new Date(event.startDate);
@@ -53,7 +53,7 @@ export default {
           commit('UPDATE_EVENT', event);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -62,11 +62,11 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .delete(`/api/apps/calendar/event/${eventId}`)
-        .then(response => {
+        .then((response) => {
           commit('REMOVE_EVENT', response.data);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -75,7 +75,7 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .post(`/api/apps/calendar/event/dragged/${payload.event.id}`, { payload })
-        .then(response => {
+        .then((response) => {
           // Convert Date String to Date Object
           const event = response.data;
           event.startDate = new Date(event.startDate);
@@ -84,7 +84,7 @@ export default {
           commit('UPDATE_EVENT', event);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });

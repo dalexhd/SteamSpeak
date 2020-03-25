@@ -165,14 +165,14 @@ export default {
   }),
   computed: {
     isGroupActive() {
-      return item => {
+      return (item) => {
         const path = this.$route.fullPath;
         const routeParent = this.$route.meta ? this.$route.meta.parent : undefined;
         let open = false;
 
-        const func = item => {
+        const func = (item) => {
           if (item.submenu) {
-            item.submenu.forEach(item => {
+            item.submenu.forEach((item) => {
               if (item.url && (path === item.url || routeParent === item.slug)) {
                 open = true;
               } else if (item.submenu) {
@@ -190,7 +190,7 @@ export default {
 
       for (const [index, item] of this.navMenuItems.entries()) {
         if (item.header && item.items.length && (index || 1)) {
-          const i = clone.findIndex(ix => ix.header === item.header);
+          const i = clone.findIndex((ix) => ix.header === item.header);
           for (const [subIndex, subItem] of item.items.entries()) {
             clone.splice(i + 1 + subIndex, 0, subItem);
           }
@@ -237,11 +237,12 @@ export default {
         this.$store.commit('TOGGLE_IS_VERTICAL_NAV_MENU_ACTIVE', false);
     },
     reduce(val) {
-      const verticalNavMenuWidth = val
-        ? 'reduced'
-        : this.$store.state.windowWidth < 1200
-        ? 'no-nav-menu'
-        : 'default';
+      let verticalNavMenuWidth = 'default';
+      if (val) {
+        verticalNavMenuWidth = 'reduced';
+      } else if (this.$store.state.windowWidth < 1200) {
+        verticalNavMenuWidth = 'no-nav-menu';
+      }
       this.$store.dispatch('updateVerticalNavMenuWidth', verticalNavMenuWidth);
 
       setTimeout(() => {

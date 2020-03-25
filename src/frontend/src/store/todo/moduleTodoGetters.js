@@ -1,6 +1,6 @@
 export default {
-  queriedTasks: state =>
-    state.tasks.filter(task => {
+  queriedTasks: (state) =>
+    state.tasks.filter((task) => {
       let isItemOfCurrentFilter = false;
 
       if (
@@ -20,6 +20,6 @@ export default {
           task.desc.toLowerCase().includes(state.todoSearchQuery.toLowerCase()))
       );
     }),
-  getTask: state => taskId => state.tasks.find(task => task.id === taskId)
+  getTask: (state) => (taskId) => state.tasks.find((task) => task.id === taskId)
   // getTodosBySection: state => (sectionId) => state.todoArray.filter((task) => task.sectionId == sectionId),
 };

@@ -26,7 +26,7 @@ function initEvents() {
   Ts3.on('ready', onReady);
   Ts3.on('timeout', () => log.error('timeout', 'ts3'));
   Ts3.on('error', (err) => log.error(err, 'ts3'));
-  Ts3.on('flooding', (time) => console.log('Flood protection activated', time));
+  Ts3.on('flooding', (err) => console.log('Flood protection activated', err.msg));
   if (config.debug) {
     Ts3.on('debug', (ev) => {
       if (ev.type === 'send') log.debug(`>>> ${ev.data}`, 'ts3');
