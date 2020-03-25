@@ -18,9 +18,6 @@
 <script>
 export default {
   computed: {
-    i18n_locale_img() {
-      return require(`@/assets/images/flags/${this.$i18n.locale}.png`);
-    },
     getCurrentLocaleData() {
       const { locale } = this.$i18n;
       switch (locale) {

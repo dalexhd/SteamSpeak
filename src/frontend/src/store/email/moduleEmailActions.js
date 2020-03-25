@@ -10,11 +10,11 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .get('/api/apps/email/mails', { params: { filter: payload.filter } })
-        .then(response => {
+        .then((response) => {
           commit('SET_MAILS', response.data);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -25,11 +25,11 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .get('/api/apps/email/tags')
-        .then(response => {
+        .then((response) => {
           commit('SET_TAGS', response.data);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -40,11 +40,11 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .get('/api/apps/email/meta')
-        .then(response => {
+        .then((response) => {
           commit('SET_META', response.data);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -58,12 +58,12 @@ export default {
           emailIds: payload.emailIds,
           mailFolder: payload.to
         })
-        .then(response => {
+        .then((response) => {
           commit('MOVE_MAILS_TO', payload);
           commit('UPDATE_UNREAD_META_ON_MOVE', payload);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -77,11 +77,11 @@ export default {
           emailIds: payload.mails,
           label: payload.label
         })
-        .then(response => {
+        .then((response) => {
           commit('UPDATE_LABELS', payload);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -94,11 +94,11 @@ export default {
           mailId: payload.mailId,
           labels: payload.labels
         })
-        .then(response => {
+        .then((response) => {
           commit('SET_LABELS', payload);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -112,7 +112,7 @@ export default {
           emailIds: payload.emailIds,
           unreadFlag: payload.unreadFlag
         })
-        .then(response => {
+        .then((response) => {
           commit('SET_UNREAD', payload);
 
           // Remove this if you are getting meta like us
@@ -120,7 +120,7 @@ export default {
           commit('UPDATE_UNREAD_META', payload);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -134,11 +134,11 @@ export default {
           mailId: payload.mailId,
           value: payload.value
         })
-        .then(response => {
+        .then((response) => {
           commit('TOGGLE_IS_MAIL_STARRED', payload);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });

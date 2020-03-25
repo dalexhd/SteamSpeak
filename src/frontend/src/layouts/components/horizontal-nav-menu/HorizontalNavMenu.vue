@@ -78,7 +78,8 @@ export default {
       const routeParent = this.$route.meta ? this.$route.meta.parent : undefined;
 
       if (group.submenu) {
-        group.submenu.forEach(item => {
+        // eslint-disable-next-line consistent-return
+        group.submenu.forEach((item) => {
           if (active) return true;
           if ((path === item.url || routeParent === item.slug) && item.url) {
             active = true;

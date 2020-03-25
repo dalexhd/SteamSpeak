@@ -6,7 +6,7 @@ let isAlreadyFetchingAccessToken = false;
 let subscribers = [];
 
 function onAccessTokenFetched(acessToken) {
-  subscribers = subscribers.filter(callback => callback(acessToken));
+  subscribers = subscribers.filter((callback) => callback(acessToken));
 }
 
 function addSubscriber(callback) {
@@ -16,8 +16,8 @@ function addSubscriber(callback) {
 export default {
   init() {
     axios.interceptors.response.use(
-      response => response,
-      error => {
+      (response) => response,
+      (error) => {
         // const { config, response: { status } } = error
         const { config, response } = error;
         const originalRequest = config;
@@ -26,14 +26,14 @@ export default {
         if (response && response.status === 401) {
           if (!isAlreadyFetchingAccessToken) {
             isAlreadyFetchingAccessToken = true;
-            store.dispatch('auth/fetchAccessToken').then(acessToken => {
+            store.dispatch('auth/fetchAccessToken').then((acessToken) => {
               isAlreadyFetchingAccessToken = false;
               onAccessTokenFetched(acessToken);
             });
           }
 
-          const retryOriginalRequest = new Promise(resolve => {
-            addSubscriber(acessToken => {
+          const retryOriginalRequest = new Promise((resolve) => {
+            addSubscriber((acessToken) => {
               originalRequest.headers.Authorization = `Bearer ${acessToken}`;
               resolve(axios(originalRequest));
             });

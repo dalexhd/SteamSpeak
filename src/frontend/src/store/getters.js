@@ -5,7 +5,7 @@ const getters = {
   // COMPONENT
   // vx-autosuggest
   // starredPages: state => state.navbarSearchAndPinList.data.filter((page) => page.highlightAction),
-  windowBreakPoint: state => {
+  windowBreakPoint: (state) => {
     // This should be same as tailwind. So, it stays in sync with tailwind utility classes
     if (state.windowWidth >= 1200) return 'xl';
     if (state.windowWidth >= 992) return 'lg';
@@ -14,8 +14,8 @@ const getters = {
     return 'xs';
   },
 
-  scrollbarTag: state => (state.is_touch_device ? 'div' : 'VuePerfectScrollbar'),
-  version: state => state.version
+  scrollbarTag: (state) => (state.is_touch_device ? 'div' : 'VuePerfectScrollbar'),
+  version: (state) => state.version
 };
 
 export default getters;

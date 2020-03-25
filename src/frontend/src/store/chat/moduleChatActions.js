@@ -22,7 +22,7 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .post('/api/apps/chat/msg', { payload })
-        .then(response => {
+        .then((response) => {
           payload.chatData = getters.chatDataOfUser(payload.id);
           if (!payload.chatData) {
             dispatch('fetchChatContacts');
@@ -30,7 +30,7 @@ export default {
           commit('SEND_CHAT_MESSAGE', payload);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -41,11 +41,11 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .get('/api/apps/chat/contacts', { params: { q: '' } })
-        .then(response => {
+        .then((response) => {
           commit('UPDATE_CONTACTS', response.data);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -56,11 +56,11 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .get('/api/apps/chat/chat-contacts', { params: { q: '' } })
-        .then(response => {
+        .then((response) => {
           commit('UPDATE_CHAT_CONTACTS', response.data);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -71,11 +71,11 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .get('/api/apps/chat/chats')
-        .then(response => {
+        .then((response) => {
           commit('UPDATE_CHATS', response.data);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -85,14 +85,14 @@ export default {
     return new Promise((resolve, reject) => {
       axios
         .post('/api/apps/chat/mark-all-seen', { id })
-        .then(response => {
+        .then((response) => {
           commit('MARK_SEEN_ALL_MESSAGES', {
             id,
             chatData: getters.chatDataOfUser(id)
           });
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });
@@ -105,11 +105,11 @@ export default {
           contactId: payload.id,
           value: payload.value
         })
-        .then(response => {
+        .then((response) => {
           commit('TOGGLE_IS_PINNED', payload);
           resolve(response);
         })
-        .catch(error => {
+        .catch((error) => {
           reject(error);
         });
     });

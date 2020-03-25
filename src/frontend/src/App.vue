@@ -15,9 +15,11 @@ export default {
     };
   },
   watch: {
+    // eslint-disable-next-line func-names
     '$store.state.theme': function(val) {
       this.toggleClassInBody(val);
     },
+    // eslint-disable-next-line func-names
     '$vs.rtl': function(val) {
       document.documentElement.setAttribute('dir', val ? 'rtl' : 'ltr');
     }

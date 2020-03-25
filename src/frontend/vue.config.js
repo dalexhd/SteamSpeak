@@ -1,11 +1,13 @@
+const _package = require('../backend/package.json');
+
 module.exports = {
-  chainWebpack: config => {
-    config.plugin('html').tap(args => {
+  chainWebpack: (config) => {
+    config.plugin('html').tap((args) => {
       args[0].title = 'SteamSpeak';
       return args;
     });
-    config.plugin('define').tap(args => {
-      args[0]['process.env']['VERSION'] = JSON.stringify(require('../backend/package.json').version);
+    config.plugin('define').tap((args) => {
+      args[0]['process.env'].VERSION = JSON.stringify(_package).version;
       return args;
     });
   },

@@ -86,6 +86,7 @@ export default {
     }
   },
   watch: {
+    // eslint-disable-next-line func-names
     '$route.path': function() {
       this.$tours.vxTour.stop();
     }
