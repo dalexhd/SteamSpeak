@@ -1,8 +1,9 @@
 const express = require('express');
 const path = require('path');
 
-const Ts3 = require('./core/TeamSpeak');
-const Database = require('./core/Database');
+require('./core/TeamSpeak');
+require('./core/Database');
+require('./core/Steam');
 
 const app = express();
 
