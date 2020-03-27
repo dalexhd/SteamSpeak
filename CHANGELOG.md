@@ -2,7 +2,16 @@
 
 ## [Unreleased](https://github.com/dalexhd/SteamSpeak/tree/HEAD)
 
-[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.6...HEAD)
+[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.7...HEAD)
+
+**Merged pull requests:**
+
+- Revert "Updated package version." [\#23](https://github.com/dalexhd/SteamSpeak/pull/23) ([dalexhd](https://github.com/dalexhd))
+- Updated package version. [\#22](https://github.com/dalexhd/SteamSpeak/pull/22) ([dalexhd](https://github.com/dalexhd))
+
+## [v0.0.7](https://github.com/dalexhd/SteamSpeak/tree/v0.0.7) (2020-03-27)
+
+[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.6...v0.0.7)
 
 **Implemented enhancements:**
 
