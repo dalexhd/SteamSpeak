@@ -1,21 +1,11 @@
 {
-  "name": "steamspeak",
-  "version": "0.0.6",
-  "description": "Steam and TeamSpeak integration, done right!",
   "main": "index.js",
-  "directories": {
-    "doc": "docs"
-  },
   "scripts": {
     "start": "node index.js",
     "serve": "npm run start",
     "test": "jest tests/ --runInBand",
     "lint": "eslint . --fix",
     "docs:serve": "docsify serve docs --port 4000"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/dalexhd/SteamSpeak.git"
   },
   "author": {
     "name": "DalexHD",

@@ -1,0 +1,30 @@
+{
+  "name": "steamspeak",
+  "version": "0.0.7",
+  "description": "Steam and TeamSpeak integration, done right!",
+  "directories": {
+    "doc": "docs"
+  },
+  "engines": {
+    "node": ">=10.0.0"
+  },
+  "scripts": {
+    "install:frontend": "cd src/frontend && npm install",
+    "install:backend": "cd src/backend && npm install",
+    "postinstall": "npm run install:frontend && npm run install:backend"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dalexhd/SteamSpeak.git"
+  },
+  "author": {
+    "name": "DalexHD",
+    "email": "eldalexhd@gmail.com",
+    "url": "https://github.com/dalexhd"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dalexhd/SteamSpeak/issues"
+  },
+  "homepage": "https://github.com/dalexhd/SteamSpeak#readme"
+}

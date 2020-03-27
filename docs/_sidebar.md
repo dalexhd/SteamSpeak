@@ -1,9 +1,7 @@
 - Getting Started
 
-  - [Overview](README.md)
-  - [Changelog](CHANGELOG.md)
+  - [Quick start](quickstart.md)
+  - [Configuration](configuration.md)
+  - [Issues](https://github.com/dalexhd/SteamSpeak/issues/new/choose)
   - [Code of conduct](CODE_OF_CONDUCT.md)
-
-  - Issues
-    - [Bug reports](BUG_REPORT.md)
-    - [Feature request](FEATURE_REQUEST.md)
+  - [Changelog](CHANGELOG.md)
