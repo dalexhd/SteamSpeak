@@ -1,7 +1,5 @@
 const _package = require('../../package.json');
 
-console.log(_package);
-
 module.exports = {
   chainWebpack: (config) => {
     config.plugin('html').tap((args) => {
