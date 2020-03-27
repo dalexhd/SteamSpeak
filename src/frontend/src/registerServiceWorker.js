@@ -32,7 +32,7 @@ export default {
                 }
               }
             ],
-            position: 'top-center'
+            position: 'bottom-center'
           });
         },
         offline() {
