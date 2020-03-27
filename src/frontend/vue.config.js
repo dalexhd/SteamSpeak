@@ -7,7 +7,7 @@ module.exports = {
       return args;
     });
     config.plugin('define').tap((args) => {
-      args[0]['process.env'].VERSION = _package.version;
+      args[0]['process.env'].VERSION = JSON.stringify(_package.version);
       return args;
     });
   },
