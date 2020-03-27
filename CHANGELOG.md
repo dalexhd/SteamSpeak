@@ -8,6 +8,10 @@
 
 - Add serverName plugin. [\#19](https://github.com/dalexhd/SteamSpeak/issues/19)
 
+**Fixed bugs:**
+
+- Wrong version number on Web Panel. [\#21](https://github.com/dalexhd/SteamSpeak/issues/21)
+
 **Merged pull requests:**
 
 - Added ServerName TeamSpeak3 plugin. [\#20](https://github.com/dalexhd/SteamSpeak/pull/20) ([dalexhd](https://github.com/dalexhd))
