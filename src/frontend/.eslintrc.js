@@ -29,13 +29,14 @@ module.exports = {
     'no-bitwise': 'off',
     'no-param-reassign': 'off',
     'no-plusplus': 'off',
+    'global-require': 'off',
     'no-shadow': 'off',
     'no-underscore-dangle': 'off',
     'no-restricted-syntax': 'off',
     'import/no-cycle': ['error', { maxDepth: 1 }],
     'prettier/prettier': [
       'error',
-      { singleQuote: true, trailingComma: 'none', arrowParens: 'always' }
+      { singleQuote: true, trailingComma: 'none', arrowParens: 'always', 'global-require': 'none' }
     ]
   },
   parserOptions: {

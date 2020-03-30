@@ -30,30 +30,6 @@
             <span class="ml-2">Profile</span>
           </li>
 
-          <li
-            class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
-            @click="$router.push('/apps/email').catch(() => {})"
-          >
-            <feather-icon icon="MailIcon" svg-classes="w-4 h-4" />
-            <span class="ml-2">Inbox</span>
-          </li>
-
-          <li
-            class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
-            @click="$router.push('/apps/todo').catch(() => {})"
-          >
-            <feather-icon icon="CheckSquareIcon" svg-classes="w-4 h-4" />
-            <span class="ml-2">Tasks</span>
-          </li>
-
-          <li
-            class="flex py-2 px-4 cursor-pointer hover:bg-primary hover:text-white"
-            @click="$router.push('/apps/chat').catch(() => {})"
-          >
-            <feather-icon icon="MessageSquareIcon" svg-classes="w-4 h-4" />
-            <span class="ml-2">Chat</span>
-          </li>
-
           <vs-divider class="m-1" />
 
           <li
@@ -70,9 +46,6 @@
 </template>
 
 <script>
-import firebase from 'firebase/app';
-import 'firebase/auth';
-
 export default {
   data() {
     return {};
@@ -84,24 +57,14 @@ export default {
   },
   methods: {
     logout() {
-      // if user is logged in via auth0
-      if (this.$auth.profile) this.$auth.logOut();
-
-      // if user is logged in via firebase
-      const firebaseCurrentUser = firebase.auth().currentUser;
-
-      if (firebaseCurrentUser) {
-        firebase
-          .auth()
-          .signOut()
-          .then(() => {
-            this.$router.push('/pages/login').catch(() => {});
-          });
-      }
       // If JWT login
       if (localStorage.getItem('accessToken')) {
         localStorage.removeItem('accessToken');
-        this.$router.push('/pages/login').catch(() => {});
+        this.$router
+          .push({
+            name: 'login'
+          })
+          .catch(() => {});
       }
 
       // Change role on logout. Same value as initialRole of acj.js
@@ -109,7 +72,11 @@ export default {
       localStorage.removeItem('userInfo');
 
       // This is just for demo Purpose. If user clicks on logout -> redirect
-      this.$router.push('/pages/login').catch(() => {});
+      this.$router
+        .push({
+          name: 'login'
+        })
+        .catch(() => {});
     }
   }
 };

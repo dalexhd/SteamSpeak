@@ -32,11 +32,11 @@ import axios from './axios';
 // API Calls
 import './http/requests';
 
+// mock
+import './fake-db/index';
+
 // Theme Configurations
 import '../themeConfig';
-
-// Firebase
-import '@/firebase/firebaseConfig';
 
 // Auth0 Plugin
 import AuthPlugin from './plugins/auth';

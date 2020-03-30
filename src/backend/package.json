@@ -21,7 +21,7 @@
     "globaloffensive": "^2.0.2",
     "mock-require": "^3.0.3",
     "moment": "^2.24.0",
-    "mysql": "^2.18.1",
+    "mongoose": "^5.9.6",
     "node-cache": "^5.1.0",
     "should": "^13.2.3",
     "sinon": "^9.0.1",

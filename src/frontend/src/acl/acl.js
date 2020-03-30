@@ -11,11 +11,14 @@ if (userInfo && userInfo.userRole) initialRole = userInfo.userRole;
 
 export default new AclCreate({
   initial: initialRole,
-  notfound: '/pages/not-authorized',
+  notfound: '/login',
   router,
   acceptLocalRules: true,
   globalRules: {
     admin: new AclRule('admin').generate(),
-    editor: new AclRule('editor').or('admin').generate()
+    guest: new AclRule('guest').or('admin').generate()
+  },
+  middleware: async (acl) => {
+    acl.change('admin');
   }
 });

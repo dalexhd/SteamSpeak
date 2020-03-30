@@ -50,6 +50,14 @@ module.exports.clientconnect = async (ev) => {
     } else if (data.type === 'private') {
       Ts3.sendTextMessage(client.clid, 1, data.message);
     }
+    this.main();
+  }
+};
+
+module.exports.clientdisconnect = async (ev) => {
+  const { client } = ev;
+  if (client.type !== 1) {
+    this.main();
   }
 };
 

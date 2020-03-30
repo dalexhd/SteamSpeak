@@ -1,28 +1,27 @@
-const mysql = require('mysql');
+const mongoose = require('mongoose');
 const log = require('../../utils/log.js');
 const config = require('../../config/database.js');
 
-/* !fix Problema al renombrar los nombres...
-Parece que los nombres o algo no cuadrán con la cache que esta bien.
-*/
+const url = buildURI();
+let Database;
 
-const Database = mysql.createConnection({
-  host: config.ip,
-  user: config.user,
-  password: config.password,
-  database: config.database,
-  debug: config.debug
-});
-Database.connect((err) => {
-  if (err) {
+function buildURI() {
+  if (config.user && config.password) {
+    return `mongodb://${config.user}:${config.password}@${config.host}:${config.port}`;
+  }
+  log.warn('Connecting to database without credentials.', 'database');
+  return `mongodb://${config.host}:${config.port}/${config.database}`;
+}
+
+mongoose
+  .connect(url, config.opts)
+  .then((db) => {
+    Database = db;
+    log.success('Connected to the database!', 'database');
+  })
+  .catch((err) => {
     log.error(err.message, 'database');
     process.exit();
-  }
-  log.success('Connected to the database!', 'database');
-  setInterval(() => {
-    Database.query('SELECT 1');
-    log.debug('Sent query to prevent disconnect ^^');
-  }, 600000);
-});
+  });
 
 module.exports = Database;
