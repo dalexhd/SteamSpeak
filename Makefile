@@ -72,6 +72,13 @@ ts:		##@Misc Run docker image
 			$(DOCKER) logs teamspeak 2>&1 | grep token | sed 's/.*token=//' | sed 's/\r//g' | head -1 | tr -d '\n" ' | xargs -I {} echo "${B}Token: ${G}${BOLD}"{}${X}
 			@echo
 
+config:		##@Misc Create config files
+			@mv src/backend/config/cache.sample.js src/backend/config/cache.js
+			@mv src/backend/config/database.sample.js src/backend/config/database.js
+			@mv src/backend/config/steam.sample.js src/backend/config/steam.js
+			@mv src/backend/config/teamspeak.sample.js src/backend/config/teamspeak.js
+			@echo
+
 clean:		##@Misc Clean docker image
 			@echo ${B}Stoping container...${X}
 			$(DOCKER) stop teamspeak > /dev/null 2>&1

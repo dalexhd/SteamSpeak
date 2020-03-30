@@ -10,6 +10,7 @@
   "dependencies": {
     "@chenfengyuan/vue-countdown": "^1.1.5",
     "@mdi/font": "^5.0.45",
+    "axios-mock-adapter": "^1.17.0",
     "ag-grid-community": "^23.0.1",
     "ag-grid-vue": "^23.0.0",
     "algoliasearch": "^4.1.0",
@@ -80,7 +81,6 @@
     "@vue/cli-service": "~4.2.3",
     "@vue/eslint-config-airbnb": "^5.0.2",
     "@vue/test-utils": "1.0.0-beta.32",
-    "axios-mock-adapter": "^1.17.0",
     "babel-eslint": "^10.1.0",
     "eslint": "^6.8.0",
     "eslint-config-prettier": "^6.10.0",

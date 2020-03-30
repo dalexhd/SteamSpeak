@@ -36,6 +36,8 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
+    - name: Create config files
+      run: make config
     - name: Install Backend NPM dependencies
       run: npm ci --prefix src/backend
     - name: Install Frontend NPM dependencies
