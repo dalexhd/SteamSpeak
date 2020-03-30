@@ -5,8 +5,8 @@
 </template>
 
 <script>
-import themeConfig from '@/../themeConfig';
 import jwt from '@/http/requests/auth/jwt/index';
+import themeConfig from '../themeConfig';
 
 export default {
   data() {

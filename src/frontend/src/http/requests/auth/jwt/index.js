@@ -1,5 +1,6 @@
-import axios from '../../../axios/index';
-import store from '../../../../store/store';
+import store from '@/store/store';
+// eslint-disable-next-line import/named
+import { backend } from '@/http/axios';
 
 // Token Refresh
 let isAlreadyFetchingAccessToken = false;
@@ -15,7 +16,7 @@ function addSubscriber(callback) {
 
 export default {
   init() {
-    axios.interceptors.response.use(
+    backend.interceptors.response.use(
       (response) => response,
       (error) => {
         // const { config, response: { status } } = error
@@ -35,7 +36,7 @@ export default {
           const retryOriginalRequest = new Promise((resolve) => {
             addSubscriber((acessToken) => {
               originalRequest.headers.Authorization = `Bearer ${acessToken}`;
-              resolve(axios(originalRequest));
+              resolve(backend(originalRequest));
             });
           });
           return retryOriginalRequest;
@@ -45,20 +46,20 @@ export default {
     );
   },
   login(email, pwd) {
-    return axios.post('/api/auth/login', {
+    return backend.post('/auth/login', {
       email,
       password: pwd
     });
   },
   registerUser(name, email, pwd) {
-    return axios.post('/api/auth/register', {
+    return backend.post('/auth/register', {
       displayName: name,
       email,
       password: pwd
     });
   },
   refreshToken() {
-    return axios.post('/api/auth/refresh-token', {
+    return backend.post('/auth/refresh-token', {
       accessToken: localStorage.getItem('accessToKen')
     });
   }
