@@ -35,11 +35,5 @@ module.exports = {
       swSrc: 'src/service-worker.js'
     }
   },
-  // devServer: {
-  //   overlay: {
-  //     warnings: false,
-  //     errors: false
-  //   }
-  // },
   integrity: true
 };

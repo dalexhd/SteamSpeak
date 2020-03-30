@@ -11,14 +11,14 @@ const path = require('path');
 const fs = require('fs');
 const _ = require('lodash');
 
-var steamUser = new SteamUser({
+const steamUser = new SteamUser({
   language: config.language || 'english'
 });
 let Plugins = new Map();
 steamUser.setOption('promptSteamGuardCode', false);
 steamUser.setOption('debug', true);
 
-var community = new SteamCommunity();
+const community = new SteamCommunity();
 
 steamUser.logOn({
   accountName: config.username, //pvplayers_bot
@@ -26,7 +26,7 @@ steamUser.logOn({
   twoFactorCode: SteamTotp.getAuthCode(config.shared_secret)
 });
 
-var csgo = new GlobalOffensive(steamUser);
+const csgo = new GlobalOffensive(steamUser);
 
 steamUser.once('loggedOn', function () {
   log.success('logged in', 'steam');
@@ -72,11 +72,13 @@ function loadModules() {
           log.warn(`Issue loading module file ${file}:`, err.stack);
         }
       });
-      ['user'].forEach((value) => {
+      ['user', 'friendRelationship'].forEach((value) => {
         steamUser.on(value, (...args) => {
           Plugins.forEach((module) => {
-            if (typeof module[`EventSteam${_.startCase(value)}`] !== 'undefined') {
-              module[`EventSteam${_.startCase(value)}`](...args);
+            console.log(`EventSteam${_.upperFirst(value)}`);
+
+            if (typeof module[`EventSteam${_.upperFirst(value)}`] !== 'undefined') {
+              module[`EventSteam${_.upperFirst(value)}`](...args);
             }
           });
         });
