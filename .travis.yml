@@ -5,12 +5,14 @@ node_js:
   - 13
 services:
   - docker
+  - mongodb
 before_install:
   - docker pull teamspeak
   - make ts
 install:
   - npm install --prefix src/backend
   - npm install --prefix src/frontend
+  - npm run build --prefix src/frontend
 script:
   - npm run test --prefix src/backend
   - npm run test:unit --prefix src/frontend
