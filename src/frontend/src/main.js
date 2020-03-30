@@ -26,9 +26,6 @@ import App from './App.vue';
 import 'material-icons/iconfont/material-icons.css'; // Material Icons
 import 'vuesax/dist/vuesax.css'; // Vuesax
 
-// axios
-import axios from './axios';
-
 // API Calls
 import './http/requests';
 
@@ -73,7 +70,6 @@ import 'prismjs';
 import 'prismjs/themes/prism-tomorrow.css';
 // PushJS
 Vue.use(Vuesax);
-Vue.prototype.$http = axios;
 Vue.use(AuthPlugin);
 Vue.use(Toasted);
 Vue.use(ServiceWorkerPlugin);

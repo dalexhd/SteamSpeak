@@ -7,5 +7,8 @@
     {
       "mode": "auto"
     }
-  ]
+  ],
+  "path-intellisense.mappings": {
+    "@": "${workspaceRoot}/src/frontend/src"
+  }
 }
