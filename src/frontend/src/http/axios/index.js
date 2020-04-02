@@ -1,3 +1,13 @@
-import axios from '../../axios';
+/* eslint-disable import/prefer-default-export */
+// axios
+import axios from 'axios';
 
-export default axios;
+const backend = axios.create({
+  baseURL: '/api',
+  headers: {
+    'Access-Control-Allow-Headers': 'X-CSRF-Token',
+    'X-Requested-With': 'XMLHttpRequest'
+  }
+});
+
+export { backend };
