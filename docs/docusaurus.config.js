@@ -92,7 +92,7 @@ module.exports = {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl:
-            'https://github.com/dalexhd/steamspeak/edit/master/website/',
+            'https://github.com/dalexhd/steamspeak/edit/master/docs/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
