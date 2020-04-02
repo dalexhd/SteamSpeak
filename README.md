@@ -1,6 +1,6 @@
 <div align="center">
 
-[![Logo](https://raw.githubusercontent.com/dalexhd/SteamSpeak/master/docs/assets/images/icons/apple-touch-icon.png)](https://dalexhd.github.io/SteamSpeak/)
+[![Logo](https://raw.githubusercontent.com/dalexhd/SteamSpeak/master/docs/static/img/logo.png)](https://dalexhd.github.io/SteamSpeak/)
 
 #### Steam and TeamSpeak integration, done right!
 
