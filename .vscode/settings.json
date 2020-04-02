@@ -10,5 +10,12 @@
   ],
   "path-intellisense.mappings": {
     "@": "${workspaceRoot}/src/frontend/src"
+  },
+  "emojisense.languages": {
+    "markdown": true,
+    "plaintext": false,
+    "json": true,
+    "javascript": true,
+    "@scm/commit": true // pseudo language id used for scm input
   }
 }
