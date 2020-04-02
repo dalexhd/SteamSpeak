@@ -4,7 +4,7 @@ import router from '@/router';
 
 Vue.use(AclInstaller);
 
-let initialRole = 'admin';
+let initialRole = 'guest';
 
 const userInfo = JSON.parse(localStorage.getItem('userInfo'));
 if (userInfo && userInfo.userRole) initialRole = userInfo.userRole;
@@ -18,7 +18,5 @@ export default new AclCreate({
     admin: new AclRule('admin').generate(),
     guest: new AclRule('guest').or('admin').generate()
   },
-  middleware: async (acl) => {
-    acl.change('admin');
-  }
+  middleware: async () => {}
 });

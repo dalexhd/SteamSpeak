@@ -9,6 +9,8 @@ services:
 before_install:
   - docker pull teamspeak
   - make ts
+cache:
+  yarn: true
 install:
   - make config
   - npm install --prefix src/backend
@@ -17,5 +19,9 @@ install:
 script:
   - npm run test --prefix src/backend
   - npm run test:unit --prefix src/frontend
+  - git config --global user.name "${GH_NAME}"
+  - git config --global user.email "${GH_EMAIL}"
+  - echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
+  - cd docs && yarn && GIT_USER="${GH_NAME}" CURRENT_BRANCH="master" yarn deploy
 after_script:
   - docker stop teamspeak
