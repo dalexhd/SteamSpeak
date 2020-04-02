@@ -5,7 +5,7 @@ module.exports = {
   baseUrl: '/SteamSpeak/',
   favicon: 'img/favicon-16x16.png',
   organizationName: 'dalexhd', // Usually your GitHub org/user name.
-  projectName: 'SteamSpeak', // Usually your repo name.
+  projectName: 'steamspeak', // Usually your repo name.
   themeConfig: {
     navbar: {
       title: 'SteamSpeak',
