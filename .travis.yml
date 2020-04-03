@@ -1,27 +1,41 @@
-language: node
+language: node_js
+dist: xenial
+os: linux
 node_js:
-  - 10
-  - 12
   - 13
+  - 12
+  - 10
 services:
   - docker
   - mongodb
 before_install:
+  - docker version
   - docker pull teamspeak
   - make ts
 cache:
-  yarn: true
+  npm: true
 install:
   - make config
-  - npm install --prefix src/backend
-  - npm install --prefix src/frontend
-  - npm run build --prefix src/frontend
+  - npm install
+  - npm run build:frontend
 script:
-  - npm run test --prefix src/backend
-  - npm run test:unit --prefix src/frontend
-  - git config --global user.name "${GH_NAME}"
-  - git config --global user.email "${GH_EMAIL}"
-  - echo "machine github.com login ${GH_NAME} password ${GH_TOKEN}" > ~/.netrc
-  - cd docs && yarn && GIT_USER="${GH_NAME}" CURRENT_BRANCH="master" yarn deploy
+  - npm run test:backend
+  - npm run test:frontend
 after_script:
   - docker stop teamspeak
+jobs:
+  include:
+    - stage: deploy
+      before_install: skip
+      install: skip
+      script: skip
+      after_script: skip
+      before_deploy:
+        - npm run install:pages && npm run build:pages
+      deploy:
+        provider: pages:git
+        token: ${GH_TOKEN}
+        name: ${GH_NAME}
+        email: ${GH_EMAIL}
+        local_dir: docs/build/
+        edge: true # opt in to dpl v2

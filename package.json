@@ -11,6 +11,11 @@
   "scripts": {
     "install:frontend": "cd src/frontend && npm install",
     "install:backend": "cd src/backend && npm install",
+    "build:frontend": "cd src/frontend && npm run build",
+    "test:frontend": "cd src/frontend && npm run test:unit",
+    "test:backend": "cd src/backend && npm run test",
+    "install:pages": "cd docs/ && npm install",
+    "build:pages": "cd docs/ && npm run build",
     "postinstall": "npm run install:frontend && npm run install:backend"
   },
   "repository": {
