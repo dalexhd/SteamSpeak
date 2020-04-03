@@ -1,17 +1,23 @@
 # Changelog
 
-## [Unreleased](https://github.com/dalexhd/SteamSpeak/tree/HEAD)
+## [v0.0.8](https://github.com/dalexhd/steamspeak/tree/v0.0.8) (2020-04-03)
 
-[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.7...HEAD)
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.0.7...v0.0.8)
+
+**Implemented enhancements:**
+
+- Add SteamSpeak features to documentation. [\#24](https://github.com/dalexhd/SteamSpeak/issues/24)
 
 **Merged pull requests:**
 
+- Merge dev into master. [\#26](https://github.com/dalexhd/SteamSpeak/pull/26) ([dalexhd](https://github.com/dalexhd))
+- Feature/add new documentation system. [\#25](https://github.com/dalexhd/SteamSpeak/pull/25) ([dalexhd](https://github.com/dalexhd))
 - Revert "Updated package version." [\#23](https://github.com/dalexhd/SteamSpeak/pull/23) ([dalexhd](https://github.com/dalexhd))
 - Updated package version. [\#22](https://github.com/dalexhd/SteamSpeak/pull/22) ([dalexhd](https://github.com/dalexhd))
 
-## [v0.0.7](https://github.com/dalexhd/SteamSpeak/tree/v0.0.7) (2020-03-27)
+## [v0.0.7](https://github.com/dalexhd/steamspeak/tree/v0.0.7) (2020-03-27)
 
-[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.6...v0.0.7)
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.0.6...v0.0.7)
 
 **Implemented enhancements:**
 
@@ -26,9 +32,9 @@
 - Added ServerName TeamSpeak3 plugin. [\#20](https://github.com/dalexhd/SteamSpeak/pull/20) ([dalexhd](https://github.com/dalexhd))
 - Merge Dev into Master. [\#18](https://github.com/dalexhd/SteamSpeak/pull/18) ([dalexhd](https://github.com/dalexhd))
 
-## [v0.0.6](https://github.com/dalexhd/SteamSpeak/tree/v0.0.6) (2020-03-23)
+## [v0.0.6](https://github.com/dalexhd/steamspeak/tree/v0.0.6) (2020-03-23)
 
-[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.5...v0.0.6)
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.0.5...v0.0.6)
 
 **Implemented enhancements:**
 
@@ -44,25 +50,25 @@
 - Downgraded steam package version. [\#17](https://github.com/dalexhd/SteamSpeak/pull/17) ([dalexhd](https://github.com/dalexhd))
 - Added VueJS frontend. [\#15](https://github.com/dalexhd/SteamSpeak/pull/15) ([dalexhd](https://github.com/dalexhd))
 
-## [v0.0.5](https://github.com/dalexhd/SteamSpeak/tree/v0.0.5) (2020-03-08)
+## [v0.0.5](https://github.com/dalexhd/steamspeak/tree/v0.0.5) (2020-03-08)
 
-[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.4...v0.0.5)
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.0.4...v0.0.5)
 
 **Merged pull requests:**
 
 - Added travis testing environment. [\#11](https://github.com/dalexhd/SteamSpeak/pull/11) ([dalexhd](https://github.com/dalexhd))
 
-## [v0.0.4](https://github.com/dalexhd/SteamSpeak/tree/v0.0.4) (2020-03-08)
+## [v0.0.4](https://github.com/dalexhd/steamspeak/tree/v0.0.4) (2020-03-08)
 
-[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.3...v0.0.4)
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.0.3...v0.0.4)
 
 **Implemented enhancements:**
 
 - Add testing environment. [\#10](https://github.com/dalexhd/SteamSpeak/issues/10)
 
-## [v0.0.3](https://github.com/dalexhd/SteamSpeak/tree/v0.0.3) (2020-03-07)
+## [v0.0.3](https://github.com/dalexhd/steamspeak/tree/v0.0.3) (2020-03-07)
 
-[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.2...v0.0.3)
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.0.2...v0.0.3)
 
 **Implemented enhancements:**
 
@@ -80,17 +86,17 @@
 - Updated changelog. [\#4](https://github.com/dalexhd/SteamSpeak/pull/4) ([dalexhd](https://github.com/dalexhd))
 - Removed old Changelog system. [\#3](https://github.com/dalexhd/SteamSpeak/pull/3) ([dalexhd](https://github.com/dalexhd))
 
-## [v0.0.2](https://github.com/dalexhd/SteamSpeak/tree/v0.0.2) (2020-03-06)
+## [v0.0.2](https://github.com/dalexhd/steamspeak/tree/v0.0.2) (2020-03-06)
 
-[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/v0.0.1...v0.0.2)
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.0.1...v0.0.2)
 
 **Implemented enhancements:**
 
 - Better Changelog system. [\#2](https://github.com/dalexhd/SteamSpeak/issues/2)
 
-## [v0.0.1](https://github.com/dalexhd/SteamSpeak/tree/v0.0.1) (2020-03-06)
+## [v0.0.1](https://github.com/dalexhd/steamspeak/tree/v0.0.1) (2020-03-06)
 
-[Full Changelog](https://github.com/dalexhd/SteamSpeak/compare/db8aa515651f180a5e53d932c5f816d256b51d3d...v0.0.1)
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/db8aa515651f180a5e53d932c5f816d256b51d3d...v0.0.1)
 
 
 
