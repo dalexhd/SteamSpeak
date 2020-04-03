@@ -78,12 +78,14 @@ module.exports = {
       ],
       copyright: `Copyright © ${new Date().getFullYear()} SteamSpeak. Built with ❤️ with Docusaurus.`,
     },
-    // algolia: {
-    //   appId: 'app-id',
-    //   apiKey: 'api-key',
-    //   indexName: 'index-name',
-    //   algoliaOptions: {}, // Optional, if provided by Algolia
-    // },
+    algolia: {
+      apiKey: 'd30054d0a4a3376e554f4e4bb53a0bd9',
+      indexName: 'steamspeak',
+      algoliaOptions: {}, // Optional, if provided by Algolia
+    },
+    googleAnalytics: {
+      trackingID: 'UA-124336116-3'
+    }
   },
   presets: [
     [
@@ -97,7 +99,12 @@ module.exports = {
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
+        sitemap: {
+          cacheTime: 600 * 1000, // 600 sec - cache purge period
+          changefreq: 'weekly',
+          priority: 0.5
+        }
       },
     ],
-  ],
+  ]
 };
