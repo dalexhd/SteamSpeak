@@ -1,6 +1,6 @@
 {
   "name": "steamspeak",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "Steam and TeamSpeak integration, done right!",
   "directories": {
     "doc": "docs"
