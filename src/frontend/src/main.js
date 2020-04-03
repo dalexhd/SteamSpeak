@@ -95,9 +95,6 @@ require('./assets/css/iconfont.css');
 // Flags icons
 require('./assets/css/flags.css');
 
-// Loader
-require('./assets/css/loader.css');
-
 // Vue select css
 // Note: In latest version you have to add it separately
 // import 'vue-select/dist/vue-select.css';
