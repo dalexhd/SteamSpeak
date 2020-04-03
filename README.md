@@ -17,3 +17,6 @@
 ## Install and Upgrade Guide
 
 For system requirements, installation/upgrade guides, troubleshooting etc., head over to the [Official Documentation](https://dalexhd.github.io/SteamSpeak/).
+
+## Caution
+SteamSpeak is currently in development stage. We recommend you to wait until the v1.0.0 gets released.
