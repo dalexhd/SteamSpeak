@@ -78,14 +78,14 @@ Vue.use(VueTour);
 require('vue-tour/dist/vue-tour.css');
 
 Vue.use(VeeValidate, {
-  i18n
+	i18n
 });
 Vue.use(VueGoogleMaps, {
-  load: {
-    // Add your API key here
-    key: 'AIzaSyB4DDathvvwuwlwnUu7F4Sow3oU22y5T1Y',
-    libraries: 'places' // This is required if you use the Auto complete plug-in
-  }
+	load: {
+		// Add your API key here
+		key: 'AIzaSyB4DDathvvwuwlwnUu7F4Sow3oU22y5T1Y',
+		libraries: 'places' // This is required if you use the Auto complete plug-in
+	}
 });
 Vue.use(VueHammer);
 
@@ -100,23 +100,23 @@ require('./assets/css/flags.css');
 // import 'vue-select/dist/vue-select.css';
 
 if (!Push.Permission.has()) {
-  Push.Permission.request(() => {
-    Push.create('SteamSpeak!', {
-      body: 'Web notifications enabled!',
-      icon: '/img/icons/apple-touch-icon-76x76.png',
-      timeout: 5000,
-      onClick() {
-        window.focus();
-        this.close();
-      }
-    });
-  });
+	Push.Permission.request(() => {
+		Push.create('SteamSpeak!', {
+			body: 'Web notifications enabled!',
+			icon: '/img/icons/apple-touch-icon-76x76.png',
+			timeout: 5000,
+			onClick() {
+				window.focus();
+				this.close();
+			}
+		});
+	});
 }
 
 new Vue({
-  router,
-  store,
-  i18n,
-  acl,
-  render: (h) => h(App)
+	router,
+	store,
+	i18n,
+	acl,
+	render: (h) => h(App)
 }).$mount('#app');

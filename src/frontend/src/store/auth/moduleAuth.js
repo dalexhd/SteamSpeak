@@ -4,9 +4,9 @@ import actions from './moduleAuthActions';
 import getters from './moduleAuthGetters';
 
 export default {
-  namespaced: true,
-  state,
-  mutations,
-  actions,
-  getters
+	namespaced: true,
+	state,
+	mutations,
+	actions,
+	getters
 };

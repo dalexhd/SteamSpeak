@@ -1,4 +1,4 @@
 module.exports = {
-  stdTTL: 0,
-  checkperiod: 120
+	stdTTL: 0,
+	checkperiod: 120
 };

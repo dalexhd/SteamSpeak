@@ -1,3 +1,3 @@
 <template>
-  <h4>You are second page.</h4>
+	<h4>You are second page.</h4>
 </template>

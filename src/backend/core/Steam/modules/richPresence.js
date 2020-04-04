@@ -6,14 +6,14 @@ steamUser.getAppRichPresenceLocalization(730, config.language).then(function (da
 
 // Called when a Steam User change has been made.
 module.exports.EventSteamUser = (sid, data) => {
-  // var steamId = sid.getSteamID64();
-  Ts3.serverGroupRename(9, data.rich_presence_string);
+	// var steamId = sid.getSteamID64();
+	Ts3.serverGroupRename(9, data.rich_presence_string);
 };
 
 module.exports.info = {
-  name: 'richPresence',
-  desc: 'Load rich presence module.',
-  config: {
-    enabled: false
-  }
+	name: 'richPresence',
+	desc: 'Load rich presence module.',
+	config: {
+		enabled: false
+	}
 };

@@ -11,12 +11,12 @@ import moduleAuth from './auth/moduleAuth';
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-  getters,
-  mutations,
-  state,
-  actions,
-  modules: {
-    auth: moduleAuth
-  },
-  strict: process.env.NODE_ENV !== 'production'
+	getters,
+	mutations,
+	state,
+	actions,
+	modules: {
+		auth: moduleAuth
+	},
+	strict: process.env.NODE_ENV !== 'production'
 });
