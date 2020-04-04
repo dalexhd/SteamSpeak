@@ -6,19 +6,19 @@ const localStorageKey = 'loggedIn';
 const tokenExpiryKey = 'tokenExpiry';
 
 class AuthService extends EventEmitter {
-  idToken = null;
+	idToken = null;
 
-  profile = null;
+	profile = null;
 
-  tokenExpiry = null;
+	tokenExpiry = null;
 
-  // eslint-disable-next-line class-methods-use-this
-  isAuthenticated() {
-    return (
-      new Date(Date.now()) < new Date(localStorage.getItem(tokenExpiryKey)) &&
-      localStorage.getItem(localStorageKey) === 'true'
-    );
-  }
+	// eslint-disable-next-line class-methods-use-this
+	isAuthenticated() {
+		return (
+			new Date(Date.now()) < new Date(localStorage.getItem(tokenExpiryKey)) &&
+			localStorage.getItem(localStorageKey) === 'true'
+		);
+	}
 }
 
 export default new AuthService();

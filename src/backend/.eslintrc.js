@@ -32,7 +32,9 @@ module.exports = {
       }
     ],
     "prefer-template": "error",
-    "no-console":"off",
+		"no-console":"off",
+		"no-unused-vars": "warn",
+		"no-prototype-builtins": "off",
     'prettier/prettier': ['error', { singleQuote: true, trailingComma: "none" }]
   }
 }

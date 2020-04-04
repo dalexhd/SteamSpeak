@@ -1,3 +1,3 @@
 export default {
-  Dashboard: 'Menú principal'
+	Dashboard: 'Menú principal'
 };

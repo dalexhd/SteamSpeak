@@ -1,3 +1,3 @@
 export default {
-  Dashboard: 'Dashboard'
+	Dashboard: 'Dashboard'
 };
