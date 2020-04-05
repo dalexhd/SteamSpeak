@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.1.0](https://github.com/dalexhd/steamspeak/tree/v0.1.0) (2020-04-05)
+
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.0.8...v0.1.0)
+
+**Implemented enhancements:**
+
+- Add frontend login. [\#29](https://github.com/dalexhd/SteamSpeak/pull/29) ([dalexhd](https://github.com/dalexhd))
+
+**Merged pull requests:**
+
+- Feature/add frontend login. [\#28](https://github.com/dalexhd/SteamSpeak/pull/28) ([dalexhd](https://github.com/dalexhd))
+
 ## [v0.0.8](https://github.com/dalexhd/steamspeak/tree/v0.0.8) (2020-04-03)
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.0.7...v0.0.8)
