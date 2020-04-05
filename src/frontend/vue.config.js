@@ -34,6 +34,5 @@ module.exports = {
 		workboxOptions: {
 			swSrc: 'src/service-worker.js'
 		}
-	},
-	integrity: true
+	}
 };
