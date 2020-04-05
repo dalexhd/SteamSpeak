@@ -17,7 +17,6 @@ const findClients = async function (req, filter) {
 		req.headers['cf-connecting-ip'] ||
 		req.headers['x-forwarded-for'] ||
 		req.connection.remoteAddress;
-	ip = '172.17.0.1';
 	let clients = await Ts3.clientList({
 		connection_client_ip: ip,
 		...filter
