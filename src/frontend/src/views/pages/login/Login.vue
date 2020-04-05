@@ -1,12 +1,3 @@
-<!-- =========================================================================================
-    File Name: Login.vue
-    Description: Login Page
-    ----------------------------------------------------------------------------------------
-    Item Name: Vuexy - Vuejs, HTML & Laravel Admin Dashboard Template
-      Author: Pixinvent
-    Author URL: http://www.themeforest.net/user/pixinvent
-========================================================================================== -->
-
 <template>
 	<div
 		id="page-login"
@@ -28,8 +19,8 @@
 								</div>
 
 								<vs-tabs>
-									<vs-tab label="JWT">
-										<login-jwt></login-jwt>
+									<vs-tab label="TeamSpeak">
+										<login-ts3></login-ts3>
 									</vs-tab>
 								</vs-tabs>
 							</div>
@@ -42,11 +33,11 @@
 </template>
 
 <script>
-import LoginJwt from './LoginJWT.vue';
+import LoginTs3 from './LoginTs3.vue';
 
 export default {
 	components: {
-		LoginJwt
+		LoginTs3
 	}
 };
 </script>

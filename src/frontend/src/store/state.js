@@ -8,7 +8,6 @@ import themeConfig, { colors } from '@/../themeConfig';
 // *From Auth - Data will be received from auth provider
 const userDefaults = {
 	uid: 0, // From Auth
-	displayName: 'John Doe', // From Auth
 	about: 'Dessert chocolate cake lemon drops jujubes.',
 	// eslint-disable-next-line global-require
 	photoURL: require('@/assets/images/portrait/small/avatar-s-11.jpg'), // From Auth

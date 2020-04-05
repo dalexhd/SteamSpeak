@@ -72,6 +72,7 @@ config:		##@Misc Create config files
 			@mv src/backend/config/database.sample.js src/backend/config/database.js
 			@mv src/backend/config/steam.sample.js src/backend/config/steam.js
 			@mv src/backend/config/teamspeak.sample.js src/backend/config/teamspeak.js
+			@mv src/backend/config/website.sample.js src/backend/config/website.js
 			@echo
 
 clean:		##@Misc Clean docker image
