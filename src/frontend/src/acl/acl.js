@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import { AclInstaller, AclCreate, AclRule } from 'vue-acl';
 import router from '@/router';
+import store from '@/store/store';
 
 Vue.use(AclInstaller);
 
@@ -18,5 +19,12 @@ export default new AclCreate({
 		admin: new AclRule('admin').generate(),
 		guest: new AclRule('guest').or('admin').generate()
 	},
-	middleware: async () => {}
+	// eslint-disable-next-line no-unused-vars
+	middleware: async (acl) => {
+		const token = await store.dispatch('auth/getAcessToken');
+		if (token) {
+			await store.dispatch('auth/me');
+			acl.change('admin');
+		}
+	}
 });
