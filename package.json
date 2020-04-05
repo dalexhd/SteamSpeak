@@ -1,6 +1,6 @@
 {
   "name": "steamspeak",
-  "version": "0.0.8",
+  "version": "0.1.0",
   "description": "Steam and TeamSpeak integration, done right!",
   "directories": {
     "doc": "docs"
@@ -9,6 +9,8 @@
     "node": ">=10.0.0"
   },
   "scripts": {
+    "start:frontend": "cd src/frontend && npm run serve",
+    "start:backend": "cd src/backend && nodemon index.js",
     "install:frontend": "cd src/frontend && npm install",
     "install:backend": "cd src/backend && npm install",
     "build:frontend": "cd src/frontend && npm run build",
