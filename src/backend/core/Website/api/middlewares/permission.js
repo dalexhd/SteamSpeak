@@ -1,3 +1,5 @@
+const lang = require('../../../../locales/en');
+
 /**
  *Check if the user has the given role/s to perform an action.
  *
@@ -12,7 +14,7 @@ exports.permit = function (...allowed) {
 		if (request.client && isAllowed(request.client.role)) next();
 		// role is allowed, so continue on the next middleware
 		else {
-			response.status(403).json({ message: 'Forbidden' }); // user is forbidden
+			response.status(403).json({ message: lang.errornot_allowed }); // user is forbidden
 		}
 	};
 };

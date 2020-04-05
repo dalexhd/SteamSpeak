@@ -10,5 +10,5 @@ module.exports = {
 		'You are not authorized to access this site. Please request access to an administrator.',
 	not_logged_in: 'You are not logged in! Please login in to continue',
 	invalid_token: 'The provided token is not valid!',
-	not_allowed: 'You are not allowed to do this action!'
+	not_allowed: 'You are not allowed to do perform action!'
 };
