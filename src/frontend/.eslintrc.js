@@ -34,6 +34,7 @@ module.exports = {
 		'no-underscore-dangle': 'off',
 		'no-restricted-syntax': 'off',
 		'import/no-cycle': ['error', { maxDepth: 1 }],
+		'prefer-destructuring': ['error', { object: true, array: false }],
 		'prettier/prettier': [
 			'error',
 			{ singleQuote: true, trailingComma: 'none', arrowParens: 'always', 'global-require': 'none' }

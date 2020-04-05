@@ -1,66 +1,32 @@
-import store from '@/store/store';
 // eslint-disable-next-line import/named
 import { backend } from '@/http/axios';
-
-// Token Refresh
-let isAlreadyFetchingAccessToken = false;
-let subscribers = [];
-
-function onAccessTokenFetched(acessToken) {
-	subscribers = subscribers.filter((callback) => callback(acessToken));
-}
-
-function addSubscriber(callback) {
-	subscribers.push(callback);
-}
+import axios from 'axios';
 
 export default {
-	init() {
-		backend.interceptors.response.use(
-			(response) => response,
-			(error) => {
-				// const { config, response: { status } } = error
-				const { config, response } = error;
-				const originalRequest = config;
-
-				// if (status === 401) {
-				if (response && response.status === 401) {
-					if (!isAlreadyFetchingAccessToken) {
-						isAlreadyFetchingAccessToken = true;
-						store.dispatch('auth/fetchAccessToken').then((acessToken) => {
-							isAlreadyFetchingAccessToken = false;
-							onAccessTokenFetched(acessToken);
-						});
-					}
-
-					const retryOriginalRequest = new Promise((resolve) => {
-						addSubscriber((acessToken) => {
-							originalRequest.headers.Authorization = `Bearer ${acessToken}`;
-							resolve(backend(originalRequest));
-						});
-					});
-					return retryOriginalRequest;
-				}
-				return Promise.reject(error);
-			}
-		);
+	find() {
+		return backend.post('/auth/find');
 	},
-	login(email, pwd) {
+	send(dbid) {
+		return backend.post('/auth/send', {
+			dbid
+		});
+	},
+	login(dbid, token) {
 		return backend.post('/auth/login', {
-			email,
-			password: pwd
+			dbid,
+			token
 		});
 	},
-	registerUser(name, email, pwd) {
-		return backend.post('/auth/register', {
-			displayName: name,
-			email,
-			password: pwd
+	me() {
+		return backend.get('/auth/me');
+	},
+	getAcessToken() {
+		return new Promise((resolve) => {
+			resolve(localStorage.getItem('accessToken'));
 		});
 	},
-	refreshToken() {
-		return backend.post('/auth/refresh-token', {
-			accessToken: localStorage.getItem('accessToKen')
-		});
+	refreshToken(config) {
+		// Here we use axios because if we use backend interface we will have a infinite loop.
+		return axios.post('/auth/refresh-token', {}, config);
 	}
 };

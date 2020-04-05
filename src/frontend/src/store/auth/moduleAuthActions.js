@@ -2,55 +2,66 @@ import router from '@/router';
 import jwt from '../../http/requests/auth/jwt/index';
 
 export default {
-	// JWT
-	loginJWT({ commit }, payload) {
+	find() {
 		return new Promise((resolve, reject) => {
 			jwt
-				.login(payload.userDetails.email, payload.userDetails.password)
+				.find()
 				.then((response) => {
-					// If there's user data in response
-					if (response.data.userData) {
-						// Navigate User to homepage
-						router.push(router.currentRoute.query.to || '/');
-
-						// Set accessToken
-						localStorage.setItem('accessToken', response.data.accessToken);
-
-						// Update user details
-						commit('UPDATE_USER_INFO', response.data.userData, { root: true });
-
-						// Set bearer token in axios
-						commit('SET_BEARER', response.data.accessToken);
-
-						resolve(response);
-					} else {
-						// eslint-disable-next-line prefer-promise-reject-errors
-						reject({ message: 'Wrong Email or Password' });
-					}
+					resolve(response);
 				})
 				.catch((error) => {
 					reject(error);
 				});
 		});
 	},
-	registerUserJWT({ commit }, payload) {
-		const { displayName, email, password, confirmPassword } = payload.userDetails;
-
+	// eslint-disable-next-line no-unused-vars
+	send({ commit }, payload) {
+		const { dbid } = payload;
 		return new Promise((resolve, reject) => {
-			// Check confirm password
-			if (password !== confirmPassword) {
-				// eslint-disable-next-line prefer-promise-reject-errors
-				reject({ message: "Password doesn't match. Please try again." });
-			}
-
 			jwt
-				.registerUser(displayName, email, password)
+				.send(dbid)
 				.then((response) => {
-					// Redirect User
-					router.push(router.currentRoute.query.to || '/');
-
-					// Update data in localStorage
+					resolve(response);
+				})
+				.catch((error) => {
+					reject(error);
+				});
+		});
+	},
+	login({ commit }, payload) {
+		const { token, dbid } = payload;
+		return new Promise((resolve, reject) => {
+			jwt
+				.login(dbid, token)
+				.then((response) => {
+					// Set accessToken
 					localStorage.setItem('accessToken', response.data.accessToken);
+
+					localStorage.setItem('loggedIn', true);
+
+					// Update user details
+					commit('UPDATE_USER_INFO', response.data.userData, { root: true });
+
+					// Set bearer token in axios
+					commit('SET_BEARER', response.data.accessToken);
+
+					// Navigate User to homepage
+					router.push({
+						name: 'home'
+					});
+					resolve(response);
+				})
+				.catch((error) => {
+					reject(error);
+				});
+		});
+	},
+	me({ commit }) {
+		return new Promise((resolve, reject) => {
+			jwt
+				.me()
+				.then((response) => {
+					// Update user details
 					commit('UPDATE_USER_INFO', response.data.userData, { root: true });
 
 					resolve(response);
@@ -60,11 +71,34 @@ export default {
 				});
 		});
 	},
-	fetchAccessToken() {
+	getAcessToken() {
 		return new Promise((resolve) => {
-			jwt.refreshToken().then((response) => {
+			jwt.getAcessToken().then((response) => {
 				resolve(response);
 			});
+		});
+	},
+	logout() {
+		if (localStorage.getItem('accessToken')) {
+			localStorage.removeItem('accessToken');
+			localStorage.removeItem('userInfo');
+			localStorage.setItem('loggedIn', false);
+			router.push({
+				name: 'login'
+			});
+		}
+	},
+	// eslint-disable-next-line no-unused-vars
+	fetchAccessToken({ commit }, payload) {
+		return new Promise((resolve, reject) => {
+			jwt
+				.refreshToken(payload)
+				.then((response) => {
+					resolve(response);
+				})
+				.catch((error) => {
+					reject(error);
+				});
 		});
 	}
 };

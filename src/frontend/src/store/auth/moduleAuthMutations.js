@@ -1,4 +1,4 @@
-import backend from '@/http/axios/index';
+import { backend } from '@/http/axios/index';
 
 export default {
 	SET_BEARER(state, accessToken) {
