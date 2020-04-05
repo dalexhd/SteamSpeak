@@ -5,7 +5,6 @@
 </template>
 
 <script>
-import jwt from '@/http/requests/auth/jwt/index';
 import themeConfig from '../themeConfig';
 
 export default {
@@ -33,9 +32,6 @@ export default {
 		document.documentElement.style.setProperty('--vh', `${vh}px`);
 	},
 	async created() {
-		// jwt
-		jwt.init();
-
 		const dir = this.$vs.rtl ? 'rtl' : 'ltr';
 		document.documentElement.setAttribute('dir', dir);
 
