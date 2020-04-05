@@ -1,8 +1,8 @@
 <template>
-	<div v-if="activeUserInfo.displayName" class="the-navbar__user-meta flex items-center">
+	<div v-if="activeUserInfo.client_nickname" class="the-navbar__user-meta flex items-center">
 		<div class="text-right leading-tight hidden sm:block">
 			<p class="font-semibold">
-				{{ activeUserInfo.displayName }}
+				{{ activeUserInfo.client_nickname }}
 			</p>
 			<small>Available</small>
 		</div>
