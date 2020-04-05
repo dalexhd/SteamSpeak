@@ -7,8 +7,8 @@ const router = Router();
 router.use(authenticate);
 
 router.post('/login', login);
-router.post('/find', permit('admin'), find);
-router.post('/send', permit('admin'), send);
+router.post('/find', find);
+router.post('/send', send);
 router.post('/refresh-token', permit('admin'), refreshToken);
 router.get('/me', permit('admin'), me);
 

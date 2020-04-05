@@ -20,6 +20,9 @@ exports.authenticate = async (req, res, next) => {
 		req.client = client;
 		next();
 	} catch (err) {
-		next(err);
+		if (err.message === 'invalid token') {
+			return res.status(401).json({ message: lang.invalid_token }); // user is forbidden
+		}
+		next();
 	}
 };
