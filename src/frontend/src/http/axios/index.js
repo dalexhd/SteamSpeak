@@ -4,7 +4,7 @@ import axios from 'axios';
 import store from '@/store/store';
 
 const backend = axios.create({
-	baseURL: 'http://localhost:3000/api',
+	baseURL: process.env.NODE_ENV === 'production' ? '/api' : 'http://localhost:3000/api',
 	headers: {
 		'Access-Control-Allow-Headers': 'X-CSRF-Token',
 		'X-Requested-With': 'XMLHttpRequest'
