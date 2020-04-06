@@ -18,6 +18,7 @@ exports.authenticate = async (req, res, next) => {
 		const client = Ts3.getClientByUID(decoded.uid);
 		client.role = 'admin';
 		req.client = client;
+		req.token = token;
 		next();
 	} catch (err) {
 		if (err.message === 'invalid token') {

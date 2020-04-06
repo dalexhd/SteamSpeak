@@ -11,6 +11,7 @@
 
 [![Travis (.com) branch](https://img.shields.io/travis/com/dalexhd/SteamSpeak/master?label=Tavis&logo=travis)](https://travis-ci.com/dalexhd/SteamSpeak)
 [![Node.js CI](https://github.com/dalexhd/SteamSpeak/workflows/Node.js%20CI/badge.svg)](https://github.com/dalexhd/SteamSpeak/actions?query=workflow:%22Node.js+CI%22)
+[![Maintainability](https://api.codeclimate.com/v1/badges/ea6cc9b6b7debae6f769/maintainability)](https://codeclimate.com/github/dalexhd/SteamSpeak/maintainability)
 
 </div>
 
