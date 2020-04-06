@@ -1,5 +1,9 @@
 # Changelog
 
+## [v0.1.1](https://github.com/dalexhd/steamspeak/tree/v0.1.1) (2020-04-06)
+
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.1.0...v0.1.1)
+
 ## [v0.1.0](https://github.com/dalexhd/steamspeak/tree/v0.1.0) (2020-04-05)
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.0.8...v0.1.0)
