@@ -21,46 +21,28 @@ const Log = {
 	print(log, color, type = false) {
 		let prefix;
 		if (type !== false) {
+			let color;
 			switch (type.toLowerCase()) {
 				case 'steam':
-					prefix = chalk.cyan(
-						`[${this.time()}]${chalk.red.bold(
-							` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`
-						)}`
-					);
+					color = 'red';
 					break;
 				case 'ts3':
-					prefix = chalk.cyan(
-						`[${this.time()}]${chalk.blue.bold(
-							` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`
-						)}`
-					);
+					color = 'blue';
 					break;
 				case 'csgo':
-					prefix = chalk.cyan(
-						`[${this.time()}]${chalk.magenta.bold(
-							` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`
-						)}`
-					);
+					color = 'magenta';
 					break;
 				case 'database':
-					prefix = chalk.cyan(
-						`[${this.time()}]${chalk.grey.bold(
-							` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`
-						)}`
-					);
-					break;
-				default:
-					prefix = chalk.cyan(
-						`[${this.time()}]` + ` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`
-					);
+					color = 'grey';
 					break;
 			}
+			prefix = chalk.cyan(
+				`[${this.time()}]${chalk[color].bold(` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`)}`
+			);
 		} else {
 			prefix = chalk.cyan(`[${this.time()}]`);
 		}
 		let message = log;
-
 		if (color) {
 			message = chalk[color](message);
 		}
