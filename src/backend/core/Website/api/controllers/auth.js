@@ -119,18 +119,7 @@ exports.login = async (req, res) => {
 
 exports.me = async (req, res) => {
 	try {
-		// 1) check if the token is there
-		let token;
-		if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-			token = req.headers.authorization.split(' ')[1];
-		}
-
-		if (!token) {
-			throw { statusCode: 401, message: lang.error.not_logged_in };
-		}
-
-		// 2) verify token
-		var decoded = jwt.verify(token, config.jwt.secret);
+		var decoded = jwt.verify(req.token, config.jwt.secret);
 		const client = await Ts3.getClientByUID(decoded.uid);
 		res.status(200).json({ userData: client });
 	} catch (error) {
@@ -143,17 +132,7 @@ exports.me = async (req, res) => {
 
 exports.refreshToken = async (req, res) => {
 	try {
-		// 1) check if the token is there
-		let token;
-		if (req.headers.authorization && req.headers.authorization.startsWith('Bearer')) {
-			token = req.headers.authorization.split(' ')[1];
-		}
-		if (!token) {
-			throw { statusCode: 401, message: lang.error.not_logged_in };
-		}
-
-		// 2) verify token
-		var decoded = jwt.verify(token, config.jwt.secret);
+		var decoded = jwt.verify(req.token, config.jwt.secret);
 		const client = Ts3.getClientByUID(decoded.uid);
 		const accessToken = createToken(client.uid);
 		res.status(200).json({
