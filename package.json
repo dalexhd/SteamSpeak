@@ -13,6 +13,8 @@
     "start:backend": "cd src/backend && nodemon index.js",
     "install:frontend": "cd src/frontend && npm install",
     "install:backend": "cd src/backend && npm install",
+    "lint:frontend": "cd src/frontend && npm run lint",
+    "lint:backend": "cd src/backend && npm run lint",
     "build:frontend": "cd src/frontend && npm run build",
     "test:frontend": "cd src/frontend && npm run test:unit",
     "test:backend": "cd src/backend && npm run test",

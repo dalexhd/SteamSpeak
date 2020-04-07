@@ -34,5 +34,8 @@ module.exports = {
 		workboxOptions: {
 			swSrc: 'src/service-worker.js'
 		}
+	},
+	devServer: {
+		disableHostCheck: true
 	}
 };

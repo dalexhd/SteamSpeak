@@ -1,11 +1,10 @@
 {
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "nodemon index.js",
     "serve": "npm run start",
     "test": "jest tests/ --runInBand",
-    "lint": "eslint . --fix",
-    "docs:serve": "docsify serve docs --port 4000"
+    "lint": "eslint . --fix"
   },
   "author": {
     "name": "DalexHD",

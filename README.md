@@ -13,6 +13,9 @@
 [![Node.js CI](https://github.com/dalexhd/SteamSpeak/workflows/Node.js%20CI/badge.svg)](https://github.com/dalexhd/SteamSpeak/actions?query=workflow:%22Node.js+CI%22)
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/dalexhd/SteamSpeak?color=blue&label=Maintainability&logo=code%20climate)](https://codeclimate.com/github/dalexhd/SteamSpeak)
 
+
+[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dalexhd/steamspeak)
+
 </div>
 
 ## What is SteamSpeak?
