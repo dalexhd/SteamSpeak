@@ -63,7 +63,11 @@ When [opening a new issue](https://github.com/dalexhd/steamspeak/issues/new/choo
 
 ## Online one-click setup for contributing
 
-You can use Gitpod (a free, online, VS Code-like IDE) for contributing. With a single click it will launch a workspace with a running TeamSpeak3 test server.
+You can use Gitpod (a free, online, VS Code-like IDE) for contributing. With a single click it will launch a workspace:
+  - run `make config`
+  - edit `src/backend/config` config files
+  - run `npm run start:frontend`
+  - run `npm run start:backend`
 
 So that you can start contributing straight away.
 

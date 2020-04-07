@@ -1,0 +1,12 @@
+# The Docker image to run your workspace in. Defaults to gitpod/workspace-full
+image:
+  file: .gitpod.Dockerfile
+# Command to start on workspace startup (optional)
+tasks:
+  - init: npm install
+# Ports to expose on workspace startup (optional)
+ports:
+  - port: 8080
+    onOpen: open-browser
+  - port: 3000
+    onOpen: open-browser
