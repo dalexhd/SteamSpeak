@@ -2,7 +2,7 @@ module.exports = {
 	username: '',
 	password: '',
 	shared_secret: '',
-	bot_name: '',
+	bot_name: '[SteamSpeak] - BOT',
 	language: 'english',
-	debug: true
+	debug: false
 };

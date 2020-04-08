@@ -2,7 +2,9 @@ const { community, steamUser, csgo } = require('../../Steam');
 const Ts3 = require('../../TeamSpeak');
 const config = require('../../../config/steam');
 
-steamUser.getAppRichPresenceLocalization(730, config.language).then(function (data) {});
+steamUser
+	.getAppRichPresenceLocalization(730, config.language || 'english')
+	.then(function (data) {});
 
 // Called when a Steam User change has been made.
 module.exports.EventSteamUser = (sid, data) => {

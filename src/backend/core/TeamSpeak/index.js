@@ -8,13 +8,13 @@ const fs = require('fs');
 const path = require('path');
 
 const Ts3 = new TeamSpeak({
-	protocol: 'ssh',
-	host: config.ip,
-	queryport: config.query_port,
-	serverport: config.port,
-	username: config.login,
+	protocol: config.protocol || 'raw',
+	host: config.ip || `127.0.0.1`,
+	queryport: config.query_port || '10011',
+	serverport: config.port || 9987,
+	username: config.login || 'serveradmin',
 	password: config.password,
-	nickname: config.name,
+	nickname: config.name || 'SteamSpeak',
 	antispam: true,
 	antispamtimer: 350
 });
@@ -39,7 +39,7 @@ function initEvents() {
 }
 
 function onReady() {
-	Ts3.useBySid(config.server_id)
+	Ts3.useBySid(config.server_id || 1)
 		.then(() => {
 			log.success(`Selected Server Nº ${config.server_id}.`, 'ts3');
 			Ts3.whoami()
