@@ -20,7 +20,7 @@ There are many ways to contribute to SteamSpeak, and many of them do not involve
 
 ### Join our Discord Channel
 
-We have `#steamspeak-dev` on [Discord](https://discord.gg/EcPkJP) to discuss all things SteamSpeak development.
+We have `#steamspeak-dev` on [Discord](https://discord.gg/st4nsXw) to discuss all things SteamSpeak development.
 
 ## Development Process
 
