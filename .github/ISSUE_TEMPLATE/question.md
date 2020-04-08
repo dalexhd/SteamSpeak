@@ -10,4 +10,4 @@ labels: 'help wanted, question'
 
 Please contact us instead. We have a few channels:
 
-- [Discord](https://discord.gg/EcPkJP)
+- [Discord](https://discord.gg/st4nsXw)
