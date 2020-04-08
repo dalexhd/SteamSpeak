@@ -76,7 +76,7 @@ module.exports = {
           ],
         },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} SteamSpeak. Built with ❤️ with Docusaurus.`,
+      copyright: `Copyright © ${new Date().getFullYear()} SteamSpeak.`,
     },
     algolia: {
       apiKey: 'd30054d0a4a3376e554f4e4bb53a0bd9',

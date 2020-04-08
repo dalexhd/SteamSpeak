@@ -16,7 +16,7 @@ const steamUser = new SteamUser({
 });
 let Plugins = new Map();
 steamUser.setOption('promptSteamGuardCode', false);
-steamUser.setOption('debug', true);
+steamUser.setOption('debug', config.debug || false);
 
 const community = new SteamCommunity();
 
@@ -30,7 +30,7 @@ const csgo = new GlobalOffensive(steamUser);
 
 steamUser.once('loggedOn', function () {
 	log.success('logged in', 'steam');
-	steamUser.setPersona(SteamUser.EPersonaState.Invisible, config.bot_name);
+	steamUser.setPersona(SteamUser.EPersonaState.Invisible, config.bot_name || '[SteamSpeak] - BOT');
 	steamUser.webLogOn();
 	steamUser.once('webSession', function (sessionID, cookies) {
 		log.success('Got web session', 'steam');

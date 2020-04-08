@@ -13,7 +13,14 @@ module.exports = {
       label: 'Setup',
       items: [
         "setup/installation",
-        "setup/configuration"
+        {
+          type: 'category',
+          label: 'Configuration',
+          items: [
+            "setup/configuration/bot",
+            "setup/configuration/website",
+          ],
+        },
       ],
     }
   ]
