@@ -1,6 +1,7 @@
 module.exports = {
 	enabled: true,
 	port: 3000,
+	hostname: '',
 	cors: {
 		/**
 		 * @see https://github.com/expressjs/cors#configuration-options

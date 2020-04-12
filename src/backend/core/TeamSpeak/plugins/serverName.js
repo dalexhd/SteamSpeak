@@ -68,7 +68,7 @@ module.exports.info = {
 		data: {
 			showQueryClients: false,
 			serverName: 'SteamSpeak Server - [DATE] - [[ONLINE]/[MAX_CLIENTS] | [%]%]',
-			format: 'DD-MM-YYYY HH:MM'
+			format: 'DD-MM-YYYY HH:mm'
 		},
 		interval: {
 			weeks: 0,

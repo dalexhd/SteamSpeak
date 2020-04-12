@@ -20,7 +20,7 @@
 
 								<vs-tabs>
 									<vs-tab label="TeamSpeak">
-										<login-ts3></login-ts3>
+										<ts3></ts3>
 									</vs-tab>
 								</vs-tabs>
 							</div>
@@ -33,11 +33,11 @@
 </template>
 
 <script>
-import LoginTs3 from './LoginTs3.vue';
+import Ts3 from './components/Ts3.vue';
 
 export default {
 	components: {
-		LoginTs3
+		Ts3
 	}
 };
 </script>

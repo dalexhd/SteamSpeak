@@ -7,9 +7,11 @@ const config = require('../../config/steam');
 const { getFiles, validatePlugin } = require('../../utils/files');
 const { flatArray } = require('../../utils/array');
 const chokidar = require('chokidar');
+const User = require('../Database/models/user');
 const path = require('path');
 const fs = require('fs');
 const _ = require('lodash');
+const Ts3 = require('../TeamSpeak');
 
 const steamUser = new SteamUser({
 	language: config.language || 'english'
@@ -69,14 +71,12 @@ function loadModules() {
 							log.error(`Invalid ${module.info.name} config: ${err.message}. Skipping`, 'steam');
 						});
 				} catch (err) {
-					log.warn(`Issue loading module file ${file}:`, err.stack);
+					log.warn(`Issue loading module file ${file}: ${err.message}`, 'steam');
 				}
 			});
-			['user', 'friendRelationship'].forEach((value) => {
+			['user', 'friendRelationship', 'friendMessage'].forEach((value) => {
 				steamUser.on(value, (...args) => {
 					Plugins.forEach((module) => {
-						console.log(`EventSteam${_.upperFirst(value)}`);
-
 						if (typeof module[`EventSteam${_.upperFirst(value)}`] !== 'undefined') {
 							module[`EventSteam${_.upperFirst(value)}`](...args);
 						}
@@ -127,6 +127,22 @@ function watchModules() {
 			log.info(`Detected removal of module ${fileName}, unloading.`);
 		}
 	});
+	initUsers();
+}
+
+/**
+ * Load initial users.
+ */
+async function initUsers() {
+	let connectedClients = await Ts3.clientList({
+		client_type: 0
+	});
+	let verifiedUsers = await User.find({
+		uid: { $in: connectedClients.map((client) => client.uniqueIdentifier) }
+	});
+	if (verifiedUsers.length > 0) {
+		steamUser.getPersonas(verifiedUsers.map((user) => user.steamId));
+	}
 }
 
 module.exports = {

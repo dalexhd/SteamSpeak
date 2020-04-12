@@ -3,6 +3,7 @@ const log = require('../../utils/log.js');
 const config = require('../../config/teamspeak');
 const { getFiles, validatePlugin } = require('../../utils/files');
 const { flatArray } = require('../../utils/array');
+const Cache = require('../Cache');
 const chokidar = require('chokidar');
 const fs = require('fs');
 const path = require('path');

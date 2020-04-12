@@ -12,11 +12,12 @@ const jwt = require('jsonwebtoken');
  * @param {object} req The express request instance
  * @param {object} filter The filter to apply to the clientList command.
  */
-const findClients = async function (req, filter) {
+exports.findClients = async function (req, filter) {
 	let ip =
 		req.headers['cf-connecting-ip'] ||
 		req.headers['x-forwarded-for'] ||
 		req.connection.remoteAddress;
+	ip = '172.17.0.1';
 	let clients = await Ts3.clientList({
 		connection_client_ip: ip,
 		...filter
@@ -48,7 +49,7 @@ const createToken = function (uid) {
 // Find user by request IP
 exports.find = async (req, res) => {
 	try {
-		let clients = await findClients(req, {
+		let clients = await this.findClients(req, {
 			client_type: 0
 		});
 		res.status(200).json(clients);
@@ -63,7 +64,7 @@ exports.find = async (req, res) => {
 // Send the user the key
 exports.send = async (req, res) => {
 	try {
-		let [client] = await findClients(req, {
+		let [client] = await this.findClients(req, {
 			client_type: 0,
 			client_database_id: req.body.dbid
 		});
@@ -73,10 +74,15 @@ exports.send = async (req, res) => {
 				lang.message.login_msg.replaceArray(['{NICKNAME}', '{TOKEN}'], [client.nickname, token])
 			)
 			.then(() => {
-				Cache.set(`${client.databaseId}:token`, {
-					ip: client.connectionclientip,
-					token
-				});
+				Cache.set(
+					`${client.databaseId}:token`,
+					JSON.stringify({
+						ip: client.connectionclientip,
+						token
+					}),
+					'ex',
+					600
+				);
 				res.status(200).end();
 			});
 	} catch (error) {
@@ -89,11 +95,12 @@ exports.send = async (req, res) => {
 
 exports.login = async (req, res) => {
 	try {
-		let [client] = await findClients(req, {
+		let [client] = await this.findClients(req, {
 			client_type: 0,
 			client_database_id: req.body.dbid
 		});
-		let sendCache = Cache.get(`${client.databaseId}:token`);
+		let sendCache = JSON.parse(await Cache.get(`${client.databaseId}:token`));
+
 		if (typeof sendCache === 'undefined')
 			throw { statusCode: 500, message: lang.error.unexpected_verification_error };
 		if (sendCache.token !== req.body.token) {

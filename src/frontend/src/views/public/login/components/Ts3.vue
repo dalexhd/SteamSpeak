@@ -41,11 +41,11 @@
 
 <script>
 export default {
+	name: 'Ts3',
 	data() {
 		return {
 			clients: [],
 			selectedClient: false,
-			loading: true,
 			step: 1,
 			token: ''
 		};
@@ -69,7 +69,7 @@ export default {
 					color: 'warning'
 				});
 				this.$router.push({
-					name: 'home'
+					name: 'admin:home'
 				});
 				return false;
 			}
