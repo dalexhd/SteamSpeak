@@ -22,8 +22,8 @@ Navigate to `src/backend/config` directory and modify previusly generated files.
 
 ```javascript
 module.exports = {
-  stdTTL: 0,
-  checkperiod: 120
+	host: '127.0.0.1',
+	port: 6379
 };
 ```
 
@@ -31,8 +31,8 @@ module.exports = {
 
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
-| `stdTTL` | `number` | `0` | The standard ttl as number in seconds for every generated cache element. |
-| `checkperiod` | `number` | `120` | The period in seconds, as a number, used for the automatic delete check interval. |
+| `host` | `string` | `127.0.0.1` | The host to connect to. |
+| `port` | `number` | 6379 | The port of the Redis instance. |
 
 ### Database configuration
 

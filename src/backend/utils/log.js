@@ -35,6 +35,12 @@ const Log = {
 				case 'database':
 					color = 'grey';
 					break;
+				case 'cache':
+					color = 'yellow';
+					break;
+				default:
+					'reset';
+					break;
 			}
 			prefix = chalk.cyan(
 				`[${this.time()}]${chalk[color].bold(` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`)}`

@@ -34,7 +34,7 @@ module.exports.main = async () => {
 				'ts3'
 			);
 		} else if (isNotAfk(client, data)) {
-			const cid = Cache.get(`afkChecker:${client.databaseId}`);
+			const cid = await Cache.get(`afkChecker:${client.databaseId}`);
 			if (cid !== undefined) {
 				client.move(cid);
 				Cache.del(`afkChecker:${client.databaseId}`);

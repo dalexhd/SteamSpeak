@@ -19,12 +19,7 @@ module.exports = {
   },
   ignorePatterns: ["node_modules/"],
   rules: {
-    "no-plusplus": [
-      "error",
-      {
-        allowForLoopAfterthoughts: true
-      }
-    ],
+    "no-plusplus": "off",
     "no-param-reassign": [
       "error",
       {

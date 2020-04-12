@@ -7,6 +7,7 @@ import mutations from './mutations';
 import actions from './actions';
 
 import moduleAuth from './auth/moduleAuth';
+import moduleVerify from './verify/moduleVerify';
 
 Vue.use(Vuex);
 
@@ -16,7 +17,8 @@ export default new Vuex.Store({
 	state,
 	actions,
 	modules: {
-		auth: moduleAuth
+		auth: moduleAuth,
+		verify: moduleVerify
 	},
 	strict: process.env.NODE_ENV !== 'production'
 });
