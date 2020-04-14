@@ -1,7 +1,7 @@
 {
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "serve": "npm run start",
     "test": "jest tests/ --runInBand",
     "lint": "eslint . --fix"
@@ -51,7 +51,6 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-prettier": "^3.1.2",
     "jest": "^25.1.0",
-    "nodemon": "^2.0.2",
     "prettier": "^2.0.1"
   },
   "gitHooks": {

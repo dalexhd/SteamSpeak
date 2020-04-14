@@ -63,22 +63,22 @@ ts:		##@Misc Run docker image
 			$(DOCKER) logs teamspeak 2>&1 | grep login | awk '{split($$0, i, ", "); print i[1]}' | tr -d '\t\r\" ' | cut -d "=" -f 2 | xargs -I {} echo "${B}Username: ${W}${BOLD}"{}${X}
 			$(DOCKER) logs teamspeak 2>&1 | grep login | awk '{split($$0, i, ", "); print i[2]}' | tr -d '\t\r\" ' | cut -d "=" -f 2 | xargs -I {} echo "${B}Password: ${W}${BOLD}"{}${X}
 			@echo
-			@sleep 0.5
+			@sleep 1
 			$(DOCKER) logs teamspeak 2>&1 | grep token | sed 's/.*token=//' | sed 's/\r//g' | head -1 | tr -d '\n" ' | xargs -I {} echo "${B}Token: ${G}${BOLD}"{}${X}
 			@echo
 
 config:		##@Misc Create config files
-			@mv src/backend/config/cache.sample.js src/backend/config/cache.js
-			@mv src/backend/config/database.sample.js src/backend/config/database.js
-			@mv src/backend/config/steam.sample.js src/backend/config/steam.js
-			@mv src/backend/config/teamspeak.sample.js src/backend/config/teamspeak.js
-			@mv src/backend/config/website.sample.js src/backend/config/website.js
+			@if [ ! -d "src/backend/config/old.config" ]; then mkdir src/backend/config/old.config; fi
+			@find src/backend/config -maxdepth 1 -iname \*.js -not -iname \*.sample.js -type f -exec bash -c 'for f; do cp "$$f" "src/backend/config/old.config/$$(basename $$f)"; done' sh {} +
+			@echo ${B}Created a restore point inside the ${W}src/backend/config/old.config ${B}folder.
+			@find src/backend/config -maxdepth 1 -iname \*.sample.js -type f -exec bash -c 'for f; do cp "$$f" "$${f/.sample}"; done' sh {} +
 			@echo
 
 clean:		##@Misc Clean docker image
 			@echo ${B}Stoping container...${X}
 			$(DOCKER) stop teamspeak > /dev/null 2>&1
-			$(DOCKER) system prune -f  > /dev/null 2>&1
+			$(DOCKER) rm teamspeak -f  > /dev/null 2>&1
+			@echo ${B}Stoping container...${X}
 
 HELP_SCRIPT = \
 			while(<>) { push @{$$help{$$2 // 'options'}}, [$$1, $$3] if /^([a-zA-Z\-\%_]+)\s*:.*\#\#(?:@([a-zA-Z\-\%]+))?\s(.*)$$/ }; \

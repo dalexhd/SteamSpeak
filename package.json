@@ -10,7 +10,7 @@
   },
   "scripts": {
     "start:frontend": "cd src/frontend && npm run serve",
-    "start:backend": "cd src/backend && nodemon index.js",
+    "start:backend": "cd src/backend && npm run start",
     "install:frontend": "cd src/frontend && npm install",
     "install:backend": "cd src/backend && npm install",
     "lint:frontend": "cd src/frontend && npm run lint",
