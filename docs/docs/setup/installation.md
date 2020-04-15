@@ -30,15 +30,15 @@ cd SteamSpeak
 
 ## Install dependecincies
 
-Run the folowing command to install required NPM dependencies.
+Run the folowing command to install required dependencies.
 
 ```bash
-npm install
+yarn install
 ```
 
 :::note
 
-This will install Frontend and Backend NPM packages, so you dont need to install them separatelly.
+This will install Client and Server packages, so you dont need to install them separatelly.
 
 :::
 

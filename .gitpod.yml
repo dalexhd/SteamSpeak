@@ -3,7 +3,7 @@ image:
   file: .gitpod.Dockerfile
 # Command to start on workspace startup (optional)
 tasks:
-  - init: npm install
+  - init: yarn install
 # Ports to expose on workspace startup (optional)
 ports:
   - port: 8080

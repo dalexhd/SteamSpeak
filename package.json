@@ -1,7 +1,10 @@
 {
+  "private": true,
   "name": "steamspeak",
-  "version": "0.1.1",
   "description": "Steam and TeamSpeak integration, done right!",
+  "workspaces": [
+    "packages/*"
+  ],
   "directories": {
     "doc": "docs"
   },
@@ -9,18 +12,22 @@
     "node": ">=10.0.0"
   },
   "scripts": {
-    "start:frontend": "cd src/frontend && npm run serve",
-    "start:backend": "cd src/backend && npm run start",
-    "install:frontend": "cd src/frontend && npm install",
-    "install:backend": "cd src/backend && npm install",
-    "lint:frontend": "cd src/frontend && npm run lint",
-    "lint:backend": "cd src/backend && npm run lint",
-    "build:frontend": "cd src/frontend && npm run build",
-    "test:frontend": "cd src/frontend && npm run test:unit",
-    "test:backend": "cd src/backend && npm run test",
-    "install:pages": "cd docs/ && npm install",
-    "build:pages": "cd docs/ && npm run build",
-    "postinstall": "npm run install:frontend && npm run install:backend"
+    "bootstrap": "lerna bootstrap",
+    "dev": "concurrently --kill-others --success first \"yarn run start:server\" \"yarn run start:client\"",
+    "test": "yarn run test:server && yarn run test:client",
+    "lint": "yarn run lint:server && yarn run lint:client",
+    "test:server": "yarn --cwd ./packages/server test",
+    "test:client": "yarn --cwd ./packages/client test:unit",
+    "start:server": "yarn --cwd ./packages/server start",
+    "start:client": "yarn --cwd ./packages/client serve",
+    "lint:server": "yarn --cwd ./packages/server lint",
+    "lint:client": "yarn --cwd ./packages/client run lint",
+    "build": "lerna run build",
+    "docs:dev": "yarn --cwd ./docs run start",
+    "docs:build": "yarn --cwd ./docs run build",
+    "docs:deploy": "yarn --cwd ./docs run deploy",
+    "docs:install": "yarn --cwd ./docs install",
+    "publish": "lerna publish"
   },
   "repository": {
     "type": "git",
@@ -33,7 +40,12 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/dalexhd/SteamSpeak/issues"
+    "url": "https://github.com/dalexhd/SteamSpeak/issues",
+    "email": "eldalexhd@gmail.com"
   },
-  "homepage": "https://github.com/dalexhd/SteamSpeak#readme"
+  "homepage": "https://github.com/dalexhd/SteamSpeak#readme",
+  "devDependencies": {
+    "concurrently": "^5.1.0",
+    "lerna": "^3.20.2"
+  }
 }
