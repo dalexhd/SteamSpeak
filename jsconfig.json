@@ -3,9 +3,9 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "@/*": ["./src/frontend/src/*"]
+      "@/*": ["./packages/client/src/*"]
     }
   },
-  "include": ["src/frontend/src/**/*"],
+  "include": ["packages/client/src/**/*"],
   "exclude": ["node_modules"]
 }

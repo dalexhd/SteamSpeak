@@ -59,20 +59,20 @@ When [opening a new issue](https://github.com/dalexhd/steamspeak/issues/new/choo
 ## Installation
 
 1. Ensure you have [NodeJS](https://nodejs.org/) installed.
-1. After cloning the repository, run `npm install` in the root of the repository.
+1. After cloning the repository, run `yarn install` in the root of the repository.
 1. To start a development server:
   - run `make config`
-  - edit `src/backend/config` config files
-  - run `npm run start:frontend`
-  - run `npm run start:backend`
+  - edit `packages/server/config` config files
+  - run `yarn run start:server`
+  - run `yarn run start:client`
 
 ## Online one-click setup for contributing
 
 You can use Gitpod (a free, online, VS Code-like IDE) for contributing. With a single click it will launch a workspace:
   - run `make config`
-  - edit `src/backend/config` config files
-  - run `npm run start:frontend`
-  - run `npm run start:backend`
+  - edit `packages/server/config` config files
+  - run `yarn run start:server`
+  - run `yarn run start:client`
 
 So that you can start contributing straight away.
 
@@ -97,8 +97,8 @@ Small pull requests are much easier to review and more likely to get merged. Mak
 Please make sure the following is done when submitting a pull request:
 
 1. Fork [the repository](https://github.com/dalexhd/steamspeak) and create your branch from `master`.
-1. Make sure your code lints (`npm run lint:frontend && npm run lint:backend`).
-1. Make sure your Jest tests pass (`npm run test:frontend && npm run test:backend`).
+1. Make sure your code lints (`yarn run lint`).
+1. Make sure your Jest tests pass (`yarn run test`).
 
 All pull requests should be opened against the `master` branch.
 
@@ -121,7 +121,7 @@ We are monitoring for pull requests. Do help us by keeping pull requests consist
 
 ## Style Guide
 
-[Prettier](https://prettier.io) will catch most styling issues that may exist in your code. You can check the status of your code styling by simply running `npm run lint:frontend && npm run lint:backend`.
+[Prettier](https://prettier.io) will catch most styling issues that may exist in your code. You can check the status of your code styling by simply running `yarn run lint`.
 
 However, there are still some styles that Prettier cannot pick up.
 
