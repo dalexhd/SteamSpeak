@@ -4,7 +4,7 @@
 
 ### Steam and TeamSpeak integration, done right!
 
-[![npm](https://img.shields.io/npm/v/steamspeak?logo=npm&color=blue&maxAge=3600)](https://www.npmjs.com/package/steamspeak)
+[![GitHub last commit](https://img.shields.io/github/last-commit/dalexhd/steamspeak?color=blue&label=Last%20commit&logo=git&maxAge=3600)](https://github.com/dalexhd/SteamSpeak/commits)
 [![GitHub issues](https://img.shields.io/github/issues/dalexhd/SteamSpeak?label=Issues&color=blue&maxAge=3600)](https://github.com/dalexhd/SteamSpeak/issues)
 [![GitHub forks](https://img.shields.io/github/forks/dalexhd/SteamSpeak?label=Forks&color=blue&maxAge=3600)](https://github.com/dalexhd/SteamSpeak/network)
 [![GitHub license](https://img.shields.io/github/license/dalexhd/SteamSpeak?label=License&color=blue&maxAge=3600)](https://github.com/dalexhd/SteamSpeak/blob/master/LICENSE)
