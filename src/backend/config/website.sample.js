@@ -1,7 +1,7 @@
 module.exports = {
 	enabled: true,
 	port: 3000,
-	hostname: '',
+	hostname: '', //Ex: https://my-website.com (without last slash)
 	cors: {
 		/**
 		 * @see https://github.com/expressjs/cors#configuration-options
@@ -17,7 +17,7 @@ module.exports = {
 		/**
 		 * @see https://randomkeygen.com/
 		 */
-		secret: '',
+		secret: 'put a secret key here',
 		options: {
 			expiresIn: '2h'
 		}

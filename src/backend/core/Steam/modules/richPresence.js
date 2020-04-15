@@ -52,7 +52,7 @@ module.exports.EventSteamUser = async (sid, data) => {
 async function friendDeleted(senderID) {
 	let steamId = senderID.getSteamID64();
 	let user = await User.findOne({ steamId });
-	if (typeof user.groupId !== 'undefined') {
+	if (user && typeof user.groupId !== 'undefined') {
 		Ts3.serverGroupDel(user.groupId, 1);
 		groupNumber--;
 		syncNumbers();

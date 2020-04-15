@@ -73,15 +73,17 @@ module.exports.EventSteamFriendMessage = async (senderID, message) => {
 async function friendDeleted(senderID) {
 	let steamId = senderID.getSteamID64();
 	let user = await User.findOne({ steamId });
-	let [client] = await Ts3.clientList({
-		client_type: 0,
-		client_unique_identifier: user.uid
-	});
-	user.remove(() => {
-		if (client) {
-			client.poke('Your SteamSpeak account has been deleted from our system.');
-		}
-	});
+	if (user) {
+		let [client] = await Ts3.clientList({
+			client_type: 0,
+			client_unique_identifier: user.uid
+		});
+		user.remove(() => {
+			if (client) {
+				client.poke('Your SteamSpeak account has been deleted from our system.');
+			}
+		});
+	}
 }
 
 async function newFriend(senderID) {
