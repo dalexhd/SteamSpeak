@@ -9,7 +9,7 @@
     }
   ],
   "path-intellisense.mappings": {
-    "@": "${workspaceRoot}/src/frontend/src"
+    "@": "${workspaceRoot}/packages/client/src"
   },
   "emojisense.languages": {
     "markdown": true,
