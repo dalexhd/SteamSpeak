@@ -68,10 +68,10 @@ ts:		##@Misc Run docker image
 			@echo
 
 config:		##@Misc Create config files
-			@if [ ! -d "src/backend/config/old.config" ]; then mkdir src/backend/config/old.config; fi
-			@find src/backend/config -maxdepth 1 -iname \*.js -not -iname \*.sample.js -type f -exec bash -c 'for f; do cp "$$f" "src/backend/config/old.config/$$(basename $$f)"; done' sh {} +
-			@echo ${B}Created a restore point inside the ${W}src/backend/config/old.config ${B}folder.
-			@find src/backend/config -maxdepth 1 -iname \*.sample.js -type f -exec bash -c 'for f; do cp "$$f" "$${f/.sample}"; done' sh {} +
+			@if [ ! -d "packages/server/config/old.config" ]; then mkdir packages/server/config/old.config; fi
+			@find packages/server/config -maxdepth 1 -iname \*.js -not -iname \*.sample.js -type f -exec bash -c 'for f; do cp "$$f" "packages/server/config/old.config/$$(basename $$f)"; done' sh {} +
+			@echo ${B}Created a restore point inside the ${W}packages/server/config/old.config ${B}folder.
+			@find packages/server/config -maxdepth 1 -iname \*.sample.js -type f -exec bash -c 'for f; do cp "$$f" "$${f/.sample}"; done' sh {} +
 			@echo
 
 clean:		##@Misc Clean docker image

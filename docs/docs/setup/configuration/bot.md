@@ -3,7 +3,7 @@ id: bot
 title: Bot configuration
 ---
 
-All the configuration files of SteamSpeak are stored in the `src/backend/config` directory. They are separated into multiple files to make your installation process as delightful as possible.
+All the configuration files of SteamSpeak are stored in the `packages/server/config` directory. They are separated into multiple files to make your installation process as delightful as possible.
 
 ## Create the configuration files
 
@@ -16,7 +16,7 @@ make config
 ```
 
 ## Edit your configuration files
-Navigate to `src/backend/config` directory and modify previusly generated files.
+Navigate to `packages/server/config` directory and modify previusly generated files.
 
 ### Cache configuration
 
