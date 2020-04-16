@@ -38,18 +38,16 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: Create config files
       run: make config
-    - name: Install Backend NPM dependencies
-      run: npm ci --prefix src/backend
-    - name: Install Frontend NPM dependencies
-      run: npm ci --prefix src/frontend
-    - name: Build Frontend APP
-      run: npm run build --prefix src/frontend
-    - name: Test Backend
-      run: npm run test --prefix src/backend
+    - name: Install dependencies
+      run: yarn install
+    - name: Build Client APP
+      run: yarn run build
+    - name: Test Server
+      run: yarn run test:server
       env:
         CI: true
-    - name: Test Frontend
-      run: npm run test:unit --prefix src/frontend
+    - name: Test Client
+      run: yarn run test:client
       env:
         CI: true
     - name: Stop TeamSpeak container
