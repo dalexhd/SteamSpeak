@@ -26,7 +26,7 @@ SteamSpeak is a Node.js and VueJS application which allows you to power up your 
 
 <div align="center">
 
-[![Logo](https://raw.githubusercontent.com/dalexhd/resources/master/demo.gif)](https://dalexhd.github.io/SteamSpeak/)
+[![Logo](https://raw.githubusercontent.com/dalexhd/resources/master/demo.gif)](https://dalexhd.github.io/SteamSpeak/) [![Join the chat at https://gitter.im/SteamSpeak/community](https://badges.gitter.im/SteamSpeak/community.svg)](https://gitter.im/SteamSpeak/community?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 </div>
 
