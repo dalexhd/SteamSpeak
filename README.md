@@ -18,7 +18,7 @@
 [![Travis (.com) branch](https://img.shields.io/travis/com/dalexhd/SteamSpeak/master?label=Tavis&logo=travis&maxAge=3600)](https://travis-ci.com/dalexhd/SteamSpeak)
 [![Node.js CI](https://github.com/dalexhd/SteamSpeak/workflows/Node.js%20CI/badge.svg)](https://github.com/dalexhd/SteamSpeak/actions?query=workflow:%22Node.js+CI%22)
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/dalexhd/SteamSpeak?label=Maintainability&logo=code%20climate&maxAge=3600)](https://codeclimate.com/github/dalexhd/SteamSpeak)
-[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/dalexhd/steamspeak?label=Code%20size)](https://github.com/dalexhd/SteamSpeak)
+[![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/dalexhd/steamspeak?label=Code%20size&maxAge=3600)](https://github.com/dalexhd/SteamSpeak)
 
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://dalexhd.github.io/SteamSpeak)
