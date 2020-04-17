@@ -18,7 +18,7 @@
 [![Node.js CI](https://github.com/dalexhd/SteamSpeak/workflows/Node.js%20CI/badge.svg)](https://github.com/dalexhd/SteamSpeak/actions?query=workflow:%22Node.js+CI%22)
 [![Code Climate maintainability](https://img.shields.io/codeclimate/maintainability-percentage/dalexhd/SteamSpeak?label=Maintainability&logo=code%20climate&maxAge=3600)](https://codeclimate.com/github/dalexhd/SteamSpeak)
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/dalexhd/steamspeak?label=Code%20size)](https://github.com/dalexhd/SteamSpeak)
-[![Analytics](https://ga-beacon.appspot.com/UA-124336116-3/github.com/dalexhd/steamspeak/README.md?pixel)](https://GitHub.com/Naereen/badges/)
+[![Analytics](https://ga-beacon.appspot.com/UA-124336116-4/github.com/dalexhd/steamspeak/README.md?pixel)](https://GitHub.com/Naereen/badges/)
 
 
 [![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://dalexhd.github.io/SteamSpeak)
