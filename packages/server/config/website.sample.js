@@ -1,5 +1,4 @@
 module.exports = {
-	enabled: true,
 	port: 3000,
 	hostname: '', //Ex: https://my-website.com (without last slash)
 	cors: {
