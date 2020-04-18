@@ -4,8 +4,8 @@ module.exports = {
 	unexpected_error: 'There has been an unexpected error during the request.',
 	unexpected_verification_error:
 		'There has been an unexpected verification error during the request.',
-	invalidPassword: 'The token does not match.',
-	ipMismatch: 'The ip does not correspond to the previus request ip.',
+	invalid_password: 'The token does not match.',
+	ip_mismatch: 'The ip does not correspond to the previus request ip.',
 	not_an_admin:
 		'You are not authorized to access this site. Please request access to an administrator.',
 	not_logged_in: 'You are not logged in! Please login in to continue',

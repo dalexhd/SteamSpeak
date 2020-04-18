@@ -1,5 +1,5 @@
 import router from '@/router';
-import jwt from '../../http/requests/auth/jwt/index';
+import jwt from '../../http/requests/auth';
 
 export default {
 	find() {
@@ -47,7 +47,7 @@ export default {
 
 					// Navigate User to homepage
 					router.push({
-						name: 'home'
+						name: 'admin:home'
 					});
 					resolve(response);
 				})
