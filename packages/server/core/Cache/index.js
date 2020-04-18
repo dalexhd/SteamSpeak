@@ -25,19 +25,19 @@ Pub.on('message', async (channel, key, paylaod) => {
 	switch (channel) {
 		case EVENT_SET:
 			if (!key.includes('shadow:')) Cache.set(`shadow:${key}`, paylaod);
-			console.log(`Key "${key}" set!`);
+			if (config.debug) log.info(`Key "${key}" set!`, 'cache');
 			break;
 		case EVENT_EXPIRED:
 			value = await Cache.get(`shadow:${key}`);
 			if (value) {
 				Events.emit(`${key.split(':')[0]}Expired`, value);
-				Cache.del(`shadow:${key}`);
+				if (config.debug) log.info(`shadow:${key}`, 'cache');
 			}
-			console.log(`Key "${key}" expired!`);
+			if (config.debug) log.info(`Key "${key}" expired!`, 'cache');
 			break;
 		case EVENT_DEL:
 			if (!key.includes('shadow:')) Cache.del(`shadow:${key}`);
-			console.log(`Key "${key}" deleted!`);
+			if (config.debug) log.info(`Key "${key}" deleted!`, 'cache');
 			break;
 	}
 });

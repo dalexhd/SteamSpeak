@@ -38,6 +38,9 @@ const Log = {
 				case 'cache':
 					color = 'yellow';
 					break;
+				case 'website':
+					color = 'gray';
+					break;
 				default:
 					'reset';
 					break;
@@ -56,7 +59,7 @@ const Log = {
 	},
 
 	/**
-	 * Print a log message with a timestamp.
+	 * Print a info log message with a timestamp.
 	 *
 	 * @param {string} log
 	 */
@@ -65,7 +68,7 @@ const Log = {
 	},
 
 	/**
-	 * Print a log message with a timestamp.
+	 * Print a verbose log message with a timestamp.
 	 *
 	 * @param {string} log
 	 */
@@ -74,7 +77,7 @@ const Log = {
 	},
 
 	/**
-	 * Print a log message with a timestamp.
+	 * Print a debuglog message with a timestamp.
 	 *
 	 * @param {string} log
 	 */
@@ -83,7 +86,7 @@ const Log = {
 	},
 
 	/**
-	 * Print a log message with a timestamp.
+	 * Print a log warning message with a timestamp.
 	 *
 	 * @param {string} log
 	 */

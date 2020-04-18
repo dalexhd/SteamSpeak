@@ -21,7 +21,7 @@ mongoose
 	})
 	.catch((err) => {
 		log.error(err.message, 'database');
-		process.exit();
+		process.exit(1);
 	});
 
 module.exports = Database;
