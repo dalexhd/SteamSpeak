@@ -1,6 +1,6 @@
 {
   "name": "@steamspeak/client",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -12,13 +12,13 @@
   "dependencies": {
     "@chenfengyuan/vue-countdown": "^1.1.5",
     "@mdi/font": "^5.0.45",
-    "axios-mock-adapter": "^1.17.0",
     "ag-grid-community": "^23.0.1",
     "ag-grid-vue": "^23.0.0",
     "algoliasearch": "^4.1.0",
     "apexcharts": "^3.17.0",
     "auth0-js": "^9.12.2",
     "axios": "^0.19.2",
+    "axios-mock-adapter": "^1.17.0",
     "chart.js": "^2.9.3",
     "core-js": "^3.6.4",
     "echarts": "^4.7.0",
