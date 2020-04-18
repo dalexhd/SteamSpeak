@@ -1,10 +1,18 @@
 # Changelog
 
+## [v0.3.0](https://github.com/dalexhd/steamspeak/tree/v0.3.0) (2020-04-18)
+
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.2.0...v0.3.0)
+
+:rocket: New Features
+
+- Add steam rich presence [\#35](https://github.com/dalexhd/SteamSpeak/pull/35) ([dalexhd](https://github.com/dalexhd))
+
 ## [v0.2.0](https://github.com/dalexhd/steamspeak/tree/v0.2.0) (2020-04-15)
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.1.1...v0.2.0)
 
-:triangular_flag_on_post: Breaking Changes
+:triangular_flag_on_post: Breaking Change s
 
 - Feature/add lerna environment [\#33](https://github.com/dalexhd/SteamSpeak/pull/33) ([dalexhd](https://github.com/dalexhd))
 
