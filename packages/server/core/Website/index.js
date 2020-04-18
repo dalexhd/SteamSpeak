@@ -1,5 +1,4 @@
 const config = require('../../config/website');
-if (!config.enabled) return;
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -25,4 +24,4 @@ app.get('*', (req, res) => {
 const port = config.port;
 app.listen(port);
 
-console.log(`App is listening on port ${port}`);
+console.info(`Website is UP: ${config.hostname}`);

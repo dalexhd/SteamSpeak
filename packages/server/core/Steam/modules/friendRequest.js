@@ -1,13 +1,12 @@
-const { community, steamUser, csgo } = require('../../Steam');
+const { steamUser } = require('../../Steam');
 const Ts3 = require('../../TeamSpeak');
-const config = require('../../../config/steam');
 const web_config = require('../../../config/website');
 const User = require('../../Database/models/user');
 const SteamUser = require('steam-user');
 const crypto = require('crypto');
 const Cache = require('../../Cache');
 const Events = require('../../Events');
-const lang = require('../../../locales/en');
+const lang = require('../../../locales');
 
 Events.on('verificationExpired', (data) => {
 	let _data = JSON.parse(data);
@@ -18,12 +17,12 @@ Events.on('verificationExpired', (data) => {
 });
 
 Events.on('verificationSucess', (steamId) => {
-	steamUser.chatMessage(steamId, "⠀\nNice!\nYou've successfully verified on SteamSpeak 😄");
+	steamUser.chatMessage(steamId, lang.message.success_verification);
 	steamUser.getPersonas([steamId]);
 });
 
 // Called when a Steam User change has been made.
-module.exports.EventSteamFriendRelationship = (senderID, relationship) => {
+steamUser.on('friendRelationship', (senderID, relationship) => {
 	const { RequestRecipient, Friend, None } = SteamUser.EFriendRelationship;
 	switch (relationship) {
 		case RequestRecipient || Friend:
@@ -35,7 +34,25 @@ module.exports.EventSteamFriendRelationship = (senderID, relationship) => {
 		default:
 			break;
 	}
-};
+});
+
+// Called when steam bot recieves a message
+steamUser.on('friendMessage', async (senderID, message) => {
+	let steamId = senderID.getSteamID64();
+	if (message === '!verify') {
+		if (
+			!(await User.exists({
+				steamId
+			}))
+		) {
+			startVerification(senderID);
+		} else {
+			steamUser.chatMessage(senderID, "You're already verified.");
+		}
+	} else {
+		steamUser.chatMessage(senderID, 'Command not found.\nPlease send !verify');
+	}
+});
 
 const startVerification = async (senderID) => {
 	let steamId = senderID.getSteamID64();
@@ -53,24 +70,7 @@ const startVerification = async (senderID) => {
 	);
 };
 
-module.exports.EventSteamFriendMessage = async (senderID, message) => {
-	let steamId = senderID.getSteamID64();
-	if (message === '!verify') {
-		if (
-			!(await User.exists({
-				steamId
-			}))
-		) {
-			startVerification(senderID);
-		} else {
-			steamUser.chatMessage(senderID, "You're already verified.");
-		}
-	} else {
-		steamUser.chatMessage(senderID, 'Command not found.\nPlease send !verify');
-	}
-};
-
-async function friendDeleted(senderID) {
+const friendDeleted = async (senderID) => {
 	let steamId = senderID.getSteamID64();
 	let user = await User.findOne({ steamId });
 	if (user) {
@@ -80,22 +80,14 @@ async function friendDeleted(senderID) {
 		});
 		user.remove(() => {
 			if (client) {
-				client.poke('Your SteamSpeak account has been deleted from our system.');
+				client.poke(lang.steam.friend.deleted);
 			}
 		});
 	}
-}
+};
 
-async function newFriend(senderID) {
+const newFriend = async (senderID) => {
 	steamUser.addFriend(senderID).then(() => {
 		startVerification(senderID);
 	});
-}
-
-module.exports.info = {
-	name: 'friendRequest',
-	desc: 'Load friend request module.',
-	config: {
-		enabled: true
-	}
 };
