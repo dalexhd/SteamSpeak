@@ -1,8 +1,9 @@
 const Events = require('../../../Events');
-const lang = require('../../../../locales/en');
+const lang = require('../../../../locales');
 const crypto = require('crypto');
 const Cache = require('../../../Cache');
 const { findClients } = require('./auth');
+const log = require('../../../../utils/log');
 const User = require('../../../Database/models/user');
 
 /**
@@ -17,7 +18,14 @@ const findSecret = async function (req) {
 	return steamData;
 };
 
+/**
+ * Check if the user is connected to the server.
+ *
+ * @param {object} req The express request instance
+ * @param {object} res The express response instance
+ */
 exports.check = async (req, res) => {
+	log.info('Recieved verification check request from remote.', 'website');
 	try {
 		let steamData = await findSecret(req);
 		let clients = await findClients(req, {
@@ -32,7 +40,14 @@ exports.check = async (req, res) => {
 	}
 };
 
+/**
+ * Send to the selected user a secret validation token.
+ *
+ * @param {object} req The express request instance
+ * @param {object} res The express response instance
+ */
 exports.send = async (req, res) => {
+	log.info(`Recieved verification send request to ${req.body.dbid} from remote.`, 'website');
 	try {
 		let steamData = await findSecret(req);
 		let [client] = await findClients(req, {
@@ -67,7 +82,14 @@ exports.send = async (req, res) => {
 	}
 };
 
+/**
+ * Login with specified user
+ *
+ * @param {object} req The express request instance
+ * @param {object} res The express response instance
+ */
 exports.login = async (req, res) => {
+	log.info(`Recieved login request from ${req.body.dbid}.`, 'website');
 	try {
 		let steamData = await findSecret(req);
 		let [client] = await findClients(req, {
@@ -79,17 +101,18 @@ exports.login = async (req, res) => {
 		if (typeof sendCache === 'undefined')
 			throw { statusCode: 500, message: lang.error.unexpected_verification_error };
 		if (sendCache.token !== req.body.token) {
-			throw { statusCode: 403, message: lang.error.invalidPassword };
+			throw { statusCode: 403, message: lang.error.invalid_password };
 		} else if (sendCache.ip !== client.connectionclientip) {
-			throw { statusCode: 403, message: lang.error.ipMismatch };
+			throw { statusCode: 403, message: lang.error.ip_mismatch };
 		} else {
+			log.success(`${client.nickname} verified successfuly!`, 'website');
 			User.create({
 				uid: client.uniqueIdentifier,
 				dbid: client.databaseId,
 				steamId: steamData.steamId
 			});
 			Events.emit('verificationSucess', steamData.steamId, client.databaseId);
-			client.message("Nice!\nYou've successfully verified on SteamSpeak 😄");
+			client.message(lang.message.success_verification);
 			Cache.del(`${client.databaseId}:verifyToken`);
 			Cache.del(`verification:${req.body.secret}`);
 			Cache.del(`shadow:verification:${req.body.secret}`);
