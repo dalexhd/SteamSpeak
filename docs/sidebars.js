@@ -22,6 +22,13 @@ module.exports = {
           ],
         },
       ],
+    },
+    {
+      type: 'category',
+      label: 'Guides',
+      items: [
+        "guide/running-steamspeak"
+      ],
     }
   ]
 };

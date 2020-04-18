@@ -1,16 +1,14 @@
 module.exports = {
 	port: 3000,
-	hostname: '', //Ex: https://my-website.com (without last slash)
+	hostname: 'localhost', //Ex: https://my-website.com (without last slash)
 	cors: {
 		/**
 		 * @see https://github.com/expressjs/cors#configuration-options
 		 */
-		options: {
-			origin: ['*'],
-			methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
-			preflightContinue: false,
-			optionsSuccessStatus: 204
-		}
+		origin: ['*'],
+		methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+		preflightContinue: false,
+		optionsSuccessStatus: 204
 	},
 	jwt: {
 		/**

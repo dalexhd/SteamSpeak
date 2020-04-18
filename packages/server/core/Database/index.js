@@ -14,7 +14,10 @@ function buildURI() {
 }
 
 mongoose
-	.connect(url, config.opts)
+	.connect(
+		url,
+		config.opts || { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }
+	)
 	.then((db) => {
 		Database = db;
 		log.success('Connected to the database!', 'database');

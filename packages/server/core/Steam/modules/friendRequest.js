@@ -65,7 +65,7 @@ const startVerification = async (senderID) => {
 		senderID,
 		lang.message.verify_page_msg.replaceArray(
 			['{URL}'],
-			[`${web_config.hostname}/verify/${secret}`]
+			[`${web_config.hostname || 'localhost'}/verify/${secret}`]
 		)
 	);
 };
