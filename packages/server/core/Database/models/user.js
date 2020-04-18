@@ -8,7 +8,10 @@ const UserSchema = new Schema({
 		unique: true
 	},
 	dbid: Number,
-	steamId: Number,
+	steamId: {
+		type: String,
+		unique: true
+	},
 	groupId: Number,
 	groupNumber: Number
 });
