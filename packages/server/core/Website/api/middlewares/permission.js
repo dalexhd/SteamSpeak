@@ -1,10 +1,10 @@
-const lang = require('../../../../locales/en');
+const lang = require('../../../../locales');
 
 /**
- *Check if the user has the given role/s to perform an action.
+ * Check if the user has the given role/s to perform an action.
  *
  * @export
- * @param {*} allowed
+ * @param {*} allowed Comma separated string
  */
 exports.permit = function (...allowed) {
 	const isAllowed = (role) => allowed.indexOf(role) > -1;

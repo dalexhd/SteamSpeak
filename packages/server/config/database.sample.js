@@ -7,5 +7,5 @@ module.exports = {
 	user: '',
 	password: '',
 	database: 'steam_speak',
-	opts: { useNewUrlParser: true, useUnifiedTopology: true }
+	opts: { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }
 };

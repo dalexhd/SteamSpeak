@@ -22,8 +22,9 @@ Navigate to `packages/server/config` directory and modify previusly generated fi
 
 ```javascript
 module.exports = {
-  stdTTL: 0,
-  checkperiod: 120
+  host: '127.0.0.1',
+  port: 6379,
+  debug: false
 };
 ```
 
@@ -31,8 +32,9 @@ module.exports = {
 
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
-| `stdTTL` | `number` | `0` | The standard ttl as number in seconds for every generated cache element. |
-| `checkperiod` | `number` | `120` | The period in seconds, as a number, used for the automatic delete check interval. |
+| `host` | `string` | `127.0.0.1` | The host to connect to. |
+| `port` | `number` | 6379 | The port of the Redis instance. |
+| `debug` | `boolean` | false | Debug redis connection. |
 
 ### Database configuration
 
@@ -43,7 +45,7 @@ module.exports = {
   user: '',
   password: '',
   database: 'steam_speak',
-  opts: { useNewUrlParser: true, useUnifiedTopology: true }
+  opts: { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }
 };
 ```
 
@@ -56,7 +58,7 @@ module.exports = {
 | `user` | `string` | | Username for authentication. |
 | `password` | `string` | | Password for authentication. |
 | `database` | `string` | `steam_speak` | The name of the database we want to use. |
-| `opts` | `object` | `{ useNewUrlParser: true, useUnifiedTopology: true }` | Optional options of the connection. |
+| `opts` | `object` | `{ useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }` | Optional options of the connection. |
 
 ### Steam configuration
 
@@ -114,3 +116,44 @@ module.exports = {
 | `server_id` | `number` | `1` | The server id of the server. |
 | `channel_id` | `number` | `1` | The channel where the bot stays in. |
 | `debug` | `boolean` | `false` | Debug teamspeak connection. |
+
+
+### Web server configuration
+
+This web server configuration file is located at `src/server/config/website.js`
+
+```javascript
+module.exports = {
+	port: 3000,
+	hostname: 'localhost', //Ex: https://my-website.com (without last slash)
+	cors: {
+    /**
+     * @see https://github.com/expressjs/cors#configuration-options
+     */
+    origin: ['*'],
+    methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
+    preflightContinue: false,
+    optionsSuccessStatus: 204
+	},
+	jwt: {
+		/**
+		 * @see https://randomkeygen.com/
+		 */
+		secret: 'put a secret key here',
+		options: {
+			expiresIn: '2h'
+		}
+	},
+	admins: []
+};
+```
+
+**Options**
+
+| Option | Type | Default | Description |
+| --- | --- | --- | --- |
+| `port` | `number` | `3000` | The host to connect to. |
+| `hostname` | `string` | `localhost` | The queryport to use. |
+| `cors` | `object` |  | Cors options. See https://github.com/expressjs/cors#configuration-options |
+| `jwt` | `object` |  | JWT options |
+| `admins` | `array` |  | Admin uids that should be able to login into the web admin panel. |

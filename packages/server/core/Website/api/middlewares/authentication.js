@@ -1,5 +1,5 @@
 const Ts3 = require('../../../TeamSpeak');
-const lang = require('../../../../locales/en');
+const lang = require('../../../../locales');
 const jwt = require('jsonwebtoken');
 const config = require('../../../../config/website');
 

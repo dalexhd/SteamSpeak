@@ -31,8 +31,8 @@ const router = new Router({
 				// =============================================================================
 				{
 					path: '/',
-					name: 'home',
-					component: () => import('@/views/Home.vue'),
+					name: 'admin:home',
+					component: () => import('@/views/private/Home.vue'),
 					meta: {
 						rule: 'admin'
 					}
@@ -40,7 +40,7 @@ const router = new Router({
 				{
 					path: '/page2',
 					name: 'page-2',
-					component: () => import('@/views/Page2.vue'),
+					component: () => import('@/views/private/Page2.vue'),
 					meta: {
 						rule: 'admin'
 					}
@@ -58,9 +58,25 @@ const router = new Router({
 				// PAGES
 				// =============================================================================
 				{
+					path: '/home',
+					name: 'home',
+					component: () => import('@/views/public/home/Home.vue'),
+					meta: {
+						rule: 'guest'
+					}
+				},
+				{
 					path: '/login',
 					name: 'login',
-					component: () => import('@/views/pages/login/Login.vue'),
+					component: () => import('@/views/public/login/Login.vue'),
+					meta: {
+						rule: 'guest'
+					}
+				},
+				{
+					path: '/verify/:secret',
+					name: 'verify',
+					component: () => import('@/views/public/verify/Verify.vue'),
 					meta: {
 						rule: 'guest'
 					}
@@ -68,7 +84,7 @@ const router = new Router({
 				{
 					path: '/pages/error-404',
 					name: 'page-error-404',
-					component: () => import('@/views/pages/Error404.vue'),
+					component: () => import('@/views/Error404.vue'),
 					meta: {
 						rule: 'guest'
 					}
@@ -76,7 +92,7 @@ const router = new Router({
 				{
 					path: '/pages/not-authorized',
 					name: 'page-not-authorized',
-					component: () => import('@/views/pages/NotAuthorized.vue'),
+					component: () => import('@/views/NotAuthorized.vue'),
 					meta: {
 						rule: 'guest'
 					}

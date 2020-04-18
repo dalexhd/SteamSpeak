@@ -35,6 +35,15 @@ const Log = {
 				case 'database':
 					color = 'grey';
 					break;
+				case 'cache':
+					color = 'yellow';
+					break;
+				case 'website':
+					color = 'gray';
+					break;
+				default:
+					'reset';
+					break;
 			}
 			prefix = chalk.cyan(
 				`[${this.time()}]${chalk[color].bold(` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`)}`
@@ -50,7 +59,7 @@ const Log = {
 	},
 
 	/**
-	 * Print a log message with a timestamp.
+	 * Print a info log message with a timestamp.
 	 *
 	 * @param {string} log
 	 */
@@ -59,7 +68,7 @@ const Log = {
 	},
 
 	/**
-	 * Print a log message with a timestamp.
+	 * Print a verbose log message with a timestamp.
 	 *
 	 * @param {string} log
 	 */
@@ -68,7 +77,7 @@ const Log = {
 	},
 
 	/**
-	 * Print a log message with a timestamp.
+	 * Print a debuglog message with a timestamp.
 	 *
 	 * @param {string} log
 	 */
@@ -77,7 +86,7 @@ const Log = {
 	},
 
 	/**
-	 * Print a log message with a timestamp.
+	 * Print a log warning message with a timestamp.
 	 *
 	 * @param {string} log
 	 */

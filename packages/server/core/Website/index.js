@@ -1,5 +1,4 @@
 const config = require('../../config/website');
-if (!config.enabled) return;
 const express = require('express');
 const cors = require('cors');
 const path = require('path');
@@ -9,7 +8,7 @@ const bodyParser = require('body-parser');
 const apiRoutes = require('./api/routes');
 
 const app = express();
-app.use(cors(config.cors.options));
+app.use(cors(config.cors));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, '../../../client/dist')));
@@ -25,4 +24,4 @@ app.get('*', (req, res) => {
 const port = config.port;
 app.listen(port);
 
-console.log(`App is listening on port ${port}`);
+console.info(`Website is UP: ${config.hostname || 'localhost'}`);

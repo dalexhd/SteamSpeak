@@ -92,7 +92,7 @@ function listenEvents() {
 function beforeExit() {
 	process.on('SIGINT', () => {
 		Ts3.quit();
-		process.exit();
+		process.exit(1);
 	});
 }
 

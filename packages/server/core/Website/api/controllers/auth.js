@@ -1,22 +1,24 @@
 const Ts3 = require('../../../TeamSpeak');
-const lang = require('../../../../locales/en');
+const lang = require('../../../../locales');
 require('../../../../utils/string');
 const crypto = require('crypto');
 const Cache = require('../../../Cache');
+const log = require('../../../../utils/log');
 const config = require('../../../../config/website');
 const jwt = require('jsonwebtoken');
 
 /**
- * Print a log message with a customizable color.
+ * Find clients with the request ip.
  *
  * @param {object} req The express request instance
  * @param {object} filter The filter to apply to the clientList command.
  */
-const findClients = async function (req, filter) {
+exports.findClients = async function (req, filter) {
 	let ip =
 		req.headers['cf-connecting-ip'] ||
 		req.headers['x-forwarded-for'] ||
 		req.connection.remoteAddress;
+	ip = '172.17.0.1';
 	let clients = await Ts3.clientList({
 		connection_client_ip: ip,
 		...filter
@@ -45,10 +47,16 @@ const createToken = function (uid) {
 	);
 };
 
-// Find user by request IP
+/**
+ * Check if the user is connected to the server.
+ *
+ * @param {object} req The express request instance
+ * @param {object} res The express response instance
+ */
 exports.find = async (req, res) => {
+	log.info('Recieved find request from remote.', 'website');
 	try {
-		let clients = await findClients(req, {
+		let clients = await this.findClients(req, {
 			client_type: 0
 		});
 		res.status(200).json(clients);
@@ -60,10 +68,16 @@ exports.find = async (req, res) => {
 	}
 };
 
-// Send the user the key
+/**
+ * Send to the selected user a secret validation token.
+ *
+ * @param {object} req The express request instance
+ * @param {object} res The express response instance
+ */
 exports.send = async (req, res) => {
+	log.info(`Recieved send request to ${req.body.dbid} from remote.`, 'website');
 	try {
-		let [client] = await findClients(req, {
+		let [client] = await this.findClients(req, {
 			client_type: 0,
 			client_database_id: req.body.dbid
 		});
@@ -73,10 +87,15 @@ exports.send = async (req, res) => {
 				lang.message.login_msg.replaceArray(['{NICKNAME}', '{TOKEN}'], [client.nickname, token])
 			)
 			.then(() => {
-				Cache.set(`${client.databaseId}:token`, {
-					ip: client.connectionclientip,
-					token
-				});
+				Cache.set(
+					`${client.databaseId}:token`,
+					JSON.stringify({
+						ip: client.connectionclientip,
+						token
+					}),
+					'ex',
+					600
+				);
 				res.status(200).end();
 			});
 	} catch (error) {
@@ -87,20 +106,29 @@ exports.send = async (req, res) => {
 	}
 };
 
+/**
+ * Login with specified user
+ *
+ * @param {object} req The express request instance
+ * @param {object} res The express response instance
+ */
 exports.login = async (req, res) => {
+	log.info(`Recieved login request from ${req.body.dbid}.`, 'website');
 	try {
-		let [client] = await findClients(req, {
+		let [client] = await this.findClients(req, {
 			client_type: 0,
 			client_database_id: req.body.dbid
 		});
-		let sendCache = Cache.get(`${client.databaseId}:token`);
+		let sendCache = JSON.parse(await Cache.get(`${client.databaseId}:token`));
+
 		if (typeof sendCache === 'undefined')
 			throw { statusCode: 500, message: lang.error.unexpected_verification_error };
 		if (sendCache.token !== req.body.token) {
-			throw { statusCode: 403, message: lang.error.invalidPassword };
+			throw { statusCode: 403, message: lang.error.invalid_password };
 		} else if (sendCache.ip !== client.connectionclientip) {
-			throw { statusCode: 403, message: lang.error.ipMismatch };
+			throw { statusCode: 403, message: lang.error.ip_mismatch };
 		} else {
+			log.success(`${client.nickname} logged successfuly!`, 'website');
 			Cache.del(`${client.databaseId}:token`);
 			const accessToken = createToken(client.uniqueIdentifier);
 			res.status(201).json({
@@ -117,6 +145,12 @@ exports.login = async (req, res) => {
 	}
 };
 
+/**
+ * Get the logged user info
+ *
+ * @param {object} req The express request instance
+ * @param {object} res The express response instance
+ */
 exports.me = async (req, res) => {
 	try {
 		var decoded = jwt.verify(req.token, config.jwt.secret);
@@ -130,6 +164,12 @@ exports.me = async (req, res) => {
 	}
 };
 
+/**
+ * Refresh logged user token
+ *
+ * @param {object} req The express request instance
+ * @param {object} res The express response instance
+ */
 exports.refreshToken = async (req, res) => {
 	try {
 		var decoded = jwt.verify(req.token, config.jwt.secret);
