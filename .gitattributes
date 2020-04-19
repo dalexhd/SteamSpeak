@@ -1,0 +1,3 @@
+# Ignore the following directories from linguist
+packages/client/src/assets/scss* linguist-vendored
+packages/client/src/components* linguist-vendored
