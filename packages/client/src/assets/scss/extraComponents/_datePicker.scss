@@ -1,75 +1,75 @@
 @import "../_variables.scss";
 
 .vdp-datepicker {
-  input {
-    padding: 0.7rem;
-    font-size: 1rem;
-    border-radius: 5px;
-    border: 1px solid rgba(0, 0, 0, 0.2);
-    color: $content-color;
-    width: 100%;
-  }
+	input {
+		padding: 0.7rem;
+		font-size: 1rem;
+		border-radius: 5px;
+		border: 1px solid rgba(0, 0, 0, 0.2);
+		color: $content-color;
+		width: 100%;
+	}
 
-  input[disabled] {
-    opacity: 0.5;
-  }
+	input[disabled] {
+		opacity: 0.5;
+	}
 
-  .vdp-datepicker__calendar {
-    border-radius: 0.5rem;
-    z-index: 401;
+	.vdp-datepicker__calendar {
+		border-radius: 0.5rem;
+		z-index: 401;
 
-    header {
-      .pre {
-        border-top-left-radius: 0.5rem;
-      }
+		header {
+			.pre {
+				border-top-left-radius: 0.5rem;
+			}
 
-      .next {
-        border-top-right-radius: 0.5rem;
-      }
-    }
-  }
+			.next {
+				border-top-right-radius: 0.5rem;
+			}
+		}
+	}
 
-  .day.blank {
-    background: transparent;
-  }
+	.day.blank {
+		background: transparent;
+	}
 
-  .cell {
-    &.day {
-      border-radius: 50%;
-      margin-left: 1%;
-      margin-right: 1%;
-      height: 37px;
-      line-height: 37px;
-      width: 12.285714286%;
-    }
+	.cell {
+		&.day {
+			border-radius: 50%;
+			margin-left: 1%;
+			margin-right: 1%;
+			height: 37px;
+			line-height: 37px;
+			width: 12.285714286%;
+		}
 
-    &.month,
-    &.year {
-      border-radius: 0.5rem;
-    }
+		&.month,
+		&.year {
+			border-radius: 0.5rem;
+		}
 
-    &:not(.blank):hover {
-      // border-color: rgba(var(--vs-primary),1) !important;
-      border-color: rgba(0, 0, 0, 0) !important;
-      background-color: #eee;
-    }
+		&:not(.blank):hover {
+			// border-color: rgba(var(--vs-primary),1) !important;
+			border-color: rgba(0, 0, 0, 0) !important;
+			background-color: #eee;
+		}
 
-    &.day.highlighted {
-      background: rgba(var(--vs-primary), 0.7);
-      color: $white;
+		&.day.highlighted {
+			background: rgba(var(--vs-primary), 0.7);
+			color: $white;
 
-      &:hover {
-        background: rgba(var(--vs-primary), 1);
-      }
-    }
+			&:hover {
+				background: rgba(var(--vs-primary), 1);
+			}
+		}
 
-    &.selected {
-      color: $white;
-      background: rgba(var(--vs-primary), 1) !important;
+		&.selected {
+			color: $white;
+			background: rgba(var(--vs-primary), 1) !important;
 
-      &:hover {
-        background: rgba(var(--vs-primary), 1);
-      }
-    }
-  }
+			&:hover {
+				background: rgba(var(--vs-primary), 1);
+			}
+		}
+	}
 }

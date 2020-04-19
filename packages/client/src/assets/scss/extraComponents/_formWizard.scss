@@ -1,37 +1,37 @@
 .vue-form-wizard.md {
-  .wizard-navigation {
-    .wizard-progress-with-circle {
-      top: 33px !important;
-    }
+	.wizard-navigation {
+		.wizard-progress-with-circle {
+			top: 33px !important;
+		}
 
-    .wizard-nav {
-      .wizard-icon-circle {
-        border: 3px solid #ccc;
-        width: 55px;
-        height: 55px;
+		.wizard-nav {
+			.wizard-icon-circle {
+				border: 3px solid #ccc;
+				width: 55px;
+				height: 55px;
 
-        .wizard-icon {
-          font-size: 1.5rem;
-        }
-      }
+				.wizard-icon {
+					font-size: 1.5rem;
+				}
+			}
 
-      .stepTitle {
-        color: #626262;
-      }
-    }
-  }
+			.stepTitle {
+				color: #626262;
+			}
+		}
+	}
 }
 
 // Change form-wizard-container font style
 i.wizard-icon {
-  font-style: inherit;
+	font-style: inherit;
 }
 
 .stepTitle {
-  margin-top: 0.5rem;
+	margin-top: 0.5rem;
 }
 
 // same height as input in form wizard
 .select-large input.vs-select--input {
-  padding: 11px;
+	padding: 11px;
 }

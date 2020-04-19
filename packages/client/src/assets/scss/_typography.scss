@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700');
 
 body {
-  color: $content-color;
+	color: $content-color;
 }
 
 h1,
@@ -16,10 +16,10 @@ h6,
 .h4,
 .h5,
 .h6 {
-  font-family: $headings-font-family;
-  font-weight: $headings-font-weight;
-  line-height: $headings-line-height;
-  color: $headings-color;
+	font-family: $headings-font-family;
+	font-weight: $headings-font-weight;
+	line-height: $headings-line-height;
+	color: $headings-color;
 }
 
 h1,
@@ -41,19 +41,19 @@ h6,
 .h6 { font-size: $h6-font-size; }
 
 h4 {
-  .vs-tooltip & {
-    color: $white;
-  }
+	.vs-tooltip & {
+		color: $white;
+	}
 }
 
 a:active,
 a:visited,
 a:hover,
 a {
-  color: rgba(var(--vs-primary), 1);
+	color: rgba(var(--vs-primary), 1);
 }
 
 // quill editor
 u {
-  text-decoration: underline;
+	text-decoration: underline;
 }

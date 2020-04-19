@@ -3,10 +3,10 @@
  */
 
 .flag {
-  display: inline-block;
-  width: 24px;
-  height: 24px;
-  background: url("~@/assets/images/flags/flags-sprites.png") no-repeat;
+	display: inline-block;
+	width: 24px;
+	height: 24px;
+	background: url("~@/assets/images/flags/flags-sprites.png") no-repeat;
 }
 
 .flag.flag-abkhazia { background-position: 0 0; }
