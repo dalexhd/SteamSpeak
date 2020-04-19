@@ -1,48 +1,48 @@
 .theme-semi-dark {
 
-  // Vertical NavMenu
-  .v-nav-menu {
-    .vs-sidebar {
-      background-color: $sidebar-dark-bg;
-    }
+	// Vertical NavMenu
+	.v-nav-menu {
+		.vs-sidebar {
+			background-color: $sidebar-dark-bg;
+		}
 
-    .shadow-bottom {
-      width: 94%;
-      background: linear-gradient(to bottom, rgb(15, 22, 66) 44%, rgba(15, 22, 66, 0.51) 73%, rgba(44, 48, 60, 0) 100%);
-    }
+		.shadow-bottom {
+			width: 94%;
+			background: linear-gradient(to bottom, rgb(15, 22, 66) 44%, rgba(15, 22, 66, 0.51) 73%, rgba(44, 48, 60, 0) 100%);
+		}
 
-    .scroll-area-v-nav-menu {
-      .feather-icon,
-      span {
-        color: $white;
-      }
+		.scroll-area-v-nav-menu {
+			.feather-icon,
+			span {
+				color: $white;
+			}
 
-      a {
-        .feather-icon {
-          svg,
-          span {
-            color: $white;
-          }
-        }
-      }
+			a {
+				.feather-icon {
+					svg,
+					span {
+						color: $white;
+					}
+				}
+			}
 
-      .vs-sidebar-group {
-        &.vs-sidebar-group-open {
-          > .group-header {
-            background: $content-dark-bg;
-          }
-        }
+			.vs-sidebar-group {
+				&.vs-sidebar-group-open {
+					> .group-header {
+						background: $content-dark-bg;
+					}
+				}
 
-        &.vs-sidebar-group-active {
-          > .group-header {
-            background: $content-dark-bg;
-          }
-        }
-      }
+				&.vs-sidebar-group-active {
+					> .group-header {
+						background: $content-dark-bg;
+					}
+				}
+			}
 
-      .con-vs-chip {
-        box-shadow: 0 0 4px 2px $content-dark-bg;
-      }
-    }
-  }
+			.con-vs-chip {
+				box-shadow: 0 0 4px 2px $content-dark-bg;
+			}
+		}
+	}
 }
