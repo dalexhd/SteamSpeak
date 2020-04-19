@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.3.1](https://github.com/dalexhd/steamspeak/tree/v0.3.1) (2020-04-19)
+
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.3.0...v0.3.1)
+
+:chart_with_upwards_trend: Optimization
+
+- Remove unused css [\#37](https://github.com/dalexhd/SteamSpeak/pull/37) ([dalexhd](https://github.com/dalexhd))
+
 ## [v0.3.0](https://github.com/dalexhd/steamspeak/tree/v0.3.0) (2020-04-18)
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.2.0...v0.3.0)
