@@ -1,20 +1,20 @@
 @import "../_variables.scss";
 
 .quill-editor {
-  .ql-bubble {
-    .ql-tooltip {
-      z-index: 51000;
-    }
-  }
+	.ql-bubble {
+		.ql-tooltip {
+			z-index: 51000;
+		}
+	}
 }
 
 .theme-dark {
-  .quill-editor {
-    .ql-snow {
-      &.ql-toolbar,
-      &.ql-container {
-        border-color: $theme-dark-border-color;
-      }
-    }
-  }
+	.quill-editor {
+		.ql-snow {
+			&.ql-toolbar,
+			&.ql-container {
+				border-color: $theme-dark-border-color;
+			}
+		}
+	}
 }

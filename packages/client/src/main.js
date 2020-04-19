@@ -50,9 +50,6 @@ import ServiceWorkerPlugin from './registerServiceWorker';
 // Styles: SCSS
 import './assets/scss/_style.scss';
 
-// Tailwind
-import '@/assets/css/main.css';
-
 // Vue Router
 import router from './router';
 
