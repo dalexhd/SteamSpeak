@@ -42,7 +42,7 @@ module.exports = {
 	css: {
 		loaderOptions: {
 			postcss: {
-				plugins: [require('tailwindcss'), require('autoprefixer'), require('postcss-rtl')]
+				plugins: [require('tailwindcss'), require('autoprefixer')]
 			}
 		}
 	}
