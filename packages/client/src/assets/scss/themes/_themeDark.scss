@@ -1345,6 +1345,7 @@
 					}
 				}
 
+				/*! rtl:begin:ignore */
 				.prev {
 					&::after {
 						border-right-color: $white;
@@ -1356,6 +1357,8 @@
 						border-left-color: $white;
 					}
 				}
+
+				/*! rtl:end:ignore */
 			}
 
 			.disabled {
