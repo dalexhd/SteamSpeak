@@ -40,7 +40,6 @@ steamUser.once('loggedOn', function () {
 csgo.on('connectedToGC', function () {
 	log.success('Connected to GC', 'csgo');
 	loadModules();
-	require('../Steam/modules/richPresence');
 });
 
 /**
