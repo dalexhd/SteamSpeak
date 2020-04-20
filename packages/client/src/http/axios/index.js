@@ -42,26 +42,31 @@ backend.interceptors.response.use(
 		const originalRequest = config;
 
 		// if (status === 401) {
-		if (response && response.status === 401) {
-			if (!isAlreadyFetchingAccessToken) {
-				isAlreadyFetchingAccessToken = true;
-				store
-					.dispatch('auth/fetchAccessToken', config)
-					.then((acessToken) => {
-						isAlreadyFetchingAccessToken = false;
-						onAccessTokenFetched(acessToken);
-					})
-					.catch(() => {
-						store.dispatch('auth/logout');
+		if (response) {
+			if (response.status === 401) {
+				if (!isAlreadyFetchingAccessToken) {
+					isAlreadyFetchingAccessToken = true;
+					store
+						.dispatch('auth/fetchAccessToken', config)
+						.then((acessToken) => {
+							isAlreadyFetchingAccessToken = false;
+							onAccessTokenFetched(acessToken);
+						})
+						.catch(() => {
+							store.dispatch('auth/logout');
+						});
+				}
+				const retryOriginalRequest = new Promise((resolve) => {
+					addSubscriber((acessToken) => {
+						originalRequest.headers.Authorization = `Bearer ${acessToken}`;
+						resolve(backend(originalRequest));
 					});
-			}
-			const retryOriginalRequest = new Promise((resolve) => {
-				addSubscriber((acessToken) => {
-					originalRequest.headers.Authorization = `Bearer ${acessToken}`;
-					resolve(backend(originalRequest));
 				});
-			});
-			return retryOriginalRequest;
+				return retryOriginalRequest;
+			}
+			if (response.status === 403) {
+				store.dispatch('auth/logout');
+			}
 		}
 		return Promise.reject(error);
 	}
