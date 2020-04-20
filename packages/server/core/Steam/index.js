@@ -6,7 +6,7 @@ const log = require('../../utils/log.js');
 const config = require('../../config/steam');
 const { getFiles } = require('../../utils/files');
 const { flatArray } = require('../../utils/array');
-const User = require('../Database/models/user');
+const VerifiedClient = require('../Database/models/verifiedClient');
 const path = require('path');
 const Ts3 = require('../TeamSpeak');
 
@@ -67,7 +67,7 @@ async function initUsers() {
 	let connectedClients = await Ts3.clientList({
 		client_type: 0
 	});
-	let verifiedUsers = await User.find({
+	let verifiedUsers = await VerifiedClient.find({
 		uid: { $in: connectedClients.map((client) => client.uniqueIdentifier) }
 	});
 	if (verifiedUsers.length > 0) {
