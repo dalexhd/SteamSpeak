@@ -1,5 +1,14 @@
 # Changelog
 
+## [v0.4.0](https://github.com/dalexhd/steamspeak/tree/v0.4.0) (2020-04-20)
+
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.3.1...v0.4.0)
+
+:rocket: New Features
+
+- Add multi function plugin. [\#47](https://github.com/dalexhd/SteamSpeak/pull/47) ([dalexhd](https://github.com/dalexhd))
+- Add change channel plugin. [\#46](https://github.com/dalexhd/SteamSpeak/pull/46) ([dalexhd](https://github.com/dalexhd))
+
 ## [v0.3.1](https://github.com/dalexhd/steamspeak/tree/v0.3.1) (2020-04-19)
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.3.0...v0.3.1)
@@ -53,12 +62,6 @@ After this implementation TeamSpeak3 servers will be more "Gaming Friendly", sin
 
 - Add new documentation system. [\#25](https://github.com/dalexhd/SteamSpeak/pull/25) ([dalexhd](https://github.com/dalexhd))
 
-:twisted_rightwards_arrows: Merged pull requests
-
-- Merge dev into master. [\#26](https://github.com/dalexhd/SteamSpeak/pull/26) ([dalexhd](https://github.com/dalexhd))
-- Revert "Updated package version." [\#23](https://github.com/dalexhd/SteamSpeak/pull/23) ([dalexhd](https://github.com/dalexhd))
-- Updated package version. [\#22](https://github.com/dalexhd/SteamSpeak/pull/22) ([dalexhd](https://github.com/dalexhd))
-
 ## [v0.0.7](https://github.com/dalexhd/steamspeak/tree/v0.0.7) (2020-03-27)
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.0.6...v0.0.7)
@@ -70,10 +73,6 @@ After this implementation TeamSpeak3 servers will be more "Gaming Friendly", sin
 :bug: Bug Fixes
 
 - Wrong version number on Web Panel. [\#21](https://github.com/dalexhd/SteamSpeak/issues/21)
-
-:twisted_rightwards_arrows: Merged pull requests
-
-- Merge Dev into Master. [\#18](https://github.com/dalexhd/SteamSpeak/pull/18) ([dalexhd](https://github.com/dalexhd))
 
 ## [v0.0.6](https://github.com/dalexhd/steamspeak/tree/v0.0.6) (2020-03-23)
 
@@ -91,10 +90,6 @@ After this implementation TeamSpeak3 servers will be more "Gaming Friendly", sin
 :bug: Bug Fixes
 
 - Installation problems. [\#16](https://github.com/dalexhd/SteamSpeak/issues/16)
-
-:twisted_rightwards_arrows: Merged pull requests
-
-- Added VueJS frontend. [\#15](https://github.com/dalexhd/SteamSpeak/pull/15) ([dalexhd](https://github.com/dalexhd))
 
 ## [v0.0.5](https://github.com/dalexhd/steamspeak/tree/v0.0.5) (2020-03-08)
 
@@ -121,10 +116,6 @@ After this implementation TeamSpeak3 servers will be more "Gaming Friendly", sin
 :memo: Documentation
 
 - Fix license image url. [\#6](https://github.com/dalexhd/SteamSpeak/pull/6) ([dalexhd](https://github.com/dalexhd))
-
-:twisted_rightwards_arrows: Merged pull requests
-
-- Updated changelog. [\#4](https://github.com/dalexhd/SteamSpeak/pull/4) ([dalexhd](https://github.com/dalexhd))
 
 ## [v0.0.2](https://github.com/dalexhd/steamspeak/tree/v0.0.2) (2020-03-06)
 
