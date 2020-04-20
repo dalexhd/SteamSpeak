@@ -29,7 +29,7 @@ async function validatePlugin(plugin) {
 			desc: Joi.string().required(),
 			config: Joi.object({
 				enabled: Joi.boolean().required(),
-				data: Joi.object(),
+				data: [Joi.object(), Joi.array()],
 				interval: Joi.object({
 					weeks: Joi.number().min(0),
 					days: Joi.number().min(0).max(7),
