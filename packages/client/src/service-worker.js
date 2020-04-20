@@ -3,6 +3,8 @@
 /* eslint-disable no-undef */
 self.__precacheManifest = [].concat(self.__precacheManifest || []);
 
+workbox.setConfig({ debug: false });
+
 workbox.routing.registerRoute(
 	/\.(?:png|gif|jpg|jpeg|webp|svg)$/,
 	workbox.strategies.staleWhileRevalidate({
