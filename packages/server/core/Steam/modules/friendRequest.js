@@ -1,7 +1,7 @@
 const { steamUser } = require('../../Steam');
 const Ts3 = require('../../TeamSpeak');
 const web_config = require('../../../config/website');
-const User = require('../../Database/models/user');
+const VerifiedClient = require('../../Database/models/verifiedClient');
 const SteamUser = require('steam-user');
 const crypto = require('crypto');
 const Cache = require('../../Cache');
@@ -41,7 +41,7 @@ steamUser.on('friendMessage', async (senderID, message) => {
 	let steamId = senderID.getSteamID64();
 	if (message === '!verify') {
 		if (
-			!(await User.exists({
+			!(await VerifiedClient.exists({
 				steamId
 			}))
 		) {

@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const UserSchema = new Schema({
+const VerifiedClientSchema = new Schema({
 	uid: {
 		type: String,
 		index: true,
@@ -16,4 +16,4 @@ const UserSchema = new Schema({
 	groupNumber: Number
 });
 
-module.exports = mongoose.model('users', UserSchema);
+module.exports = mongoose.model('verified-client', VerifiedClientSchema);

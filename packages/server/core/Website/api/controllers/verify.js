@@ -4,7 +4,7 @@ const crypto = require('crypto');
 const Cache = require('../../../Cache');
 const { findClients } = require('./auth');
 const log = require('../../../../utils/log');
-const User = require('../../../Database/models/user');
+const VerfiedClient = require('../../../Database/models/verifiedClient');
 
 /**
  * Check request secret.
@@ -106,7 +106,7 @@ exports.login = async (req, res) => {
 			throw { statusCode: 403, message: lang.error.ip_mismatch };
 		} else {
 			log.success(`${client.nickname} verified successfuly!`, 'website');
-			User.create({
+			VerfiedClient.create({
 				uid: client.uniqueIdentifier,
 				dbid: client.databaseId,
 				steamId: steamData.steamId
