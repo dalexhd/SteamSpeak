@@ -288,7 +288,7 @@ function Home() {
     <Layout title={`${siteConfig.title} - ${siteConfig.tagline}`} description={siteConfig.tagline}>
       <header className={classnames('hero', 'hero--full-height', styles.indexHeroBanner)}>
         <div className="container container--fluid">
-          <h1>${siteConfig.tagline}</h1>
+          <h1>{siteConfig.tagline}</h1>
           <p className="hero--subtitle">
             <Link to={useBaseUrl('plugins')}>Lorem, ipsum.</Link> <i>lorem</i> Lorem ipsum dolor sit amet consectetur.
           </p>
