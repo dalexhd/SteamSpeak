@@ -1,3 +1,5 @@
+const path = require('path');
+
 module.exports = {
   title: 'SteamSpeak',
   tagline: 'Steam and TeamSpeak integration, done right!',
@@ -6,14 +8,19 @@ module.exports = {
   favicon: 'img/favicon-16x16.png',
   organizationName: 'dalexhd', // Usually your GitHub org/user name.
   projectName: 'steamspeak', // Usually your repo name.
+  customFields: {
+    metadata: require('./metadata'),
+    chatUrl: 'https://gitter.im/SteamSpeak',
+    discordUrl: 'https://discord.gg/st4nsXw'
+  },
   themeConfig: {
     navbar: {
-      title: 'SteamSpeak',
       logo: {
-        alt: 'SteamSpeak logo',
-        src: 'img/logo.png',
+        alt: 'SteamSpeak',
+        src: 'img/logo-light.svg'
       },
       links: [
+        {to: 'plugins/', label: 'Plugins', position: 'left'},
         {
           to: 'docs/about/what-is-steamspeak',
           activeBasePath: 'docs',
@@ -26,6 +33,8 @@ module.exports = {
           label: 'Issues',
           position: 'right',
         },
+        {to: 'community/', label: 'Community', position: 'right'},
+        {to: 'releases/', label: 'Download', position: 'right'},
         {
           href: 'https://github.com/dalexhd/steamspeak',
           label: 'GitHub',
@@ -34,7 +43,6 @@ module.exports = {
       ],
     },
     footer: {
-      style: 'dark',
       links: [
         {
           title: 'Docs',
@@ -76,6 +84,11 @@ module.exports = {
           ],
         },
       ],
+      logo: {
+        alt: 'SteamSpeak',
+        src: '/img/logo-light.svg',
+        href: 'https://dalexhd.github.io/SteamSpeak/',
+      },
       copyright: `Copyright © ${new Date().getFullYear()} SteamSpeak.`,
     },
     algolia: {
@@ -96,9 +109,6 @@ module.exports = {
           editUrl:
             'https://github.com/dalexhd/steamspeak/edit/master/docs/',
         },
-        theme: {
-          customCss: require.resolve('./src/css/custom.css'),
-        },
         sitemap: {
           cacheTime: 600 * 1000, // 600 sec - cache purge period
           changefreq: 'daily',
@@ -106,5 +116,33 @@ module.exports = {
         }
       },
     ],
+  ],
+  stylesheets: [
+    'https://fonts.googleapis.com/css?family=Ubuntu|Roboto|Source+Code+Pro',
+    'https://at-ui.github.io/feather-font/css/iconfont.css'
+  ],
+  scripts: [
+    {
+      src:
+        'https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js',
+      async: true,
+    },
+    {
+      src: 'https://use.fontawesome.com/releases/v5.13.0/js/all.js',
+      integrity: 'sha384-ujbKXb9V3HdK7jcWL6kHL1c+2Lj4MR4Gkjl7UtwpSHg/ClpViddK9TI7yU53frPN',
+      crossorigin: 'anonymous',
+    }
+  ],
+  plugins: [
+    path.resolve(__dirname, './plugins/releases'),
+  ],
+  themes: [
+    [
+      '@docusaurus/theme-classic',
+      {
+        customCss: require.resolve('./src/css/custom.css')
+      }
+    ],
+    '@docusaurus/theme-search-algolia'
   ]
 };
