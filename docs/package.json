@@ -11,9 +11,18 @@
   "dependencies": {
     "@docusaurus/core": "^2.0.0-alpha.50",
     "@docusaurus/preset-classic": "^2.0.0-alpha.50",
+    "cash-dom": "^4.1.5",
     "classnames": "^2.2.6",
+    "d3-timer": "^1.0.9",
+    "humanize-string": "^2.1.0",
+    "pluralize": "^8.0.0",
     "react": "^16.8.4",
-    "react-dom": "^16.8.4"
+    "react-dom": "^16.8.4",
+    "react-github-btn": "^1.1.1",
+    "react-inlinesvg": "^1.1.7",
+    "react-select": "^3.0.8",
+    "timeago-react": "^3.0.0",
+    "titleize": "^2.1.0"
   },
   "browserslist": {
     "production": [

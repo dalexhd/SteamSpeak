@@ -29,6 +29,21 @@ module.exports = {
       items: [
         "guide/running-steamspeak"
       ],
-    }
+    },
+    {
+      type: 'category',
+      label: 'Reference',
+      items: [
+        "reference",
+        {
+          type: 'category',
+          label: 'Plugins',
+          items: [
+            "reference/plugins",
+              "reference/plugins/server-name"
+          ],
+        },
+      ],
+    },
   ]
 };
