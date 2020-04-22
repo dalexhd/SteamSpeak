@@ -83,7 +83,7 @@ function Components({components, headingLevel, pathTemplate, titles}) {
     );
   } else {
     return (
-      <Empty text="no components found" />
+      <Empty text="no plugins found" />
     );
   }
 }
