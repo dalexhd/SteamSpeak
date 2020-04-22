@@ -2,6 +2,8 @@
 id: installation
 title: Installation
 ---
+import Alert from '@site/src/components/Alert';
+
 
 To install SteamSpeak you will need to follow the below steps. Feel free to open a issue if you have any problem during the installation process.
 
@@ -36,11 +38,11 @@ Run the folowing command to install required dependencies.
 yarn install
 ```
 
-:::note
+<Alert type="info">
 
 This will install Client and Server packages, so you dont need to install them separatelly.
 
-:::
+</Alert>
 
 
 <!-- You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).
