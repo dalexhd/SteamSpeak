@@ -49,7 +49,9 @@ module.exports = {
       "name": "Alex"
     }
   ],
-  "latest_release": {},
+  "latest_release": {
+    "version": "0.4.0"
+  },
   "releases": {
     "0.0.3": {
       "compare_url": "https://github.com/dalexhd/steamspeak/compare/v0.0.0...v0.4.1",
