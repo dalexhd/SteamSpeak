@@ -19,7 +19,7 @@ function Components(props) {
   }, []);
 
   return (
-    <Layout title="Components - Sources, Transforms, & Sinks" description="Browse and search all of SteamSpeak's components: sources, transforms, and sinks. Filter by event type, guarantee, function, operating system, and provider.">
+    <Layout title="Plugins" description="Browse and search all SteamSpeak's plugins.">
       <header className="hero hero--animated-graph">
         <div className="container container--fluid container--flush">
           <canvas width="2000" height="200"></canvas>
