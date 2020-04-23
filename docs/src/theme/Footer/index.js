@@ -61,7 +61,7 @@ function Footer() {
                 <h4>Subscribe to newsletter</h4>
               </div>
               <div className="margin-bottom--md">
-                <MailingListForm description={false} width="150px" />
+                <MailingListForm description={false} />
               </div>
               <div>
                 <a href="https://twitter.com/dalexhdyt" target="_blank"><i className="feather icon-twitter" alt="DalexHD's Twitter"></i></a>

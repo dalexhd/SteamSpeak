@@ -79,7 +79,7 @@
   --ifm-menu-link-padding-vertical: 0.35em;
   --ifm-navbar-background-color: var(--ifm-background-color);
   --ifm-navbar-link-color: var(--ifm-heading-color);
-  --ifm-navbar-logo-width: 200px;
+  --ifm-navbar-logo-width: 100%;
   --ifm-panel-background-color: var(--ifm-background-color);
   --ifm-panel-background-color-rgb: 255, 255, 255;
   --ifm-panel-background-color-solid: #FFFFFF;
@@ -906,6 +906,7 @@ ul.connected-list.connected-list--hover > li:hover {
 .footer .footer__logo {
   max-width: 280px;
   margin-top: 0 !important;
+  height: 118px;
 }
 
 /**
@@ -1140,7 +1141,7 @@ header h1 {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  min-height: calc( 100vh - var(--ifm-navbar-height) );
+  min-height: calc( 100vh - var(--ifm-navbar-height) + var(--ifm-navbar-padding-vertical));
 }
 
 .hero.hero--full-height > .container > *:last-child {
@@ -1547,7 +1548,7 @@ ul.list--indent {
 
 
 .navbar .navbar__logo {
-  max-width: var(--ifm-navbar-logo-width);
+  max-width: 100%;
   margin-right: 0;
 }
 
@@ -1587,10 +1588,6 @@ ul.list--indent {
 @media (max-width: 480px) {
   .navbar .navbar__brand {
     margin-right: 0;
-  }
-
-  .navbar .navbar__brand .navbar__logo {
-    max-width: 130px;
   }
 
   .navbar .navbar__search {

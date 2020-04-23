@@ -18,6 +18,11 @@ import {fetchNewRelease} from '@site/src/exports/newRelease';
 
 import styles from './styles.module.css';
 
+//TODO: Remove this line in next version
+if (typeof window !== 'undefined') {
+  localStorage.removeItem('theme');
+}
+
 function navLinkAttributes(label, right) {
   let attrs = {'label': label};
   switch(label.toLowerCase()) {
@@ -175,14 +180,14 @@ function Navbar() {
             .map((linkItem, i) => (
               <NavLink {...linkItem} right={true} key={i} />
             ))}
-          {!disableDarkMode && (
+          {/* {!disableDarkMode && (
             <Toggle
               className={styles.displayOnlyInLargeViewport}
               aria-label="Dark mode toggle"
               checked={isDarkTheme}
               onChange={onToggleChange}
             />
-          )}
+          )} */}
           <SearchBar
             handleSearchBarToggle={setIsSearchBarExpanded}
             isSearchBarExpanded={isSearchBarExpanded}
@@ -206,13 +211,13 @@ function Navbar() {
             )}
             {title != null && <strong>{title}</strong>}
           </Link>
-          {!disableDarkMode && sidebarShown && (
+          {/* {!disableDarkMode && sidebarShown && (
             <Toggle
               aria-label="Dark mode toggle in sidebar"
               checked={isDarkTheme}
               onChange={onToggleChange}
             />
-          )}
+          )} */}
         </div>
         <div className="navbar-sidebar__items">
           <div className="menu">
