@@ -1,6 +1,6 @@
-const Ts3 = require('../../TeamSpeak');
-const { convertToMiliseconds } = require('../../../utils/time');
-const log = require('../../../utils/log');
+const Ts3 = require('../../../TeamSpeak');
+const { convertToMiliseconds } = require('../../../../utils/time');
+const log = require('../../../../utils/log');
 const moment = require('moment');
 
 var loaded = false;
@@ -29,9 +29,13 @@ module.exports.main = async () => {
 	}
 	Ts3.serverEdit({
 		virtualserver_name: name
-	}).catch((err) => {
-		log.error(`Server Name Plugin error: ${err}`, 'ts3');
-	});
+	})
+		.then(() => {
+			log.info(`${this.info.name} to: ${name}`, 'ts3');
+		})
+		.catch((err) => {
+			log.error(`${this.info.name} error: ${err}`, 'ts3');
+		});
 };
 
 module.exports.load = async () => {
@@ -61,7 +65,7 @@ module.exports.unload = () => {
 };
 
 module.exports.info = {
-	name: 'serverName',
+	name: 'Server name',
 	desc: 'Change server name.',
 	config: {
 		enabled: true,

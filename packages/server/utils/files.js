@@ -25,7 +25,7 @@ async function getFiles(dir) {
 async function validatePlugin(plugin) {
 	return new Promise((resolve, reject) => {
 		const schema = Joi.object({
-			name: Joi.string().alphanum().required(),
+			name: Joi.string().required(),
 			desc: Joi.string().required(),
 			config: Joi.object({
 				enabled: Joi.boolean().required(),

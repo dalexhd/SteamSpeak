@@ -1,7 +1,7 @@
-const Ts3 = require('../../TeamSpeak');
-const { convertToMiliseconds } = require('../../../utils/time');
-const log = require('../../../utils/log');
-const Cache = require('../../Cache');
+const Ts3 = require('../../../TeamSpeak');
+const { convertToMiliseconds } = require('../../../../utils/time');
+const log = require('../../../../utils/log');
+const Cache = require('../../../Cache');
 
 var loaded = [];
 
@@ -11,7 +11,7 @@ module.exports.main = async (channel) => {
 		Ts3.channelEdit(channel.channelId, channel.changes[key])
 			.then(async () => {
 				log.info(
-					`changeChannel - ch[id: ${channel.channelId}] to: ${channel.changes[key].channel_name}`,
+					`${this.info.name} ch[id: ${channel.channelId}] to: ${channel.changes[key].channel_name}`,
 					'ts3'
 				);
 				await Cache.set(
@@ -20,7 +20,14 @@ module.exports.main = async (channel) => {
 				);
 			})
 			.catch((err) => {
-				log.error(`changeChannel - ch[id: ${channel.channelId}] Plugin error: ${err}`, 'ts3');
+				console.log(err);
+				if (err.id === 771) {
+					return Cache.set(
+						`changeChannel:${channel.channelId}`,
+						channel.changes.length - 1 == key ? 0 : ++key
+					);
+				}
+				log.error(`${this.info.name} ch[id: ${channel.channelId}] error: ${err}`, 'ts3');
 			});
 	}
 };
@@ -47,7 +54,7 @@ module.exports.unload = () => {
 };
 
 module.exports.info = {
-	name: 'changeChannel',
+	name: 'Change channel',
 	desc: 'Change channels.',
 	config: {
 		enabled: true,
