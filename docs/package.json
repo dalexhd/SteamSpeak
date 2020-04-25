@@ -22,7 +22,8 @@
     "react-inlinesvg": "^1.1.7",
     "react-select": "^3.0.8",
     "timeago-react": "^3.0.0",
-    "titleize": "^2.1.0"
+    "titleize": "^2.1.0",
+    "moment": "^2.24.0"
   },
   "browserslist": {
     "production": [
