@@ -92,6 +92,7 @@ module.exports = {
       },
       copyright: `Copyright © ${new Date().getFullYear()} SteamSpeak.`
     },
+    image: '/img/logo-square.png',
     algolia: {
       apiKey: 'd30054d0a4a3376e554f4e4bb53a0bd9',
       indexName: 'steamspeak',

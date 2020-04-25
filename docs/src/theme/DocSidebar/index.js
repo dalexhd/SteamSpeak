@@ -7,8 +7,8 @@ import classnames from 'classnames';
 import isInternalUrl from '@docusaurus/utils';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useLockBodyScroll from '@theme/hooks/useLockBodyScroll';
+import InstanceBadge from '@site/src/components/InstanceBadge';
 import useLogo from '@theme/hooks/useLogo';
-import _ from 'lodash';
 
 import styles from './styles.module.css';
 import './styles.css';
@@ -126,14 +126,10 @@ function DocSidebarItem({ item, level, onItemClick, collapsible }) {
             {processedLabel}
             {instance && (
               <span className="badges">
-                <span
+                <InstanceBadge
                   className="badge badge--secondary"
-                  title={`This plugin works on ${_.startCase(
-                    instance
-                  )} instance.`}
-                >
-                  <i className="feather icon-cpu" /> {_.startCase(instance)}
-                </span>
+                  instance={instance}
+                />
               </span>
             )}
           </Link>

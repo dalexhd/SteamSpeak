@@ -76,7 +76,7 @@ function Statuses({
       {status === 'prod-ready' && (
         <div>
           <Link
-            to="/docs/about/guarantees/#prod-ready"
+            to={useBaseUrl('/docs/about/what-is-steamspeak')}
             className="text--primary"
             title="This plugin has passed reliability standards that make it production ready. Click to learn more."
           >
@@ -87,7 +87,7 @@ function Statuses({
       {instance && (
         <div>
           <Link
-            to="/docs/about/data-model/"
+            to={useBaseUrl('/docs/reference/plugins/')}
             title={`This plugin works on ${_.startCase(instance)} instance.`}
           >
             <i className="feather icon-cpu" />{' '}
@@ -132,7 +132,6 @@ function DocItem(props) {
   } = DocContent;
 
   const metaImageUrl = siteUrl + useBaseUrl(metaImage);
-
   return (
     <div>
       <Head>
@@ -161,7 +160,7 @@ function DocItem(props) {
             <article>
               {version && (
                 <span
-                  style={{ verticalAlign: 'top' }}
+                  style={{ verticalAlign: 'top', }}
                   className="badge badge--info"
                 >
                   Version: {version}

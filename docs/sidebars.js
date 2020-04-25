@@ -30,7 +30,15 @@ module.exports = {
         {
           type: 'category',
           label: 'Plugins',
-          items: ['reference/plugins', 'reference/plugins/server-name']
+          items: [
+            'reference/plugins',
+            'reference/plugins/host-message',
+            'reference/plugins/multi-function',
+            'reference/plugins/server-name',
+            'reference/plugins/afk-kick',
+            'reference/plugins/afk-move',
+            'reference/plugins/change-channel'
+          ]
         }
       ]
     }

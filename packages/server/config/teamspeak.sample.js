@@ -7,16 +7,16 @@ module.exports = {
 	password: 'SteamSpeak',
 	nickname: 'SteamSpeak',
 	server_id: 1,
-	channel_id: 1,
+	channel_id: 123,
 	debug: false,
 	instances: {
 		'first-instance': {
 			nickname: 'SteamSpeak #1',
-			channel_id:
+			channel_id: 0
 		},
 		'second-instance': {
 			nickname: 'SteamSpeak #2',
-			channel_id:
+			channel_id: 0
 		}
 	}
 };

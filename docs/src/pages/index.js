@@ -1,5 +1,5 @@
-import React, { useEffect } from 'react';
-
+import React, { } from 'react';
+//  useEffect
 import Diagram from '@site/src/components/Diagram';
 import Heading from '@theme/Heading';
 import Jump from '@site/src/components/Jump';
@@ -12,7 +12,8 @@ import classnames from 'classnames';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import repoUrl from '@site/src/exports/repoUrl';
-import cloudify from '@site/src/exports/cloudify';
+// import cloudify from '@site/src/exports/cloudify';
+import Alert from '@site/src/components/Alert';
 
 import styles from './index.module.css';
 
@@ -140,7 +141,7 @@ function Correctness() {
                 </td>
               </tr>
               <tr>
-                <td className="row-label">Web panel</td>
+                <td className="row-label">Web Panel</td>
                 <td className="result passed steamspeak">
                   <i className="feather icon-check" />
                 </td>
@@ -152,7 +153,7 @@ function Correctness() {
                 </td>
               </tr>
               <tr>
-                <td className="row-label">Event based</td>
+                <td className="row-label">Event Based</td>
                 <td className="result passed steamspeak">
                   <i className="feather icon-check" />
                 </td>
@@ -164,7 +165,7 @@ function Correctness() {
                 </td>
               </tr>
               <tr>
-                <td className="row-label">Multi instance</td>
+                <td className="row-label">Multi Instance</td>
                 <td className="result passed steamspeak">
                   <i className="feather icon-check" />
                 </td>
@@ -176,7 +177,7 @@ function Correctness() {
                 </td>
               </tr>
               <tr>
-                <td className="row-label">Hot reload</td>
+                <td className="row-label">Hot Reload</td>
                 <td className="result passed steamspeak">
                   <i className="feather icon-check" />
                 </td>
@@ -230,63 +231,67 @@ function InstallationSection() {
     </section>
   );
 }
-function Integrations() {
-  const context = useDocusaurusContext();
-  const { siteConfig = {} } = context;
-  const {
-    metadata: { plugins }
-  } = siteConfig.customFields;
+// function Integrations() {
+//   const context = useDocusaurusContext();
+//   const { siteConfig = {} } = context;
+//   const {
+//     metadata: { plugins }
+//   } = siteConfig.customFields;
 
-  const classes = {
-    serverName_plugin: 'large',
-    testName_plugin: 'small'
-  };
+//   const classes = {
+//     serverName_plugin: 'large',
+//     afkKick_plugin: 'large',
+//     afkMove_plugin: 'large',
+//     changeChannel_plugin: 'large',
+//     hostMessage_plugin: 'large',
+//     multiFunction_plugin: 'large',
+//   };
 
-  return (
-    <section className={classnames(styles.integrations, 'integrations')}>
-      <div className="container">
-        <AnchoredH2 id="integrations">
-          Quality Integrations Built Into The Core
-        </AnchoredH2>
-        <div className="sub-title">
-          Actively maintained integrations. Gone are the days of dormant
-          low-quality plugins.
-        </div>
+//   return (
+//     <section className={classnames(styles.integrations, 'integrations')}>
+//       <div className="container">
+//         <AnchoredH2 id="integrations">
+//           Quality Integrations Built Into The Core
+//         </AnchoredH2>
+//         <div className="sub-title">
+//           Actively maintained integrations. Gone are the days of dormant
+//           low-quality plugins.
+//         </div>
 
-        <div className={classnames(styles.components, 'components')}>
-          <h3>
-            <div>
-              <span className="line-break">
-                {Object.keys(plugins).length} plugins
-              </span>
-            </div>
-          </h3>
-          <div className={styles.componentsCanvas} id="component-canvas" />
-          <ul>
-            {Object.keys(plugins).map((key, index) => (
-              <li className={classes[`${key}_plugin`]} key={index}>
-                <Link to={`/docs/reference/plugins/${key}/`}>
-                  {plugins[key].name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </div>
-    </section>
-  );
-}
+//         <div className={classnames(styles.components, 'components')}>
+//           <h3>
+//             <div>
+//               <span className="line-break">
+//                 {Object.keys(plugins).length} plugins
+//               </span>
+//             </div>
+//           </h3>
+//           <div className={styles.componentsCanvas} id="component-canvas" />
+//           <ul>
+//             {Object.keys(plugins).map((key, index) => (
+//               <li className={classes[`${key}_plugin`]} key={index}>
+//                 <Link to={useBaseUrl(`/docs/reference/plugins/${plugins[key].name}/`)}>
+//                   {plugins[key].name}
+//                 </Link>
+//               </li>
+//             ))}
+//           </ul>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 function Home() {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
-  // eslint-disable-next-line camelcase
   const {
+    // eslint-disable-next-line camelcase
     metadata: { latest_release }
   } = siteConfig.customFields;
 
-  useEffect(() => {
-    cloudify();
-  }, []);
+  // useEffect(() => {
+  //   cloudify();
+  // }, []);
 
   return (
     <Layout
@@ -316,17 +321,19 @@ function Home() {
             </Link>
           </div>
           <Diagram className={styles.indexHeroDiagram} width="100%" />
-          <p className="hero--subsubtitle">
-            SteamSpeak is currently in development stage. We recommend you to
-            wait until the v1.0.0 gets released.
-          </p>
+          <div className="container">
+            <Alert type="info" className="list--icons list--icons--infos">
+              SteamSpeak is currently in development stage. We recommend you
+              to wait until the v1.0.0 gets released.
+            </Alert>
+          </div>
         </div>
       </header>
       <main>
         {features && features.length && <Features features={features} />}
         <Correctness />
         <Configuration />
-        <Integrations />
+        {/* <Integrations /> */}
         <InstallationSection />
       </main>
     </Layout>

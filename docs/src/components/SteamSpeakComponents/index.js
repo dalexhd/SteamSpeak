@@ -6,6 +6,7 @@ import Empty from '@site/src/components/Empty';
 import Jump from '@site/src/components/Jump';
 import Link from '@docusaurus/Link';
 import useBaseUrl from '@docusaurus/useBaseUrl';
+import InstanceBadge from '@site/src/components/InstanceBadge';
 
 import _ from 'lodash';
 import classnames from 'classnames';
@@ -57,24 +58,7 @@ function Component({
             <i className="feather icon-award" /> Prod-Ready
           </span>
         )}
-        {instance === 'first-instance' && (
-          <span
-            className="badge badge--primary"
-            title="This plugin works with first instance"
-          >
-            <i className="feather icon-cpu" /> 1
-          </span>
-        )}
-        {instance === 'second-instance' ? (
-          <span
-            className="badge badge--primary"
-            title="This plugin works with first instance"
-          >
-            <i className="feather icon-cpu" /> 2
-          </span>
-        ) : (
-          ''
-        )}
+        <InstanceBadge className="badge badge--primary" instance={instance} />
       </div>
     </Link>
   );
@@ -175,7 +159,7 @@ function SteamSpeakComponents(props) {
 
   if (onlyinstanceTypes.size > 0) {
     components = components.filter((component) =>
-      Array.from(onlyinstanceTypes).map((x) => component.instance === x)
+      Array.from(onlyinstanceTypes).every((x) => component.instance === x)
     );
   }
 

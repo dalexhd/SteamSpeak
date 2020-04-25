@@ -52,7 +52,8 @@ module.exports.clientdisconnect = async (ev) => {
 
 module.exports.info = {
 	name: 'AFK move',
-	desc: 'Moves client to desired channel if AFK.',
+	description:
+		'This plugin allows you to automatically move afk people after x time to your desired channel.',
 	config: {
 		enabled: true,
 		data: {

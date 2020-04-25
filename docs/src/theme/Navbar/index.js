@@ -20,7 +20,7 @@ if (typeof window !== 'undefined') {
 }
 
 function navLinkAttributes(label, right) {
-  const attrs = { label: label };
+  const attrs = { label };
   switch (label.toLowerCase()) {
     case 'chat':
       attrs.hideText = right === true;
@@ -47,7 +47,7 @@ function navLinkAttributes(label, right) {
     }
 
     case 'github':
-      attrs.badge = '6';
+      attrs.badge = '11';
       attrs.hideText = false;
       attrs.icon = 'github';
       return attrs;

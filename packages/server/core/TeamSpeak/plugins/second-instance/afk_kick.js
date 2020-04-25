@@ -39,7 +39,7 @@ module.exports.clientdisconnect = async (ev) => {
 
 module.exports.info = {
 	name: 'AFK move',
-	desc: 'Kick client if if AFK.',
+	description: 'This plugin allows you to automatically kick afk people after x time.',
 	config: {
 		enabled: false,
 		data: {

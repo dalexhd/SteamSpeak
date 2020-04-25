@@ -1,6 +1,6 @@
-// eslint-disable-next-line func-names
 const __importDefault =
   (this && this.__importDefault) ||
+  // eslint-disable-next-line func-names
   function (mod) {
     return mod && mod.__esModule ? mod : { default: mod };
   };

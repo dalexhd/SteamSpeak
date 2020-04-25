@@ -55,7 +55,7 @@ module.exports.unload = () => {
 
 module.exports.info = {
 	name: 'Change channel',
-	desc: 'Change channels.',
+	description: 'This plugin allows you to change multiple channels name at diferent interval.',
 	config: {
 		enabled: true,
 		data: [

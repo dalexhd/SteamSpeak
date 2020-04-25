@@ -39,6 +39,8 @@ function Downloads({ browsePath, downloads }) {
                     href={repoUrl(
                       `/archive/${browsePath}.${download.file_type}`
                     )}
+                    target="_blank"
+                    rel="noopener noreferrer"
                   >
                     <i className="feather icon-download" /> Download
                   </a>
@@ -141,18 +143,6 @@ function DownloadTable({
           </div>
         </div>
       )}
-      <div>
-        <div>Manual</div>
-        <div>
-          <Link to="/docs/setup/installation/manual/from-archives/">
-            From archives
-          </Link>
-          &nbsp;•&nbsp;
-          <Link to="/docs/setup/installation/manual/from-source/">
-            From source
-          </Link>
-        </div>
-      </div>
     </div>
   );
 }
@@ -275,9 +265,9 @@ function ReleaseDownload({ version }) {
             )}
           >
             <h2>Ready to get started?</h2>
-            <Jump to="/guides/getting-started/">
-              <i className="feather icon-book-open" /> Follow the getting
-              started guide
+            <Jump to={useBaseUrl('/docs/setup/installation/')}>
+              <i className="feather icon-book-open" /> Follow the installation
+              guide
             </Jump>
           </div>
         </section>

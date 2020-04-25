@@ -62,7 +62,8 @@ module.exports.unload = () => {
 
 module.exports.info = {
 	name: 'Host message',
-	desc: 'Change server name.',
+	description:
+		'This plugin allows you to change default host message with useful server information.',
 	config: {
 		enabled: true,
 		data: {

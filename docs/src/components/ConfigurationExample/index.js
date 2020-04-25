@@ -41,7 +41,7 @@ function ConfigurationExample() {
       <CodeBlock className="language-javascript">
         {`module.exports.info = {
   name: 'Server name',
-  desc: 'Change server name.',
+  description: 'This plugin allows you to provide useful information to your server clients by changing the server name.',
   config: {
     enabled: true,
     data: {

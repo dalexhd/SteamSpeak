@@ -81,7 +81,7 @@ function subscribeEvents() {
 function listenEvents() {
 	Ts3.on('close', async () => {
 		log.error('disconnected, trying to reconnect...', 'ts3');
-		Ts3.reconnect().catch((err) => {});
+		Ts3.reconnect().catch(() => {});
 		log.success('reconnected!', 'ts3');
 		Promise.all([
 			Ts3.registerEvent('server'),

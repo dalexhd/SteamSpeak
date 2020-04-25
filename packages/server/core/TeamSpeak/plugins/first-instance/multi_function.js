@@ -47,7 +47,8 @@ module.exports.unload = () => {
 
 module.exports.info = {
 	name: 'Multi function',
-	desc: 'Multiple funcitons to show server related data.',
+	description:
+		'This plugin allows you to display relevant server information on the configured channels.',
 	config: {
 		enabled: true,
 		data: [

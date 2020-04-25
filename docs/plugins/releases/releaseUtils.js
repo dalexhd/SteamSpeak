@@ -1,6 +1,6 @@
-// eslint-disable-next-line func-names
 const __importDefault =
   (this && this.__importDefault) ||
+  // eslint-disable-next-line func-names
   function (mod) {
     return mod && mod.__esModule ? mod : { default: mod };
   };
@@ -52,9 +52,10 @@ async function generateReleases(releaseDir, { siteConfig, siteDir }, options) {
           ]),
           source: aliasedSource,
           title,
-          // eslint-disable-next-line no-void
           truncated:
+            // eslint-disable-next-line no-void
             (truncateMarker === null || truncateMarker === void 0
+              // eslint-disable-next-line no-void
               ? void 0
               : truncateMarker.test(content)) || false,
           version
