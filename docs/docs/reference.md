@@ -1,6 +1,6 @@
 ---
 title: Reference
-description: "Nostrud ut nulla Lorem nulla."
+description: 'Nostrud ut nulla Lorem nulla.'
 sidebar_label: hidden
 hide_pagination: true
 ---

@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from "react";
-import classnames from "classnames";
-import Link from "@docusaurus/Link";
+import React, { useState, useEffect } from 'react';
 
-import "./styles.css";
+import './styles.css';
 
-function Diagram({ className, height, width }) {
-  const [_, updateState] = useState();
-  const defaultXPosition = 7;
-  const defaultTextLength = 60;
+function Diagram({ height, width }) {
+  const [, updateState] = useState();
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -17,11 +13,11 @@ function Diagram({ className, height, width }) {
   }, []);
 
   if (!height) {
-    height = "294px";
+    height = '294px';
   }
 
   if (!width) {
-    width = "900px";
+    width = '900px';
   }
 
   return (

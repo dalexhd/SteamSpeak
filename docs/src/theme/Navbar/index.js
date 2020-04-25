@@ -1,11 +1,8 @@
-import React, {useCallback, useState} from 'react';
+import React, { useCallback, useState } from 'react';
 
-import GitHubButton from 'react-github-btn'
 import Link from '@docusaurus/Link';
-import Head from '@docusaurus/Head';
 import SearchBar from '@theme/SearchBar';
 import SVG from 'react-inlinesvg';
-import Toggle from '@theme/Toggle';
 
 import classnames from 'classnames';
 import useBaseUrl from '@docusaurus/useBaseUrl';
@@ -13,34 +10,32 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useHideableNavbar from '@theme/hooks/useHideableNavbar';
 import useLockBodyScroll from '@theme/hooks/useLockBodyScroll';
 import useLogo from '@theme/hooks/useLogo';
-import useThemeContext from '@theme/hooks/useThemeContext';
-import {fetchNewRelease} from '@site/src/exports/newRelease';
+import { fetchNewRelease } from '@site/src/exports/newRelease';
 
 import styles from './styles.module.css';
 
-//TODO: Remove this line in next version
+// TODO: Remove this line in next version
 if (typeof window !== 'undefined') {
   localStorage.removeItem('theme');
 }
 
 function navLinkAttributes(label, right) {
-  let attrs = {'label': label};
-  switch(label.toLowerCase()) {
-
+  const attrs = { label: label };
+  switch (label.toLowerCase()) {
     case 'chat':
-      attrs.hideText = right == true;
+      attrs.hideText = right === true;
       attrs.icon = 'message-circle';
       return attrs;
 
     case 'community':
-      attrs.hideText = right == true;
+      attrs.hideText = right === true;
       attrs.icon = 'users';
       return attrs;
 
-    case 'download':
+    case 'download': {
       const newRelease = fetchNewRelease();
 
-      attrs.hideText = right == true;
+      attrs.hideText = right === true;
       attrs.icon = 'download';
 
       if (newRelease) {
@@ -49,6 +44,7 @@ function navLinkAttributes(label, right) {
       }
 
       return attrs;
+    }
 
     case 'github':
       attrs.badge = '6';
@@ -58,37 +54,48 @@ function navLinkAttributes(label, right) {
 
     default:
       return attrs;
-  };
+  }
 }
 
-function NavLink({href, hideIcon, label, onClick, position, right, to}) {
-  let attributes = navLinkAttributes(label, right) || {};
+function NavLink({ href, hideIcon, label, onClick, right, to }) {
+  const attributes = navLinkAttributes(label, right) || {};
   const toUrl = useBaseUrl(to);
 
   return (
     <Link
-      className={classnames(
-        "navbar__item navbar__link",
-        attributes.className,
-        {
-          'navbar__item__icon_only': attributes.hideText
-        }
-      )}
+      className={classnames('navbar__item navbar__link', attributes.className, {
+        navbar__item__icon_only: attributes.hideText
+      })}
       title={attributes.hideText ? label : null}
       onClick={onClick}
       {...(href
         ? {
             target: '_blank',
             rel: 'noopener noreferrer',
-            href: href,
+            href
           }
         : {
             activeClassName: 'navbar__link--active',
-            to: toUrl,
-          })}>
-      {!hideIcon && attributes.icon && <><i className={`feather icon-${attributes.icon}`}></i> {attributes.iconLabel}</>}
+            to: toUrl
+          })}
+    >
+      {!hideIcon && attributes.icon && (
+        <>
+          <i className={`feather icon-${attributes.icon}`} />{' '}
+          {attributes.iconLabel}
+        </>
+      )}
       {!attributes.hideText && attributes.label}
-      {attributes.badge && <span className={classnames('badge', `badge--${attributes.badgeStyle || 'secondary'}`)}>{attributes.badge}</span>}
+      {attributes.badge && (
+        <span
+          className={classnames(
+            'badge',
+            `badge--${attributes.badgeStyle || 'secondary'}`
+          )}
+        >
+          {attributes.badge}
+        </span>
+      )}
     </Link>
   );
 }
@@ -96,18 +103,13 @@ function NavLink({href, hideIcon, label, onClick, position, right, to}) {
 function Navbar() {
   const {
     siteConfig: {
-      themeConfig: {
-        navbar: {title, links = [], hideOnScroll = false} = {},
-        disableDarkMode = false,
-      },
-    },
-    isClient,
+      themeConfig: { navbar: { title, links = [], hideOnScroll = false } = {} }
+    }
   } = useDocusaurusContext();
   const [sidebarShown, setSidebarShown] = useState(false);
   const [isSearchBarExpanded, setIsSearchBarExpanded] = useState(false);
-  const {isDarkTheme, setLightTheme, setDarkTheme} = useThemeContext();
-  const {navbarRef, isNavbarVisible} = useHideableNavbar(hideOnScroll);
-  const {logoLink, logoLinkProps, logoImageUrl, logoAlt} = useLogo();
+  const { navbarRef, isNavbarVisible } = useHideableNavbar(hideOnScroll);
+  const { logoLink, logoLinkProps, logoImageUrl, logoAlt } = useLogo();
 
   useLockBodyScroll(sidebarShown);
 
@@ -118,19 +120,15 @@ function Navbar() {
     setSidebarShown(false);
   }, [setSidebarShown]);
 
-  const onToggleChange = useCallback(
-    e => (e.target.checked ? setDarkTheme() : setLightTheme()),
-    [setLightTheme, setDarkTheme],
-  );
-
   return (
     <nav
       ref={navbarRef}
       className={classnames('navbar', 'navbar--light', 'navbar--fixed-top', {
         'navbar-sidebar--show': sidebarShown,
         [styles.navbarHideable]: hideOnScroll,
-        [styles.navbarHidden]: !isNavbarVisible,
-      })}>
+        [styles.navbarHidden]: !isNavbarVisible
+      })}
+    >
       <div className="navbar__inner">
         <div className="navbar__items">
           <div
@@ -139,14 +137,16 @@ function Navbar() {
             role="button"
             tabIndex={0}
             onClick={showSidebar}
-            onKeyDown={showSidebar}>
+            onKeyDown={showSidebar}
+          >
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="30"
               height="30"
               viewBox="0 0 30 30"
               role="img"
-              focusable="false">
+              focusable="false"
+            >
               <title>Menu</title>
               <path
                 stroke="currentColor"
@@ -163,22 +163,23 @@ function Navbar() {
             )}
             {title != null && (
               <strong
-                className={isSearchBarExpanded ? styles.hideLogoText : ''}>
+                className={isSearchBarExpanded ? styles.hideLogoText : ''}
+              >
                 {title}
               </strong>
             )}
           </Link>
           {links
-            .filter(linkItem => linkItem.position !== 'right')
+            .filter((linkItem) => linkItem.position !== 'right')
             .map((linkItem, i) => (
-              <NavLink {...linkItem} left={true} key={i} />
+              <NavLink {...linkItem} left key={i} />
             ))}
         </div>
         <div className="navbar__items navbar__items--right">
           {links
-            .filter(linkItem => linkItem.position === 'right')
+            .filter((linkItem) => linkItem.position === 'right')
             .map((linkItem, i) => (
-              <NavLink {...linkItem} right={true} key={i} />
+              <NavLink {...linkItem} right key={i} />
             ))}
           {/* {!disableDarkMode && (
             <Toggle
@@ -205,7 +206,8 @@ function Navbar() {
             className="navbar__brand"
             onClick={hideSidebar}
             to={logoLink}
-            {...logoLinkProps}>
+            {...logoLinkProps}
+          >
             {logoImageUrl != null && (
               <SVG className="navbar__logo" src={logoImageUrl} alt={logoAlt} />
             )}
@@ -227,7 +229,7 @@ function Navbar() {
                   <NavLink
                     className="menu__link"
                     {...linkItem}
-                    hideIcon={true}
+                    hideIcon
                     onClick={hideSidebar}
                   />
                 </li>

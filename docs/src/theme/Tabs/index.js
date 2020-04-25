@@ -1,40 +1,52 @@
-import React, {useState, useEffect, Children} from 'react';
+import React, { useState, useEffect, Children } from 'react';
 
 import Select from 'react-select';
 
 import classnames from 'classnames';
 import queryString from 'query-string';
 import useTabGroupChoiceContext from '@theme/hooks/useTabGroupChoiceContext';
+import _ from 'lodash';
 
 const keys = {
   left: 37,
-  right: 39,
+  right: 39
 };
 
-function ListSwitcher({block, centered, changeSelectedValue, className, handleKeydown, style, values, selectedValue, tabRefs}) {
+function ListSwitcher({
+  block,
+  centered,
+  changeSelectedValue,
+  className,
+  handleKeydown,
+  style,
+  values,
+  selectedValue,
+  tabRefs
+}) {
   return (
-    <div className={centered ? "tabs--centered" : null}>
+    <div className={centered ? 'tabs--centered' : null}>
       <ul
         role="tablist"
         aria-orientation="horizontal"
         className={classnames('tabs', className, {
-          'tabs--block': block,
+          'tabs--block': block
         })}
         style={style}
-        >
-        {values.map(({value, label}) => (
+      >
+        {values.map(({ value, label }) => (
           <li
             role="tab"
             tabIndex="0"
             aria-selected={selectedValue === value}
             className={classnames('tab-item', {
-              'tab-item--active': selectedValue === value,
+              'tab-item--active': selectedValue === value
             })}
             key={value}
-            ref={tabControl => tabRefs.push(tabControl)}
-            onKeyDown={event => handleKeydown(tabRefs, event.target, event)}
+            ref={(tabControl) => tabRefs.push(tabControl)}
+            onKeyDown={(event) => handleKeydown(tabRefs, event.target, event)}
             onFocus={() => changeSelectedValue(value)}
-            onClick={() => changeSelectedValue(value)}>
+            onClick={() => changeSelectedValue(value)}
+          >
             {label}
           </li>
         ))}
@@ -42,35 +54,54 @@ function ListSwitcher({block, centered, changeSelectedValue, className, handleKe
     </div>
   );
 }
-function SelectSwitcher({placeholder, selectedValue, changeSelectedValue, size, values}) {
+function SelectSwitcher({
+  placeholder,
+  selectedValue,
+  changeSelectedValue,
+  size,
+  values
+}) {
   let options = values;
 
   if (options[0].group) {
-    let groupedOptions = _.groupBy(options, 'group');
+    const groupedOptions = _.groupBy(options, 'group');
 
-    options = Object.keys(groupedOptions).map(group => {
+    options = Object.keys(groupedOptions).map((group) => {
       return {
         label: group,
         options: groupedOptions[group]
-      }
+      };
     });
   }
 
   return (
     <Select
       className={`react-select-container react-select--${size}`}
-      classNamePrefix='react-select'
+      classNamePrefix="react-select"
       options={options}
       isClearable={selectedValue}
       placeholder={placeholder}
-      value={values.find(option => option.value == selectedValue)}
-      onChange={(selectedOption) => changeSelectedValue(selectedOption ? selectedOption.value : null)} />
+      value={values.find((option) => option.value === selectedValue)}
+      onChange={(selectedOption) =>
+        changeSelectedValue(selectedOption ? selectedOption.value : null)
+      }
+    />
   );
 }
 
 function Tabs(props) {
-  const {block, centered, children, defaultValue, groupId, label, placeholder, select, size, style, values, urlKey} = props;
-  const {tabGroupChoices, setTabGroupChoices} = useTabGroupChoiceContext();
+  const {
+    children,
+    defaultValue,
+    groupId,
+    label,
+    placeholder,
+    select,
+    size,
+    values,
+    urlKey
+  } = props;
+  const { tabGroupChoices, setTabGroupChoices } = useTabGroupChoiceContext();
   const [selectedValue, setSelectedValue] = useState(defaultValue);
 
   if (groupId != null) {
@@ -83,7 +114,7 @@ function Tabs(props) {
     }
   }
 
-  const changeSelectedValue = newValue => {
+  const changeSelectedValue = (newValue) => {
     setSelectedValue(newValue);
     if (groupId != null) {
       setTabGroupChoices(groupId, newValue);
@@ -127,10 +158,9 @@ function Tabs(props) {
 
   useEffect(() => {
     if (typeof window !== 'undefined' && window.location && urlKey) {
-      let queryObj = queryString.parse(window.location.search);
+      const queryObj = queryString.parse(window.location.search);
 
-      if (queryObj[urlKey])
-        setSelectedValue(queryObj[urlKey]);
+      if (queryObj[urlKey]) setSelectedValue(queryObj[urlKey]);
     }
   }, []);
 
@@ -138,26 +168,31 @@ function Tabs(props) {
     <>
       <div className={`margin-bottom--${size || 'md'}`}>
         {label && <div className="margin-vert--sm">{label}</div>}
-        {values.length > 1 && (select ?
-          <SelectSwitcher
-            changeSelectedValue={changeSelectedValue}
-            handleKeydown={handleKeydown}
-            placeholder={placeholder}
-            selectedValue={selectedValue}
-            size={size}
-            tabRefs={tabRefs}
-            {...props} /> :
-          <ListSwitcher
-            changeSelectedValue={changeSelectedValue}
-            handleKeydown={handleKeydown}
-            selectedValue={selectedValue}
-            tabRefs={tabRefs}
-            {...props} />)}
+        {values.length > 1 &&
+          (select ? (
+            <SelectSwitcher
+              changeSelectedValue={changeSelectedValue}
+              handleKeydown={handleKeydown}
+              placeholder={placeholder}
+              selectedValue={selectedValue}
+              size={size}
+              tabRefs={tabRefs}
+              {...props}
+            />
+          ) : (
+            <ListSwitcher
+              changeSelectedValue={changeSelectedValue}
+              handleKeydown={handleKeydown}
+              selectedValue={selectedValue}
+              tabRefs={tabRefs}
+              {...props}
+            />
+          ))}
       </div>
 
       {
         Children.toArray(children).filter(
-          child => child.props.value === selectedValue,
+          (child) => child.props.value === selectedValue
         )[0]
       }
     </>

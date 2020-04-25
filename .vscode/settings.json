@@ -9,8 +9,13 @@
     }
   ],
   "path-intellisense.mappings": {
+    "@site": "${workspaceRoot}/docs",
     "@": "${workspaceRoot}/packages/client/src"
   },
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact"
+  },
+  "emmet.triggerExpansionOnTab": true,
   "emojisense.languages": {
     "markdown": true,
     "plaintext": false,

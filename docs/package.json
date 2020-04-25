@@ -6,7 +6,11 @@
     "start": "docusaurus start",
     "build": "docusaurus build",
     "swizzle": "docusaurus swizzle",
-    "deploy": "docusaurus deploy"
+    "deploy": "docusaurus deploy",
+    "ci": "yarn lint && yarn prettier:diff",
+    "lint": "eslint \"**/*.js\" --fix && stylelint \"**/*.css\" --fix",
+    "prettier": "prettier --config .prettierrc --write \"**/*.{js,md}\"",
+    "prettier:diff": "prettier --config .prettierrc --list-different \"**/*.{js,md}\""
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-alpha.50",
@@ -15,6 +19,7 @@
     "classnames": "^2.2.6",
     "d3-timer": "^1.0.9",
     "humanize-string": "^2.1.0",
+    "moment": "^2.24.0",
     "pluralize": "^8.0.0",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
@@ -22,8 +27,20 @@
     "react-inlinesvg": "^1.1.7",
     "react-select": "^3.0.8",
     "timeago-react": "^3.0.0",
-    "titleize": "^2.1.0",
-    "moment": "^2.24.0"
+    "titleize": "^2.1.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.1.0",
+    "eslint-config-prettier": "^6.11.0",
+    "eslint-import-resolver-alias": "^1.1.2",
+    "eslint-plugin-import": "^2.20.2",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-react": "^7.19.0",
+    "eslint-plugin-react-hooks": "^3.0.0",
+    "prettier": "^2.0.5",
+    "stylelint": "^13.3.3"
   },
   "browserslist": {
     "production": [

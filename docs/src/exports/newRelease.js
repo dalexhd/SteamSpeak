@@ -2,8 +2,10 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 
 export function fetchNewRelease() {
   const context = useDocusaurusContext();
-  const {siteConfig = {}} = context;
-  const {metadata: {latest_release: latestRelease}} = siteConfig.customFields;
+  const { siteConfig = {} } = context;
+  const {
+    metadata: { latest_release: latestRelease }
+  } = siteConfig.customFields;
   const releaseDate = Date.parse(latestRelease.date);
   const releaseNow = new Date();
   const releaseDiffTime = Math.abs(releaseNow - releaseDate);
@@ -12,10 +14,15 @@ export function fetchNewRelease() {
   let releaseViewedAt = null;
 
   if (typeof window !== 'undefined') {
-    releaseViewedAt = new Date(parseInt(window.localStorage.getItem('releaseViewedAt') || '0'));
+    releaseViewedAt = new Date(
+      parseInt(window.localStorage.getItem('releaseViewedAt') || '0', 10)
+    );
   }
 
-  if (releaseDiffDays < 30 && (!releaseViewedAt || releaseViewedAt < releaseDate)) {
+  if (
+    releaseDiffDays < 30 &&
+    (!releaseViewedAt || releaseViewedAt < releaseDate)
+  ) {
     return latestRelease;
   }
 
@@ -28,4 +35,4 @@ export function viewedNewRelease() {
   }
 }
 
-export default {fetchNewRelease, viewedNewRelease};
+export default { fetchNewRelease, viewedNewRelease };

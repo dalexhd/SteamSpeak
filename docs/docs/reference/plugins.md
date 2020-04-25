@@ -1,7 +1,7 @@
 ---
-last_modified_on: "2020-03-31"
+last_modified_on: '2020-03-31'
 title: Plugins
-description: "Laboris nulla deserunt aute occaecat commodo pariatur Lorem incididunt."
+description: 'Laboris nulla deserunt aute occaecat commodo pariatur Lorem incididunt.'
 sidebar_label: hidden
 hide_pagination: true
 ---

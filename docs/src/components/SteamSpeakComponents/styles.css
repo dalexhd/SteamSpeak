@@ -1,137 +1,138 @@
 .steamspeak-components--cols {
-  margin: var(--ifm-spacing-vertical) 0;
+	margin: var(--ifm-spacing-vertical) 0;
 }
 
 .steamspeak-components h2,
 .steamspeak-components h3 {
-  margin-top: calc( var(--ifm-spacing-vertical) * 2 );
-  margin-bottom: calc( var(--ifm-spacing-vertical) * 2 );
+	margin-top: calc(var(--ifm-spacing-vertical) * 2);
+	margin-bottom: calc(var(--ifm-spacing-vertical) * 2);
 }
 
 .steamspeak-components h2:first-child,
 .steamspeak-components h3:first-child {
-  margin-top: 0;
+	margin-top: 0;
 }
 
 .steamspeak-components--results {
-  padding-top: calc( var(--ifm-spacing-vertical) * 1 );
+	padding-top: calc(var(--ifm-spacing-vertical) * 1);
 }
 
 .steamspeak-components--grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  grid-gap: 1em;
-  margin-bottom: calc( var(--ifm-spacing-vertical) * 1 );
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	grid-gap: 1em;
+	margin-bottom: calc(var(--ifm-spacing-vertical) * 1);
 }
 
 .steamspeak-component {
-  background-color: var(--ifm-panel-background-color);
-  border: 1px solid var(--ifm-panel-border-color);
-  border-radius: var(--ifm-global-radius);
-  box-shadow: var(--ifm-panel-box-shadow);
-  color: var(--ifm-heading-color);
-  font-weight: 500;
-  padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
-  transition: all var(--ifm-transition-fast) ease;
+	background-color: var(--ifm-panel-background-color);
+	border: 1px solid var(--ifm-panel-border-color);
+	border-radius: var(--ifm-global-radius);
+	box-shadow: var(--ifm-panel-box-shadow);
+	color: var(--ifm-heading-color);
+	font-weight: 500;
+	padding: var(--ifm-spacing-vertical) var(--ifm-spacing-horizontal);
+	transition: all var(--ifm-transition-fast) ease;
 }
 
 .steamspeak-component:hover {
-  background: var(--ifm-panel-background-color-active);
-  border-color: var(--ifm-panel-border-color-active);
-  box-shadow: var(--ifm-panel-box-shadow-active);
-  color: var(--ifm-panel-color-active);
-  text-decoration: none;
+	background: var(--ifm-panel-background-color-active);
+	border-color: var(--ifm-panel-border-color-active);
+	box-shadow: var(--ifm-panel-box-shadow-active);
+	color: var(--ifm-panel-color-active);
+	text-decoration: none;
 }
 
 .steamspeak-component .icon-info {
-  float: right;
-  margin-top: 0.2em;
+	float: right;
+	margin-top: 0.2em;
 }
 
 .steamspeak-component--name {
-  font-size: 1.1em;
-  font-weight: 600;
-  line-height: 1;
-  margin-bottom: calc( var(--ifm-spacing-vertical) / 2 );
+	font-size: 1.1em;
+	font-weight: 600;
+	line-height: 1;
+	margin-bottom: calc(var(--ifm-spacing-vertical) / 2);
 }
 
 .steamspeak-component--name svg {
-  height: 1em;
-  margin-right: 0.5em;
-  vertical-align: bottom;
-  width: 1em;
+	height: 1em;
+	margin-right: 0.5em;
+	vertical-align: bottom;
+	width: 1em;
 }
 
 .steamspeak-component--badges {
-  margin-top: var(--ifm-badge-padding-vertical);
+	margin-top: var(--ifm-badge-padding-vertical);
 }
 
 .steamspeak-component--badges .badge {
-  font-size: 0.6em;
-  margin-right: 5px;
-  padding: calc( var(--ifm-badge-padding-vertical) / 1.5 ) calc( var(--ifm-badge-padding-horizontal) / 1.5 );
+	font-size: 0.6em;
+	margin-right: 5px;
+	padding: calc(var(--ifm-badge-padding-vertical) / 1.5) calc(var(--ifm-badge-padding-horizontal) / 1.5);
 }
 
 .steamspeak-component--badges .badge--right {
-  float: right;
-  margin-left: 5px;
-  margin-right: 0;
-  margin-top: 0.75em;
+	float: right;
+	margin-left: 5px;
+	margin-right: 0;
+	margin-top: 0.75em;
 }
 
 @media (min-width: 997px) {
-  .steamspeak-components {
-    margin: 0;
-  }
+	.steamspeak-components {
+		margin: 0;
+	}
 
-  .steamspeak-components--cols {
-    display: flex;
-  }
+	.steamspeak-components--cols {
+		display: flex;
+	}
 
-  .steamspeak-components--cols .filters {
-    --ifm-sidebar-width: 225px;
-    flex: 0 0 var(--ifm-sidebar-width);
-    max-width: var(--ifm-sidebar-width);
-    padding: calc( var(--ifm-spacing-vertical) * 2 ) var(--ifm-spacing-horizontal);
-    padding-left: 0;
-  }
+	.steamspeak-components--cols .filters {
+		--ifm-sidebar-width: 225px;
 
-  .steamspeak-components--cols .filters > .search {
-    margin-bottom: calc( var(--ifm-spacing-vertical) * 2 );
-  }
+		flex: 0 0 var(--ifm-sidebar-width);
+		max-width: var(--ifm-sidebar-width);
+		padding: calc(var(--ifm-spacing-vertical) * 2) var(--ifm-spacing-horizontal);
+		padding-left: 0;
+	}
 
-  .steamspeak-components--cols .filters > .filter {
-    display: block;
-    margin-bottom: var(--ifm-spacing-vertical);
-  }
+	.steamspeak-components--cols .filters > .search {
+		margin-bottom: calc(var(--ifm-spacing-vertical) * 2);
+	}
 
-  .steamspeak-components--cols .filters > .filter > .filter--label {
-    border: 0px none;
-    font-size: 0.9em;
-    font-weight: bold;
-    margin: 0;
-    margin-bottom: var(--ifm-spacing-vertical);
-    text-align: left;
-    text-transform: uppercase;
-  }
+	.steamspeak-components--cols .filters > .filter {
+		display: block;
+		margin-bottom: var(--ifm-spacing-vertical);
+	}
 
-  .steamspeak-components--cols .filters > .filter > .filter--choices {
-    padding-left: 0;
-  }
+	.steamspeak-components--cols .filters > .filter > .filter--label {
+		border: 0 none;
+		font-size: 0.9em;
+		font-weight: bold;
+		margin: 0;
+		margin-bottom: var(--ifm-spacing-vertical);
+		text-align: left;
+		text-transform: uppercase;
+	}
 
-  .steamspeak-components--cols .filters > .filter > .filter--choices label {
-    display: block;
-    margin: 0;
-  }
+	.steamspeak-components--cols .filters > .filter > .filter--choices {
+		padding-left: 0;
+	}
 
-  .steamspeak-components--cols .filters > .filter > .filter--choices input[type="checkbox"] {
-    margin-left: 0;
-  }
+	.steamspeak-components--cols .filters > .filter > .filter--choices label {
+		display: block;
+		margin: 0;
+	}
 
-  .steamspeak-components--cols .steamspeak-components--results {
-    flex: 1 0;
-    max-width: 100%;
-    padding: calc( var(--ifm-spacing-vertical) * 2 ) var(--ifm-spacing-horizontal);
-    padding-right: 0;
-  }
+	.steamspeak-components--cols .filters > .filter > .filter--choices input[type="checkbox"] {
+		margin-left: 0;
+	}
+
+	.steamspeak-components--cols .steamspeak-components--results {
+		flex: 1 0;
+		max-width: 100%;
+		padding: calc(var(--ifm-spacing-vertical) * 2) var(--ifm-spacing-horizontal);
+		padding-right: 0;
+	}
 }

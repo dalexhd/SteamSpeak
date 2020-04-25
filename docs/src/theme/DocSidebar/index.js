@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import Link from '@docusaurus/Link';
 import SVG from 'react-inlinesvg';
@@ -6,17 +6,17 @@ import SVG from 'react-inlinesvg';
 import classnames from 'classnames';
 import isInternalUrl from '@docusaurus/utils';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import useBaseUrl from '@docusaurus/useBaseUrl';
 import useLockBodyScroll from '@theme/hooks/useLockBodyScroll';
 import useLogo from '@theme/hooks/useLogo';
+import _ from 'lodash';
 
 import styles from './styles.module.css';
 import './styles.css';
 
 const MOBILE_TOGGLE_SIZE = 24;
 
-function DocSidebarItem({item, level, onItemClick, collapsible}) {
-  const {items, href, label, type} = item;
+function DocSidebarItem({ item, level, onItemClick, collapsible }) {
+  const { items, href, label, type } = item;
   const [collapsed, setCollapsed] = useState(item.collapsed);
   const [prevCollapsedProp, setPreviousCollapsedProp] = useState(null);
 
@@ -29,52 +29,17 @@ function DocSidebarItem({item, level, onItemClick, collapsible}) {
   }
 
   switch (type) {
-    case 'category':
-      if (items.length == 0) {
+    case 'category': {
+      if (items.length === 0) {
         return false;
       }
 
-      if(level == 1) {
+      if (level === 1) {
         return (
           <li className={classnames('menu__list-item')} key={label}>
-            <div className="title">
-              {label}
-            </div>
+            <div className="title">{label}</div>
             <ul className="menu__list">
-              {items.map(childItem => (
-                <DocSidebarItem
-                  key={childItem.label}
-                  item={childItem}
-                  level={level + 1}
-                  onItemClick={onItemClick}
-                  collapsible={collapsible}
-                />
-              ))}
-            </ul>
-          </li>
-        );
-      } else {
-        let categoryHref = items[0].href;
-
-        return (
-          <li
-            className={classnames('menu__list-item', {
-              'menu__list-item--collapsed': collapsed,
-            })}
-            key={label}>
-            <Link
-              activeClassName="menu__link--active"
-              className={classnames('menu__link', {
-                'menu__link--sublist': collapsible,
-              })}
-              to={categoryHref + "/"}
-              onClick={
-                collapsible && categoryHref == '#!' ? () => setCollapsed(!collapsed) : undefined
-              }>
-              {label}
-            </Link>
-            <ul className="menu__list">
-              {items.map(childItem => (
+              {items.map((childItem) => (
                 <DocSidebarItem
                   key={childItem.label}
                   item={childItem}
@@ -87,55 +52,107 @@ function DocSidebarItem({item, level, onItemClick, collapsible}) {
           </li>
         );
       }
+      const categoryHref = items[0].href;
+
+      return (
+        <li
+          className={classnames('menu__list-item', {
+            'menu__list-item--collapsed': collapsed
+          })}
+          key={label}
+        >
+          <Link
+            activeClassName="menu__link--active"
+            className={classnames('menu__link', {
+              'menu__link--sublist': collapsible
+            })}
+            to={`${categoryHref}/`}
+            onClick={
+              collapsible && categoryHref === '#!'
+                ? () => setCollapsed(!collapsed)
+                : undefined
+            }
+          >
+            {label}
+          </Link>
+          <ul className="menu__list">
+            {items.map((childItem) => (
+              <DocSidebarItem
+                key={childItem.label}
+                item={childItem}
+                level={level + 1}
+                onItemClick={onItemClick}
+                collapsible={collapsible}
+              />
+            ))}
+          </ul>
+        </li>
+      );
+    }
 
     case 'link':
-    default:
+    default: {
       let instance = false;
       let processedLabel = label;
 
       if (label.includes('|')) {
-        let parts = label.split('|', 2);
-        processedLabel = parts[0];
-        instance = parts[1];
+        const parts = label.split('|', 2);
+        [processedLabel, instance] = parts;
       }
-      let hidden = processedLabel == 'hidden';
+      const hidden = processedLabel === 'hidden';
 
       return (
-        <li className={classnames('menu__list-item', (hidden && 'menu__list-item-hidden'))} key={label}>
+        <li
+          className={classnames(
+            'menu__list-item',
+            hidden && 'menu__list-item-hidden'
+          )}
+          key={label}
+        >
           <Link
             className="menu__link"
-            to={href + "/"}
+            to={`${href}/`}
             {...(isInternalUrl(href)
               ? {
                   activeClassName: 'menu__link--active',
                   exact: true,
-                  onClick: onItemClick,
+                  onClick: onItemClick
                 }
               : {
                   target: '_blank',
-                  rel: 'noreferrer noopener',
-                })}>
+                  rel: 'noreferrer noopener'
+                })}
+          >
             {processedLabel}
-            {instance &&
+            {instance && (
               <span className="badges">
-                {<span className="badge badge--secondary" title={`This plugin works on ${_.startCase(instance)} instance.`}><i className="feather icon-cpu"></i> {_.startCase(instance)}</span>}
-              </span>}
+                <span
+                  className="badge badge--secondary"
+                  title={`This plugin works on ${_.startCase(
+                    instance
+                  )} instance.`}
+                >
+                  <i className="feather icon-cpu" /> {_.startCase(instance)}
+                </span>
+              </span>
+            )}
           </Link>
         </li>
       );
+    }
   }
 }
 
 // Calculate the category collapsing state when a page navigation occurs.
 // We want to automatically expand the categories which contains the current page.
 function mutateSidebarCollapsingState(item, path) {
-  const {items, href, type} = item;
+  const { items, href, type } = item;
   switch (type) {
     case 'category': {
       const anyChildItemsActive =
         items
-          .map(childItem => mutateSidebarCollapsingState(childItem, path))
-          .filter(val => val).length > 0;
+          .map((childItem) => mutateSidebarCollapsingState(childItem, path))
+          .filter((val) => val).length > 0;
       // eslint-disable-next-line no-param-reassign
       item.collapsed = !anyChildItemsActive;
       return anyChildItemsActive;
@@ -150,17 +167,16 @@ function mutateSidebarCollapsingState(item, path) {
 function DocSidebar(props) {
   const [showResponsiveSidebar, setShowResponsiveSidebar] = useState(false);
   const {
-    siteConfig: {themeConfig: {navbar: {title} = {}}} = {},
-    isClient,
+    siteConfig: { themeConfig: { navbar: { title } = {} } } = {},
+    isClient
   } = useDocusaurusContext();
-  const {logoLink, logoLinkProps, logoImageUrl, logoAlt} = useLogo();
-
+  const { logoLink, logoLinkProps, logoImageUrl, logoAlt } = useLogo();
 
   const {
     docsSidebars,
     path,
     sidebar: currentSidebar,
-    sidebarCollapsible,
+    sidebarCollapsible
   } = props;
 
   useLockBodyScroll(showResponsiveSidebar);
@@ -173,13 +189,13 @@ function DocSidebar(props) {
 
   if (!sidebarData) {
     throw new Error(
-      `Cannot find the sidebar "${currentSidebar}" in the sidebar config!`,
+      `Cannot find the sidebar "${currentSidebar}" in the sidebar config!`
     );
   }
 
   if (sidebarCollapsible) {
-    sidebarData.forEach(sidebarItem =>
-      mutateSidebarCollapsingState(sidebarItem, path),
+    sidebarData.forEach((sidebarItem) =>
+      mutateSidebarCollapsingState(sidebarItem, path)
     );
   }
 
@@ -193,21 +209,24 @@ function DocSidebar(props) {
       </Link>
       <div
         className={classnames('menu', 'menu--responsive', styles.menu, {
-          'menu--show': showResponsiveSidebar,
-        })}>
+          'menu--show': showResponsiveSidebar
+        })}
+      >
         <button
           aria-label={showResponsiveSidebar ? 'Close Menu' : 'Open Menu'}
           className="button button--secondary button--sm menu__button"
           type="button"
           onClick={() => {
             setShowResponsiveSidebar(!showResponsiveSidebar);
-          }}>
+          }}
+        >
           {showResponsiveSidebar ? (
             <span
               className={classnames(
                 styles.sidebarMenuIcon,
-                styles.sidebarMenuCloseIcon,
-              )}>
+                styles.sidebarMenuCloseIcon
+              )}
+            >
               &times;
             </span>
           ) : (
@@ -218,7 +237,8 @@ function DocSidebar(props) {
               width={MOBILE_TOGGLE_SIZE}
               viewBox="0 0 32 32"
               role="img"
-              focusable="false">
+              focusable="false"
+            >
               <title>Menu</title>
               <path
                 stroke="currentColor"
@@ -232,7 +252,7 @@ function DocSidebar(props) {
         </button>
         <ul className="menu__list">
           {sidebarData.map(
-            item =>
+            (item) =>
               item.items.length > 0 && (
                 <DocSidebarItem
                   key={item.label}
@@ -243,7 +263,7 @@ function DocSidebar(props) {
                   }}
                   collapsible={sidebarCollapsible}
                 />
-              ),
+              )
           )}
         </ul>
       </div>
