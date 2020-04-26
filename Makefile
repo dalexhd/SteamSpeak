@@ -5,7 +5,7 @@ SH					=	@bash
 RM					=	@/bin/rm -rf
 
 AUTHOR				=	DalexHD
-LAST_COMMIT_DATE	=	$(shell git log -1 --date=format:"%m/%d/%y %T" --format="%ad   [%cr]")
+LAST_COMMIT_DATE	=	$(shell git log -1 --date=format:"%m/%d/%Y" --format="%ad   [%cr]")
 LAST_COMMIT_HASH	=	$(shell git log -1 --date=format:"%m/%d/%y %T" --format="%H")
 LAST_COMMIT_MESSAGE	=	$(shell git log -1 --date=format:"%m/%d/%y %T" --format="%s")
 TEAMSPEAK_TOKEN		=	$(shell docker logs teamspeak 2>&1 | grep token | sed 's/.*token=//' | sed 's/\r//g' | head -1)
@@ -41,9 +41,22 @@ BLINK				=	$(shell printf "\033[5m")
 BOLD				=	$(shell printf "\033[1m")
 UP					=	$(shell printf "\033[5A")
 
-all:		##@Build Build all files
+##@ Build
+all:		## Build all files
 			@make ts
 
+##@ Help
+help:		## View all available commands.
+			$(shell $(TARGETS_EXE))
+			@echo ${CYAN} Repository: ${UND}${BOLD}$(OUTPUT)${CYAN}${X}${CYAN}${UND}       Author: $(AUTHOR)${X}
+			@echo ${CYAN} Last commit:${X}
+			@echo ${CYAN} Date: $(LAST_COMMIT_DATE)
+			@echo ${CYAN} Hash: $(LAST_COMMIT_HASH)${X}
+			@echo ${CYAN} Message: $(LAST_COMMIT_MESSAGE)${X}
+			@echo ${CYAN}--------------------------------------------------------------------------
+			@echo ${CYAN} Available commands:
+			@awk 'BEGIN {FS = ":.*##"; printf "Usage: make ${CYAN}<target>${X}\n"} /^[a-zA-Z_-]+:.*?##/ { printf "  ${CYAN}%-25s${X} %s\n", $$1, $$2 } /^##@/ { printf "\n${BOLD}%s${X}\n", substr($$0, 5) } ' $(MAKEFILE_LIST)
+			@echo ${CYAN}--------------------------------------------------------------------------
 
 TOKEN_SCRIPT = \
 			$(bash echo "Waiting while servertoken is generated..." \
@@ -56,7 +69,22 @@ TOKEN_SCRIPT = \
 			done)
 
 
-ts:		##@Misc Run docker image
+##@ Misc
+
+config:		## Create config files
+			@if [ ! -d "packages/server/config/old.config" ]; then mkdir packages/server/config/old.config; fi
+			@find packages/server/config -maxdepth 1 -iname \*.js -not -iname \*.sample.js -type f -exec bash -c 'for f; do cp "$$f" "packages/server/config/old.config/$$(basename $$f)"; done' sh {} +
+			@echo ${B}Created a restore point inside the ${W}packages/server/config/old.config ${B}folder.
+			@find packages/server/config -maxdepth 1 -iname \*.sample.js -type f -exec bash -c 'for f; do cp "$$f" "$${f/.sample}"; done' sh {} +
+			@echo
+
+re:			## Call clean => all
+			@make clean
+			@make all
+
+##@ Development
+
+ts:			## Run docker image
 			@echo ${B}Running: ${R}$(OUTPUT)${X}
 			@echo
 			$(DOCKER) run -d --name=teamspeak -p 9987:9987/udp -p 10011:10011/tcp -p 10022:10022/tcp -p 30033:30033/tcp -e TS3SERVER_LICENSE=accept -e TS3SERVER_QUERY_PROTOCOLS=raw,ssh -e TS3SERVER_IP_WHITELIST=whitelist.txt -e TS3SERVER_LOG_QUERY_COMMANDS=1 teamspeak ts3server serveradmin_password=SteamSpeak -v /docker/TeamSpeak/query_ip_whitelist.txt:/var/ts3server/whitelist.txt > /dev/null 2>&1
@@ -67,44 +95,10 @@ ts:		##@Misc Run docker image
 			$(DOCKER) logs teamspeak 2>&1 | grep token | sed 's/.*token=//' | sed 's/\r//g' | head -1 | tr -d '\n" ' | xargs -I {} echo "${B}Token: ${G}${BOLD}"{}${X}
 			@echo
 
-config:		##@Misc Create config files
-			@if [ ! -d "packages/server/config/old.config" ]; then mkdir packages/server/config/old.config; fi
-			@find packages/server/config -maxdepth 1 -iname \*.js -not -iname \*.sample.js -type f -exec bash -c 'for f; do cp "$$f" "packages/server/config/old.config/$$(basename $$f)"; done' sh {} +
-			@echo ${B}Created a restore point inside the ${W}packages/server/config/old.config ${B}folder.
-			@find packages/server/config -maxdepth 1 -iname \*.sample.js -type f -exec bash -c 'for f; do cp "$$f" "$${f/.sample}"; done' sh {} +
-			@echo
-
-clean:		##@Misc Clean docker image
+clean:		## Clean docker image
 			@echo ${B}Stoping container...${X}
 			$(DOCKER) stop teamspeak > /dev/null 2>&1
 			$(DOCKER) rm teamspeak -f  > /dev/null 2>&1
 			@echo ${B}Stoping container...${X}
-
-HELP_SCRIPT = \
-			while(<>) { push @{$$help{$$2 // 'options'}}, [$$1, $$3] if /^([a-zA-Z\-\%_]+)\s*:.*\#\#(?:@([a-zA-Z\-\%]+))?\s(.*)$$/ }; \
-			for (sort keys %help) { \
-				print " ${R}$$_:${RESET}\n"; \
-				for (@{$$help{$$_}}) { \
-					$$sep = " " x (32 - length $$_->[0]); \
-					print "    ${CYAN}$$_->[0]${R}$$sep${B}$$_->[1]${X}\n"; \
-				}; \
-				print "\n"; \
-			}
-
-help:		##@Help View all available commands.
-			$(shell $(TARGETS_EXE))
-			@echo ${CYAN} Repository: ${UND}${BOLD}$(OUTPUT)${CYAN}${X}${CYAN}${UND}\\t\\t\\t\\t\\tAuthor: $(AUTHOR)${X}
-			@echo ${CYAN} Last commit:${X}
-			@echo ${CYAN} \\tDate: $(LAST_COMMIT_DATE)
-			@echo ${CYAN} \\tHash: $(LAST_COMMIT_HASH)${X}
-			@echo ${CYAN} \\tMessage: $(LAST_COMMIT_MESSAGE)${X}
-			@echo ${CYAN}--------------------------------------------------------------------------
-			@echo ${CYAN} Available commands:
-			@perl -e '$(HELP_SCRIPT)' $(MAKEFILE_LIST)
-			@echo ${CYAN}--------------------------------------------------------------------------
-
-re:			##@Misc Call clean => all
-			@make clean
-			@make all
 
 .PHONY:		all build clean re
