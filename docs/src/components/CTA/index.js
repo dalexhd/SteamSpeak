@@ -33,7 +33,7 @@ function CTA({ github, inline, size, style }) {
       {github !== false && (
         <div className="col">
           <a
-            href={repoUrl}
+            href={repoUrl()}
             target="_blank"
             rel="noopener noreferrer"
             className={classes}
