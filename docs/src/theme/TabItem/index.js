@@ -8,6 +8,7 @@
 import React from 'react';
 
 function TabItem(props) {
+  // eslint-disable-next-line react/destructuring-assignment
   return <>{props.children}</>;
 }
 

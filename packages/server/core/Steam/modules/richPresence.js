@@ -80,7 +80,9 @@ steamUser.on('user', async (sid, data) => {
 				Promise.all([
 					serverGroup.addClient(user.dbid),
 					serverGroup.addPerm('i_group_show_name_in_tree', 2),
-					serverGroup.rename(`#${groupNumber} ${lang.steam.status[data.persona_state]}`)
+					serverGroup.rename(
+						`#${groupNumber} ${lang.steam.status[data.persona_state] || lang.steam.status[0]}`
+					)
 				]).then(() => {
 					user.groupId = serverGroup.sgid;
 					user.groupNumber = groupNumber;
@@ -91,8 +93,16 @@ steamUser.on('user', async (sid, data) => {
 		} else {
 			Ts3.serverGroupRename(
 				user.groupId,
-				`#${user.groupNumber} ${lang.steam.status[data.persona_state]}`
-			);
+				`#${user.groupNumber} ${lang.steam.status[data.persona_state] || lang.steam.status[0]}`
+			).catch(async (err) => {
+				if (err.id === 2560) {
+					user.groupId = undefined;
+					user.groupNumber = undefined;
+					user.save();
+					groupNumber -= 1;
+					steamUser.getPersonas([user.steamId]);
+				}
+			});
 		}
 	}
 });

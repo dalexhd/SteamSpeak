@@ -1,0 +1,12 @@
+paths:
+  "packages/server/config/**":
+    - "Did you update documentation page accordantly to config changes?"
+  "packages/server/**":
+    - "Do you linted the code?"
+    - "Do you run it's tests?"
+  "packages/client/src/**":
+    - "Do you linted the code?"
+    - "Do you run available tests?"
+  "docs/**":
+    - "Do you linted the code?"
+    - "Have you added the new version on metadata.js?"

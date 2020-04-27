@@ -1,13 +1,12 @@
-const Ts3 = require('../../TeamSpeak');
-const { convertToMiliseconds } = require('../../../utils/time');
-const log = require('../../../utils/log');
+const Ts3 = require('../../../TeamSpeak');
+const { convertToMiliseconds } = require('../../../../utils/time');
+const log = require('../../../../utils/log');
 
 var loaded = false;
 
 module.exports.main = async () => {
 	const { data } = this.info.config;
 	let info = await Ts3.serverInfo();
-	let channels = await Ts3.channelList();
 	let replacements = {
 		'[PING]': info.virtualserver_total_ping,
 		'[PACKETLOSS]': info.virtualserver_total_packetloss_total,
@@ -21,12 +20,16 @@ module.exports.main = async () => {
 			if (!replacements.hasOwnProperty(key)) continue;
 			name = name.replace(key, replacements[key]);
 		}
-		if (channels.find((c) => c.cid === channel.channelId && c.name !== name)) {
-			Ts3.channelEdit(channel.channelId, {
-				channel_name: name
+		Ts3.channelEdit(channel.channelId, {
+			channel_name: name
+		})
+			.then(() => {
+				log.info(`${this.info.name} ch[id: ${channel.channelId}] to: ${name}`, 'ts3');
+			})
+			.catch((err) => {
+				if (err.id === 771) return;
+				log.error(`${this.info.name} ch[id: ${channel.channelId}] error: ${err}`, 'ts3');
 			});
-			log.info(`multiFunction - ch[id: ${channel.channelId}] to: ${name}`, 'ts3');
-		}
 	});
 };
 
@@ -43,8 +46,9 @@ module.exports.unload = () => {
 };
 
 module.exports.info = {
-	name: 'multiFunction',
-	desc: 'Multiple funcitons to show server related data.',
+	name: 'Multi function',
+	description:
+		'This plugin allows you to display relevant server information on the configured channels.',
 	config: {
 		enabled: true,
 		data: [
@@ -60,7 +64,7 @@ module.exports.info = {
 			},
 			{
 				enabled: true,
-				channelId: 19,
+				channelId: 16,
 				name: '» Channels count: [CHANNELS]'
 			},
 			{

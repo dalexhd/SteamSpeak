@@ -1,13 +1,9 @@
-import React, { useState, useEffect } from "react";
-import classnames from "classnames";
-import Link from "@docusaurus/Link";
+import React, { useState, useEffect } from 'react';
 
-import "./styles.css";
+import './styles.css';
 
-function Diagram({ className, height, width }) {
-  const [_, updateState] = useState();
-  const defaultXPosition = 7;
-  const defaultTextLength = 60;
+function Diagram({ height, width }) {
+  const [, updateState] = useState();
 
   useEffect(() => {
     const timeout = setTimeout(() => {
@@ -17,21 +13,21 @@ function Diagram({ className, height, width }) {
   }, []);
 
   if (!height) {
-    height = "294px";
+    height = '294px';
   }
 
   if (!width) {
-    width = "900px";
+    width = '900px';
   }
 
   return (
     <svg
       height="294px"
-      class="diagram"
+      className="diagram"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 100 100"
     >
-      <g class="logo">
+      <g className="logo">
         <g id="mic">
           <path
             d="M794.64,402a45.58,45.58,0,0,1-7.58-.85l-.62-.16c-.82-.24-1.52-.64-1.53-1.59s.69-1.38,1.5-1.62a22.25,22.25,0,0,1,5.06-.74,25.56,25.56,0,0,0,12.75-3.87,19.42,19.42,0,0,0,7.51-9.24l.09-.26c.32-1,.7-2,2-2a2.47,2.47,0,0,1,2.3,1.95,11.26,11.26,0,0,1-1.94,11.62,17.36,17.36,0,0,1-11.24,6A82.8,82.8,0,0,1,794.64,402Z"

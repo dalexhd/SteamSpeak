@@ -1,4 +1,3 @@
-
 import React from 'react';
 
 import Link from '@docusaurus/Link';
@@ -10,8 +9,7 @@ import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import styles from './styles.module.css';
 
-
-function FooterLink({to, href, label, ...props}) {
+function FooterLink({ to, href, label, ...props }) {
   const toUrl = useBaseUrl(to);
   return (
     <Link
@@ -20,28 +18,29 @@ function FooterLink({to, href, label, ...props}) {
         ? {
             target: '_blank',
             rel: 'noopener noreferrer',
-            href,
+            href
           }
         : {
-            to: toUrl,
+            to: toUrl
           })}
-      {...props}>
+      {...props}
+    >
       {label}
     </Link>
   );
 }
 
-const FooterLogo = ({url, alt}) => (
+const FooterLogo = ({ url, alt }) => (
   <SVG className="footer__logo" alt={alt} src={url} />
 );
 
 function Footer() {
   const context = useDocusaurusContext();
-  const {siteConfig = {}} = context;
-  const {themeConfig = {}} = siteConfig;
-  const {footer} = themeConfig;
+  const { siteConfig = {} } = context;
+  const { themeConfig = {} } = siteConfig;
+  const { footer } = themeConfig;
 
-  const {copyright, links = [], logo = {}} = footer || {};
+  const { copyright, links = [], logo = {} } = footer || {};
   const logoUrl = useBaseUrl(logo.src);
 
   if (!footer) {
@@ -51,8 +50,9 @@ function Footer() {
   return (
     <footer
       className={classnames('footer', {
-        'footer--dark': footer.style === 'dark',
-      })}>
+        'footer--dark': footer.style === 'dark'
+      })}
+    >
       <div className="container">
         {links && links.length > 0 && (
           <div className="row footer__links">
@@ -64,11 +64,35 @@ function Footer() {
                 <MailingListForm description={false} />
               </div>
               <div>
-                <a href="https://twitter.com/dalexhdyt" target="_blank"><i className="feather icon-twitter" alt="DalexHD's Twitter"></i></a>
+                <a
+                  href="https://twitter.com/dalexhdyt"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i className="feather icon-twitter" alt="DalexHD's Twitter" />
+                </a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="https://gitter.im/dwyl" target="_blank"><i className="feather icon-message-circle" alt="SteamSpeak's Chat"></i></a>
+                <a
+                  href="https://gitter.im/dwyl"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i
+                    className="feather icon-message-circle"
+                    alt="SteamSpeak's Chat"
+                  />
+                </a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
-                <a href="https://github.com/dalexhd/steamspeak" target="_blank"><i className="feather icon-github" alt="SteamSpeak's Github Repo"></i></a>
+                <a
+                  href="https://github.com/dalexhd/steamspeak"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i
+                    className="feather icon-github"
+                    alt="SteamSpeak's Github Repo"
+                  />
+                </a>
               </div>
             </div>
             {links.map((linkItem, i) => (
@@ -82,18 +106,14 @@ function Footer() {
                   <ul className="footer__items">
                     {linkItem.items.map((item, key) =>
                       item.html ? (
-                        <li
-                          key={key}
-                          className="footer__item"
-                          dangerouslySetInnerHTML={{
-                            __html: item.html,
-                          }}
-                        />
+                        <li key={key} className="footer__item">
+                          {item.html}
+                        </li>
                       ) : (
                         <li key={item.href || item.to} className="footer__item">
                           <FooterLink {...item} />
                         </li>
-                      ),
+                      )
                     )}
                   </ul>
                 ) : null}
@@ -110,7 +130,8 @@ function Footer() {
                     href={logo.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className={styles.footerLogoLink}>
+                    className={styles.footerLogoLink}
+                  >
                     <FooterLogo alt={logo.alt} url={logoUrl} />
                   </a>
                 ) : (
@@ -118,10 +139,16 @@ function Footer() {
                 )}
               </div>
             )}
-            {copyright}<br />
+            {copyright}
+            <br />
             <small>
-              <a href="https://github.com/dalexhd/steamspeak/security/policy">Security Policy</a>&nbsp;&bull;&nbsp;
-              <a href="https://github.com/dalexhd/steamspeak/blob/master/PRIVACY.md">Privacy Policy</a>
+              <a href="https://github.com/dalexhd/steamspeak/security/policy">
+                Security Policy
+              </a>
+              &nbsp;&bull;&nbsp;
+              <a href="https://github.com/dalexhd/steamspeak/blob/master/PRIVACY.md">
+                Privacy Policy
+              </a>
             </small>
           </div>
         )}

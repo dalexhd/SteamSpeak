@@ -15,7 +15,7 @@
     "bootstrap": "lerna bootstrap",
     "dev": "concurrently --kill-others --success first \"yarn run start:server\" \"yarn run start:client\"",
     "test": "yarn run test:server && yarn run test:client",
-    "lint": "yarn run lint:server && yarn run lint:client",
+    "lint": "yarn run lint:server && yarn run lint:client && yarn run docs:lint",
     "test:server": "yarn --cwd ./packages/server test",
     "test:client": "yarn --cwd ./packages/client test:unit",
     "start:server": "yarn --cwd ./packages/server start",
@@ -27,6 +27,8 @@
     "docs:build": "yarn --cwd ./docs run build",
     "docs:deploy": "yarn --cwd ./docs run deploy",
     "docs:install": "yarn --cwd ./docs install",
+    "docs:lint": "yarn --cwd ./docs lint",
+    "docs:prettier": "yarn --cwd ./docs prettier",
     "publish": "lerna publish"
   },
   "repository": {

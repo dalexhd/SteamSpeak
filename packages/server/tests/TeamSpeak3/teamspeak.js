@@ -3,17 +3,7 @@
 const { TeamSpeak } = require('ts3-nodejs-library');
 const config = require('../../config/teamspeak');
 
-const ts3 = new TeamSpeak({
-	protocol: 'ssh',
-	host: config.ip,
-	queryport: config.query_port,
-	serverport: config.port,
-	username: config.login,
-	password: config.password,
-	nickname: config.name,
-	antispam: true,
-	antispamtimer: 350
-});
+const ts3 = new TeamSpeak(config);
 
 describe('TeamSpeak3', () => {
 	afterAll(async () => {

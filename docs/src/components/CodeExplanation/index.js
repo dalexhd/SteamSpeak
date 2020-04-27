@@ -1,10 +1,10 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState } from 'react';
-
-import Alert from '@site/src/components/Alert';
 
 import './styles.css';
 
-function CodeExplanation({children}) {
+function CodeExplanation({ children }) {
   const [isToggled, setToggled] = useState(false);
 
   if (isToggled) {
@@ -12,20 +12,25 @@ function CodeExplanation({children}) {
       <div className="code-explanation code-explanation--expanded">
         {children}
 
-        <div className="code-explanation--toggle" onClick={() => setToggled(!isToggled)}>
-          <i className="feather icon-arrow-up-circle"></i> hide
+        <div
+          className="code-explanation--toggle"
+          onClick={() => setToggled(!isToggled)}
+        >
+          <i className="feather icon-arrow-up-circle" /> hide
         </div>
       </div>
     );
-  } else {
-    return (
-      <div className="code-explanation code-explanation--collapsed">
-        <div className="code-explanation--toggle" onClick={() => setToggled(!isToggled)}>
-          <i className="feather icon-info"></i> explain this command
-        </div>
+  }
+  return (
+    <div className="code-explanation code-explanation--collapsed">
+      <div
+        className="code-explanation--toggle"
+        onClick={() => setToggled(!isToggled)}
+      >
+        <i className="feather icon-info" /> explain this command
       </div>
-    );
-   }
+    </div>
+  );
 }
 
 export default CodeExplanation;

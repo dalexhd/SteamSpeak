@@ -2,26 +2,30 @@ import React from 'react';
 
 import humanizeString from 'humanize-string';
 
-function RadioList({currentState, humanize, icon, name, setState, values}) {
-  if (values.size == 0)
-    return null;
+function RadioList({ currentState, humanize, icon, name, setState, values }) {
+  if (values.size === 0) return null;
 
-  let valuesArr = Array.from(values)
+  const valuesArr = Array.from(values);
 
   return (
     <>
       {valuesArr.map((value, idx) => {
-        let label = (typeof value === 'string' && humanize) ? humanizeString(value) : value;
+        const label =
+          typeof value === 'string' && humanize ? humanizeString(value) : value;
 
         return (
-          <label key={idx}>
+          <label key={idx} htmlFor={name}>
             <input
-              checked={value == currentState}
+              checked={value === currentState}
               name={name}
-              onChange={(event) => setState(value)}
+              onChange={() => setState(value)}
               type="radio"
-               />
-            {label && <>{icon ? <i className={`feather icon-${icon}`}></i> : ''} {label}</>}
+            />
+            {label && (
+              <>
+                {icon ? <i className={`feather icon-${icon}`} /> : ''} {label}
+              </>
+            )}
           </label>
         );
       })}
