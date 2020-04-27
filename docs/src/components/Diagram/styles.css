@@ -1,79 +1,79 @@
 @keyframes diagramLogo {
-  40% {
-    transform: translate(0px, -10px);
-  }
+	40% {
+		transform: translate(0, -10px);
+	}
 
-  100% {
-    opacity: 1;
-    transform: translate(0px, 0px);
-  }
+	100% {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
 }
 
 @keyframes diagramMic {
-  40% {
-    transform: translate(10px, -5px);
-  }
+	40% {
+		transform: translate(10px, -5px);
+	}
 
-  100% {
-    opacity: 1;
-    transform: translate(0px, 0px);
-  }
+	100% {
+		opacity: 1;
+		transform: translate(0, 0);
+	}
 }
 
 @keyframes scale-up-center {
-  0% {
-    -webkit-transform: scale(0.92);
-            transform: scale(0.92);
-  }
-  100% {
-    -webkit-transform: scale(1);
-            transform: scale(1);
-  }
+	0% {
+		-webkit-transform: scale(0.92);
+		transform: scale(0.92);
+	}
+
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
 }
 
 @keyframes shadow-drop-2-center {
-  0% {
-    -webkit-transform: translateZ(0);
-            transform: translateZ(0);
-    -webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-            box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
-  }
-  100% {
-    -webkit-transform: translateZ(50px);
-            transform: translateZ(50px);
-    -webkit-box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-            box-shadow: 0 0 20px 0px rgba(0, 0, 0, 0.35);
-  }
+	0% {
+		-webkit-transform: translateZ(0);
+		transform: translateZ(0);
+		-webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+		box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+	}
+
+	100% {
+		-webkit-transform: translateZ(50px);
+		transform: translateZ(50px);
+		-webkit-box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.35);
+		box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.35);
+	}
 }
 
-
 @keyframes diagramFadeIn {
-  0% {
-    opacity: 0.01;
-  }
+	0% {
+		opacity: 0.01;
+	}
 
-  100% {
-    opacity: 1;
-  }
+	100% {
+		opacity: 1;
+	}
 }
 
 .diagram #headset {
-  animation: diagramLogo 1050ms cubic-bezier(0.39, 0.575, 0.565, 1);
-  animation-delay: 250ms;
-  animation-fill-mode: forwards;
-  opacity: 1;
+	animation: diagramLogo 1050ms cubic-bezier(0.39, 0.575, 0.565, 1);
+	animation-delay: 250ms;
+	animation-fill-mode: forwards;
+	opacity: 1;
 }
 
 .diagram #mic {
-  animation: ;
-  animation: diagramMic 1050ms cubic-bezier(0.39, 0.575, 0.565, 1);
-  animation-delay: 250ms;
-  animation-fill-mode: forwards;
-  opacity: 1;
+	animation: ;
+	animation: diagramMic 1050ms cubic-bezier(0.39, 0.575, 0.565, 1);
+	animation-delay: 250ms;
+	animation-fill-mode: forwards;
+	opacity: 1;
 }
-
 
 .diagram #eyes {
 	-webkit-animation: scale-up-center 1050ms cubic-bezier(0.39, 0.575, 0.565, 1);
-	        animation: scale-up-center 1050ms cubic-bezier(0.39, 0.575, 0.565, 1);
+	animation: scale-up-center 1050ms cubic-bezier(0.39, 0.575, 0.565, 1);
 }

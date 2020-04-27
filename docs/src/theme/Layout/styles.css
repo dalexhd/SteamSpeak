@@ -1,19 +1,19 @@
 html,
 body {
-  height: 100%;
+	height: 100%;
 }
 
 body {
-  margin: 0;
-  transition: var(--ifm-transition-fast) ease color;
+	margin: 0;
+	transition: var(--ifm-transition-fast) ease color;
 }
 
 body > div {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
 }
 
 .main-wrapper {
-  flex: 1 0 auto;
+	flex: 1 0 auto;
 }

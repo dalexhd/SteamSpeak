@@ -12,7 +12,6 @@ The [Open Source Guides](https://opensource.guide/) website has a collection of 
 - [How to Contribute to Open Source](https://opensource.guide/how-to-contribute/)
 - [Building Welcoming Communities](https://opensource.guide/building-community/)
 
-
 ## Get Involved
 
 There are many ways to contribute to SteamSpeak, and many of them do not involve writing any code. Here's a few ideas to get started:
@@ -61,18 +60,20 @@ When [opening a new issue](https://github.com/dalexhd/steamspeak/issues/new/choo
 1. Ensure you have [NodeJS](https://nodejs.org/) installed.
 1. After cloning the repository, run `yarn install` in the root of the repository.
 1. To start a development server:
-  - run `make config`
-  - edit `packages/server/config` config files
-  - run `yarn run start:server`
-  - run `yarn run start:client`
+
+- run `make config`
+- edit `packages/server/config` config files
+- run `yarn run start:server`
+- run `yarn run start:client`
 
 ## Online one-click setup for contributing
 
 You can use Gitpod (a free, online, VS Code-like IDE) for contributing. With a single click it will launch a workspace:
-  - run `make config`
-  - edit `packages/server/config` config files
-  - run `yarn run start:server`
-  - run `yarn run start:client`
+
+- run `make config`
+- edit `packages/server/config` config files
+- run `yarn run start:server`
+- run `yarn run start:client`
 
 So that you can start contributing straight away.
 

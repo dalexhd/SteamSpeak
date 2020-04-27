@@ -16,6 +16,7 @@ make config
 ```
 
 ## Edit your configuration files
+
 Navigate to `packages/server/config` directory and modify previusly generated files.
 
 ### Cache configuration
@@ -30,11 +31,11 @@ module.exports = {
 
 **Options**
 
-| Option | Type | Default | Description |
-| --- | --- | --- | --- |
-| `host` | `string` | `127.0.0.1` | The host to connect to. |
-| `port` | `number` | 6379 | The port of the Redis instance. |
-| `debug` | `boolean` | false | Debug redis connection. |
+| Option  | Type      | Default     | Description                     |
+| ------- | --------- | ----------- | ------------------------------- |
+| `host`  | `string`  | `127.0.0.1` | The host to connect to.         |
+| `port`  | `number`  | 6379        | The port of the Redis instance. |
+| `debug` | `boolean` | false       | Debug redis connection.         |
 
 ### Database configuration
 
@@ -45,7 +46,11 @@ module.exports = {
   user: '',
   password: '',
   database: 'steam_speak',
-  opts: { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }
+  opts: {
+    useCreateIndex: true,
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+  }
 };
 ```
 
@@ -55,8 +60,8 @@ module.exports = {
 | --- | --- | --- | --- |
 | `host` | `string` | `localhost` | The host to connect to. |
 | `port` | `number` | `27017` | The port of the MongoDB instance. |
-| `user` | `string` | | Username for authentication. |
-| `password` | `string` | | Password for authentication. |
+| `user` | `string` |  | Username for authentication. |
+| `password` | `string` |  | Password for authentication. |
 | `database` | `string` | `steam_speak` | The name of the database we want to use. |
 | `opts` | `object` | `{ useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }` | Optional options of the connection. |
 
@@ -79,26 +84,35 @@ module.exports = {
 | --- | --- | --- | --- |
 | `username` | `string` |  | The username of your steam bot. |
 | `password` | `string` |  | The password of your steam bot. |
-| `shared_secret` | `string` | | The shared secret of your steam bot. |
+| `shared_secret` | `string` |  | The shared secret of your steam bot. |
 | `bot_name` | `string` | `[SteamSpeak] - BOT` | The profile name to of the bot. |
 | `language` | `string` | `english` | The STEAM rich presence locale. |
 | `debug` | `boolean` | `false` | Debug steam connection. |
-
 
 ### TeamSpeak configuration
 
 ```javascript
 module.exports = {
-  ip: '127.0.0.1',
-  query_port: 10022,
-  port: 9987,
-  protocol: 'ssh',
-  login: 'serveradmin',
-  password: 'SteamSpeak',
-  name: 'SteamSpeak',
-  server_id: 1,
-  channel_id: 1,
-  debug: false
+	host: '127.0.0.1',
+	queryport: 10022,
+	serverport: 9987,
+	protocol: 'ssh',
+	username: 'serveradmin',
+	password: 'SteamSpeak',
+	nickname: 'SteamSpeak',
+	server_id: 1,
+	channel_id: 123,
+	debug: false,
+	instances: {
+		'first-instance': {
+			nickname: 'SteamSpeak #1',
+			channel_id: 0
+		},
+		'second-instance': {
+			nickname: 'SteamSpeak #2',
+			channel_id: 0
+		}
+	}
 };
 ```
 
@@ -106,17 +120,17 @@ module.exports = {
 
 | Option | Type | Default | Description |
 | --- | --- | --- | --- |
-| `ip` | `string` | `127.0.0.1` | The host to connect to. |
-| `query_port` | `number` | `raw=10011 ssh=10022` | The queryport to use. |
-| `port` | `number` | `9987` | The server to select upon connect. |
+| `host` | `string` | `127.0.0.1` | The host to connect to. |
+| `queryport` | `number` | `raw=10011 ssh=10022` | The queryport to use. |
+| `serverport` | `number` | `9987` | The server to select upon connect. |
 | `protocol` | `string` | `raw` | The query protocol to use. (ssh recommended) |
-| `login` | `string` | `serveradmin` | The username to login with. |
-| `password` | `string` | | The password to use with the login. |
-| `name` | `string` | `SteamSpeak` | The nickname to connect with. |
+| `username` | `string` | `serveradmin` | The username to login with. |
+| `password` | `string` |  | The password to use with the login. |
+| `nickname` | `string` | `SteamSpeak` | The nickname to connect with. |
 | `server_id` | `number` | `1` | The server id of the server. |
 | `channel_id` | `number` | `1` | The channel where the bot stays in. |
 | `debug` | `boolean` | `false` | Debug teamspeak connection. |
-
+| `instances` | `object` |  | Multiple instances definition. |
 
 ### Web server configuration
 
@@ -124,9 +138,9 @@ This web server configuration file is located at `src/server/config/website.js`
 
 ```javascript
 module.exports = {
-	port: 3000,
-	hostname: 'localhost', //Ex: https://my-website.com (without last slash)
-	cors: {
+  port: 3000,
+  hostname: 'localhost', //Ex: https://my-website.com (without last slash)
+  cors: {
     /**
      * @see https://github.com/expressjs/cors#configuration-options
      */
@@ -134,17 +148,17 @@ module.exports = {
     methods: ['GET', 'HEAD', 'PUT', 'PATCH', 'POST', 'DELETE'],
     preflightContinue: false,
     optionsSuccessStatus: 204
-	},
-	jwt: {
-		/**
-		 * @see https://randomkeygen.com/
-		 */
-		secret: 'put a secret key here',
-		options: {
-			expiresIn: '2h'
-		}
-	},
-	admins: []
+  },
+  jwt: {
+    /**
+     * @see https://randomkeygen.com/
+     */
+    secret: 'put a secret key here',
+    options: {
+      expiresIn: '2h'
+    }
+  },
+  admins: []
 };
 ```
 

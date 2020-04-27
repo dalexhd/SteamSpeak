@@ -1,0 +1,19 @@
+[releases."0.4.0"]
+date = 2020-04-27
+commits = [
+  {sha = "c9efbd04f945307eeb15cce1bd78d92b4c3c20c6", message = "chore: Updated changelog.", author = "DalexHD", date = "2020-04-19 11:59:09 +0000", pr_number = "", files_count = 1, insertions_count = 21, deletions_count = 25},
+  {sha = "0a58e1023919c2627b182076cb7fd19152686807", message = "chore: Updated packages.", author = "DalexHD", date = "2020-04-19 11:59:24 +0000", pr_number = "", files_count = 1, insertions_count = 23, deletions_count = 17},
+  {sha = "5051c4a219404b0018d678a02e77a3ad898b7352", message = "chore: Removed unused css.", author = "DalexHD", date = "2020-04-19 14:09:16 +0000", pr_number = "", files_count = 58, insertions_count = 5714, deletions_count = 6331},
+  {sha = "e943613dfdea7c069943bf77e1c15ac5c5712827", message = "fix: 3 hours finding RTL fix 💢", author = "DalHD", date = "2020-04-19 16:46:40 +0000", pr_number = "", files_count = 4, insertions_count = 5, deletions_count = 39},
+  {sha = "14d650963bbf1580508bec9b4cd0a1a4e1079254", message = "chore: Updated changelog.", author = "DalexHD", date = "2020-04-19 17:21:44 +0000", pr_number = "", files_count = 1, insertions_count = 8},
+  {sha = "da2cf6911ae75ae14b4394805cab6cab3219efd3", message = "chore: Updated versions.", author = "DalexHD", date = "2020-04-19 17:27:44 +0000", pr_number = "", files_count = 2, insertions_count = 6, deletions_count = 4},
+  {sha = "b096d1a0043fd3d9bd3999003a9a426c88ad5268", message = "chore: Added git attributes", author = "DalexHD", date = "2020-04-19 17:48:42 +0000", pr_number = "", files_count = 1, insertions_count = 3},
+  {sha = "8990d8f54fae4304bb5c2d30f3862a104eb937a4", message = "chore: Update .gitattributes", author = "DalexHD", date = "2020-04-20 08:55:10 +0000", pr_number = "", files_count = 1, insertions_count = 2, deletions_count = 2},
+  {sha = "e1a38181d01849b0b781daa79525ff4c9da3a547", message = "fix: Removed unucesary require.", author = "DalexHD", date = "2020-04-20 08:58:19 +0000", pr_number = "", files_count = 1, deletions_count = 1},
+  {sha = "4b9fd76ba3f62679f1df7bb43443095dfd4640ef", message = "feat(breaking): Rename user model.", author = "DalexHD", date = "2020-04-20 09:30:12 +0000", pr_number = "", files_count = 5, insertions_count = 17, deletions_count = 17},
+  {sha = "f94348b58d4a6b8eb715d0775bfadb24f1b29098", message = "chore: Removed workbox debug.", author = "DalexHD", date = "2020-04-20 09:49:47 +0000", pr_number = "", files_count = 1, insertions_count = 2},
+  {sha = "7388f189375901fa8a10146ca1aea9c6be4bf8b7", message = "fix: Logout if 403 status", author = "DalexHD", date = "2020-04-20 09:50:06 +0000", pr_number = "", files_count = 1, insertions_count = 23, deletions_count = 18},
+  {sha = "3044466058460e6dd0da964a9dc99f5db01ff971", message = "chore: Ts3 plugin config data can be an array.", author = "DalexHD", date = "2020-04-20 12:43:27 +0000", pr_number = "", files_count = 1, insertions_count = 1, deletions_count = 1},
+  {sha = "a8cc388293a84fa7722c96562dfa1e3bcdc2b684", message = "feat: Add multi function plugin.", author = "DalexHD", date = "2020-04-20 16:37:06 +0000", pr_number = "", files_count = 1, insertions_count = 85},
+  {sha = "2e380c9f6b9b03ac08372447f1b11f10d37f5dda", message = "feat: Add change channel plugin.", author = "DalexHD", date = "2020-04-20 17:24:06 +0000", pr_number = "", files_count = 1, insertions_count = 82},
+]

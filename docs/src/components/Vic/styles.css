@@ -1,20 +1,21 @@
 .vic {
-  display: block;
+	display: block;
 }
+
 .vic .icon {
-  margin-bottom: 1em;
+	margin-bottom: 1em;
 }
 
 .vic .icon img {
-  display: block;
-  height: 7em;
-  margin: 0 auto;
+	display: block;
+	height: 7em;
+	margin: 0 auto;
 }
 
 .vic .text {
-  text-align: center;
+	text-align: center;
 }
 
 .vic--l {
-  font-size: 1.6em;
+	font-size: 1.6em;
 }
