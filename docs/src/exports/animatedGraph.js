@@ -1,22 +1,22 @@
 import * as d3Timer from 'd3-timer';
 
-const d3 = Object.assign({}, d3Timer);
+const d3 = { ...d3Timer };
 
 export default function animatedGraph(canvas) {
-  var context = canvas.getContext("2d"),
-      width = canvas.width,
-      height = canvas.height,
-      radius = 3,
-      minDistance = 60,
-      maxDistance = 45,
-      minDistance2 = minDistance * minDistance,
-      maxDistance2 = maxDistance * maxDistance;
+  const context = canvas.getContext('2d');
+  const { width } = canvas;
+  const { height } = canvas;
+  const radius = 3;
+  const minDistance = 60;
+  const maxDistance = 45;
+  const minDistance2 = minDistance * minDistance;
+  const maxDistance2 = maxDistance * maxDistance;
 
-  var tau = 2 * Math.PI,
-      n = 200,
-      particles = new Array(n);
+  const tau = 2 * Math.PI;
+  const n = 200;
+  const particles = new Array(n);
 
-  for (var i = 0; i < n; ++i) {
+  for (let i = 0; i < n; ++i) {
     particles[i] = {
       x: Math.random() * width,
       y: Math.random() * height,
@@ -25,35 +25,42 @@ export default function animatedGraph(canvas) {
     };
   }
 
-  return d3.timer(function(elapsed) {
+  return d3.timer(() => {
     context.save();
     context.clearRect(0, 0, width, height);
 
-    for (var i = 0; i < n; ++i) {
-      var p = particles[i];
-      p.x += p.vx; if (p.x < -maxDistance) p.x += width + maxDistance * 2; else if (p.x > width + maxDistance) p.x -= width + maxDistance * 2;
-      p.y += p.vy; if (p.y < -maxDistance) p.y += height + maxDistance * 2; else if (p.y > height + maxDistance) p.y -= height + maxDistance * 2;
-      p.vx += 0.2 * (Math.random() - .5) - 0.01 * p.vx;
-      p.vy += 0.2 * (Math.random() - .5) - 0.01 * p.vy;
+    for (let i = 0; i < n; ++i) {
+      const p = particles[i];
+      p.x += p.vx;
+      if (p.x < -maxDistance) p.x += width + maxDistance * 2;
+      else if (p.x > width + maxDistance) p.x -= width + maxDistance * 2;
+      p.y += p.vy;
+      if (p.y < -maxDistance) p.y += height + maxDistance * 2;
+      else if (p.y > height + maxDistance) p.y -= height + maxDistance * 2;
+      p.vx += 0.2 * (Math.random() - 0.5) - 0.01 * p.vx;
+      p.vy += 0.2 * (Math.random() - 0.5) - 0.01 * p.vy;
       context.beginPath();
       context.arc(p.x, p.y, radius, 0, tau);
-      context.fillStyle = "rgba(40,217,242,0.4)";
+      context.fillStyle = 'rgba(40,217,242,0.4)';
       context.fill();
     }
 
-    for (var i = 0; i < n; ++i) {
-      for (var j = i + 1; j < n; ++j) {
-        var pi = particles[i],
-            pj = particles[j],
-            dx = pi.x - pj.x,
-            dy = pi.y - pj.y,
-            d2 = dx * dx + dy * dy;
+    for (let i = 0; i < n; ++i) {
+      for (let j = i + 1; j < n; ++j) {
+        const pi = particles[i];
+        const pj = particles[j];
+        const dx = pi.x - pj.x;
+        const dy = pi.y - pj.y;
+        const d2 = dx * dx + dy * dy;
         if (d2 < maxDistance2) {
-          context.globalAlpha = d2 > minDistance2 ? (maxDistance2 - d2) / (maxDistance2 - minDistance2) : 1;
+          context.globalAlpha =
+            d2 > minDistance2
+              ? (maxDistance2 - d2) / (maxDistance2 - minDistance2)
+              : 1;
           context.beginPath();
           context.moveTo(pi.x, pi.y);
           context.lineTo(pj.x, pj.y);
-          context.strokeStyle = "rgba(40,217,242,0.3)";
+          context.strokeStyle = 'rgba(40,217,242,0.3)';
           context.stroke();
         }
       }

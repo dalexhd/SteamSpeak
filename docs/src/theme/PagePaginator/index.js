@@ -5,14 +5,12 @@ import classnames from 'classnames';
 
 import './styles.css';
 
-function PagePaginator({className, previous, next}) {
+function PagePaginator({ className, previous, next }) {
   return (
     <nav className={classnames('pagination-nav', className)}>
       {previous && (
         <div className="pagination-nav__item">
-          <Link
-            className="pagination-nav__link"
-            to={previous.permalink}>
+          <Link className="pagination-nav__link" to={previous.permalink}>
             <h5 className="pagination-nav__link--sublabel">Previous</h5>
             <h4 className="pagination-nav__link--label">
               &laquo; {previous.title}

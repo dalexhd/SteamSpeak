@@ -16,13 +16,12 @@ import './styles.css';
 const STEAMSPEAK_HOST = 'https://dalexhd.github.io/SteamSpeak/';
 
 function Layout(props) {
-  const {siteConfig = {}} = useDocusaurusContext();
+  const { siteConfig = {} } = useDocusaurusContext();
   const {
     favicon,
-    tagline,
     title: siteTitle,
-    themeConfig: {image: defaultImage},
-    url: siteUrl,
+    themeConfig: { image: defaultImage },
+    url: siteUrl
   } = siteConfig;
   const {
     children,
@@ -31,17 +30,19 @@ function Layout(props) {
     description,
     image,
     keywords,
-    permalink,
-    version,
+    version
   } = props;
   const metaTitle = title ? `${title} | ${siteTitle}` : siteTitle;
   const metaImage = image || defaultImage;
   const metaImageUrl = siteUrl + useBaseUrl(metaImage);
   const faviconUrl = useBaseUrl(favicon);
   const location = useLocation();
-  let canonURL = location ?
-    (STEAMSPEAK_HOST + (location.pathname.endsWith('/') ? location.pathname : (location.pathname + '/'))) :
-    null;
+  const canonURL = location
+    ? STEAMSPEAK_HOST +
+      (location.pathname.endsWith('/')
+        ? location.pathname
+        : `${location.pathname}/`)
+    : null;
 
   return (
     <ThemeProvider>
@@ -69,19 +70,11 @@ function Layout(props) {
           {metaImage && (
             <meta name="twitter:image:alt" content={`Image for ${metaTitle}`} />
           )}
-          {metaImage && (
-            <meta name="twitter:site" content="@dalexhdyt" />
-          )}
-          {metaImage && (
-            <meta name="twitter:creator" content="@dalexhdyt" />
-          )}
-          {canonURL && (
-            <meta property="og:url" content={canonURL} />
-          )}
+          {metaImage && <meta name="twitter:site" content="@dalexhdyt" />}
+          {metaImage && <meta name="twitter:creator" content="@dalexhdyt" />}
+          {canonURL && <meta property="og:url" content={canonURL} />}
           <meta name="twitter:card" content="summary" />
-          {canonURL && (
-            <link rel="canonical" href={canonURL} />
-          )}
+          {canonURL && <link rel="canonical" href={canonURL} />}
         </Head>
         <AnnouncementBar />
         <Navbar />

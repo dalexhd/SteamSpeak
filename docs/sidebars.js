@@ -3,47 +3,44 @@ module.exports = {
     {
       type: 'category',
       label: 'About',
-      items: [
-        "about/what-is-steamspeak",
-        "about/contributing",
-      ],
+      items: ['about/what-is-steamspeak', 'about/contributing']
     },
     {
       type: 'category',
       label: 'Setup',
       items: [
-        "setup/installation",
+        'setup/installation',
         {
           type: 'category',
           label: 'Configuration',
-          items: [
-            "setup/configuration/bot",
-            "setup/configuration/website",
-          ],
-        },
-      ],
+          items: ['setup/configuration/bot', 'setup/configuration/website']
+        }
+      ]
     },
     {
       type: 'category',
       label: 'Guides',
-      items: [
-        "guide/running-steamspeak"
-      ],
+      items: ['guide/running-steamspeak']
     },
     {
       type: 'category',
       label: 'Reference',
       items: [
-        "reference",
+        'reference',
         {
           type: 'category',
           label: 'Plugins',
           items: [
-            "reference/plugins",
-              "reference/plugins/server-name"
-          ],
-        },
-      ],
-    },
+            'reference/plugins',
+            'reference/plugins/host-message',
+            'reference/plugins/multi-function',
+            'reference/plugins/server-name',
+            'reference/plugins/afk-kick',
+            'reference/plugins/afk-move',
+            'reference/plugins/change-channel'
+          ]
+        }
+      ]
+    }
   ]
 };

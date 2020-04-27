@@ -72,13 +72,13 @@ const startVerification = async (senderID) => {
 
 const friendDeleted = async (senderID) => {
 	let steamId = senderID.getSteamID64();
-	let user = await User.findOne({ steamId });
-	if (user) {
+	let User = await VerifiedClient.findOne({ steamId });
+	if (User) {
 		let [client] = await Ts3.clientList({
 			client_type: 0,
-			client_unique_identifier: user.uid
+			client_unique_identifier: User.uid
 		});
-		user.remove(() => {
+		User.remove(() => {
 			if (client) {
 				client.poke(lang.steam.friend.deleted);
 			}

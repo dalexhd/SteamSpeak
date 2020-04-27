@@ -1,5 +1,6 @@
 const chalk = require('chalk');
 const moment = require('moment');
+const _ = require('lodash');
 
 const Log = {
 	/**
@@ -45,8 +46,13 @@ const Log = {
 					'reset';
 					break;
 			}
+			let instance = '';
+			if (process.env.INSTANCE)
+				instance = chalk.bgGreen.black(`[${_.startCase(process.env.INSTANCE)}]`);
 			prefix = chalk.cyan(
-				`[${this.time()}]${chalk[color].bold(` [${type.charAt(0).toUpperCase()}${type.slice(1)}]`)}`
+				`[${this.time()}]${chalk[color].bold(
+					` ${instance}[${type.charAt(0).toUpperCase()}${type.slice(1)}]`
+				)}`
 			);
 		} else {
 			prefix = chalk.cyan(`[${this.time()}]`);

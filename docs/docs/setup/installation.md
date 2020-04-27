@@ -2,8 +2,8 @@
 id: installation
 title: Installation
 ---
-import Alert from '@site/src/components/Alert';
 
+import Alert from '@site/src/components/Alert';
 
 To install SteamSpeak you will need to follow the below steps. Feel free to open a issue if you have any problem during the installation process.
 
@@ -16,6 +16,7 @@ That being said, 🚀 GOOD LUCK 🤞!
 ![node](https://img.shields.io/node/v/steamspeak?label=NodeJS&logo=Node.js&color=darkgreen)
 
 Also you will need:
+
 - MongoDB ([Install guide](https://www.digitalocean.com/community/tutorials/how-to-install-mongodb-on-ubuntu-18-04))
 - Redis ([Install guide](https://www.digitalocean.com/community/tutorials/how-to-install-and-secure-redis-on-ubuntu-18-04))
 - A WebServer (Ex: Nginx / Apache)
@@ -43,7 +44,6 @@ yarn install
 This will install Client and Server packages, so you dont need to install them separatelly.
 
 </Alert>
-
 
 <!-- You can write content using [GitHub-flavored Markdown syntax](https://github.github.com/gfm/).
 
