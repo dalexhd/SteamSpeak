@@ -522,13 +522,13 @@ module.exports = {
           type: 'feat'
         }
       ],
-      compare_url: 'https://github.com/dalexhd/SteamSpeak/compare/v0.3.0...v0.4.0',
+      compare_url: 'https://github.com/dalexhd/SteamSpeak/compare/v...v0.4.0',
       date: '2020-04-27',
       deletions_count: 6455,
       description: '',
       highlights: [],
       insertions_count: 5992,
-      last_version: '0.5.0',
+      last_version: null,
       permalink: '/releases/0.4.0/',
       title: 'SteamSpeak v0.4.0',
       type: 'initial dev',
@@ -653,11 +653,11 @@ module.exports = {
           files_count: 1,
           highlight_permalink: null,
           insertions_count: 0,
-          message: 'chore: Delete debug.log',
+          message: 'fix: Delete debug.log',
           pr_number: null,
           scopes: [],
           sha: 'ac9a12821142ae54a705369dd2d9d3b99884ebe1',
-          type: 'chore'
+          type: 'fix'
         },
         {
           author: 'DalexHD',
@@ -733,15 +733,45 @@ module.exports = {
           scopes: [],
           sha: '0d8549d7974c44f8625b3237f00ce8766c40d7d5',
           type: 'enhancement'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-04-27 13:53:47 +0000',
+          deletions_count: 21,
+          description: 'Add docs commit generator.',
+          files_count: 40,
+          highlight_permalink: null,
+          insertions_count: 2500,
+          message: 'feat: Add docs commit generator.',
+          pr_number: null,
+          scopes: [],
+          sha: 'fed7d38718e193750396342332e3762b1a0f2c6e',
+          type: 'feat'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-04-27 14:03:01 +0000',
+          deletions_count: 15,
+          description: 'Update teamspeak configuration.',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 26,
+          message: 'docs: Update teamspeak configuration.',
+          pr_number: null,
+          scopes: [],
+          sha: '2f09ba6b58f88971f4bb8db37ac89f4cccf54a79',
+          type: 'docs'
         }
       ],
       compare_url:
         'https://github.com/dalexhd/SteamSpeak/compare/v0.4.0...v0.5.0',
-      date: '2020-04-26',
-      deletions_count: 226,
+      date: '2020-04-27',
+      deletions_count: 247,
       description: '',
       highlights: [],
-      insertions_count: 521,
+      insertions_count: 3021,
       last_version: '0.4.0',
       permalink: '/releases/0.5.0/',
       title: 'SteamSpeak v0.5.0',
