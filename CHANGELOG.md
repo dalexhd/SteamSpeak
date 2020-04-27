@@ -1,5 +1,17 @@
 # Changelog
 
+## [v0.5.0](https://github.com/dalexhd/steamspeak/tree/v0.5.0) (2020-04-27)
+
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.4.0...v0.5.0)
+
+:rocket: New Features
+
+- feat: Add multi instance teamspeak bots. [\#51](https://github.com/dalexhd/SteamSpeak/pull/51) ([dalexhd](https://github.com/dalexhd))
+
+:memo: Documentation
+
+- docs: Add new documentation theme [\#49](https://github.com/dalexhd/SteamSpeak/pull/49) ([dalexhd](https://github.com/dalexhd))
+
 ## [v0.4.0](https://github.com/dalexhd/steamspeak/tree/v0.4.0) (2020-04-20)
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.3.1...v0.4.0)
@@ -12,10 +24,6 @@
 ## [v0.3.1](https://github.com/dalexhd/steamspeak/tree/v0.3.1) (2020-04-19)
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.3.0...v0.3.1)
-
-:chart_with_upwards_trend: Optimization
-
-- Remove unused css [\#37](https://github.com/dalexhd/SteamSpeak/pull/37) ([dalexhd](https://github.com/dalexhd))
 
 ## [v0.3.0](https://github.com/dalexhd/steamspeak/tree/v0.3.0) (2020-04-18)
 
