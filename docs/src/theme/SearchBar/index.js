@@ -1,3 +1,4 @@
+/* eslint-disable react/destructuring-assignment */
 /**
  * Copyright (c) Facebook, Inc. and its affiliates.
  *
@@ -5,20 +6,20 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, {useState, useRef, useCallback} from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import classnames from 'classnames';
 
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
-import {useHistory} from '@docusaurus/router';
+import { useHistory } from '@docusaurus/router';
 
 import './styles.css';
 
-const Search = props => {
+const Search = (props) => {
   const [algoliaLoaded, setAlgoliaLoaded] = useState(false);
   const searchBarRef = useRef(null);
-  const {siteConfig = {}} = useDocusaurusContext();
+  const { siteConfig = {} } = useDocusaurusContext();
   const {
-    themeConfig: {algolia},
+    themeConfig: { algolia }
   } = siteConfig;
   const history = useHistory();
 
@@ -45,7 +46,7 @@ const Search = props => {
             ? `${a.pathname}`
             : `${a.pathname}${a.hash}`;
         history.push(routePath);
-      },
+      }
     });
 
     if (focus) {
@@ -59,11 +60,11 @@ const Search = props => {
     }
 
     Promise.all([import('docsearch.js'), import('./algolia.css')]).then(
-      ([{default: docsearch}]) => {
+      ([{ default: docsearch }]) => {
         setAlgoliaLoaded(true);
         window.docsearch = docsearch;
         initAlgolia(focus);
-      },
+      }
     );
   };
 
@@ -81,7 +82,7 @@ const Search = props => {
     props.handleSearchBarToggle(!props.isSearchBarExpanded);
   }, [props.isSearchBarExpanded]);
 
-  const handleSearchInput = useCallback(e => {
+  const handleSearchInput = useCallback((e) => {
     const needFocus = e.type !== 'mouseover';
 
     loadAlgolia(needFocus);
@@ -93,7 +94,7 @@ const Search = props => {
         aria-label="expand searchbar"
         role="button"
         className={classnames('search-icon', {
-          'search-icon-hidden': props.isSearchBarExpanded,
+          'search-icon-hidden': props.isSearchBarExpanded
         })}
         onClick={handleSearchIcon}
         onKeyDown={handleSearchIcon}
@@ -106,8 +107,8 @@ const Search = props => {
         aria-label="Search"
         className={classnames(
           'navbar__search-input',
-          {'search-bar-expanded': props.isSearchBarExpanded},
-          {'search-bar': !props.isSearchBarExpanded},
+          { 'search-bar-expanded': props.isSearchBarExpanded },
+          { 'search-bar': !props.isSearchBarExpanded }
         )}
         onMouseOver={handleSearchInput}
         onFocus={handleSearchInput}

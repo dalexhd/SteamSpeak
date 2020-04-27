@@ -1,0 +1,13 @@
+# Always validate the PR title, and ignore the commits
+titleOnly: true
+
+types:
+  - chore               # An internal change this is not observable by users.
+  - docs                # Any user observable documentation change.
+  - enhancement         # Any user observable enhancement to an existing feature.
+  - feat                # Any user observable new feature, such as a new platform, source, transform, or sink.
+  - fix                 # Any user observable bug fix.
+  - perf                # Any user observable performance improvment.
+scopes:
+
+  - new plugin

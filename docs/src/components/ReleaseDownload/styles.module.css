@@ -1,117 +1,117 @@
 .releaseSelect {
-  margin: calc(var(--ifm-spacing-vertical) * 2) auto;
+	margin: calc(var(--ifm-spacing-vertical) * 2) auto;
 }
 
 .downloadTableContainer {
-  max-width: 650px;
+	max-width: 650px;
 }
 
 .downloadTable {
-  display: table;
+	display: table;
 }
 
 .downloadTable > div {
-  display: table-row;
+	display: table-row;
 }
 
 .downloadTable > div > div {
-  display: table-cell;
-  padding: calc( var(--ifm-spacing-vertical) / 2 );
-  vertical-align: top;
+	display: table-cell;
+	padding: calc(var(--ifm-spacing-vertical) / 2);
+	vertical-align: top;
 }
 
 .downloadTable > div > div:first-child {
-  text-align: right;
-  width: 30%;
+	text-align: right;
+	width: 30%;
 }
 
 @media (max-width: 996px) {
-  .downloadTable,
-  .downloadTable > div,
-  .downloadTable > div > div {
-    display: block;
-  }
+	.downloadTable,
+	.downloadTable > div,
+	.downloadTable > div > div {
+		display: block;
+	}
 
-  .downloadTable > div {
-    padding-bottom: var(--ifm-spacing-vertical);
-  }
+	.downloadTable > div {
+		padding-bottom: var(--ifm-spacing-vertical);
+	}
 
-  .downloadTable > div > div {
-    padding: 0;
-  }
+	.downloadTable > div > div {
+		padding: 0;
+	}
 
-  .downloadTable > div > div:first-child {
-    font-size: 0.9em;
-    font-weight: bold;
-    padding: 0;
-    text-align: left;
-    text-transform: uppercase;
-    width: auto;
-  }
+	.downloadTable > div > div:first-child {
+		font-size: 0.9em;
+		font-weight: bold;
+		padding: 0;
+		text-align: left;
+		text-transform: uppercase;
+		width: auto;
+	}
 }
 
 .downloadFiles {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+	list-style: none;
+	margin: 0;
+	padding: 0;
 }
 
 .downloadFiles > li {
-  display: block;
-  margin-bottom: calc( var(--ifm-spacing-vertical) / 4 );
+	display: block;
+	margin-bottom: calc(var(--ifm-spacing-vertical) / 4);
 }
 
 .downloadFiles > li:hover {
-  background-color: var(--ifm-panel-background-color);
+	background-color: var(--ifm-panel-background-color);
 }
 
 .downloadFiles > li:last-child {
-  padding-left: calc( 150px + var(--ifm-spacing-horizontal) );
+	padding-left: calc(260px + var(--ifm-spacing-horizontal));
 }
 
 .downloadFiles > li > span {
-  display: inline-block;
-  margin-right: var(--ifm-spacing-horizontal);
-  width: 170px;
+	display: inline-block;
+	margin-right: var(--ifm-spacing-horizontal);
+	width: 260px;
 }
 
 .downloadFiles > li > span > code {
-  float: right;
-  margin-left: 5px;
+	float: right;
+	margin-left: 5px;
 }
 
 .downloadFiles > li > ul {
-  display: inline-block;
-  margin: 0;
-  padding: 0;
+	display: inline-block;
+	margin: 0;
+	padding: 0;
 }
 
 .downloadFiles > li > ul > li {
-  display: inline-block;
-  margin-right: calc( var(--ifm-spacing-horizontal) / 2 );
+	display: inline-block;
+	margin-right: calc(var(--ifm-spacing-horizontal) / 2);
 }
 
 @media (max-width: 996px) {
-  .downloadFiles > li {
-    margin-bottom: var(--ifm-spacing-vertical);
-  }
+	.downloadFiles > li {
+		margin-bottom: var(--ifm-spacing-vertical);
+	}
 
-  .downloadFiles > li:last-child {
-    padding-left: 0;
-  }
+	.downloadFiles > li:last-child {
+		padding-left: 0;
+	}
 
-  .downloadFiles > li > span {
-    display: block;
-    margin: 0;
-    width: auto;
-  }
+	.downloadFiles > li > span {
+		display: block;
+		margin: 0;
+		width: auto;
+	}
 
-  .downloadFiles > li > span > code {
-    float: none;
-  }
+	.downloadFiles > li > span > code {
+		float: none;
+	}
 }
 
 .downloadGetStartedContainer {
-  max-width: 600px;
-  text-align: center;
+	max-width: 600px;
+	text-align: center;
 }

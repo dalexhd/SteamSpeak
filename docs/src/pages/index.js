@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
-
+import React from 'react';
+//  useEffect
 import Diagram from '@site/src/components/Diagram';
 import Heading from '@theme/Heading';
 import Jump from '@site/src/components/Jump';
 import InstallationCommand from '@site/src/components/InstallationCommand';
+import ConfigurationExample from '@site/src/components/ConfigurationExample';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
-import SVG from 'react-inlinesvg';
-import TabItem from '@theme/TabItem';
-import Tabs from '@theme/Tabs';
 
 import classnames from 'classnames';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import { repoUrl } from '@site/src/exports/repoUrl';
+import repoUrl from '@site/src/exports/repoUrl';
+// import cloudify from '@site/src/exports/cloudify';
+import Alert from '@site/src/components/Alert';
 
-import _ from 'lodash';
 import styles from './index.module.css';
 
 import './index.css';
@@ -24,67 +23,42 @@ const AnchoredH2 = Heading('h2');
 
 const features = [
   {
-    title: 'Lorem ipsum.',
+    title: 'Fast',
     icon: 'zap',
     description: (
       <>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime porro cum dignissimos illum maiores officiis nulla, quibusdam, dolor consequuntur quas, velit officia sint magni soluta labore suscipit. Soluta, sequi reprehenderit.
+        SteamSpeak was designed from the ground up to be easily installed and
+        used to get your website/bot up and running quickly.
       </>
-    ),
+    )
   },
   {
-    title: 'Lorem ipsum.',
-    icon: 'unlock',
-    description: (
-      <>
-        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nemo minus quaerat veniam consequuntur, dolore assumenda.
-      </>
-    ),
-  },
-  {
-    title: 'Lorem ipsum.',
-    icon: 'codepen',
-    description: (
-      <>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam obcaecati cumque facilis ipsam minima magni non deleniti.
-      </>
-    ),
-  },
-  {
-    title: 'Lorem ipsum.',
-    icon: 'shuffle',
-    description: (
-      <>
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam magni dolor consectetur temporibus totam!
-      </>
-    ),
-  },
-  {
-    title: 'Lorem ipsum.',
+    title: 'Clean Code',
     icon: 'code',
     description: (
       <>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, quo tempore? Est adipisci autem delectus! Culpa magni ea eveniet?
+        We follow the standard coding rules. We use Eslint, Airbnb config and
+        Prettier during the development process.
       </>
-    ),
+    )
   },
   {
-    title: 'Lorem ipsum.',
-    icon: 'shield',
+    title: 'Powered by NodeJS and Vue.JS',
+    icon: 'codepen',
     description: (
-      <>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Libero, debitis, quisquam eligendi odit cum voluptatibus, vel ipsum aspernatur quas itaque molestias?
-      </>
-    ),
-  },
+      <>We use NodeJS as backend language and VueJS as frontend language.</>
+    )
+  }
 ];
 
-function Features({features}) {
-  let rows = [];
+function Features({ features }) {
+  const rows = [];
 
-  let i,j,temparray,chunk = 3;
-  for (i=0,j=features.length; i<j; i+=chunk) {
-    let featuresChunk = features.slice(i,i+chunk);
+  let i;
+  let j;
+  const chunk = 3;
+  for (i = 0, j = features.length; i < j; i += chunk) {
+    const featuresChunk = features.slice(i, i + chunk);
 
     rows.push(
       <div key={`features${i}`} className="row">
@@ -105,11 +79,11 @@ function Features({features}) {
   );
 }
 
-function Feature({icon, title, description}) {
+function Feature({ icon, title, description }) {
   return (
     <div className={classnames('col col--4', styles.feature)}>
       <div className={styles.featureIcon}>
-        <i className={classnames('feather', `icon-${icon}`)}></i>
+        <i className={classnames('feather', `icon-${icon}`)} />
       </div>
       <h3>{title}</h3>
       <p>{description}</p>
@@ -121,93 +95,98 @@ function Correctness() {
   return (
     <section className={styles.correctness}>
       <div className="container">
-        <AnchoredH2 id="correctness">Lorem ipsum dolor sit amet.</AnchoredH2>
-        <div className="sub-title">Lorem ipsum dolor sit amet consectetur.</div>
+        <AnchoredH2 id="correctness">Alternatives</AnchoredH2>
+        <div className="sub-title">
+          Having competitors is the best way to build a better software!
+        </div>
 
         <div className="table-responsive">
           <table className="comparison">
             <thead>
               <tr>
-                <th></th>
+                {/* eslint-disable-next-line jsx-a11y/control-has-associated-label */}
+                <th />
                 <th className="steamspeak">SteamSpeak</th>
-                <th>Lorem.</th>
-                <th>Lorem.</th>
-                <th>Lorem.</th>
-                <th>Lorem.</th>
-                <th>Lorem.</th>
-                <th>Lorem.</th>
+                <th>
+                  <a
+                    href="https://github.com/Classy11/steam-ts"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    steam-ts
+                  </a>
+                </th>
+                <th>
+                  <a
+                    href="https://github.com/schroffl/alfred-teamspeak"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    alfred-teamspeak
+                  </a>
+                </th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td className="row-label"><a target="_blank" href="https://github.com/dalexhd/steamspeak">Lorem, ipsum.</a></td>
-                <td className="result passed steamspeak"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result failed"><i className="feather icon-x"></i></td>
-                <td className="result failed"><i className="feather icon-x"></i></td>
-                <td className="result warning"><i className="feather icon-alert-triangle"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
+                <td className="row-label">Steam Integration</td>
+                <td className="result passed steamspeak">
+                  <i className="feather icon-check" />
+                </td>
+                <td className="result passed">
+                  <i className="feather icon-check" />
+                </td>
+                <td className="result failed">
+                  <i className="feather icon-x" />
+                </td>
               </tr>
               <tr>
-                <td className="row-label"><a target="_blank" href="https://github.com/dalexhd/steamspeak">Lorem, ipsum dolor.</a></td>
-                <td className="result passed steamspeak"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
+                <td className="row-label">Web Panel</td>
+                <td className="result passed steamspeak">
+                  <i className="feather icon-check" />
+                </td>
+                <td className="result passed">
+                  <i className="feather icon-check" />
+                </td>
+                <td className="result passed">
+                  <i className="feather icon-check" />
+                </td>
               </tr>
               <tr>
-                <td className="row-label"><a target="_blank" href="https://github.com/dalexhd/steamspeak">Lorem, ipsum.</a></td>
-                <td className="result passed steamspeak"><i className="feather icon-check"></i></td>
-                <td className="result failed"><i className="feather icon-x"></i></td>
-                <td className="result failed"><i className="feather icon-x"></i></td>
-                <td className="result failed"><i className="feather icon-x"></i></td>
-                <td className="result failed"><i className="feather icon-x"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
+                <td className="row-label">Event Based</td>
+                <td className="result passed steamspeak">
+                  <i className="feather icon-check" />
+                </td>
+                <td className="result passed">
+                  <i className="feather icon-check" />
+                </td>
+                <td className="result passed">
+                  <i className="feather icon-check" />
+                </td>
               </tr>
               <tr>
-                <td className="row-label"><a target="_blank" href="https://github.com/dalexhd/steamspeak">Lorem, ipsum.</a></td>
-                <td className="result passed steamspeak"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
+                <td className="row-label">Multi Instance</td>
+                <td className="result passed steamspeak">
+                  <i className="feather icon-check" />
+                </td>
+                <td className="result failed">
+                  <i className="feather icon-x" />
+                </td>
+                <td className="result failed">
+                  <i className="feather icon-x" />
+                </td>
               </tr>
               <tr>
-                <td className="row-label"><a target="_blank" href="https://github.com/dalexhd/steamspeak">Lorem, ipsum dolor.</a></td>
-                <td className="result passed steamspeak"><i className="feather icon-check"></i></td>
-                <td className="result failed"><i className="feather icon-x"></i></td>
-                <td className="result failed"><i className="feather icon-x"></i></td>
-                <td className="result failed"><i className="feather icon-x"></i></td>
-                <td className="result warning"><i className="feather icon-alert-triangle"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-              </tr>
-              <tr>
-                <td className="row-label"><a target="_blank" href="https://github.com/dalexhd/steamspeak">Lorem ipsum dolor sit.</a></td>
-                <td className="result passed steamspeak"><i className="feather icon-check"></i></td>
-                <td className="result failed"><i className="feather icon-x"></i></td>
-                <td className="result failed"><i className="feather icon-x"></i></td>
-                <td className="result failed"><i className="feather icon-x"></i></td>
-                <td className="result failed"><i className="feather icon-x"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-              </tr>
-              <tr>
-                <td className="row-label"><a target="_blank" href="https://github.com/dalexhd/steamspeak">Lorem, ipsum.</a></td>
-                <td className="result passed steamspeak"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result failed"><i className="feather icon-x"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
-                <td className="result passed"><i className="feather icon-check"></i></td>
+                <td className="row-label">Hot Reload</td>
+                <td className="result passed steamspeak">
+                  <i className="feather icon-check" />
+                </td>
+                <td className="result failed">
+                  <i className="feather icon-x" />
+                </td>
+                <td className="result failed">
+                  <i className="feather icon-x" />
+                </td>
               </tr>
             </tbody>
           </table>
@@ -222,11 +201,7 @@ function Configuration() {
     <section className="configuration">
       <div className="container">
         <AnchoredH2 id="configuration">Simple To Configure</AnchoredH2>
-        <div className="sub-title">Lorem ipsum dolor sit amet consectetur.</div>
-
-        <div className="configuration__diagram">
-          <SVG src="img/configuration.svg" />
-        </div>
+        <ConfigurationExample />
       </div>
     </section>
   );
@@ -236,35 +211,13 @@ function InstallationSection() {
   return (
     <section className={styles.installation}>
       <div className="container">
-        <AnchoredH2 id="installation">Installs Everywhere</AnchoredH2>
-        <div className="sub-title">Fully static, no dependencies, no runtime, memory safe</div>
-
-        <div className={styles.installationPlatforms}>
-          <Link to={useBaseUrl('/docs/setup/installation/')}><SVG src="img/operative-systems/linux.svg" /></Link>
-          <Link to={useBaseUrl('/docs/setup/installation/')}><SVG src="img/operative-systems/windows.svg" /></Link>
-          <Link to={useBaseUrl('/docs/setup/installation/')}><SVG src="img/operative-systems/apple.svg" /></Link>
-        </div>
-
-        <div className={styles.installationChecks}>
-          <div>
-            <i className="feather icon-package"></i> Tempor ea nostrud.
-          </div>
-          <div>
-            <i className="feather icon-cpu"></i> Mollit commodo.
-          </div>
-          <div>
-            <i className="feather icon-feather"></i> Est aliquip est.
-          </div>
-          <div>
-            <i className="feather icon-zap"></i> Quis est non nulla et.
-          </div>
-        </div>
-
         <h3 className={styles.installSubTitle}>Install with a one-liner:</h3>
 
         <InstallationCommand />
 
-        <h3 className={styles.installSubTitle}>Or choose your preferred method:</h3>
+        <h3 className={styles.installSubTitle}>
+          Or choose your preferred method:
+        </h3>
 
         <div className="row">
           <div className="col">
@@ -278,34 +231,109 @@ function InstallationSection() {
     </section>
   );
 }
+// function Integrations() {
+//   const context = useDocusaurusContext();
+//   const { siteConfig = {} } = context;
+//   const {
+//     metadata: { plugins }
+//   } = siteConfig.customFields;
 
+//   const classes = {
+//     serverName_plugin: 'large',
+//     afkKick_plugin: 'large',
+//     afkMove_plugin: 'large',
+//     changeChannel_plugin: 'large',
+//     hostMessage_plugin: 'large',
+//     multiFunction_plugin: 'large',
+//   };
+
+//   return (
+//     <section className={classnames(styles.integrations, 'integrations')}>
+//       <div className="container">
+//         <AnchoredH2 id="integrations">
+//           Quality Integrations Built Into The Core
+//         </AnchoredH2>
+//         <div className="sub-title">
+//           Actively maintained integrations. Gone are the days of dormant
+//           low-quality plugins.
+//         </div>
+
+//         <div className={classnames(styles.components, 'components')}>
+//           <h3>
+//             <div>
+//               <span className="line-break">
+//                 {Object.keys(plugins).length} plugins
+//               </span>
+//             </div>
+//           </h3>
+//           <div className={styles.componentsCanvas} id="component-canvas" />
+//           <ul>
+//             {Object.keys(plugins).map((key, index) => (
+//               <li className={classes[`${key}_plugin`]} key={index}>
+//                 <Link to={useBaseUrl(`/docs/reference/plugins/${plugins[key].name}/`)}>
+//                   {plugins[key].name}
+//                 </Link>
+//               </li>
+//             ))}
+//           </ul>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 function Home() {
   const context = useDocusaurusContext();
-  const {siteConfig = {}} = context;
-  const {metadata: {latest_release}} = siteConfig.customFields;
+  const { siteConfig = {} } = context;
+  const {
+    // eslint-disable-next-line camelcase
+    metadata: { latest_release }
+  } = siteConfig.customFields;
+
+  // useEffect(() => {
+  //   cloudify();
+  // }, []);
 
   return (
-    <Layout title={`${siteConfig.title} - ${siteConfig.tagline}`} description={siteConfig.tagline}>
-      <header className={classnames('hero', 'hero--full-height', styles.indexHeroBanner)}>
+    <Layout
+      title={`${siteConfig.title} - ${siteConfig.tagline}`}
+      description={siteConfig.tagline}
+    >
+      <header
+        className={classnames(
+          'hero',
+          'hero--full-height',
+          styles.indexHeroBanner
+        )}
+      >
         <div className="container container--fluid">
-          <h1>{siteConfig.tagline}</h1>
-          <p className="hero--subtitle">
-            <Link to={useBaseUrl('plugins')}>Lorem, ipsum.</Link> <i>lorem</i> Lorem ipsum dolor sit amet consectetur.
-          </p>
+          <h1>{siteConfig.title}</h1>
+          <p className="hero--subtitle">{siteConfig.tagline}</p>
           <div className="hero--buttons">
-            <Link to={repoUrl()} className="button button--primary"><i className="feather icon-github"></i> View on Github</Link>
-            <Link to={useBaseUrl('download')} className="button button--primary">Download<span className="version"> v{latest_release.version}</span></Link>
+            <Link to={repoUrl()} className="button button--primary">
+              <i className="feather icon-github" /> View on Github
+            </Link>
+            <Link
+              to={useBaseUrl('download')}
+              className="button button--primary"
+            >
+              Download
+              <span className="version"> v{latest_release.version}</span>
+            </Link>
           </div>
           <Diagram className={styles.indexHeroDiagram} width="100%" />
-          <p className="hero--subsubtitle">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam accusamus qui laudantium totam.
-          </p>
+          <div className="container">
+            <Alert type="info" className="list--icons list--icons--infos">
+              SteamSpeak is currently in development stage. We recommend you to
+              wait until the v1.0.0 gets released.
+            </Alert>
+          </div>
         </div>
       </header>
       <main>
         {features && features.length && <Features features={features} />}
         <Correctness />
         <Configuration />
+        {/* <Integrations /> */}
         <InstallationSection />
       </main>
     </Layout>
