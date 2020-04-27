@@ -160,7 +160,7 @@ function DocItem(props) {
             <article>
               {version && (
                 <span
-                  style={{ verticalAlign: 'top', }}
+                  style={{ verticalAlign: 'top' }}
                   className="badge badge--info"
                 >
                   Version: {version}

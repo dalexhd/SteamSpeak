@@ -55,8 +55,8 @@ async function generateReleases(releaseDir, { siteConfig, siteDir }, options) {
           truncated:
             // eslint-disable-next-line no-void
             (truncateMarker === null || truncateMarker === void 0
-              // eslint-disable-next-line no-void
-              ? void 0
+              ? // eslint-disable-next-line no-void
+                void 0
               : truncateMarker.test(content)) || false,
           version
         }

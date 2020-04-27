@@ -1,0 +1,17 @@
+[releases."0.5.0"]
+date = 2020-04-26
+commits = [
+{sha = "0f7ae1fc43e58c349e240bf2802571506c6e20fa", message = "chore: SECURITY.md", author = "DalexHD", date = 2020-04-21T00:25:40Z, files_count = 1, insertions_count = 34},
+{sha = "cc4e7fd7e7eef50948d4b9d78cda61cd2f8fcdad", message = "docs: Add new documentation theme (#49)", author = "DalexHD", date = 2020-04-22T20:17:07Z, pr_number = 49, files_count = 113, insertions_count = 9431, deletions_count = 109},
+{sha = "b13b6fa56023352fa95002a0a84a41471a279709", message = "docs: Add some minimal UI fixes.", author = "DalexHD", date = 2020-04-23T14:17:16Z, files_count = 4, insertions_count = 24, deletions_count = 23},
+{sha = "60bb0d00cc8068a7febe92df8fa4ab6f5d463824", message = "feat: Add multi-instance bots.", author = "DalexHD", date = 2020-04-25T00:25:31Z, files_count = 13, insertions_count = 357, deletions_count = 159},
+{sha = "3f28fae82eca9364069530471c0c63a4ee92a0bd", message = "docs: Updated landing page", author = "DalexHD", date = 2020-04-25T02:38:00Z, files_count = 8, insertions_count = 113, deletions_count = 156},
+{sha = "eba80f6fb438c92bc3d8719a6f6bf307c4f3006d", message = "docs: Add eslint and prettier tools", author = "DalexHD", date = 2020-04-25T16:10:08Z, files_count = 103, insertions_count = 6070, deletions_count = 3984},
+{sha = "ece86273a1858e4667a7b8f6c0d532741b1bc7e0", message = "docs: Add new plugins documentation.", author = "DalexHD", date = 2020-04-25T21:27:13Z, files_count = 47, insertions_count = 809, deletions_count = 202},
+{sha = "ac9a12821142ae54a705369dd2d9d3b99884ebe1", message = "chore: Delete debug.log", author = "DalexHD", date = 2020-04-25T21:38:11Z, files_count = 1, deletions_count = 16},
+{sha = "d0d489ce16966284b4052cef3c8c87804ae0c7c6", message = "fix: Fix TeamSpeak tests.", author = "DalexHD", date = 2020-04-25T21:58:43Z, files_count = 1, insertions_count = 1, deletions_count = 11},
+{sha = "fb43954c9efd08234af47057ac815a6b16efd6d2", message = "fix: remove lorem ipsum from plugins docs page.", author = "DalexHD", date = 2020-04-25T22:10:45Z, files_count = 1, insertions_count = 1, deletions_count = 2},
+{sha = "eadc3a036de93301544671b180183017b7b5d778", message = "docs: Add some fixes.", author = "DalexHD", date = 2020-04-26T11:07:02Z, files_count = 3, insertions_count = 5, deletions_count = 5},
+{sha = "ffc74e432b862f200fef6b6355729a827423e28b", message = "chore: Add new github workflows.", author = "DalexHD", date = 2020-04-26T11:55:36Z, files_count = 5, insertions_count = 96},
+{sha = "0d8549d7974c44f8625b3237f00ce8766c40d7d5", message = "enhancement: Update makefile.", author = "DalexHD", date = 2020-04-26T12:28:51Z, files_count = 1, insertions_count = 32, deletions_count = 38}
+]

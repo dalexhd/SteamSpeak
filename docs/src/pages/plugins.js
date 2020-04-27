@@ -26,7 +26,8 @@ function Components(props) {
           <div className="overlay">
             <h1>SteamSpeak Plugins</h1>
             <div className="hero--subtitle">
-              SteamSpeak provides you multiple plugins to automatize your teamspeak server.
+              SteamSpeak provides you multiple plugins to automatize your
+              teamspeak server.
             </div>
           </div>
         </div>

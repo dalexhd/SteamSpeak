@@ -1,4 +1,4 @@
-import React, { } from 'react';
+import React from 'react';
 //  useEffect
 import Diagram from '@site/src/components/Diagram';
 import Heading from '@theme/Heading';
@@ -323,8 +323,8 @@ function Home() {
           <Diagram className={styles.indexHeroDiagram} width="100%" />
           <div className="container">
             <Alert type="info" className="list--icons list--icons--infos">
-              SteamSpeak is currently in development stage. We recommend you
-              to wait until the v1.0.0 gets released.
+              SteamSpeak is currently in development stage. We recommend you to
+              wait until the v1.0.0 gets released.
             </Alert>
           </div>
         </div>

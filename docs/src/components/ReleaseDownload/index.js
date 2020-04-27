@@ -237,7 +237,7 @@ function ReleaseDownload({ version }) {
                     browsePath={`v${release.version}`}
                     date={release.date}
                     downloads={latestDownloads}
-                    releaseNotesPath={false}
+                    releaseNotesPath={`/releases/${release.version}/`}
                     version={release.version}
                   />
                 )}

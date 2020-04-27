@@ -15,6 +15,7 @@ import dateFormat from 'dateformat';
 import pluralize from 'pluralize';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import _ from 'lodash';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 
 /* eslint-disable jsx-a11y/control-has-associated-label */
 function Headings({ headings, isChild }) {
@@ -124,10 +125,10 @@ function ReleasePage(props) {
             </div>
             <div className="hero--buttons margin-vert--md">
               <Link
-                to={`/releases/${version}/download/`}
+                to={useBaseUrl(`/releases/${version}/download/`)}
                 className="button button--highlight"
               >
-                <i className="feather icon-download" /> download
+                <i className="feather icon-download" /> Download
               </Link>
             </div>
             <div className="hero--toc">

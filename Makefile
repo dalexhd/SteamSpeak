@@ -3,6 +3,15 @@ OUTPUT				=	SteamSpeak
 DOCKER				=	@docker
 SH					=	@bash
 RM					=	@/bin/rm -rf
+export USE_CONTAINER ?= docker
+# Begin OS detection
+ifeq ($(OS),Windows_NT) # is Windows_NT on XP, 2000, 7, Vista, 10...
+    export OPERATING_SYSTEM := Windows
+    export DEFAULT_FEATURES = default-msvc
+else
+    export OPERATING_SYSTEM := $(shell uname)  # same as "uname -s"
+    export DEFAULT_FEATURES = default
+endif
 
 AUTHOR				=	DalexHD
 LAST_COMMIT_DATE	=	$(shell git log -1 --date=format:"%m/%d/%Y" --format="%ad   [%cr]")
@@ -83,6 +92,9 @@ re:			## Call clean => all
 			@make all
 
 ##@ Development
+release: 	## Release a new Vector version
+			@make release-prepare
+			@make generate CHECK_URLS=false
 
 ts:			## Run docker image
 			@echo ${B}Running: ${R}$(OUTPUT)${X}
@@ -100,5 +112,16 @@ clean:		## Clean docker image
 			$(DOCKER) stop teamspeak > /dev/null 2>&1
 			$(DOCKER) rm teamspeak -f  > /dev/null 2>&1
 			@echo ${B}Stoping container...${X}
+
+##@ Releasing
+release-prepare: ## Prepares the release with metadata and highlights
+			@scripts/run.sh checker scripts/release-prepare.rb
+
+check-generate: ## Checks for pending `make generate` changes
+			@scripts/run.sh checker scripts/check-generate.sh
+
+export CHECK_URLS ?= true
+generate: ## Generates files across the repo using the data in /.meta
+			@scripts/run.sh checker scripts/generate.rb
 
 .PHONY:		all build clean re
