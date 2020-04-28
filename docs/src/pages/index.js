@@ -148,8 +148,8 @@ function Correctness() {
                 <td className="result passed">
                   <i className="feather icon-check" />
                 </td>
-                <td className="result passed">
-                  <i className="feather icon-check" />
+                <td className="result failed">
+                  <i className="feather icon-x" />
                 </td>
               </tr>
               <tr>
