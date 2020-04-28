@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 import React, { useState } from 'react';
 
 import CheckboxList from '@site/src/components/CheckboxList';
@@ -22,7 +23,7 @@ function ScopeTags({ scopes }) {
       className="badge badge--primary badge--small link"
       onClick={() => setSearchTerm(scope.name)}
       onKeyUp={() => {}}
-      style={{ marginRight: '4px', }}
+      style={{ marginRight: '4px' }}
       title={`Filter to '${scope.name}' changes only`}
     >
       {scope.name}
@@ -58,7 +59,7 @@ function Commit({ commit }) {
             target="_blank"
             rel="noopener noreferrer"
             className="badge badge--secondary"
-            style={{ minWidth: '65px', textAlign: 'center', }}
+            style={{ minWidth: '65px', textAlign: 'center' }}
             title="View pull request..."
           >
             <i className="feather icon-git-pull-request" /> {commit.pr_number}
@@ -70,7 +71,7 @@ function Commit({ commit }) {
             target="_blank"
             rel="noopener noreferrer"
             className="badge badge--secondary"
-            style={{ minWidth: '65px', textAlign: 'center', }}
+            style={{ minWidth: '65px', textAlign: 'center' }}
             title="View commit..."
           >
             <i className="feather icon-git-commit" /> {commit.sha.slice(0, 5)}

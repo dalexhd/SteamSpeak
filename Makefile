@@ -92,7 +92,7 @@ re:			## Call clean => all
 			@make all
 
 ##@ Development
-release: 	## Release a new Vector version
+release: 	## Release a new SteamSpeak version
 			@make release-prepare
 			@make generate CHECK_URLS=false
 
