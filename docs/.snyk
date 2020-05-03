@@ -68,3 +68,61 @@ patch:
         patched: '2020-05-01T00:19:28.303Z'
     - '@docusaurus/preset-classic > @docusaurus/plugin-content-docs > @docusaurus/mdx-loader > @mdx-js/mdx > remark-mdx > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash':
         patched: '2020-05-01T00:19:28.303Z'
+    - '@docusaurus/core > @babel/core > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/core > @babel/preset-env > @babel/plugin-transform-block-scoping > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/theme-classic > @mdx-js/mdx > @babel/core > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/plugin-content-docs > @docusaurus/mdx-loader > @mdx-js/mdx > @babel/core > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/core > @babel/preset-env > @babel/preset-modules > @babel/plugin-transform-dotall-regex > @babel/helper-create-regexp-features-plugin > @babel/helper-regex > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/theme-classic > @mdx-js/mdx > remark-mdx > @babel/core > @babel/traverse > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/plugin-content-docs > @docusaurus/mdx-loader > @mdx-js/mdx > remark-mdx > @babel/core > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/plugin-content-docs > @docusaurus/mdx-loader > @mdx-js/mdx > @babel/core > @babel/helpers > @babel/traverse > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/theme-classic > @mdx-js/mdx > remark-mdx > @babel/core > @babel/helpers > @babel/traverse > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/plugin-content-docs > @docusaurus/mdx-loader > @mdx-js/mdx > remark-mdx > @babel/core > @babel/traverse > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/plugin-content-docs > @docusaurus/mdx-loader > @mdx-js/mdx > @babel/core > @babel/helpers > @babel/traverse > @babel/generator > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/theme-classic > @mdx-js/mdx > remark-mdx > @babel/core > @babel/helpers > @babel/traverse > @babel/generator > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/plugin-content-docs > @docusaurus/mdx-loader > @mdx-js/mdx > remark-mdx > @babel/core > @babel/helpers > @babel/traverse > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/theme-classic > @mdx-js/mdx > remark-mdx > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/plugin-content-docs > @docusaurus/mdx-loader > @mdx-js/mdx > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/plugin-content-docs > @docusaurus/mdx-loader > @mdx-js/mdx > remark-mdx > @babel/core > @babel/helpers > @babel/traverse > @babel/generator > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/plugin-content-docs > @docusaurus/mdx-loader > @mdx-js/mdx > remark-mdx > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-split-export-declaration > @babel/types > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/theme-classic > @mdx-js/mdx > remark-mdx > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/plugin-content-docs > @docusaurus/mdx-loader > @mdx-js/mdx > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/plugin-content-docs > @docusaurus/mdx-loader > @mdx-js/mdx > remark-mdx > @babel/core > @babel/helpers > @babel/traverse > @babel/helper-function-name > @babel/template > @babel/types > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/core > html-webpack-plugin > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/core > webpack-bundle-analyzer > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/core > webpack-merge > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/core > optimize-css-assets-webpack-plugin > last-call-webpack-plugin > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/core > portfinder > async > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/core > react-dev-utils > inquirer > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/core > webpack-dev-server > http-proxy-middleware > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/core > webpack-dev-server > portfinder > async > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
+    - '@docusaurus/preset-classic > @docusaurus/theme-classic > @mdx-js/mdx > remark-mdx > @babel/core > lodash':
+        patched: '2020-05-03T18:23:38.473Z'
