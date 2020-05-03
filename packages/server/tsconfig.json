@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+      "outDir": "dist",
+      "allowJs": true,
+      "target": "ES6",
+      "module": "CommonJS",
+      "moduleResolution": "node",
+      "removeComments": true,
+      "noEmitOnError": true,
+      "baseUrl": "./",
+      "sourceMap": false,
+      "esModuleInterop": true,
+      "allowSyntheticDefaultImports": true,
+      "noUnusedLocals": true,
+      "strictNullChecks": true,
+      "incremental": true,
+      "tsBuildInfoFile": ".tsbuildinfo",
+      "paths": {
+        "@config/*": ["src/config/*"],
+        "@core/*": ["src/core/*"],
+        "@locales/*": ["src/locales/*"],
+        "@utils/*": ["src/utils/*"]
+      },
+      "typeRoots": ["ts3-nodejs-library"]
+  },
+  "include": [
+      "./src/**/*"
+  ],
+  "exclude": [
+    "./src/config/**/*",
+    "./src/tests/**/*"
+  ]
+}

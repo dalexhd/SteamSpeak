@@ -1,13 +1,9 @@
 module.exports = {
-  env: {
-    browser: true,
-    es6: true,
-    node: true
-  },
-  parser: "babel-eslint",
+  parser: "@typescript-eslint/parser",
   extends: [
-    'plugin:prettier/recommended',
-    'eslint:recommended'
+		'plugin:@typescript-eslint/recommended',
+		'prettier/@typescript-eslint',
+    'plugin:prettier/recommended'
   ],
   globals: {
     Atomics: "readonly",
@@ -17,7 +13,7 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module"
   },
-  ignorePatterns: ["node_modules/"],
+  ignorePatterns: ["node_modules/", "dist/"],
   rules: {
     "no-plusplus": "off",
     "no-param-reassign": [
@@ -29,6 +25,9 @@ module.exports = {
     "prefer-template": "error",
 		"no-console":"off",
 		"no-unused-vars": "warn",
+		'@typescript-eslint/camelcase': 'off',
+		'@typescript-eslint/no-explicit-any': 'off',
+		"@typescript-eslint/no-use-before-define": 'off',
 		"no-prototype-builtins": "off",
     'prettier/prettier': ['error', { singleQuote: true, trailingComma: "none" }]
   }

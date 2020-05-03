@@ -4,6 +4,7 @@ DOCKER				=	@docker
 SH					=	@bash
 RM					=	@/bin/rm -rf
 export USE_CONTAINER ?= docker
+
 # Begin OS detection
 ifeq ($(OS),Windows_NT) # is Windows_NT on XP, 2000, 7, Vista, 10...
     export OPERATING_SYSTEM := Windows
@@ -82,10 +83,17 @@ TOKEN_SCRIPT = \
 
 config:		## Create config files
 			@if [ ! -d "packages/server/config/old.config" ]; then mkdir packages/server/config/old.config; fi
-			@find packages/server/config -maxdepth 1 -iname \*.js -not -iname \*.sample.js -type f -exec bash -c 'for f; do cp "$$f" "packages/server/config/old.config/$$(basename $$f)"; done' sh {} +
+			@find packages/server/config -maxdepth 1 -iname \*.ts -not -iname \*.sample.ts -type f -exec bash -c 'for f; do cp "$$f" "packages/server/config/old.config/$$(basename $$f)"; done' sh {} +
 			@echo ${B}Created a restore point inside the ${W}packages/server/config/old.config ${B}folder.
 			@find packages/server/config -maxdepth 1 -iname \*.sample.js -type f -exec bash -c 'for f; do cp "$$f" "$${f/.sample}"; done' sh {} +
 			@echo
+
+check-ts:
+			@scripts/check-ts.sh
+
+plugin-tsconfig:
+			@scripts/plugin-tsconfig.sh
+
 
 re:			## Call clean => all
 			@make clean
