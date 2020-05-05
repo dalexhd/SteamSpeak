@@ -3,9 +3,10 @@
   "version": "0.5.0",
   "main": "index.js",
   "scripts": {
-    "start": "yarn run check-sum && cross-env NODE_ENV=development node dist/index.js",
+    "start": "yarn run check-sum && cross-env NODE_ENV=production node dist/index.js",
+    "start:dev": "yarn run check-sum && cross-env NODE_ENV=development node dist/index.js",
+    "dev": "tsc-watch --project . --outDir ./dist --onSuccess \"yarn run start:dev\"",
     "check-sum": "cd ../../ && make check-ts",
-    "dev": "node src/index.ts",
     "build": "tsc && tscpaths -p tsconfig.json -s ./src -o ./dist",
     "plugin:refresh": "tsc -p tsconfig-plugin.json && tscpaths -p tsconfig-plugin.json -s src -o dist",
     "test": "jest tests/ --runInBand",
@@ -74,6 +75,7 @@
     "prettier": "^2.0.5",
     "ts-jest": "^25.4.0",
     "ts-loader": "^7.0.2",
+    "tsc-watch": "^4.2.3",
     "tscpaths": "^0.0.9",
     "typescript": "^3.4.3"
   },
