@@ -18,7 +18,7 @@ Cache.on('error', function (error) {
 	process.exit(1);
 });
 
-Pub.config('set', 'notify-keyspace-events', 'KEA');
+Pub.config('SET', 'notify-keyspace-events', 'KEA');
 
 Pub.on('message', async (channel, key, paylaod) => {
 	let value = await Cache.get(key);

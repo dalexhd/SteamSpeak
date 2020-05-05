@@ -12,9 +12,9 @@ import { Request, Response } from 'express';
  *
  * @param {object} req The express request instance
  */
-const findSecret = async function (req: Request) {
+const findSecret = async function (req: Request): Promise<any> {
 	const secret = req.body.secret;
-	const steamData = JSON.parse(await Cache.get(`verification:${secret}`));
+	const steamData = JSON.parse((await Cache.get(`verification:${secret}`)) as string);
 	if (steamData === null) throw { statusCode: 404, message: lang.error.invalid_token };
 	return steamData;
 };
@@ -97,7 +97,7 @@ export const login = async function (req: Request, res: Response): Promise<any> 
 			client_type: 0,
 			client_database_id: req.body.dbid
 		});
-		const sendCache = JSON.parse(await Cache.get(`${client.databaseId}:verifyToken`));
+		const sendCache = JSON.parse((await Cache.get(`${client.databaseId}:verifyToken`)) as string);
 
 		if (typeof sendCache === 'undefined')
 			throw { statusCode: 500, message: lang.error.unexpected_verification_error };

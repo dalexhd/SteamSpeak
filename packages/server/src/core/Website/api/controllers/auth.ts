@@ -114,7 +114,7 @@ export const login = async function (req: Request, res: Response): Promise<any> 
 			client_type: 0,
 			client_database_id: req.body.dbid
 		});
-		const sendCache = JSON.parse(await Cache.get(`${client.databaseId}:token`));
+		const sendCache = JSON.parse((await Cache.get(`${client.databaseId}:token`)) as string);
 
 		if (typeof sendCache === 'undefined')
 			throw { statusCode: 500, message: lang.error.unexpected_verification_error };

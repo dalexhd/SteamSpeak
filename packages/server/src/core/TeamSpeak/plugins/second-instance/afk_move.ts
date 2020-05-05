@@ -19,7 +19,7 @@ export const main = async function (): Promise<void> {
 				'ts3'
 			);
 		} else if (!client.isAfk(data.minTime) && client.cid === data.dest) {
-			const cid = await Cache.get(`afkChecker:${client.databaseId}`);
+			const cid = (await Cache.get(`afkChecker:${client.databaseId}`)) as string;
 			if (cid !== undefined) {
 				client.move(parseInt(cid));
 				Cache.del(`afkChecker:${client.databaseId}`);

@@ -21,13 +21,12 @@
         "@locales/*": ["src/locales/*"],
         "@utils/*": ["src/utils/*"]
       },
-      "typeRoots": ["ts3-nodejs-library"]
+      "typeRoots": ["ts3-nodejs-library", "../../node_modules/@types"]
   },
   "include": [
       "./src/**/*"
   ],
   "exclude": [
-    "./src/config/**/*",
-    "./src/tests/**/*"
+    "./src/config/**/*"
   ]
 }

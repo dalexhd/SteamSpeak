@@ -41,12 +41,13 @@ runIncremental() {
 if [ -f "$CACHE_FILE" ]; then
   echo "Cache file found: $CACHE_FILE"
 
+  if [ ! -f "$SUM_FILE" ]; then touch $SUM_FILE; fi
+
   PARAMS="-not -samefile $SUM_FILE -not -samefile $CACHE_FILE -not -path \"$SERVER_FOLDER/node_modules\" ! -path \"$SERVER_FOLDER/dist\""
   FOLDER_SUM="$({
     find $SERVER_FOLDER -type f $PARAMS -exec md5sum {} + | sort | md5sum;
   } | md5sum)"
 
-  if [ -f "$SUM_FILE" ]; then touch $SUM_FILE; fi
   CACHED_SUM=$(< $SUM_FILE)
 
   if [ "$FOLDER_SUM" != "$CACHED_SUM" ]; then
