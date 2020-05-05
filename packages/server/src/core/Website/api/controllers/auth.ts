@@ -18,8 +18,7 @@ export const findClients = async function (
 	req: Request,
 	filter: object
 ): Promise<TeamSpeakClient[]> {
-	let ip = req.headers['cf-connecting-ip'] || req.headers['x-forwarded-for'];
-	ip = '172.17.0.1';
+	const ip = (req.headers['cf-connecting-ip'] || req.headers['x-forwarded-for']) as string;
 	const clients = await Ts3.clientList({
 		connection_client_ip: ip,
 		...filter
