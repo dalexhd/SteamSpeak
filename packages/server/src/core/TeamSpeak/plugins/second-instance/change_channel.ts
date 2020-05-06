@@ -20,7 +20,6 @@ export const main = async function (channel): Promise<void> {
 				);
 			})
 			.catch((err) => {
-				console.log(err);
 				if (err.id === 771) {
 					return Cache.set(
 						`changeChannel:${channel.channelId}`,
