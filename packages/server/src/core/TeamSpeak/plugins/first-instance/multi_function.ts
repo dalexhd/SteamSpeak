@@ -53,7 +53,7 @@ export const info: CommonPluginConfig = {
 		enabled: true,
 		data: [
 			{
-				enabled: '5atrue',
+				enabled: true,
 				channelId: 18,
 				name: '» Server ping: [PING]ms'
 			},

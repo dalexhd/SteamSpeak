@@ -116,9 +116,10 @@ function loadInstances(): void {
 	const { instances } = config;
 	Object.keys(instances).forEach(function (name) {
 		if (instances[name].enabled) {
-			spawn('node', [`${__dirname}/index.js`], {
+			spawn('node', [`${__dirname}/index.js`, '--trace-warnings'], {
 				env: {
-					INSTANCE: name
+					INSTANCE: name,
+					PATH: process.env.PATH
 				},
 				cwd: process.cwd(),
 				shell: true,
@@ -253,7 +254,8 @@ function watchTsPlugins(): void {
 					shell: true,
 					stdio: 'inherit',
 					env: {
-						PLUGIN_PATH: tsFile
+						PLUGIN_PATH: tsFile,
+						PATH: process.env.PATH
 					}
 				}
 			);
