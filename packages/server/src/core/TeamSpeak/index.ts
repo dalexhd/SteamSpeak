@@ -45,7 +45,7 @@ function onReady(): void {
 		Promise.all([
 			Ts3.useBySid(config.server_id || 1),
 			Ts3.whoami().then((info) => {
-				Ts3.clientMove(info.client_id, config.channel_id);
+				config.channel_id !== 1 && Ts3.clientMove(info.client_id, config.channel_id);
 			})
 		])
 			.then(() => {
@@ -115,14 +115,16 @@ function beforeExit(): void {
 function loadInstances(): void {
 	const { instances } = config;
 	Object.keys(instances).forEach(function (name) {
-		spawn('node', [`${__dirname}/index.js`], {
-			env: {
-				INSTANCE: name
-			},
-			cwd: process.cwd(),
-			shell: true,
-			stdio: 'inherit'
-		});
+		if (instances[name].enabled) {
+			spawn('node', [`${__dirname}/index.js`], {
+				env: {
+					INSTANCE: name
+				},
+				cwd: process.cwd(),
+				shell: true,
+				stdio: 'inherit'
+			});
+		}
 	});
 }
 

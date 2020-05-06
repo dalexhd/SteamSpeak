@@ -12,11 +12,13 @@ export default {
 	instances: {
 		'first-instance': {
 			nickname: 'SteamSpeak #1',
-			channel_id: 0
+			channel_id: 0,
+			enabled: true
 		},
 		'second-instance': {
 			nickname: 'SteamSpeak #2',
-			channel_id: 0
+			channel_id: 0,
+			enabled: true
 		}
 	}
 };
