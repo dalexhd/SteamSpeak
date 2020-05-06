@@ -19,6 +19,7 @@ LAST_COMMIT_DATE	=	$(shell git log -1 --date=format:"%m/%d/%Y" --format="%ad   [
 LAST_COMMIT_HASH	=	$(shell git log -1 --date=format:"%m/%d/%y %T" --format="%H")
 LAST_COMMIT_MESSAGE	=	$(shell git log -1 --date=format:"%m/%d/%y %T" --format="%s")
 TEAMSPEAK_TOKEN		=	$(shell docker logs teamspeak 2>&1 | grep token | sed 's/.*token=//' | sed 's/\r//g' | head -1)
+IP					=	$(shell ip addr sh $(ip route list default | grep -Po ' dev \K\w+') | grep -Po ' inet \K[\d.]+')
 
 # Functions
 disp_indent			=	for I in `seq 1 $(MAKELEVEL)`; do \
@@ -107,12 +108,13 @@ release: 	## Release a new SteamSpeak version
 ts:			## Run docker image
 			@echo ${B}Running: ${R}$(OUTPUT)${X}
 			@echo
-			$(DOCKER) run -d --name=teamspeak -p 9987:9987/udp -p 10011:10011/tcp -p 10022:10022/tcp -p 30033:30033/tcp -e TS3SERVER_LICENSE=accept -e TS3SERVER_QUERY_PROTOCOLS=raw,ssh -e TS3SERVER_IP_WHITELIST=whitelist.txt -e TS3SERVER_LOG_QUERY_COMMANDS=1 teamspeak ts3server serveradmin_password=SteamSpeak -v /docker/TeamSpeak/query_ip_whitelist.txt:/var/ts3server/whitelist.txt > /dev/null 2>&1
+			$(DOCKER) run -d --name=teamspeak -p 9987:9987/udp -p 10011:10011/tcp -p 10022:10022/tcp -p 30033:30033/tcp -e TS3SERVER_LICENSE=accept -e TS3SERVER_QUERY_PROTOCOLS=raw,ssh -e TS3SERVER_IP_WHITELIST=whitelist.txt -e TS3SERVER_LOG_QUERY_COMMANDS=1 teamspeak ts3server serveradmin_password=SteamSpeak -v /docker/TeamSpeak/query_ip_whitelist.txt:/var/ts3server/whitelist.txt
 			$(DOCKER) logs teamspeak 2>&1 | grep login | awk '{split($$0, i, ", "); print i[1]}' | tr -d '\t\r\" ' | cut -d "=" -f 2 | xargs -I {} echo "${B}Username: ${W}${BOLD}"{}${X}
 			$(DOCKER) logs teamspeak 2>&1 | grep login | awk '{split($$0, i, ", "); print i[2]}' | tr -d '\t\r\" ' | cut -d "=" -f 2 | xargs -I {} echo "${B}Password: ${W}${BOLD}"{}${X}
 			@echo
 			@sleep 1
 			$(DOCKER) logs teamspeak 2>&1 | grep token | sed 's/.*token=//' | sed 's/\r//g' | head -1 | tr -d '\n" ' | xargs -I {} echo "${B}Token: ${G}${BOLD}"{}${X}
+			@echo ${B}IP: ${G}${BOLD}$(IP)${X}
 			@echo
 
 clean:		## Clean docker image
