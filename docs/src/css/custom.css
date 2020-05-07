@@ -2050,23 +2050,23 @@ header + section.shade {
  * use white and black colors to easily target and change their colors.
  */
 
-svg [fill="#000000"] {
+svg [fill="#000"] {
 	fill: var(--ifm-heading-color);
 }
 
-svg [stroke="#000000"] {
+svg [stroke="#000"] {
 	stroke: var(--ifm-heading-color);
 }
 
-svg [stop-color="#000000"] {
+svg [stop-color="#000"] {
 	stop-color: var(--ifm-heading-color);
 }
 
-svg [fill="#FFFFFF"] {
+svg [fill="#FFF"] {
 	fill: var(--ifm-background-color);
 }
 
-svg [stroke="#FFFFFF"] {
+svg [stroke="#FFF"] {
 	stroke: var(--ifm-background-color);
 }
 
@@ -2508,23 +2508,23 @@ html[data-theme='dark'] .button.button--secondary:hover {
  * svg
  */
 
-html[data-theme='dark'] svg [fill="#000000"] {
+html[data-theme='dark'] svg [fill="#000"] {
 	fill: var(--ifm-heading-color);
 }
 
-html[data-theme='dark'] svg [stroke="#000000"] {
+html[data-theme='dark'] svg [stroke="#000"] {
 	stroke: var(--ifm-heading-color);
 }
 
-html[data-theme='dark'] svg [stop-color="#000000"] {
+html[data-theme='dark'] svg [stop-color="#000"] {
 	stop-color: var(--ifm-heading-color);
 }
 
-html[data-theme='dark'] svg [fill="#FFFFFF"] {
+html[data-theme='dark'] svg [fill="#FFF"] {
 	fill: var(--ifm-background-color);
 }
 
-html[data-theme='dark'] svg [stroke="#FFFFFF"] {
+html[data-theme='dark'] svg [stroke="#FFF"] {
 	stroke: var(--ifm-background-color);
 }
 
