@@ -1,14 +1,34 @@
 # Changelog
 
+## [Unreleased](https://github.com/dalexhd/steamspeak/tree/HEAD)
+
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.5.0...HEAD)
+
+:rotating_light: Security fixes:
+
+- fix: Fix for 1 vulnerabilities [\#54](https://github.com/dalexhd/SteamSpeak/pull/54) ([snyk-bot](https://github.com/snyk-bot))
+
+:wrench: Dependencies:
+
+- chore\(deps\): bump ag-grid-vue from 23.0.2 to 23.1.0 [\#62](https://github.com/dalexhd/SteamSpeak/pull/62) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- chore\(deps\): bump vee-validate from 2.2.15 to 3.3.0 [\#61](https://github.com/dalexhd/SteamSpeak/pull/61) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- chore\(deps\): bump firebase from 7.12.0 to 7.14.2 [\#60](https://github.com/dalexhd/SteamSpeak/pull/60) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- chore\(deps\): bump vuex from 3.1.3 to 3.3.0 [\#59](https://github.com/dalexhd/SteamSpeak/pull/59) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- chore\(deps\): bump algoliasearch from 4.1.0 to 4.2.0 [\#58](https://github.com/dalexhd/SteamSpeak/pull/58) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+
+:star2: Chore:
+
+- chore\(img compression\): Optimize images [\#63](https://github.com/dalexhd/SteamSpeak/pull/63) ([imgbot[bot]](https://github.com/apps/imgbot))
+
 ## [v0.5.0](https://github.com/dalexhd/steamspeak/tree/v0.5.0) (2020-04-27)
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.4.0...v0.5.0)
 
-:rocket: New Features
+:rocket: New Features:
 
 - feat: Add multi instance teamspeak bots. [\#51](https://github.com/dalexhd/SteamSpeak/pull/51) ([dalexhd](https://github.com/dalexhd))
 
-:memo: Documentation
+:memo: Documentation:
 
 - docs: Add new documentation theme [\#49](https://github.com/dalexhd/SteamSpeak/pull/49) ([dalexhd](https://github.com/dalexhd))
 
@@ -16,7 +36,7 @@
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.3.1...v0.4.0)
 
-:rocket: New Features
+:rocket: New Features:
 
 - Add multi function plugin. [\#47](https://github.com/dalexhd/SteamSpeak/pull/47) ([dalexhd](https://github.com/dalexhd))
 - Add change channel plugin. [\#46](https://github.com/dalexhd/SteamSpeak/pull/46) ([dalexhd](https://github.com/dalexhd))
@@ -29,19 +49,19 @@
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.2.0...v0.3.0)
 
-[![Logo](https://raw.githubusercontent.com/dalexhd/resources/master/demo.gif)](https://dalexhd.github.io/SteamSpeak/)
-
-After this implementation TeamSpeak3 servers will be more "Gaming Friendly", since people will know when to ask another random channel people: Can I play with you on CS:GO?
-
-:rocket: New Features
+:rocket: New Features:
 
 - Add steam rich presence [\#35](https://github.com/dalexhd/SteamSpeak/pull/35) ([dalexhd](https://github.com/dalexhd))
+
+:non-potable_water: Closed Issues:
+
+- Release summary v0.3.0 [\#36](https://github.com/dalexhd/SteamSpeak/issues/36)
 
 ## [v0.2.0](https://github.com/dalexhd/steamspeak/tree/v0.2.0) (2020-04-15)
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.1.1...v0.2.0)
 
-:rocket: New Features
+:rocket: New Features:
 
 - Add lerna environment [\#33](https://github.com/dalexhd/SteamSpeak/pull/33) ([dalexhd](https://github.com/dalexhd))
 
@@ -53,7 +73,7 @@ After this implementation TeamSpeak3 servers will be more "Gaming Friendly", sin
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.0.8...v0.1.0)
 
-:rocket: New Features
+:rocket: New Features:
 
 - Add frontend login. [\#29](https://github.com/dalexhd/SteamSpeak/pull/29) ([dalexhd](https://github.com/dalexhd))
 - Feature/add frontend login. [\#28](https://github.com/dalexhd/SteamSpeak/pull/28) ([dalexhd](https://github.com/dalexhd))
@@ -62,11 +82,11 @@ After this implementation TeamSpeak3 servers will be more "Gaming Friendly", sin
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.0.7...v0.0.8)
 
-:rocket: New Features
+:rocket: New Features:
 
 - Add SteamSpeak features to documentation. [\#24](https://github.com/dalexhd/SteamSpeak/issues/24)
 
-:memo: Documentation
+:memo: Documentation:
 
 - Add new documentation system. [\#25](https://github.com/dalexhd/SteamSpeak/pull/25) ([dalexhd](https://github.com/dalexhd))
 
@@ -74,11 +94,11 @@ After this implementation TeamSpeak3 servers will be more "Gaming Friendly", sin
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.0.6...v0.0.7)
 
-:rocket: New Features
+:rocket: New Features:
 
 - Added ServerName TeamSpeak3 plugin. [\#20](https://github.com/dalexhd/SteamSpeak/pull/20) ([dalexhd](https://github.com/dalexhd))
 
-:bug: Bug Fixes
+:bug: Bug Fixes:
 
 - Wrong version number on Web Panel. [\#21](https://github.com/dalexhd/SteamSpeak/issues/21)
 
@@ -86,16 +106,16 @@ After this implementation TeamSpeak3 servers will be more "Gaming Friendly", sin
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.0.5...v0.0.6)
 
-:boom: Breaking Changes
+:boom: Breaking Changes:
 
 - Downgrade steam package version. [\#17](https://github.com/dalexhd/SteamSpeak/pull/17) ([dalexhd](https://github.com/dalexhd))
 
-:rocket: New Features
+:rocket: New Features:
 
 - Added Vue frontend. [\#14](https://github.com/dalexhd/SteamSpeak/pull/14) ([dalexhd](https://github.com/dalexhd))
 - Added the first Plugin: AFKChecker [\#13](https://github.com/dalexhd/SteamSpeak/pull/13) ([dalexhd](https://github.com/dalexhd))
 
-:bug: Bug Fixes
+:bug: Bug Fixes:
 
 - Installation problems. [\#16](https://github.com/dalexhd/SteamSpeak/issues/16)
 
@@ -103,7 +123,7 @@ After this implementation TeamSpeak3 servers will be more "Gaming Friendly", sin
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.0.4...v0.0.5)
 
-:rocket: New Features
+:rocket: New Features:
 
 - Add testing environment. [\#11](https://github.com/dalexhd/SteamSpeak/pull/11) ([dalexhd](https://github.com/dalexhd))
 
@@ -115,13 +135,13 @@ After this implementation TeamSpeak3 servers will be more "Gaming Friendly", sin
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.0.2...v0.0.3)
 
-:rocket: New Features
+:rocket: New Features:
 
 - Updated changelog. [\#9](https://github.com/dalexhd/SteamSpeak/pull/9) ([dalexhd](https://github.com/dalexhd))
 - Add TeamSpeak docker environment. [\#8](https://github.com/dalexhd/SteamSpeak/pull/8) ([dalexhd](https://github.com/dalexhd))
 - Better Changelog system [\#3](https://github.com/dalexhd/SteamSpeak/pull/3) ([dalexhd](https://github.com/dalexhd))
 
-:memo: Documentation
+:memo: Documentation:
 
 - Fix license image url. [\#6](https://github.com/dalexhd/SteamSpeak/pull/6) ([dalexhd](https://github.com/dalexhd))
 
