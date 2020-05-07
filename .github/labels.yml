@@ -33,7 +33,12 @@
   name: question
 - color: "f9d0c4"
   description: Changelog generator release summary
-  name: release-summary
+- color: "0366d6"
+  description: Contains dependencies changes
+  name: dependencies
+- color: "4aacf7"
+  description: Contains a internal change this is not observable by users.
+  name: chore
 - color: "480b82"
   description: Contains security related changes
   name: security
