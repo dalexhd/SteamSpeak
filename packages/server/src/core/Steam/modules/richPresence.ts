@@ -142,7 +142,6 @@ Ts3.on('clientconnect', async (ev) => {
 	const { client } = ev;
 	if (await VerfiedClient.exists({ uid: client.uniqueIdentifier })) {
 		const user = await VerfiedClient.findOne({ uid: client.uniqueIdentifier });
-		if (!user) return;
-		steamUser.getPersonas([user.steamId]);
+		if (user) steamUser.getPersonas([user.steamId]);
 	}
 });

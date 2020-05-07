@@ -1,6 +1,7 @@
 import { TeamSpeak, TeamSpeakClient } from 'ts3-nodejs-library';
 import config from '@config/teamspeak';
 import '@utils/string';
+import '@utils/teamspeak';
 import { spawn } from 'child_process';
 import { getFiles, validatePlugin } from '@utils/files';
 import { flattenArray } from '@utils/array';

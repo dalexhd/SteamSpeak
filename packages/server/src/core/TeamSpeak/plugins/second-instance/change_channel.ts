@@ -33,19 +33,15 @@ export const main = async function (channel): Promise<void> {
 
 export const load = async function (): Promise<void> {
 	const { data } = info.config;
-	try {
-		if (data.length > 0) {
-			data.forEach(async (channel) => {
-				if (channel.enabled) {
+	if (data.length > 0) {
+		data.forEach(async (channel) => {
+			if (channel.enabled) {
+				main(channel);
+				loaded[channel.channelId] = setInterval(async () => {
 					main(channel);
-					loaded[channel.channelId] = setInterval(async () => {
-						main(channel);
-					}, convertToMiliseconds(channel.interval));
-				}
-			});
-		}
-	} catch (error) {
-		console.log(error);
+				}, convertToMiliseconds(channel.interval));
+			}
+		});
 	}
 };
 

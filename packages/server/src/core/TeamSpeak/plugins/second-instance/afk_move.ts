@@ -1,5 +1,4 @@
 import { Ts3 } from '@core/TeamSpeak';
-import '@utils/teamspeak';
 import { convertToMiliseconds } from '@utils/time';
 import log from '@utils/log';
 import Cache from '@core/Cache';
