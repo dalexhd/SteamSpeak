@@ -3386,9 +3386,9 @@ ag-grid-community@^23.0.1:
   integrity sha512-UaD4lEVKKVCA2rrgMJJV328sCp5rdR9hgOh6oMUpZRXCke/3m/r2odjGjzvfT7yeLClj6ZdZuCkM4NmEuCZ8KA==
 
 ag-grid-vue@^23.0.0:
-  version "23.0.2"
-  resolved "https://registry.yarnpkg.com/ag-grid-vue/-/ag-grid-vue-23.0.2.tgz#7010ea6a240a8a0f182899b26e1302e9e2fa5453"
-  integrity sha512-5pWCuIZO/qnkwng/9IhZDD2h1/M0K4FTg1GEiSIKEFRWCHLxwx+8ME52JRQe45GD3yma1He3js5j1x2cbfjJkw==
+  version "23.1.0"
+  resolved "https://registry.yarnpkg.com/ag-grid-vue/-/ag-grid-vue-23.1.0.tgz#309dc913a88271981729e06d269f55c251d5854f"
+  integrity sha512-y3ObQUbyxWNMDLlbANl4pABkSLXrQ1bpoy+3j0LX8nzbQkJAJCel6D2xWwCUkL/B3KbMX0OuBqAU2xJDOZLY4A==
 
 agent-base@4, agent-base@^4.3.0:
   version "4.3.0"
