@@ -1,5 +1,5 @@
-const error = require('./error');
-const message = require('./message');
+import error from './error';
+import message from './message';
 import steam from './steam';
 
 export default {

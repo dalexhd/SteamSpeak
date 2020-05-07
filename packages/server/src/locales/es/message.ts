@@ -1,4 +1,4 @@
-export default{
+export default {
 	verify_page_msg:
 		'Gracias por aceptar a SteamSpeak.\nPor favor visita la siguiente URL para enlazar tu cuenta de TeamSpeak:\n{URL}',
 	login_msg:

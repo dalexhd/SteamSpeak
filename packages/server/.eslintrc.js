@@ -13,7 +13,6 @@ module.exports = {
     ecmaVersion: 2018,
     sourceType: "module"
   },
-  ignorePatterns: ["node_modules/", "dist/"],
   rules: {
     "no-plusplus": "off",
     "no-param-reassign": [

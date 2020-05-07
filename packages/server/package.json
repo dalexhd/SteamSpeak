@@ -10,7 +10,7 @@
     "build": "tsc && tscpaths -p tsconfig.json -s ./src -o ./dist",
     "plugin:refresh": "tsc -p tsconfig-plugin.json && tscpaths -p tsconfig-plugin.json -s src -o dist",
     "test": "jest tests/ --runInBand",
-    "lint": "eslint . --fix"
+    "lint": "eslint '*/**/*.{js,ts}' --quiet --fix"
   },
   "author": {
     "name": "DalexHD",

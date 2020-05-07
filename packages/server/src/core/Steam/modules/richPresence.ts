@@ -1,5 +1,5 @@
 import { steamUser } from '@core/Steam';
-const SteamUser = require('steam-user');
+import SteamUser from 'steam-user';
 import { Ts3 } from '@core/TeamSpeak';
 import config from '@config/steam';
 import VerfiedClient from '@core/Database/models/verifiedClient';
@@ -55,6 +55,7 @@ const syncNumbers = async (): Promise<void> => {
 
 syncNumbers();
 
+// eslint-disable-next-line @typescript-eslint/no-empty-function
 steamUser.getAppRichPresenceLocalization(730, config.language || 'english').then(function () {});
 
 const friendDeleted = async (senderID): Promise<void> => {

@@ -1,5 +1,5 @@
 import chalk from 'chalk';
-const moment = require('moment');
+import moment from 'moment';
 import { startCase } from 'lodash';
 
 const Log = {

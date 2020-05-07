@@ -1,7 +1,7 @@
 import { steamUser } from '@core/Steam';
 import { Ts3 } from '@core/TeamSpeak';
 import web_config from '@config/website';
-const SteamUser = require('steam-user');
+import SteamUser from 'steam-user';
 import * as crypto from 'crypto';
 import Cache from '@core/Cache';
 import Events from '@core/Events';
