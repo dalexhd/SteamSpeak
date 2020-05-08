@@ -17024,9 +17024,9 @@ vue-apexcharts@^1.5.2:
   integrity sha512-ImbvQxgwbLMrEc9/veDIJ7lzncf1fJDSNqqK0x2YDNUCq5tE9uqM4Gb/ZYUB5WlDM3vDpzwDEmsidWcaO6/WXQ==
 
 vue-awesome-swiper@^4.0.2:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/vue-awesome-swiper/-/vue-awesome-swiper-4.1.0.tgz#163e94597b119e5476d80380e208d2d9a7419c75"
-  integrity sha512-00d6KIRquR+K6Q5dYIJoEdfRSVoE3MTQVilh9x1ZCYXTbChmlaZpwfoyMW2kH7poVq3a5IhBfHf9S9X7KbpITw==
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/vue-awesome-swiper/-/vue-awesome-swiper-4.1.1.tgz#8f7ab221ad003021d756b86aa618f429924900fe"
+  integrity sha512-50um10t6N+lJaORkpwSi1wWuMmBI1sgFc9Znsi5oUykw2cO5DzLaBHcO2JNX21R+Ue4TGoIJDhhxjBHtkFrTEQ==
 
 vue-backtotop@^1.6.1:
   version "1.6.1"
