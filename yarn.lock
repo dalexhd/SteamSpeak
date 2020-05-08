@@ -15382,9 +15382,9 @@ steam-totp@^2.0.1, steam-totp@^2.1.1:
   integrity sha512-d+tjnr3wwDkbrKFxjYZ0uK4CSF09oJwCmlGH8SdOlTDkbtBPuNhPKY0XzZxQVltZF6/JkEYj+uz+kBr6UrY7BQ==
 
 steam-user@^4.13.2:
-  version "4.14.0"
-  resolved "https://registry.yarnpkg.com/steam-user/-/steam-user-4.14.0.tgz#030dd8e87ef629b042487c26ab2a16545b0e0439"
-  integrity sha512-GRAkfaDW1cfmYZFj2/1f+zA++7KEtzYH2YOHfA0NQblRNMzNRAuBPV+Z7UqXh2oB9snYOEXPNyhrhKUEaf/GDg==
+  version "4.15.2"
+  resolved "https://registry.yarnpkg.com/steam-user/-/steam-user-4.15.2.tgz#23307b50f8049f6d7032e9c985bd9a8c882b4ed3"
+  integrity sha512-gIem4exDj+mDKyiQ9KfR4kwMgnYzbIhoiq5eHYz3u9pfg/boLGRdrAOJsNauLToqRmBAu/KBi2fQ1xpMglT/+g==
   dependencies:
     "@bbob/parser" "^2.2.0"
     "@doctormckay/stdlib" "^1.6.0"
