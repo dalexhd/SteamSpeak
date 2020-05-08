@@ -17183,9 +17183,9 @@ vue-router@^3.1.6:
   integrity sha512-GYhn2ynaZlysZMkFE5oCHRUTqE8BWs/a9YbKpNLi0i7xD6KG1EzDqpHQmv1F5gXjr8kL5iIVS8EOtRaVUEXTqA==
 
 vue-select@^3.9.4:
-  version "3.10.1"
-  resolved "https://registry.yarnpkg.com/vue-select/-/vue-select-3.10.1.tgz#3731af25c9ab59ff9d6122dbda3dee628f07ddfa"
-  integrity sha512-rmE19MPS8emN8eLWg6YSqAhrVO4nwD9cr9jeA4LjnJY0QPxqQTNHLl38ovCz23yttvBns57gjiOddsf/pxwPjQ==
+  version "3.10.3"
+  resolved "https://registry.yarnpkg.com/vue-select/-/vue-select-3.10.3.tgz#60659dc07ec4c96ec270fb12558eab7b938f5004"
+  integrity sha512-SgLmiSwnJwT2erxjq42AA1iTzu1uqhA5MPuF4UDtGot5YSgJLKy71H0LO0hHaBpIjb7d/nJHiufYKcrSakaupw==
 
 vue-simple-calendar@^4.3.2:
   version "4.3.2"
