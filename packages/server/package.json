@@ -17,7 +17,7 @@
   "dependencies": {
     "@hapi/joi": "^17.1.1",
     "body-parser": "^1.19.0",
-    "chalk": "^3.0.0",
+    "chalk": "^4.0.0",
     "chokidar": "^3.3.1",
     "cors": "^2.8.5",
     "eventemitter2": "^6.3.1",
@@ -30,7 +30,7 @@
     "mongoose": "^5.9.6",
     "should": "^13.2.3",
     "sinon": "^9.0.1",
-    "steam": "1.4.0",
+    "steam": "1.4.1",
     "steam-totp": "^2.1.1",
     "steam-user": "^4.13.2",
     "steamcommunity": "^3.41.3",
@@ -44,7 +44,7 @@
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-eslint": "10.1.0",
-    "babel-jest": "^25.1.0",
+    "babel-jest": "^26.0.1",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-config-prettier": "^6.10.1",
