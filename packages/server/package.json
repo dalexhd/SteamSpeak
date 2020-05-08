@@ -30,7 +30,7 @@
     "mongoose": "^5.9.6",
     "should": "^13.2.3",
     "sinon": "^9.0.1",
-    "steam": "1.4.0",
+    "steam": "1.4.1",
     "steam-totp": "^2.1.1",
     "steam-user": "^4.13.2",
     "steamcommunity": "^3.41.3",

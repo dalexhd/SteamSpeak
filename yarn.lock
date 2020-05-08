@@ -5991,6 +5991,11 @@ cssstyle@^2.0.0:
   dependencies:
     cssom "~0.3.6"
 
+csv-parse@^4.0.1:
+  version "4.9.0"
+  resolved "https://registry.yarnpkg.com/csv-parse/-/csv-parse-4.9.0.tgz#a947c66d8ab31207f4933170064dd8268c511e99"
+  integrity sha512-SaFMvRWzobY9z0Nxg+q5pXvU2JY7p++icb1Bb/ZwGSLv058cLabhGg3YNpLPI2KALtZnoe/oNBCfWX9xgTkcaA==
+
 cuint@^0.2.1:
   version "0.2.2"
   resolved "https://registry.yarnpkg.com/cuint/-/cuint-0.2.2.tgz#408086d409550c2631155619e9fa7bcadc3b991b"
@@ -15362,11 +15367,13 @@ steam-crypto@^0.0:
   resolved "https://registry.yarnpkg.com/steam-crypto/-/steam-crypto-0.0.1.tgz#0477b182a2b1fdd941893dbcc22e0e93b14abb7f"
   integrity sha1-BHexgqKx/dlBiT28wi4Ok7FKu38=
 
-"steam-resources@https://github.com/seishun/node-steam-resources.git#v1.0.0":
-  version "1.0.0"
-  resolved "https://github.com/seishun/node-steam-resources.git#1403939a12ba467a4b82c8ccbc279bbcdad43588"
+"steam-resources@github:seishun/node-steam-resources#v1.2.0":
+  version "1.2.0"
+  uid "2e9f12a3a07bd1e8f1bb397109d1d7361da793ca"
+  resolved "https://codeload.github.com/seishun/node-steam-resources/tar.gz/2e9f12a3a07bd1e8f1bb397109d1d7361da793ca"
   dependencies:
     bytebuffer "^5.0"
+    csv-parse "^4.0.1"
     protobufjs "^4.1"
 
 steam-totp@^1.5.0:
@@ -15402,16 +15409,16 @@ steam-user@^4.13.2:
     vdf "^0.0.2"
     websocket13 "^2.0.1"
 
-steam@1.4.0:
-  version "1.4.0"
-  resolved "https://registry.yarnpkg.com/steam/-/steam-1.4.0.tgz#bc03c2bf365ddbdf04db27753413d2ddb835b1b1"
-  integrity sha1-vAPCvzZd298E2yd1NBPS3bg1sbE=
+steam@1.4.1:
+  version "1.4.1"
+  resolved "https://registry.yarnpkg.com/steam/-/steam-1.4.1.tgz#dc2a5af01d599de20c7af97aaf85f48a79234b09"
+  integrity sha512-JBJaDNd2lz5a4q/VCBhf3n0L8WWB+A+VCLqWbNycRhembfJ759lBHueXLvibZBvii00rS1pQPPJ0hiea9B5oQg==
   dependencies:
     adm-zip "^0.4"
     buffer-crc32 "^0.2"
     bytebuffer "^5.0"
     steam-crypto "^0.0"
-    steam-resources "https://github.com/seishun/node-steam-resources.git#v1.0.0"
+    steam-resources "github:seishun/node-steam-resources#v1.2.0"
 
 steamcommunity@^3.41.3:
   version "3.41.3"
