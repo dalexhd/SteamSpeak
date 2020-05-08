@@ -3380,9 +3380,9 @@ aes-decrypter@3.0.0:
     pkcs7 "^1.0.2"
 
 ag-grid-community@^23.0.1:
-  version "23.0.2"
-  resolved "https://registry.yarnpkg.com/ag-grid-community/-/ag-grid-community-23.0.2.tgz#81fc92ce9e47c75e854337a1e2d8ef950c3a1d51"
-  integrity sha512-UaD4lEVKKVCA2rrgMJJV328sCp5rdR9hgOh6oMUpZRXCke/3m/r2odjGjzvfT7yeLClj6ZdZuCkM4NmEuCZ8KA==
+  version "23.1.0"
+  resolved "https://registry.yarnpkg.com/ag-grid-community/-/ag-grid-community-23.1.0.tgz#55be001c990040a63664dcf8280557334562def8"
+  integrity sha512-7MBrjKR7jwvwex12VvsFCXcPEIpC8yqjf8cSFLnMuououQt/O32KaHaTorPlz4SRzt92OZ4VZuYSZAH7/SBQMw==
 
 ag-grid-vue@^23.0.0:
   version "23.1.0"
