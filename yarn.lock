@@ -6992,9 +6992,9 @@ event-pubsub@4.3.0:
   integrity sha512-z7IyloorXvKbFx9Bpie2+vMJKKx1fH1EN5yiTfp8CiLOTptSYy1g8H4yDpGlEdshL1PBiFtBHepF2cNsqeEeFQ==
 
 eventemitter2@^6.3.1:
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/eventemitter2/-/eventemitter2-6.3.1.tgz#14ec7db8c659aa9b36ad2ce4bfcaba95ad525536"
-  integrity sha512-cxfu3g0IBn/JEhAPV33NZTi8llQQ5j62D0Yf4ir1U9uQ1DlRZLL3Hh2E/+TWDprSy4BETWvrGBZMUexuC2b6Lw==
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/eventemitter2/-/eventemitter2-6.4.0.tgz#458afe0f570a395da622efe39c0cdccdf227cac9"
+  integrity sha512-UpQvRvZmP0qYxXrTl0620GOmvYlB77fHLptCG7ha79ptM2J+Q9nNurVz+gkHEiSZKTnDX5xHnKIHDCua1hsDjw==
 
 eventemitter3@^2.0.3:
   version "2.0.3"
