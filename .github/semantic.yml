@@ -11,4 +11,5 @@ types:
 scopes:
   - new plugin
   - deps
+  - deps-dev
   - img compression
