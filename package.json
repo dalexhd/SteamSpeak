@@ -48,14 +48,6 @@
     "email": "eldalexhd@gmail.com"
   },
   "homepage": "https://github.com/dalexhd/SteamSpeak#readme",
-  "changelog": {
-    "repo": "dalexhd/steamspeak",
-    "labels": {
-      "enhancement": ":rocket: Enhancement",
-      "bug": ":bug: Bug Fix"
-    },
-    "cacheDir": ".changelog"
-  },
   "devDependencies": {
     "concurrently": "^5.1.0",
     "lerna": "^3.20.2"

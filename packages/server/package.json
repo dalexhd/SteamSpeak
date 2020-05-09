@@ -7,7 +7,7 @@
     "start:dev": "yarn run check-sum && cross-env NODE_ENV=development node dist/index.js",
     "dev": "tsc-watch --project . --outDir ./dist --onSuccess \"yarn run start:dev\"",
     "check-sum": "cd ../../ && make check-ts",
-    "build": "tsc && tscpaths -p tsconfig.json -s ./src -o ./dist",
+    "build": "tsc --build tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./dist",
     "plugin:refresh": "tsc -p tsconfig-plugin.json && tscpaths -p tsconfig-plugin.json -s src -o dist",
     "test": "jest tests/ --runInBand",
     "lint": "eslint '*/**/*.{js,ts}' --quiet --fix"
