@@ -1,5 +1,5 @@
 import { Ts3 } from '@core/TeamSpeak';
-import { convertToMiliseconds } from '@utils/time';
+import { convertToMilliseconds } from '@utils/time';
 import log from '@utils/log';
 import moment from 'moment';
 
@@ -43,7 +43,7 @@ export const load = async function (): Promise<void> {
 	this.main();
 	loaded = setInterval(async () => {
 		this.main();
-	}, convertToMiliseconds(interval));
+	}, convertToMilliseconds(interval));
 };
 
 export const clientconnect = async function (ev): Promise<void> {

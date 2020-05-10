@@ -1,5 +1,5 @@
 import { Ts3 } from '@core/TeamSpeak';
-import { convertToMiliseconds } from '@utils/time';
+import { convertToMilliseconds } from '@utils/time';
 import log from '@utils/log';
 import Cache from '@core/Cache';
 
@@ -39,7 +39,7 @@ export const load = async function (): Promise<void> {
 				main(channel);
 				loaded[channel.channelId] = setInterval(async () => {
 					main(channel);
-				}, convertToMiliseconds(channel.interval));
+				}, convertToMilliseconds(channel.interval));
 			}
 		});
 	}
@@ -53,7 +53,7 @@ export const unload = function (): void {
 
 export const info: UncommonPluginConfig = {
 	name: 'Change channel',
-	description: 'This plugin allows you to change multiple channels name at diferent interval.',
+	description: 'This plugin allows you to change multiple channels name at different interval.',
 	config: {
 		enabled: true,
 		data: [
@@ -62,8 +62,8 @@ export const info: UncommonPluginConfig = {
 				channelId: 118,
 				changes: [
 					{
-						channel_name: '[cspacer]Wellcome',
-						channel_description: 'Wellcome'
+						channel_name: '[cspacer]Welcome',
+						channel_description: 'Welcome'
 					},
 					{
 						channel_name: '[cspacer]to',

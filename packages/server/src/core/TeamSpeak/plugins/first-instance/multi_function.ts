@@ -1,5 +1,5 @@
 import { Ts3 } from '@core/TeamSpeak';
-import { convertToMiliseconds } from '@utils/time';
+import { convertToMilliseconds } from '@utils/time';
 import log from '@utils/log';
 
 let loaded: ReturnType<typeof setInterval>;
@@ -38,7 +38,7 @@ export const load = async function (): Promise<void> {
 	main();
 	loaded = setInterval(async () => {
 		main();
-	}, convertToMiliseconds(interval));
+	}, convertToMilliseconds(interval));
 };
 
 export const unload = function (): void {

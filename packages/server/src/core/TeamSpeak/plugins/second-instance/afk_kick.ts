@@ -1,5 +1,5 @@
 import { Ts3 } from '@core/TeamSpeak';
-import { convertToMiliseconds } from '@utils/time';
+import { convertToMilliseconds } from '@utils/time';
 import log from '@utils/log';
 import Cache from '@core/Cache';
 
@@ -20,7 +20,7 @@ export const load = async function (): Promise<void> {
 	const { interval } = info.config;
 	loaded = setInterval(async () => {
 		main();
-	}, convertToMiliseconds(interval));
+	}, convertToMilliseconds(interval));
 };
 
 export const unload = async function (): Promise<void> {
@@ -35,10 +35,10 @@ export const clientdisconnect = async function (ev): Promise<void> {
 };
 
 export const info: CommonPluginConfig = {
-	name: 'AFK move',
+	name: 'AFK kick',
 	description: 'This plugin allows you to automatically kick afk people after x time.',
 	config: {
-		enabled: false,
+		enabled: true,
 		data: {
 			ignoredGroups: [],
 			ignoredChannels: [],

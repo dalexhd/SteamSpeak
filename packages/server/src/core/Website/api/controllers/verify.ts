@@ -4,7 +4,7 @@ import * as crypto from 'crypto';
 import Cache from '@core/Cache';
 import { findClients } from './auth';
 import log from '@utils/log';
-import VerfiedClient from '@core/Database/models/verifiedClient';
+import VerifiedClient from '@core/Database/models/verifiedClient';
 import { Request, Response } from 'express';
 
 /**
@@ -26,7 +26,7 @@ const findSecret = async function (req: Request): Promise<any> {
  * @param {object} res The express response instance
  */
 export const check = async function (req: Request, res: Response): Promise<any> {
-	log.info('Recieved verification check request from remote.', 'website');
+	log.info('Received verification check request from remote.', 'website');
 	try {
 		const steamData = await findSecret(req);
 		const clients = await findClients(req, {
@@ -48,7 +48,7 @@ export const check = async function (req: Request, res: Response): Promise<any> 
  * @param {object} res The express response instance
  */
 export const send = async function (req: Request, res: Response): Promise<any> {
-	log.info(`Recieved verification send request to ${req.body.dbid} from remote.`, 'website');
+	log.info(`Received verification send request to ${req.body.dbid} from remote.`, 'website');
 	try {
 		const steamData = await findSecret(req);
 		const [client] = await findClients(req, {
@@ -90,7 +90,7 @@ export const send = async function (req: Request, res: Response): Promise<any> {
  * @param {object} res The express response instance
  */
 export const login = async function (req: Request, res: Response): Promise<any> {
-	log.info(`Recieved login request from ${req.body.dbid}.`, 'website');
+	log.info(`Received login request from ${req.body.dbid}.`, 'website');
 	try {
 		const steamData = await findSecret(req);
 		const [client] = await findClients(req, {
@@ -106,13 +106,13 @@ export const login = async function (req: Request, res: Response): Promise<any> 
 		} else if (sendCache.ip !== client.connectionClientIp) {
 			throw { statusCode: 403, message: lang.error.ip_mismatch };
 		} else {
-			log.success(`${client.nickname} verified successfuly!`, 'website');
-			VerfiedClient.create({
+			log.success(`${client.nickname} verified successfully!`, 'website');
+			VerifiedClient.create({
 				uid: client.uniqueIdentifier,
 				dbid: client.databaseId,
 				steamId: steamData.steamId
 			});
-			Events.emit('verificationSucess', steamData.steamId, client.databaseId);
+			Events.emit('verificationSuccess', steamData.steamId, client.databaseId);
 			client.message(lang.message.success_verification);
 			Cache.del(`${client.databaseId}:verifyToken`);
 			Cache.del(`verification:${req.body.secret}`);

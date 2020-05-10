@@ -11,7 +11,7 @@ describe('TeamSpeak3', () => {
 	afterAll(async () => {
 		await Ts3.quit();
 	});
-	describe('Conection', () => {
+	describe('Connection', () => {
 		it('Check if we have connection...', async () => {
 			const data = await Ts3.whoami();
 			expect(data).not.toBe(null);

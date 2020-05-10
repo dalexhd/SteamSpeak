@@ -18,17 +18,20 @@ export const findClients = async function (
 	req: Request,
 	filter: object
 ): Promise<TeamSpeakClient[]> {
-	const ip = (req.headers['cf-connecting-ip'] || req.headers['x-forwarded-for']) as string;
+	const ip = (req.headers['cf-connecting-ip'] ||
+		req.headers['x-forwarded-for'] ||
+		req.connection.remoteAddress) as string;
 	const clients = await Ts3.clientList({
-		connection_client_ip: ip,
+		connection_client_ip: ip.replace('::ffff:', ''),
 		...filter
 	});
+	// TODO: Here we should distinguish if we're searching admins or not.
 	const result = clients.filter((client) => {
 		return config.admins.includes(client.uniqueIdentifier);
 	});
 	if (clients.length > 0 && result.length === 0)
 		throw { statusCode: 400, message: lang.error.not_an_admin };
-	if (clients.length === 0) throw { statusCode: 400, message: lang.error.ip_not_connected };
+	if (clients.length === 0) throw { statusCode: 404, message: lang.error.ip_not_connected };
 	return result;
 };
 
@@ -54,7 +57,7 @@ const createToken = function (uid: string): string {
  * @param {object} res The express response instance
  */
 export const find = async function (req: Request, res: Response): Promise<any> {
-	log.info('Recieved find request from remote.', 'website');
+	log.info('Received find request from remote.', 'website');
 	try {
 		const clients = await findClients(req, {
 			client_type: 0
@@ -75,7 +78,7 @@ export const find = async function (req: Request, res: Response): Promise<any> {
  * @param {object} res The express response instance
  */
 export const send = async function (req: Request, res: Response): Promise<any> {
-	log.info(`Recieved send request to ${req.body.dbid} from remote.`, 'website');
+	log.info(`Received send request to ${req.body.dbid} from remote.`, 'website');
 	try {
 		const [client] = await findClients(req, {
 			client_type: 0,
@@ -107,7 +110,7 @@ export const send = async function (req: Request, res: Response): Promise<any> {
 };
 
 export const login = async function (req: Request, res: Response): Promise<any> {
-	log.info(`Recieved login request from ${req.body.dbid}.`, 'website');
+	log.info(`Received login request from ${req.body.dbid}.`, 'website');
 	try {
 		const [client] = await findClients(req, {
 			client_type: 0,
@@ -122,7 +125,7 @@ export const login = async function (req: Request, res: Response): Promise<any> 
 		} else if (sendCache.ip !== client.connectionClientIp) {
 			throw { statusCode: 403, message: lang.error.ip_mismatch };
 		} else {
-			log.success(`${client.nickname} logged successfuly!`, 'website');
+			log.success(`${client.nickname} logged successfully!`, 'website');
 			Cache.del(`${client.databaseId}:token`);
 			const accessToken = createToken(client.uniqueIdentifier);
 			return res.status(201).json({

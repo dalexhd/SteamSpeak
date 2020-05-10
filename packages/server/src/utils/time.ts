@@ -1,4 +1,4 @@
-const convertToMiliseconds = function (interval: Interval): number {
+const convertToMilliseconds = function (interval: Interval): number {
 	interval.days += interval.weeks * 7;
 	interval.hours += interval.days * 24;
 	interval.minutes += interval.hours * 60;
@@ -6,4 +6,4 @@ const convertToMiliseconds = function (interval: Interval): number {
 	return interval.seconds * 1000;
 };
 
-export { convertToMiliseconds };
+export { convertToMilliseconds };

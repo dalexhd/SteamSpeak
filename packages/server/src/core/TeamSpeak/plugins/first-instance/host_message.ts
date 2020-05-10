@@ -1,5 +1,5 @@
 import { Ts3 } from '@core/TeamSpeak';
-import { convertToMiliseconds } from '@utils/time';
+import { convertToMilliseconds } from '@utils/time';
 import log from '@utils/log';
 import moment from 'moment';
 
@@ -39,7 +39,7 @@ export const load = async function (): Promise<void> {
 	main();
 	loaded = setInterval(async () => {
 		main();
-	}, convertToMiliseconds(interval));
+	}, convertToMilliseconds(interval));
 };
 
 export const clientconnect = async function (ev): Promise<void> {
@@ -69,7 +69,7 @@ export const info: CommonPluginConfig = {
 		data: {
 			showQueryClients: false,
 			hostMessage: `
-			Wellcome to [b]my server[/b]![b][color=orange][SERVER_ONLINE]/[SERVER_MAX_CLIENTS][/color][/b] users online!
+			Welcome to [b]my server[/b]![b][color=orange][SERVER_ONLINE]/[SERVER_MAX_CLIENTS][/color][/b] users online!
 			[b][url=https://git.io/JfLyF][color=orange]Visit github[/color][/url][/b]`
 		},
 		interval: {

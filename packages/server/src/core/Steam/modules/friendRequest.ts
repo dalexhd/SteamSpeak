@@ -16,7 +16,7 @@ Events.on('verificationExpired', (data) => {
 	);
 });
 
-Events.on('verificationSucess', (steamId) => {
+Events.on('verificationSuccess', (steamId) => {
 	steamUser.chatMessage(steamId, lang.message.success_verification);
 	steamUser.getPersonas([steamId]);
 });
@@ -36,7 +36,7 @@ steamUser.on('friendRelationship', (senderID, relationship) => {
 	}
 });
 
-// Called when steam bot recieves a message
+// Called when steam bot receives a message
 steamUser.on('friendMessage', async (senderID, message) => {
 	const steamId = senderID.getSteamID64();
 	if (message === '!verify') {

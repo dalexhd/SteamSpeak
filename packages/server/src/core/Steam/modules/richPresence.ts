@@ -2,7 +2,7 @@ import { steamUser } from '@core/Steam';
 import SteamUser from 'steam-user';
 import { Ts3 } from '@core/TeamSpeak';
 import config from '@config/steam';
-import VerfiedClient from '@core/Database/models/verifiedClient';
+import VerifiedClient from '@core/Database/models/verifiedClient';
 import lang from '@locales/index';
 import log from '@utils/log';
 
@@ -13,7 +13,7 @@ const syncNumbers = async (): Promise<void> => {
 		client_type: 0
 	});
 	const connectedUids = connectedClients.map((client) => client.uniqueIdentifier);
-	const users = await VerfiedClient.find();
+	const users = await VerifiedClient.find();
 	const verifiedOfflineUsers = users.filter(
 		(user) => !connectedUids.includes(user.uid) && typeof user.groupId !== 'undefined'
 	);
@@ -60,7 +60,7 @@ steamUser.getAppRichPresenceLocalization(730, config.language || 'english').then
 
 const friendDeleted = async (senderID): Promise<void> => {
 	const steamId = senderID.getSteamID64();
-	const user = await VerfiedClient.findOne({ steamId });
+	const user = await VerifiedClient.findOne({ steamId });
 	if (user && typeof user.groupId !== 'undefined') {
 		Ts3.serverGroupDel(user.groupId, 1);
 		groupNumber--;
@@ -72,8 +72,8 @@ const friendDeleted = async (senderID): Promise<void> => {
 steamUser.on('user', async (sid, data) => {
 	const steamId = sid.getSteamID64();
 	//Check if the user is verified.
-	if (await VerfiedClient.exists({ steamId })) {
-		const user = await VerfiedClient.findOne({ steamId });
+	if (await VerifiedClient.exists({ steamId })) {
+		const user = await VerifiedClient.findOne({ steamId });
 		if (!user) return;
 		if (typeof user.groupId === 'undefined') {
 			log.info('User has not group. Lets assign it.', 'steam');
@@ -89,7 +89,7 @@ steamUser.on('user', async (sid, data) => {
 					user.groupId = serverGroup.sgid;
 					user.groupNumber = groupNumber;
 					user.save();
-					log.info(`ServerGroup asigned to ${user.steamId}`, 'steam');
+					log.info(`ServerGroup assigned to ${user.steamId}`, 'steam');
 				});
 			});
 		} else {
@@ -122,8 +122,8 @@ steamUser.on('friendRelationship', (senderID, relationship) => {
 // Called when a TeamSpeak user gets disconnected.
 Ts3.on('clientdisconnect', async (ev) => {
 	const { client } = ev;
-	if (await VerfiedClient.exists({ uid: client?.uniqueIdentifier })) {
-		const user = await VerfiedClient.findOne({ uid: client?.uniqueIdentifier });
+	if (await VerifiedClient.exists({ uid: client?.uniqueIdentifier })) {
+		const user = await VerifiedClient.findOne({ uid: client?.uniqueIdentifier });
 		if (!user) return;
 		if (typeof user.groupId !== 'undefined') {
 			Ts3.serverGroupDel(user.groupId, 1);
@@ -140,8 +140,8 @@ Ts3.on('clientdisconnect', async (ev) => {
 // Called when a TeamSpeak user gets connected.
 Ts3.on('clientconnect', async (ev) => {
 	const { client } = ev;
-	if (await VerfiedClient.exists({ uid: client.uniqueIdentifier })) {
-		const user = await VerfiedClient.findOne({ uid: client.uniqueIdentifier });
+	if (await VerifiedClient.exists({ uid: client.uniqueIdentifier })) {
+		const user = await VerifiedClient.findOne({ uid: client.uniqueIdentifier });
 		if (user) steamUser.getPersonas([user.steamId]);
 	}
 });
