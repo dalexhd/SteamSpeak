@@ -16,8 +16,6 @@ import SVG from 'react-inlinesvg';
 import Tags from '@site/src/components/Tags';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 
-// import VectorComponents from '@site/src/components/VectorComponents';
-
 import _ from 'lodash';
 import classnames from 'classnames';
 import dateFormat from 'dateformat';

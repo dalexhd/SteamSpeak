@@ -25,7 +25,7 @@ function GuideTagListPage(props) {
   const groupedTags = _.groupBy(enrichedTags, 'category');
 
   return (
-    <Layout title="Tags" description="Vector guide tags">
+    <Layout title="Tags" description="SteamSpeak guide tags">
       <header className="hero hero--clean">
         <div className="container">
           <h1>All Guide Tags</h1>
