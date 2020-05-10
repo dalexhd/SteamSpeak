@@ -3,7 +3,6 @@ import React from 'react';
 import Diagram from '@site/src/components/Diagram';
 import Heading from '@theme/Heading';
 import Jump from '@site/src/components/Jump';
-import InstallationCommand from '@site/src/components/InstallationCommand';
 import ConfigurationExample from '@site/src/components/ConfigurationExample';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
@@ -211,12 +210,8 @@ function InstallationSection() {
   return (
     <section className={styles.installation}>
       <div className="container">
-        <h3 className={styles.installSubTitle}>Install with a one-liner:</h3>
-
-        <InstallationCommand />
-
         <h3 className={styles.installSubTitle}>
-          Or choose your preferred method:
+          Choose your preferred installation method:
         </h3>
 
         <div className="row">

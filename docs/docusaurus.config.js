@@ -22,6 +22,7 @@ module.exports = {
       },
       links: [
         { to: 'plugins/', label: 'Plugins', position: 'left' },
+        { to: "guides/", label: "Guides", position: "left" },
         {
           to: 'docs/about/what-is-steamspeak',
           activeBasePath: 'docs',
@@ -100,7 +101,12 @@ module.exports = {
     },
     googleAnalytics: {
       trackingID: 'UA-124336116-3'
-    }
+    },
+    announcementBar: {
+      id: 'supportus',
+      content:
+        '⭐️ If you like SteamSpeak, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/dalexhd/SteamSpeak">GitHub</a>! ⭐️'
+      },
   },
   presets: [
     [
@@ -108,7 +114,9 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/dalexhd/steamspeak/edit/master/docs/'
+          editUrl: 'https://github.com/dalexhd/steamspeak/edit/master/docs/',
+          showLastUpdateAuthor: true,
+          showLastUpdateTime: true,
         },
         sitemap: {
           cacheTime: 600 * 1000, // 600 sec - cache purge period
@@ -119,7 +127,7 @@ module.exports = {
     ]
   ],
   stylesheets: [
-    'https://fonts.googleapis.com/css?family=Ubuntu|Roboto|Source+Code+Pro',
+    'https://fonts.googleapis.com/css?family=Fira+Code|Ubuntu|Roboto|Source+Code+Pro',
     'https://at-ui.github.io/feather-font/css/iconfont.css'
   ],
   scripts: [
@@ -135,7 +143,10 @@ module.exports = {
       crossorigin: 'anonymous'
     }
   ],
-  plugins: [path.resolve(__dirname, './plugins/releases')],
+  plugins: [
+    path.resolve(__dirname, './plugins/releases'),
+    path.resolve(__dirname, './plugins/guides'),
+  ],
   themes: [
     [
       '@docusaurus/theme-classic',

@@ -11,6 +11,7 @@ module.exports = {
     indentation: 'tab',
     'no-descending-specificity': null,
     'at-rule-no-unknown': null,
+    'declaration-block-trailing-semicolon': null,
     'font-family-no-missing-generic-family-keyword': [
       true,
       {

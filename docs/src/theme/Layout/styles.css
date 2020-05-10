@@ -8,7 +8,7 @@ body {
 	transition: var(--ifm-transition-fast) ease color;
 }
 
-body > div {
+body > div:not(#cookiescript_injected) {
 	height: 100%;
 	display: flex;
 	flex-direction: column;

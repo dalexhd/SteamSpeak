@@ -1,34 +1,3 @@
-// const _ = require('lodash');
-
-// const { getFiles } = require('../packages/server/utils/files');
-
-// const plugins = {};
-// getFiles(`../packages/server/core/TeamSpeak/plugins`, true).then(
-//   (_instances) => {
-//     const instances = Object.assign({}, ..._instances);
-//     for (const instance in instances) {
-//       if (instances.hasOwnProperty(instance)) {
-//         const _plugins = instances[instance];
-//         _plugins.forEach((_plugin) => {
-//           // eslint-disable-next-line import/no-dynamic-require
-//           const plugin = require(_plugin);
-//           plugin.info.instance = instance;
-//           plugin.info.features = [];
-//           plugin.info.name = _.kebabCase(plugin.info.name);
-//           plugin.info.operating_systems = ['Linux', 'MacOS', 'Windows'];
-//           plugin.info.status = 'prod-ready';
-//           plugin.info.title = _.startCase(plugin.info.name);
-//           plugin.info.type = 'plugin';
-//           plugin.info.unsupported_operating_systems = [];
-//           plugins[_.camelCase(plugin.info.name)] = plugin.info;
-//         });
-//       }
-//     }
-//   }
-// );
-// setTimeout(() => {
-//   console.log(plugins);
-// }, 2000);
 module.exports = {
   plugins: {
     hostMessage: {
@@ -82,7 +51,7 @@ module.exports = {
     changeChannel: {
       name: 'change-channel',
       description:
-        'This plugin allows you to change multiple channels name at diferent interval.',
+        'This plugin allows you to change multiple channels name at different interval.',
       instance: 'second-instance',
       features: [],
       operating_systems: ['Linux', 'MacOS', 'Windows'],
@@ -416,11 +385,11 @@ module.exports = {
           breaking_change: false,
           date: '2020-04-20 08:58:19 +0000',
           deletions_count: 1,
-          description: 'Removed unucesary require.',
+          description: 'Removed unnecessary require.',
           files_count: 1,
           highlight_permalink: null,
           insertions_count: 0,
-          message: 'fix: Removed unucesary require.',
+          message: 'fix: Removed unnecessary require.',
           pr_number: null,
           scopes: [],
           sha: 'e1a38181d01849b0b781daa79525ff4c9da3a547',
@@ -802,6 +771,18 @@ module.exports = {
     },
     operating_systems: {},
     package_managers: {},
-    platforms: {}
+    platforms: {},
+    services: {
+      redis: {
+        logo_path: "/img/logos/redis.svg",
+        icon_path: "/img/icons/redis.svg",
+        title: "Redis"
+      },
+      mongodb: {
+        logo_path: "/img/logos/mongodb.svg",
+        icon_path: "/img/icons/mongodb.svg",
+        title: "MongoDB"
+      }
+    }
   }
 };
