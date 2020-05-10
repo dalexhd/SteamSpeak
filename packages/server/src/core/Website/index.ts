@@ -3,6 +3,8 @@ import express from 'express';
 import cors from 'cors';
 import * as path from 'path';
 import bodyParser from 'body-parser';
+import fs from 'fs';
+import log from '@utils/log';
 
 // Define api routes
 import apiRoutes from './api/routes';
@@ -11,8 +13,14 @@ const app = express();
 app.use(cors(config.cors));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.static(path.join(__dirname, '../../../../client/dist')));
 
+// Check if the application has been already build.
+if (!fs.existsSync(path.join(__dirname, '../../../../client/dist/index.html'))) {
+	log.error(`Cannot stat website production build. Check: https://bit.ly/2yzXhsD`, 'website');
+	process.exit(1);
+}
+
+app.use(express.static(path.join(__dirname, '../../../../client/dist')));
 // Use Api routes
 app.use('/api', apiRoutes);
 
