@@ -72,11 +72,6 @@
 	font-size: 2.5em;
 }
 
-.guide-item > article > div > footer > svg.logo {
-	height: 3em;
-	width: 3em;
-}
-
 .guide-item > article > div > footer > .action {
 	font-size: 0.75em;
 	font-weight: 600;

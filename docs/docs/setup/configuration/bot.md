@@ -320,7 +320,6 @@ Optional options of the connection.
 </TabItem>
 <TabItem value="steam">
 
-
 ```typescript title=&sim;/SteamSpeak/packages/server/src/config/steam.ts
 export default {
 	username: '',
@@ -380,6 +379,13 @@ The password of your steam bot.
   >
 
 #### shared_secret
+
+<Alert type="info">
+
+Follow [this tutorial][docs.getting-started.2fa] if you don't know how to find your shared secret.
+
+</Alert>
+
 The shared secret of your steam bot.
 </Field>
 <Field
@@ -772,3 +778,4 @@ Admin uids that should be able to login into the web admin panel.
 
 [docs.installation.redis]: /SteamSpeak/guides/tags/service-redis
 [docs.installation.mongodb]: /SteamSpeak/guides/tags/service-mongo-db
+[docs.getting-started.2fa]: /SteamSpeak/guides/getting-started/enable-steam-two-factor-authentication/

@@ -13,7 +13,6 @@ import { Ts3 } from '@core/TeamSpeak';
 const steamUser = new SteamUser({
 	language: config.language || 'english'
 });
-steamUser.setOption('promptSteamGuardCode', false);
 steamUser.setOption('debug', config.debug || false);
 
 const community = new SteamCommunity();

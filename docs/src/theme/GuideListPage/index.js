@@ -56,11 +56,7 @@ function GuideListPage(props) {
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
   let filtering = false;
-  let filteredItems = items.filter((item) => {
-    const { tags } = item.content.metadata;
-    const hasPlatform = tags.some((tag) => tag.label.startsWith('platform: '));
-    return hasPlatform;
-  });
+  let filteredItems = items;
 
   if (searchTerm) {
     filtering = true;
@@ -91,10 +87,8 @@ function GuideListPage(props) {
           <div className="hero--subtitle">
             Thoughtful guides to help you get the most out of {siteConfig.title}
             . Created and curated by the{' '}
-            <Link to={useBaseUrl('/community#team')}>
-              {siteConfig.title} team
-            </Link>
-            .
+            <Link to={useBaseUrl('/community#team')}>{siteConfig.title}</Link>{' '}
+            team
           </div>
           <div className="hero--search">
             <input

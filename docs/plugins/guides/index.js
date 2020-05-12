@@ -94,9 +94,9 @@ function pluginContentGuide(context, opts) {
                             permalink,
                         };
                     }
-                    
+
                         return tag;
-                    
+
                 });
             });
             //

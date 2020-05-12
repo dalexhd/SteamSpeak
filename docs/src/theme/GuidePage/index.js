@@ -99,7 +99,7 @@ function GuidePage(props) {
   useTOCHighlight(LINK_CLASS_NAME, ACTIVE_LINK_CLASS_NAME, TOP_OFFSET);
 
   return (
-    <Layout title={title} description={`${title}, in minutes, for free`}>
+    <Layout title={title} description={title}>
       <header className={`hero domain-bg domain-bg--${domainBG}`}>
         <div className="container">
           {service && (
