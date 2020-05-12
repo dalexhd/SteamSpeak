@@ -100,6 +100,10 @@ module.exports = {
     },
     googleAnalytics: {
       trackingID: 'UA-124336116-3'
+    },
+    hotjar: {
+      siteId: 1807485,
+      version: 6
     }
   },
   presets: [
@@ -135,7 +139,7 @@ module.exports = {
       crossorigin: 'anonymous'
     }
   ],
-  plugins: [path.resolve(__dirname, './plugins/releases')],
+  plugins: [path.resolve(__dirname, './plugins/releases'), path.resolve(__dirname, './plugins/hotjar')],
   themes: [
     [
       '@docusaurus/theme-classic',
