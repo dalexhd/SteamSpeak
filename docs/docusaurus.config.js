@@ -16,6 +16,7 @@ module.exports = {
   },
   themeConfig: {
     navbar: {
+      hideOnScroll: true,
       logo: {
         alt: 'SteamSpeak',
         src: 'img/logo-light.svg'
