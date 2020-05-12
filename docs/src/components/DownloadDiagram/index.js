@@ -28,7 +28,7 @@ function DownloadDiagram() {
                 <polygon
                   id="Stroke-1"
                   strokeOpacity="0.0961538462"
-                  stroke="#000000"
+                  stroke="#000"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   points="0 53.8054695 50.8700833 75 101.73913 53.8054695 50.8700833 32.6086957"
@@ -36,7 +36,7 @@ function DownloadDiagram() {
                 <polygon
                   id="Stroke-7"
                   strokeOpacity="0.0961538462"
-                  stroke="#000000"
+                  stroke="#000"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   points="50.2173913 1.30434783 101.73913 22.3096677 101.48902 53.4782609 50.3236883 32.7001761"
@@ -44,7 +44,7 @@ function DownloadDiagram() {
                 <polygon
                   id="Stroke-9"
                   strokeOpacity="0.0961538462"
-                  stroke="#000000"
+                  stroke="#000"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   points="0.652173913 22.0405003 0.652173913 53.4782609 51.5217391 32.6717368 51.415679 1.30434783"
@@ -52,13 +52,13 @@ function DownloadDiagram() {
                 <polygon
                   id="Fill-11"
                   fillOpacity="0.061489292"
-                  fill="#000000"
+                  fill="#000"
                   points="0.105238838 53.6435064 0 21.3702827 50.7622629 0 101.73913 21.5851512 101.571821 53.5681562 50.7622629 75"
                 />
                 <polygon
                   id="Stroke-13"
                   strokeOpacity="0.0961538462"
-                  stroke="#000000"
+                  stroke="#000"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   points="0.105238838 53.6435107 0 21.3702935 50.7622629 0 101.73913 21.5851619 101.57178 53.5681605 50.7622629 75"
@@ -97,14 +97,14 @@ function DownloadDiagram() {
                   <polygon
                     id="Fill-21-Copy"
                     fillOpacity="0.30736451"
-                    fill="#FFFFFF"
+                    fill="#FFF"
                     points="0 12.9885054 32.9745185 25.9756098 65.9482759 12.9885054 32.9745185 0"
                   />
                 </g>
                 <polygon
                   id="Stroke-3"
                   strokeOpacity="0.0961538462"
-                  stroke="#000000"
+                  stroke="#000"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   points="0.652173913 22.826087 0.652173913 54.2369271 51.5217391 75 51.5217391 43.8572217"
@@ -112,7 +112,7 @@ function DownloadDiagram() {
                 <polygon
                   id="Stroke-5"
                   strokeOpacity="0.0961538462"
-                  stroke="#000000"
+                  stroke="#000"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   points="50.2173913 43.6955049 101.73913 22.826087 101.48811 54.130582 50.2173913 75"

@@ -9,16 +9,20 @@ function pluralize(count, word) {
 }
 
 function GuideTagPage(props) {
-  const {metadata, items} = props;
-  const {allTagsPath, name: tagName, count} = metadata;
+  const { metadata, items } = props;
+  const { allTagsPath, name: tagName, count } = metadata;
 
   return (
     <Layout
       title={`Guides tagged "${tagName}"`}
-      description={`Guide | Tagged "${tagName}"`}>
+      description={`Guide | Tagged "${tagName}"`}
+    >
       <header className="hero hero--clean">
         <div className="container">
-          <h1>{count} {pluralize(count, 'guide')} tagged with &quot;{tagName}&quot;</h1>
+          <h1>
+            {count} {pluralize(count, 'guide')} tagged with &quot;{tagName}
+            &quot;
+          </h1>
           <div className="hero--subtitle">
             <Link href={allTagsPath}>View All Tags</Link>
           </div>

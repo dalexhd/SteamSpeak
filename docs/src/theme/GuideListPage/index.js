@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import Empty from '@site/src/components/Empty';
 import GuideItems from '@theme/GuideItems';
@@ -14,75 +14,73 @@ import './styles.css';
 
 const AnchoredH2 = Heading('h2');
 
-function Guides({filtering, items}) {
+function Guides({ filtering, items }) {
   if (items.length === 0) {
-    return (
-      <Empty text="no guides found" />
-    );
-  } if (filtering) {
-    return <GuideItems items={items} />
+    return <Empty text="no guides found" />;
   }
-    const gettingStartedGuides = items.filter(item => item.content.metadata.categories[0].name == 'getting-started');
-    const installationGuides = items.filter(item => item.content.metadata.categories[0].name === 'installation');
-    const installationCategory = installationGuides[0].content.metadata.categories[0];
-    return (
-      <>
-        <section>
-          <GuideItems items={gettingStartedGuides} staggered />
-        </section>
-        <section>
-          <AnchoredH2 id={installationCategory.permalink}>{installationCategory.title}</AnchoredH2>
-          {installationCategory.description && <div className="sub-title">{installationCategory.description}</div>}
-          <GuideItems items={installationGuides} large />
-        </section>
-      </>
-    );
-
-    return Object.keys(groupedCategories).map((categoryPermalink, index) => {
-      const groupItems = groupedItems[categoryPermalink];
-      const category = groupedCategories[categoryPermalink];
-
-      return (
-        <section key={index}>
-          {index > 0 && <>
-            <AnchoredH2 id={categoryPermalink}>{category.title}</AnchoredH2>
-            {category.description && <div className="sub-title">{category.description}</div>}
-          </>}
-          <GuideItems items={groupItems} large={index == 1} staggered={index == 0} />
-        </section>
-      );
-    });
-
+  if (filtering) {
+    return <GuideItems items={items} />;
+  }
+  const gettingStartedGuides = items.filter(
+    (item) => item.content.metadata.categories[0].name === 'getting-started'
+  );
+  const installationGuides = items.filter(
+    (item) => item.content.metadata.categories[0].name === 'installation'
+  );
+  const installationCategory =
+    installationGuides[0].content.metadata.categories[0];
+  return (
+    <>
+      <section>
+        <GuideItems items={gettingStartedGuides} staggered />
+      </section>
+      <section>
+        <AnchoredH2 id={installationCategory.permalink}>
+          {installationCategory.title}
+        </AnchoredH2>
+        {installationCategory.description && (
+          <div className="sub-title">{installationCategory.description}</div>
+        )}
+        <GuideItems items={installationGuides} large />
+      </section>
+    </>
+  );
 }
 
 function GuideListPage(props) {
-  const {metadata, items} = props;
-  const queryObj = props.location ? qs.parse(props.location.search, {ignoreQueryPrefix: true}) : {};
+  const { items, location } = props;
+  const queryObj = location
+    ? qs.parse(location.search, { ignoreQueryPrefix: true })
+    : {};
   const [searchTerm, setSearchTerm] = useState(queryObj.search);
   const context = useDocusaurusContext();
   const { siteConfig = {} } = context;
   let filtering = false;
-  let filteredItems = items.filter(item => {
-    const {tags} = item.content.metadata;
-    const hasPlatform = tags.some(tag => tag.label.startsWith('platform: '));
+  let filteredItems = items.filter((item) => {
+    const { tags } = item.content.metadata;
+    const hasPlatform = tags.some((tag) => tag.label.startsWith('platform: '));
     return hasPlatform;
   });
 
   if (searchTerm) {
     filtering = true;
 
-    filteredItems = filteredItems.filter(item => {
+    filteredItems = filteredItems.filter((item) => {
       const normalizedTerm = searchTerm.toLowerCase();
-      const {metadata} = item.content;
+      const { metadata } = item.content;
       const normalizedLabel = metadata.coverLabel.toLowerCase();
 
       if (normalizedLabel.includes(normalizedTerm)) {
         return true;
-      } if (metadata.tags.some(tag => tag.label.toLowerCase().includes(normalizedTerm))) {
+      }
+      if (
+        metadata.tags.some((tag) =>
+          tag.label.toLowerCase().includes(normalizedTerm)
+        )
+      ) {
         return true;
       }
-        return false;
-
+      return false;
     });
   }
   return (
@@ -91,21 +89,25 @@ function GuideListPage(props) {
         <div className="container">
           <h1>{siteConfig.title} Guides</h1>
           <div className="hero--subtitle">
-            Thoughtful guides to help you get the most out of {siteConfig.title}. Created and curated by the <Link to={useBaseUrl("/community#team")}>{siteConfig.title} team</Link>.
+            Thoughtful guides to help you get the most out of {siteConfig.title}
+            . Created and curated by the{' '}
+            <Link to={useBaseUrl('/community#team')}>
+              {siteConfig.title} team
+            </Link>
+            .
           </div>
           <div className="hero--search">
             <input
               type="text"
               className="input--text input--xl"
               onChange={(event) => setSearchTerm(event.currentTarget.value)}
-              placeholder="🔍 Search by guide name or tag..." />
+              placeholder="🔍 Search by guide name or tag..."
+            />
           </div>
         </div>
       </header>
       <main className="container container--s">
-        <Guides
-          filtering={filtering}
-          items={filteredItems} />
+        <Guides filtering={filtering} items={filteredItems} />
       </main>
     </Layout>
   );

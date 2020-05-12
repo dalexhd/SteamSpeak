@@ -84,6 +84,10 @@
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.2.0...v0.3.0)
 
+:rocket: New Features:
+
+- Add steam rich presence [\#35](https://github.com/dalexhd/SteamSpeak/pull/35) ([dalexhd](https://github.com/dalexhd))
+
 :non-potable_water: Closed Issues:
 
 - Release summary v0.3.0 [\#36](https://github.com/dalexhd/SteamSpeak/issues/36)

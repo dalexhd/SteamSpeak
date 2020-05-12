@@ -2,20 +2,19 @@ import React from 'react';
 
 import Heading from '@theme/Heading';
 import Layout from '@theme/Layout';
-import Link from '@docusaurus/Link';
 import Tag from '@site/src/components/Tag';
 
 import _ from 'lodash';
-import {enrichTags} from '@site/src/exports/tags';
+import { enrichTags } from '@site/src/exports/tags';
 import humanizeString from 'humanize-string';
 import pluralize from 'pluralize';
 
 const AnchoredH2 = Heading('h2');
 
 function GuideTagListPage(props) {
-  const {tags} = props;
+  const { tags } = props;
 
-  const normalizedTags = Object.values(tags).map(tag => ({
+  const normalizedTags = Object.values(tags).map((tag) => ({
     count: tag.count,
     label: tag.name,
     permalink: tag.permalink
@@ -32,14 +31,18 @@ function GuideTagListPage(props) {
         </div>
       </header>
       <main className="container container--xs">
-        {Object.keys(groupedTags).map((category, index) => {
+        {Object.keys(groupedTags).map((category) => {
           const tags = groupedTags[category];
           return (
             <section>
-              <AnchoredH2 id={category.name}>{pluralize(humanizeString(category))}</AnchoredH2>
+              <AnchoredH2 id={category.name}>
+                {pluralize(humanizeString(category))}
+              </AnchoredH2>
 
               {tags.map((tag, idx) => (
-                <div><Tag key={idx} valueOnly {...tag} /></div>
+                <div>
+                  <Tag key={idx} valueOnly {...tag} />
+                </div>
               ))}
             </section>
           );

@@ -22,7 +22,7 @@ module.exports = {
       },
       links: [
         { to: 'plugins/', label: 'Plugins', position: 'left' },
-        { to: "guides/", label: "Guides", position: "left" },
+        { to: 'guides/', label: 'Guides', position: 'left' },
         {
           to: 'docs/about/what-is-steamspeak',
           activeBasePath: 'docs',
@@ -106,7 +106,11 @@ module.exports = {
       id: 'supportus',
       content:
         '⭐️ If you like SteamSpeak, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/dalexhd/SteamSpeak">GitHub</a>! ⭐️'
-      },
+    },
+    hotjar: {
+      siteId: 1807485,
+      version: 6
+    }
   },
   presets: [
     [
@@ -116,7 +120,7 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/dalexhd/steamspeak/edit/master/docs/',
           showLastUpdateAuthor: true,
-          showLastUpdateTime: true,
+          showLastUpdateTime: true
         },
         sitemap: {
           cacheTime: 600 * 1000, // 600 sec - cache purge period
@@ -146,6 +150,7 @@ module.exports = {
   plugins: [
     path.resolve(__dirname, './plugins/releases'),
     path.resolve(__dirname, './plugins/guides'),
+    path.resolve(__dirname, './plugins/hotjar')
   ],
   themes: [
     [

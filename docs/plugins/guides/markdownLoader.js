@@ -1,6 +1,7 @@
-"use strict";
-const guideUtils_1 = require("./guideUtils");
+
 const { parseQuery, getOptions } = require('loader-utils');
+const guideUtils_1 = require("./guideUtils");
+
 module.exports = function (fileString) {
     const callback = this.async();
     const { truncateMarker, siteDir, contentPath, guides } = getOptions(this);

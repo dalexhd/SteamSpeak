@@ -1,5 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
+
+const __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -8,6 +8,7 @@ const globby_1 = __importDefault(require("globby"));
 const path_1 = __importDefault(require("path"));
 const utils_1 = require("@docusaurus/utils");
 const semver_1 = __importDefault(require("semver"));
+
 function truncate(fileString, truncateMarker) {
     return fileString.split(truncateMarker, 1).shift();
 }
@@ -30,24 +31,24 @@ async function generateReleases(releaseDir, { siteConfig, siteDir }, options) {
         if (frontMatter.draft && process.env.NODE_ENV === 'production') {
             return;
         }
-        let date = new Date(frontMatter.date ? Date.parse(frontMatter.date) : Date.now());
-        let description = frontMatter.description || excerpt;
-        let version = relativeSource.replace(/\.mdx?$/, '');
-        let title = frontMatter.title || version;
+        const date = new Date(frontMatter.date ? Date.parse(frontMatter.date) : Date.now());
+        const description = frontMatter.description || excerpt;
+        const version = relativeSource.replace(/\.mdx?$/, '');
+        const title = frontMatter.title || version;
         releases.push({
             id: frontMatter.id || frontMatter.title,
             metadata: {
-                date: date,
-                description: description,
+                date,
+                description,
                 permalink: utils_1.normalizeUrl([
                     baseUrl,
                     routeBasePath,
                     frontMatter.id || version,
                 ]),
                 source: aliasedSource,
-                title: title,
+                title,
                 truncated: (truncateMarker === null || truncateMarker === void 0 ? void 0 : truncateMarker.test(content)) || false,
-                version: version,
+                version,
             },
         });
     }));

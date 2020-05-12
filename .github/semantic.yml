@@ -9,5 +9,6 @@ types:
   - fix                 # Any user observable bug fix.
   - perf                # Any user observable performance improvement.
 scopes:
-
   - new plugin
+  - deps
+  - img compression

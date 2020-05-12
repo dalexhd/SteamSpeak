@@ -1,11 +1,12 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
+
+const __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 const path_1 = __importDefault(require("path"));
 const utils_1 = require("@docusaurus/utils");
 const releaseUtils_1 = require("./releaseUtils");
+
 const DEFAULT_OPTIONS = {
     path: 'releases',
     routeBasePath: 'releases',
@@ -17,7 +18,7 @@ const DEFAULT_OPTIONS = {
     truncateMarker: /<!--\s*(truncate)\s*-->/,
 };
 function pluginContentRelease(context, opts) {
-    const options = Object.assign(Object.assign({}, DEFAULT_OPTIONS), opts);
+    const options = {...DEFAULT_OPTIONS, ...opts};
     const { siteDir, generatedFilesDir } = context;
     const contentPath = path_1.default.resolve(siteDir, options.path);
     const dataDir = path_1.default.join(generatedFilesDir, 'releases');
@@ -85,7 +86,7 @@ function pluginContentRelease(context, opts) {
                         content: metadata.source,
                     },
                 });
-                let downloadPath = utils_1.normalizeUrl([metadata.permalink, 'download']);
+                const downloadPath = utils_1.normalizeUrl([metadata.permalink, 'download']);
                 addRoute({
                     path: downloadPath,
                     component: releaseDownloadComponent,

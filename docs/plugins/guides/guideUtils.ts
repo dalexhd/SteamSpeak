@@ -105,7 +105,7 @@ export async function generateGuides(
     ((guide) => {
       let categories = guide.metadata.categories;
 
-      if (categories[0].name == 'getting-started') {
+      if (categories[0].name === 'getting-started') {
         return ['AA'].concat(categories.map(category => category.name).slice(1));
       } else {
         return categories;

@@ -13,7 +13,11 @@ module.exports = {
         {
           type: 'category',
           label: 'Configuration',
-          items: ['setup/configuration', 'setup/configuration/bot', 'setup/configuration/website']
+          items: [
+            'setup/configuration',
+            'setup/configuration/bot',
+            'setup/configuration/website'
+          ]
         }
       ]
     },

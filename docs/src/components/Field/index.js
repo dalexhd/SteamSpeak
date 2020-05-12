@@ -209,7 +209,10 @@ function FieldFooter({
         ) : null}
         {link ? (
           <li>
-            More info: <a href={link[1]} target="_blank" rel="noopener noreferrer">{link[0]}</a>
+            More info:{' '}
+            <a href={link[1]} target="_blank" rel="noopener noreferrer">
+              {link[0]}
+            </a>
           </li>
         ) : null}
       </ul>

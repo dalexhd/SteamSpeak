@@ -774,14 +774,14 @@ module.exports = {
     platforms: {},
     services: {
       redis: {
-        logo_path: "/img/logos/redis.svg",
-        icon_path: "/img/icons/redis.svg",
-        title: "Redis"
+        logo_path: '/img/logos/redis.svg',
+        icon_path: '/img/icons/redis.svg',
+        title: 'Redis'
       },
       mongodb: {
-        logo_path: "/img/logos/mongodb.svg",
-        icon_path: "/img/icons/mongodb.svg",
-        title: "MongoDB"
+        logo_path: '/img/logos/mongodb.svg',
+        icon_path: '/img/icons/mongodb.svg',
+        title: 'MongoDB'
       }
     }
   }

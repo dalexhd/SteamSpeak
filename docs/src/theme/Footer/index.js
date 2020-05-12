@@ -142,11 +142,19 @@ function Footer() {
             {copyright}
             <br />
             <small>
-              <a href="https://github.com/dalexhd/steamspeak/security/policy" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com/dalexhd/steamspeak/security/policy"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Security Policy
               </a>
               &nbsp;&bull;&nbsp;
-              <a href="https://github.com/dalexhd/steamspeak/blob/master/PRIVACY.md" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://github.com/dalexhd/steamspeak/blob/master/PRIVACY.md"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Privacy Policy
               </a>
             </small>

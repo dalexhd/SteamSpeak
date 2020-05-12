@@ -23,7 +23,13 @@ require('prismjs/components/prism-toml');
 const highlightLinesRangeRegex = /{([\d,-]+)}/;
 const codeBlockTitleRegex = /title=".*"/;
 
-export default ({ children, className: languageClassName, metastring, title, path }) => {
+export default ({
+  children,
+  className: languageClassName,
+  metastring,
+  title,
+  path
+}) => {
   const {
     siteConfig: {
       themeConfig: { prism = {} }
@@ -145,7 +151,9 @@ export default ({ children, className: languageClassName, metastring, title, pat
                   return (
                     <div key={i} {...lineProps}>
                       {codeBlockPath && (
-                        <span className={styles.codeBlockPath}>{codeBlockPath}&nbsp;</span>
+                        <span className={styles.codeBlockPath}>
+                          {codeBlockPath}&nbsp;
+                        </span>
                       )}
                       {line.map((token, key) => (
                         <span key={key} {...getTokenProps({ token, key })} />

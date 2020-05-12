@@ -1,6 +1,7 @@
-"use strict";
-const releaseUtils_1 = require("./releaseUtils");
+
 const { parseQuery, getOptions } = require('loader-utils');
+const releaseUtils_1 = require("./releaseUtils");
+
 module.exports = function (fileString) {
     const callback = this.async();
     const { truncateMarker, siteDir, contentPath, releases } = getOptions(this);

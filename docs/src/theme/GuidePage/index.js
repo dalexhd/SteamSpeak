@@ -1,11 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import Alert from '@site/src/components/Alert';
 import Avatar from '@site/src/components/Avatar';
-import CodeBlock from '@theme/CodeBlock';
-import Heading from '@theme/Heading';
-import InstallationCommand from '@site/src/components/InstallationCommand';
-import Jump from '@site/src/components/Jump';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import Modal from 'react-modal';
@@ -25,9 +21,6 @@ import useTOCHighlight from '@theme/hooks/useTOCHighlight';
 import styles from './styles.module.css';
 
 Modal.setAppElement('#__docusaurus');
-
-const AnchoredH2 = Heading('h2');
-const AnchoredH3 = Heading('h3');
 
 const LINK_CLASS_NAME = 'contents__link';
 const ACTIVE_LINK_CLASS_NAME = 'contents__link--active';
@@ -52,11 +45,9 @@ function Headings({ headings, isChild }) {
       )}
       {uniqHeadings.map((heading) => (
         <li key={heading.id}>
-          <a
-            href={`#${heading.id}`}
-            className={LINK_CLASS_NAME}
-            dangerouslySetInnerHTML={{ __html: heading.value }}
-          />
+          <a href={`#${heading.id}`} className={LINK_CLASS_NAME}>
+            {heading.value}
+          </a>
           <Headings isChild headings={heading.children} />
         </li>
       ))}
@@ -71,11 +62,7 @@ function GuidePage(props) {
 
   const { content: GuideContents } = props;
   const { frontMatter, metadata } = GuideContents;
-  const {
-    author_github: authorGithub,
-    id,
-    title
-  } = frontMatter;
+  const { author_github: authorGithub, title } = frontMatter;
   const {
     categories,
     readingTime,
@@ -93,7 +80,7 @@ function GuidePage(props) {
   const {
     metadata: { installation }
   } = siteConfig.customFields;
-  const { platforms, services } = installation;
+  const { services } = installation;
 
   //
   // Variables
@@ -203,6 +190,7 @@ function GuidePage(props) {
           )}
           <article>
             <div className="markdown">
+              {/* eslint-disable-next-line */}
               <a
                 aria-hidden="true"
                 tabIndex="-1"

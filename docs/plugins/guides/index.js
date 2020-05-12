@@ -1,5 +1,5 @@
-"use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
+
+const __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
@@ -7,6 +7,7 @@ const lodash_1 = __importDefault(require("lodash"));
 const path_1 = __importDefault(require("path"));
 const utils_1 = require("@docusaurus/utils");
 const guideUtils_1 = require("./guideUtils");
+
 const DEFAULT_OPTIONS = {
     path: 'guides',
     routeBasePath: 'guides',
@@ -21,7 +22,7 @@ const DEFAULT_OPTIONS = {
     truncateMarker: /<!--\s*(truncate)\s*-->/,
 };
 function pluginContentGuide(context, opts) {
-    const options = Object.assign(Object.assign({}, DEFAULT_OPTIONS), opts);
+    const options = {...DEFAULT_OPTIONS, ...opts};
     const { siteDir, generatedFilesDir } = context;
     const contentPath = path_1.default.resolve(siteDir, options.path);
     const dataDir = path_1.default.join(generatedFilesDir, 'guides');
@@ -93,9 +94,9 @@ function pluginContentGuide(context, opts) {
                             permalink,
                         };
                     }
-                    else {
+                    
                         return tag;
-                    }
+                    
                 });
             });
             //
@@ -136,7 +137,7 @@ function pluginContentGuide(context, opts) {
                 exact: true,
                 modules: {
                     items: guides.filter(guide => guide.metadata.categories.length <= 2).map(guide => {
-                        const metadata = guide.metadata;
+                        const {metadata} = guide;
                         // To tell routes.js this is an import and not a nested object to recurse.
                         return {
                             content: {
@@ -199,12 +200,12 @@ function pluginContentGuide(context, opts) {
             // Guide categories
             //
             if (guideCategories.length > 0) {
-                let guidePermalinks = lodash_1.default.uniq(guides.map(guide => guide.metadata.permalink));
+                const guidePermalinks = lodash_1.default.uniq(guides.map(guide => guide.metadata.permalink));
                 await Promise.all(guideCategories.
                     filter(category => !guidePermalinks.includes(category.permalink)).
                     map(async (category) => {
-                    const permalink = category.permalink;
-                    const metadata = { category: category };
+                    const {permalink} = category;
+                    const metadata = { category };
                     const categoryMetadataPath = await createData(`${utils_1.docuHash(permalink)}.json`, JSON.stringify(metadata, null, 2));
                     addRoute({
                         path: permalink,
