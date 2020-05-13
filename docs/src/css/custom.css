@@ -57,7 +57,7 @@
 	--ifm-contents-border-color: var(--ifm-color-emphasis-75);
 	--ifm-contents-padding-left: var(--ifm-spacing-horizontal);
 	--ifm-font-family-base: -apple-system, blinkmacsystemfont, roboto, sans-serif;
-	--ifm-font-family-monospace: "Source Code Pro", menlo, monospace;
+	--ifm-font-family-monospace: "Fira Code", "Source Code Pro", menlo, monospace;
 	--ifm-font-family-serif: "Source Serif Pro", constantia, lucida bright, lucidabright, "Lucida Serif", lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", georgia, serif;
 	--ifm-font-size-base: 16px;
 	--ifm-footer-background-color: var(--ifm-background-color);
@@ -1525,6 +1525,35 @@ ul.list--indent {
 }
 
 /**
+ * domain-bg
+ */
+
+html[data-theme="dark"] .domain-bg {
+	background-image: url(/SteamSpeak/img/nodes-bg-dark.svg);
+}
+
+html[data-theme="dark"] .domain-bg.domain-bg--config {
+	background-image: url(/SteamSpeak/img/cogs-bg-dark.svg);
+}
+
+html[data-theme="dark"] .domain-bg.domain-bg--installation {
+	background-image: url(/SteamSpeak/img/charts-bg-dark.svg);
+}
+
+html[data-theme="dark"] .domain-bg.domain-bg--operations {
+	background-image: url(/SteamSpeak/img/circuit-bg-dark.svg);
+}
+
+html[data-theme="dark"] .domain-bg.domain-bg--testing {
+	background-image: url(/SteamSpeak/img/testing-bg-dark.svg);
+}
+
+html[data-theme="dark"] .domain-bg.domain-bg--vector {
+	background-image: url(/SteamSpeak/img/vector-bg-dark.svg);
+}
+
+
+/**
  * navbar
  *
  * Global navbar styling, used in the global header of the site.
@@ -2050,23 +2079,23 @@ header + section.shade {
  * use white and black colors to easily target and change their colors.
  */
 
-svg [fill="#000000"] {
+svg [fill="#000"] {
 	fill: var(--ifm-heading-color);
 }
 
-svg [stroke="#000000"] {
+svg [stroke="#000"] {
 	stroke: var(--ifm-heading-color);
 }
 
-svg [stop-color="#000000"] {
+svg [stop-color="#000"] {
 	stop-color: var(--ifm-heading-color);
 }
 
-svg [fill="#FFFFFF"] {
+svg [fill="#FFF"] {
 	fill: var(--ifm-background-color);
 }
 
-svg [stroke="#FFFFFF"] {
+svg [stroke="#FFF"] {
 	stroke: var(--ifm-background-color);
 }
 
@@ -2177,6 +2206,7 @@ ul.tabs li.tab-item {
 	margin-bottom: -1px;
 	padding: 0.4em 1.5em;
 	text-align: center;
+	outline: 0;
 }
 
 ul.tabs li.tab-item:hover {
@@ -2337,6 +2367,10 @@ ul.tabs.rounded li.tab-item.tab-item--active {
 	margin-bottom: calc(var(--ifm-h6-vertical-rhythm-bottom) * var(--ifm-leading));
 }
 
+.markdown .alert {
+	margin-bottom: var(--ifm-spacing-vertical) !important;
+}
+
 .markdown > p > img,
 .markdown > p > svg,
 .markdown > img,
@@ -2364,10 +2398,10 @@ ul.tabs.rounded li.tab-item.tab-item--active {
 }
 
 .markdown table {
-	display: table;
 	width: 100%;
 	border-collapse: collapse;
 	page-break-inside: auto;
+	display: block;
 }
 
 .markdown table > thead > tr,
@@ -2508,23 +2542,23 @@ html[data-theme='dark'] .button.button--secondary:hover {
  * svg
  */
 
-html[data-theme='dark'] svg [fill="#000000"] {
+html[data-theme='dark'] svg [fill="#000"] {
 	fill: var(--ifm-heading-color);
 }
 
-html[data-theme='dark'] svg [stroke="#000000"] {
+html[data-theme='dark'] svg [stroke="#000"] {
 	stroke: var(--ifm-heading-color);
 }
 
-html[data-theme='dark'] svg [stop-color="#000000"] {
+html[data-theme='dark'] svg [stop-color="#000"] {
 	stop-color: var(--ifm-heading-color);
 }
 
-html[data-theme='dark'] svg [fill="#FFFFFF"] {
+html[data-theme='dark'] svg [fill="#FFF"] {
 	fill: var(--ifm-background-color);
 }
 
-html[data-theme='dark'] svg [stroke="#FFFFFF"] {
+html[data-theme='dark'] svg [stroke="#FFF"] {
 	stroke: var(--ifm-background-color);
 }
 

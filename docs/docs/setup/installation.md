@@ -3,7 +3,8 @@ id: installation
 title: Installation
 ---
 
-import Alert from '@site/src/components/Alert';
+import CodeBlock from '@theme/CodeBlock';
+import InstallationCommand from '@site/src/components/InstallationCommand';
 
 To install SteamSpeak you will need to follow the below steps. Feel free to open a issue if you have any problem during the installation process.
 
@@ -25,23 +26,19 @@ Also you will need:
 
 Clone the SteamSpeak repository on your machine.
 
-```bash
-cd /home
-git clone https://github.com/dalexhd/SteamSpeak.git
-cd SteamSpeak
-```
+<InstallationCommand />
 
-## Install dependecincies
+## Install dependencies
 
-Run the folowing command to install required dependencies.
+Run the following command to install required dependencies.
 
-```bash
-yarn install
-```
+<CodeBlock className="language-bash" path="~/SteamSpeak">
+  yarn install
+</CodeBlock>
 
 <Alert type="info">
 
-This will install Client and Server packages, so you dont need to install them separatelly.
+This will install Client and Server packages, so you don't need to install them separately.
 
 </Alert>
 

@@ -159,7 +159,12 @@ function Navbar() {
           </div>
           <Link className="navbar__brand" to={logoLink} {...logoLinkProps}>
             {logoImageUrl != null && (
-              <SVG className="navbar__logo" src={logoImageUrl} alt={logoAlt} />
+              <SVG
+                className="navbar__logo"
+                src={logoImageUrl}
+                alt={logoAlt}
+                width="150"
+              />
             )}
             {title != null && (
               <strong

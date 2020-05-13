@@ -76,7 +76,7 @@ export default {
 				},
 				{
 					index: 1,
-					title: 'New Order Recieved',
+					title: 'New Order Received',
 					msg: 'You got new order of goods.',
 					icon: 'PackageIcon',
 					time: this.randomDate({ sec: 40 }),

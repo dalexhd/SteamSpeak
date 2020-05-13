@@ -1,0 +1,4 @@
+/dist
+.tsbuildinfo
+.tsbuildsum
+tsconfig-plugin.json
