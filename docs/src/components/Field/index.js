@@ -152,12 +152,14 @@ function FieldFooter({
   relevantWhen,
   required,
   unit,
-  warnings
+  warnings,
+  link
 }) {
   const [showExamples, setShowExamples] = useState(false);
 
   if (
     defaultValue ||
+    link ||
     enumValues ||
     (examples && examples.length > 0) ||
     (groups && groups.length > 0)
@@ -192,17 +194,27 @@ function FieldFooter({
             Enum, must be one of: <Enum values={enumValues} />
           </li>
         ) : null}
-        <li>
-          <div
-            className="show-more"
-            onClick={() => setShowExamples(!showExamples)}
-          >
-            {showExamples ? 'Hide examples' : 'View examples'}
-          </div>
-          {showExamples && (
-            <Examples name={name} path={path} values={examples} />
-          )}
-        </li>
+        {examples && examples.length > 0 ? (
+          <li>
+            <div
+              className="show-more"
+              onClick={() => setShowExamples(!showExamples)}
+            >
+              {showExamples ? 'Hide examples' : 'View examples'}
+            </div>
+            {showExamples && (
+              <Examples name={name} path={path} values={examples} />
+            )}
+          </li>
+        ) : null}
+        {link ? (
+          <li>
+            More info:{' '}
+            <a href={link[1]} target="_blank" rel="noopener noreferrer">
+              {link[0]}
+            </a>
+          </li>
+        ) : null}
       </ul>
     );
   }
@@ -222,7 +234,8 @@ function Field({
   required,
   type,
   unit,
-  warnings
+  warnings,
+  link
 }) {
   const [collapse] = useState(false);
 
@@ -292,6 +305,7 @@ function Field({
           required={required}
           unit={unit}
           warnings={warnings}
+          link={link}
         />
       )}
     </li>

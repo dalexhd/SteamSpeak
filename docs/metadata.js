@@ -1,34 +1,3 @@
-// const _ = require('lodash');
-
-// const { getFiles } = require('../packages/server/utils/files');
-
-// const plugins = {};
-// getFiles(`../packages/server/core/TeamSpeak/plugins`, true).then(
-//   (_instances) => {
-//     const instances = Object.assign({}, ..._instances);
-//     for (const instance in instances) {
-//       if (instances.hasOwnProperty(instance)) {
-//         const _plugins = instances[instance];
-//         _plugins.forEach((_plugin) => {
-//           // eslint-disable-next-line import/no-dynamic-require
-//           const plugin = require(_plugin);
-//           plugin.info.instance = instance;
-//           plugin.info.features = [];
-//           plugin.info.name = _.kebabCase(plugin.info.name);
-//           plugin.info.operating_systems = ['Linux', 'MacOS', 'Windows'];
-//           plugin.info.status = 'prod-ready';
-//           plugin.info.title = _.startCase(plugin.info.name);
-//           plugin.info.type = 'plugin';
-//           plugin.info.unsupported_operating_systems = [];
-//           plugins[_.camelCase(plugin.info.name)] = plugin.info;
-//         });
-//       }
-//     }
-//   }
-// );
-// setTimeout(() => {
-//   console.log(plugins);
-// }, 2000);
 module.exports = {
   plugins: {
     hostMessage: {
@@ -82,7 +51,7 @@ module.exports = {
     changeChannel: {
       name: 'change-channel',
       description:
-        'This plugin allows you to change multiple channels name at diferent interval.',
+        'This plugin allows you to change multiple channels name at different interval.',
       instance: 'second-instance',
       features: [],
       operating_systems: ['Linux', 'MacOS', 'Windows'],
@@ -112,9 +81,71 @@ module.exports = {
       github: 'https://github.com/dalexhd',
       id: 'dalexhd',
       blog: 'www.linkedin.com/in/alex-borbolla',
-      name: 'Alex'
+      name: 'Alex',
+      show: true
+    },
+    {
+      avatar: 'https://github.com/SteamTimeIdler.png',
+      bio: '',
+      github: 'https://github.com/SteamTimeIdler',
+      id: 'SteamTimeIdler',
+      blog: 'stidler.com',
+      name: 'SteamTimeIdler',
+      show: false
     }
   ],
+  // guides: {
+  //   'getting-started': {
+  //     children: {},
+  //     description:
+  //       'Take SteamSpeak from zero to production in under 20 minutes.',
+  //     guides: [
+  //       {
+  //         author_github: 'https://github.com/dalexhd',
+  //         description: null,
+  //         id: '/getting-started/enable-steam-two-factor-authentication',
+  //         last_modified_on: null,
+  //         path:
+  //           'website/guides/getting-started/enable-steam-two-factor-authentication.md',
+  //         series_position: null,
+  //         title: 'Enabling Steam 2FA'
+  //       }
+  //     ],
+  //     name: 'getting-started',
+  //     series: true,
+  //     title: 'Getting Started'
+  //   },
+  //   installation: {
+  //     children: {},
+  //     description: 'Learn how to install SteamSpeak.',
+  //     guides: [
+  //       {
+  //         author_github: 'https://github.com/dalexhd',
+  //         description: null,
+  //         id:
+  //           '/installation/how-to-install-and-configure-redis-on-ubuntu-16-04',
+  //         last_modified_on: null,
+  //         path:
+  //           'docs/guides/installation/how-to-install-and-configure-redis-on-ubuntu-16-04.md',
+  //         series_position: null,
+  //         title: 'How To Install and Configure Redis on Ubuntu 16.04'
+  //       },
+  //       {
+  //         author_github: 'https://github.com/dalexhd',
+  //         description: null,
+  //         id: '/installation/how-to-install-and-secure-redis-on-ubuntu-18-04',
+  //         last_modified_on: null,
+  //         path:
+  //           'docs/guides/installation/how-to-install-and-secure-redis-on-ubuntu-18-04.md',
+  //         series_position: null,
+  //         title: 'How To Install and Secure Redis on Ubuntu 18.04'
+  //       }
+  //     ],
+  //     name: 'installation',
+  //     series: true,
+  //     title: 'Installation'
+  //   }
+  // },
   latest_release: {
     version: '0.5.0'
   },
@@ -416,11 +447,11 @@ module.exports = {
           breaking_change: false,
           date: '2020-04-20 08:58:19 +0000',
           deletions_count: 1,
-          description: 'Removed unucesary require.',
+          description: 'Removed unnecessary require.',
           files_count: 1,
           highlight_permalink: null,
           insertions_count: 0,
-          message: 'fix: Removed unucesary require.',
+          message: 'fix: Removed unnecessary require.',
           pr_number: null,
           scopes: [],
           sha: 'e1a38181d01849b0b781daa79525ff4c9da3a547',
@@ -784,7 +815,7 @@ module.exports = {
   installation: {
     downloads: {
       zip: {
-        package_manager: 'zup',
+        package_manager: 'zip',
         available_on_latest: true,
         available_on_nightly: true,
         file_type: 'zip',
@@ -802,6 +833,23 @@ module.exports = {
     },
     operating_systems: {},
     package_managers: {},
-    platforms: {}
+    platforms: {},
+    services: {
+      redis: {
+        logo_path: '/img/logos/redis.svg',
+        icon_path: '/img/icons/redis.svg',
+        title: 'Redis'
+      },
+      mongodb: {
+        logo_path: '/img/logos/mongodb.svg',
+        icon_path: '/img/icons/mongodb.svg',
+        title: 'MongoDB'
+      },
+      steam: {
+        logo_path: '/img/logos/steam.svg',
+        icon_path: '/img/icons/steam.svg',
+        title: 'Steam'
+      }
+    }
   }
 };

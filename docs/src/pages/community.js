@@ -19,7 +19,9 @@ function Community() {
     chatUrl,
     discordUrl
   } = siteConfig.customFields;
-
+  const filteredTeam = team.filter((member) => {
+    return member.show;
+  });
   return (
     <Layout
       title="Community"
@@ -97,7 +99,7 @@ function Community() {
             </div>
 
             <div className={styles.coreTeam}>
-              {team.map((member, idx) => (
+              {filteredTeam.map((member, idx) => (
                 <Link
                   key={idx}
                   to={member.github}

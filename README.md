@@ -5,8 +5,8 @@
 ## Steam and TeamSpeak integration, done right!
 
 [![Open Source Love](https://badges.frapsoft.com/os/v2/open-source.png?v=103)](https://github.com/dalexhd/SteamSpeak/)
-[![contributions welcome](https://img.shields.io/badge/Contributions-Wellcome-blue.svg?style=flat-square&color=blue&maxAge=3600)](https://github.com/dalexhd/steamspeak/issues)
-[![PRs Welcome](https://img.shields.io/badge/PRs-Wellcome-brightgreen.svg?style=flat-square&color=blue&maxAge=3600)](https://github.com/dalexhd/SteamSpeak/pulls)
+[![contributions welcome](https://img.shields.io/badge/Contributions-Welcome-blue.svg?style=flat-square&color=blue&maxAge=3600)](https://github.com/dalexhd/steamspeak/issues)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg?style=flat-square&color=blue&maxAge=3600)](https://github.com/dalexhd/SteamSpeak/pulls)
 [![Join the chat at https://gitter.im/dalexhd/steamspeak](https://img.shields.io/gitter/room/dalexhd/steamspeak?color=blue&label=Chat&logo=gitter&maxAge=3600&style=flat-square)](https://gitter.im/dwyl/?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 [![GitHub license](https://img.shields.io/github/license/dalexhd/SteamSpeak?label=License&color=blue&maxAge=3600&style=flat-square)](https://github.com/dalexhd/SteamSpeak/blob/master/LICENSE)
 [![Analytics](https://ga-beacon.appspot.com/UA-124336116-4/readme?flat&useReferer)](https://github.com/dalexhd/SteamSpeak)

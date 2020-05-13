@@ -1,9 +1,7 @@
 ---
 id: contributing
-title: Contributing
+title: Contributing to SteamSpeak
 ---
-
-# Contributing to SteamSpeak
 
 [SteamSpeak](https://dalexhd.github.io/SteamSpeak/) is a tool that power ups your TeamSpeak3 server. If you're interested in contributing to SteamSpeak, hopefully this document makes the process for contributing clear.
 

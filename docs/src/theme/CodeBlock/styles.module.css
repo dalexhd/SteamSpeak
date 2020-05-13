@@ -12,6 +12,16 @@
 	padding: calc(var(--ifm-pre-padding) / 2) var(--ifm-pre-padding);
 }
 
+.codeBlockPath {
+	-webkit-touch-callout: none; /* iOS Safari */
+	-webkit-user-select: none; /* Safari */
+	-khtml-user-select: none; /* Konqueror HTML */
+	-moz-user-select: none; /* Old versions of Firefox */
+	-ms-user-select: none; /* Internet Explorer/Edge */
+	user-select: none; /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
+	opacity: 0.5;
+}
+
 .codeBlock {
 	overflow: auto;
 	display: block;
@@ -25,6 +35,7 @@
 }
 
 .copyButton {
+	z-index: 1;
 	background: var(--ifm-background-color);
 	background-clip: padding-box;
 	border: 1px solid var(--ifm-panel-border-color);

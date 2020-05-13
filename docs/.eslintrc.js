@@ -13,7 +13,7 @@ module.exports = {
   parserOptions: {
     allowImportExportEverywhere: true
   },
-  extends: ['airbnb', 'prettier', 'prettier/react'],
+  extends: ['eslint:recommended', 'airbnb', 'prettier', 'prettier/react', 'plugin:prettier/recommended'],
   plugins: ['react-hooks'],
   rules: {
     // Ignore certain webpack alias because it can't be resolved

@@ -884,7 +884,11 @@ module.exports = {
     backgroundPosition: false,
     backgroundRepeat: false,
     listStyleType: false,
-  }
+	},
+
+	purge: {
+		enabled: false
+	}
 
 }
 /* eslint-enable */

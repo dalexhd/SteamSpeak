@@ -13,14 +13,18 @@ module.exports = {
         {
           type: 'category',
           label: 'Configuration',
-          items: ['setup/configuration/bot', 'setup/configuration/website']
+          items: [
+            'setup/configuration',
+            'setup/configuration/bot',
+            'setup/configuration/website'
+          ]
         }
       ]
     },
     {
       type: 'category',
       label: 'Guides',
-      items: ['guide/running-steamspeak']
+      items: ['guide/preparing-for-production', 'guide/running-steamspeak']
     },
     {
       type: 'category',
