@@ -36,13 +36,14 @@ import Steps from '@site/src/components/Steps';
 
 <Steps headingDepth={3}>
 
-1.  ### vue.config.js
+### vue.config.js
 
 This file contains most of the website related configuration. After editing this file, you will need to rebuild you website.
 
 <Tabs
   block
   className="rounded"
+  defaultValue="chainWebpack"
   values={[
     { label: `chainWebpack`, value: 'chainWebpack', class: '' },
     { label: 'transpileDependencies', value: 'transpileDependencies' },

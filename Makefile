@@ -4,6 +4,7 @@ DOCKER				=	@docker
 SH					=	@bash
 RM					=	@/bin/rm -rf
 export USE_CONTAINER ?= docker
+
 # Begin OS detection
 ifeq ($(OS),Windows_NT) # is Windows_NT on XP, 2000, 7, Vista, 10...
     export OPERATING_SYSTEM := Windows
@@ -18,6 +19,7 @@ LAST_COMMIT_DATE	=	$(shell git log -1 --date=format:"%m/%d/%Y" --format="%ad   [
 LAST_COMMIT_HASH	=	$(shell git log -1 --date=format:"%m/%d/%y %T" --format="%H")
 LAST_COMMIT_MESSAGE	=	$(shell git log -1 --date=format:"%m/%d/%y %T" --format="%s")
 TEAMSPEAK_TOKEN		=	$(shell docker logs teamspeak 2>&1 | grep token | sed 's/.*token=//' | sed 's/\r//g' | head -1)
+IP					=	$(shell ip addr sh $(ip route list default | grep -Po ' dev \K\w+') | grep -Po ' inet \K[\d.]+')
 
 # Functions
 disp_indent			=	for I in `seq 1 $(MAKELEVEL)`; do \
@@ -81,11 +83,18 @@ TOKEN_SCRIPT = \
 ##@ Misc
 
 config:		## Create config files
-			@if [ ! -d "packages/server/config/old.config" ]; then mkdir packages/server/config/old.config; fi
-			@find packages/server/config -maxdepth 1 -iname \*.js -not -iname \*.sample.js -type f -exec bash -c 'for f; do cp "$$f" "packages/server/config/old.config/$$(basename $$f)"; done' sh {} +
-			@echo ${B}Created a restore point inside the ${W}packages/server/config/old.config ${B}folder.
-			@find packages/server/config -maxdepth 1 -iname \*.sample.js -type f -exec bash -c 'for f; do cp "$$f" "$${f/.sample}"; done' sh {} +
+			@if [ ! -d "packages/server/src/config/old.config" ]; then mkdir packages/server/src/config/old.config; fi
+			@find packages/server/src/config -maxdepth 1 -iname \*.ts -not -iname \*.sawmple.ts -type f -exec bash -c 'for f; do cp "$$f" "packages/server/src/config/old.config/$$(basename $$f)"; done' sh {} +
+			@echo ${B}Created a restore point inside the ${W}packages/server/src/config/old.config ${B}folder.
+			@find packages/server/src/config -maxdepth 1 -iname \*.sample.ts -type f -exec bash -c 'for f; do cp "$$f" "$${f/.sample}"; done' sh {} +
 			@echo
+
+check-ts:
+			@scripts/check-ts.sh
+
+plugin-tsconfig:
+			@scripts/plugin-tsconfig.sh
+
 
 re:			## Call clean => all
 			@make clean
@@ -99,12 +108,13 @@ release: 	## Release a new SteamSpeak version
 ts:			## Run docker image
 			@echo ${B}Running: ${R}$(OUTPUT)${X}
 			@echo
-			$(DOCKER) run -d --name=teamspeak -p 9987:9987/udp -p 10011:10011/tcp -p 10022:10022/tcp -p 30033:30033/tcp -e TS3SERVER_LICENSE=accept -e TS3SERVER_QUERY_PROTOCOLS=raw,ssh -e TS3SERVER_IP_WHITELIST=whitelist.txt -e TS3SERVER_LOG_QUERY_COMMANDS=1 teamspeak ts3server serveradmin_password=SteamSpeak -v /docker/TeamSpeak/query_ip_whitelist.txt:/var/ts3server/whitelist.txt > /dev/null 2>&1
+			$(DOCKER) run -d --name=teamspeak -p 9987:9987/udp -p 10011:10011/tcp -p 10022:10022/tcp -p 30033:30033/tcp -e TS3SERVER_LICENSE=accept -e TS3SERVER_QUERY_PROTOCOLS=raw,ssh -e TS3SERVER_IP_WHITELIST=whitelist.txt -e TS3SERVER_LOG_QUERY_COMMANDS=1 teamspeak ts3server serveradmin_password=SteamSpeak -v /docker/TeamSpeak/query_ip_whitelist.txt:/var/ts3server/whitelist.txt
 			$(DOCKER) logs teamspeak 2>&1 | grep login | awk '{split($$0, i, ", "); print i[1]}' | tr -d '\t\r\" ' | cut -d "=" -f 2 | xargs -I {} echo "${B}Username: ${W}${BOLD}"{}${X}
 			$(DOCKER) logs teamspeak 2>&1 | grep login | awk '{split($$0, i, ", "); print i[2]}' | tr -d '\t\r\" ' | cut -d "=" -f 2 | xargs -I {} echo "${B}Password: ${W}${BOLD}"{}${X}
 			@echo
 			@sleep 1
 			$(DOCKER) logs teamspeak 2>&1 | grep token | sed 's/.*token=//' | sed 's/\r//g' | head -1 | tr -d '\n" ' | xargs -I {} echo "${B}Token: ${G}${BOLD}"{}${X}
+			@echo ${B}IP: ${G}${BOLD}$(IP)${X}
 			@echo
 
 clean:		## Clean docker image

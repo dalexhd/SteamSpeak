@@ -1,5 +1,3 @@
-const path = require('path');
-
 module.exports = (context) => {
   const { siteConfig } = context;
   const { themeConfig } = siteConfig;

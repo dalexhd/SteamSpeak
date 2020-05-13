@@ -62,7 +62,7 @@ function Fields({ children, filters }) {
               placeholder="🔍 Search..."
             />
           </div>
-          <div className="filter">
+          <div className="">
             <div className="filter--choices">
               <CheckboxList
                 values={groups}

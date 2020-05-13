@@ -15,7 +15,7 @@ module.exports = {
 	// cacheDirectory: "/private/var/folders/zz/zyxvpxvq6csfxvn_n0000jf80004bk/T/jest_3g2",
 
 	// Automatically clear mock calls and instances between every test
-	clearMocks: true,
+	// clearMocks: true,
 
 	// Indicates whether the coverage information should be collected while executing the test
 	// collectCoverage: false,
@@ -24,7 +24,7 @@ module.exports = {
 	// collectCoverageFrom: undefined,
 
 	// The directory where Jest should output its coverage files
-	coverageDirectory: 'coverage',
+	// coverageDirectory: 'coverage',
 
 	// An array of regexp pattern strings used to skip coverage collection
 	// coveragePathIgnorePatterns: [
@@ -69,17 +69,15 @@ module.exports = {
 	// ],
 
 	// An array of file extensions your modules use
-	// moduleFileExtensions: [
-	//   "js",
-	//   "json",
-	//   "jsx",
-	//   "ts",
-	//   "tsx",
-	//   "node"
-	// ],
+	moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
 
 	// A map from regular expressions to module names that allow to stub out resources with a single module
-	// moduleNameMapper: {},
+	moduleNameMapper: {
+		'@config(.*)$': '<rootDir>/src/config/$1',
+		'@core(.*)$': '<rootDir>/src/core/$1',
+		'@locales(.*)$': '<rootDir>/src/locales/$1',
+		'@utils(.*)$': '<rootDir>/src/utils/$1'
+	},
 
 	// An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
 	// modulePathIgnorePatterns: [],
@@ -152,7 +150,7 @@ module.exports = {
 	// ],
 
 	// The regexp pattern or array of patterns that Jest uses to detect test files
-	testRegex: ['/tests/']
+	testRegex: ['/src/tests/.*.spec.(js|ts|tsx)?$'],
 
 	// testPathIgnorePatterns: [],
 
@@ -169,7 +167,7 @@ module.exports = {
 	// timers: "real",
 
 	// A map from regular expressions to paths to transformers
-	// transform: undefined,
+	transform: { '^.+\\.ts?$': 'ts-jest' }
 
 	// An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
 	// transformIgnorePatterns: [

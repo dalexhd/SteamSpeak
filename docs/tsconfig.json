@@ -29,5 +29,8 @@
     /* Advanced Options */
     "resolveJsonModule": true
   },
+  "include": [
+    "./plugins/**/*.ts"
+  ],
   "exclude": ["node_modules", "**/__tests__/**/*", "**/lib/**/*"]
 }

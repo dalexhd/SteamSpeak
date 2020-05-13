@@ -92,8 +92,9 @@ function Components({ components, headingLevel, pathTemplate, titles }) {
         )}
         <hr />
         <Jump
-          to="https://github.com/dalexhd/steamspeak/issues/new?labels=type%3A+new+feature"
+          to="https://github.com/dalexhd/steamspeak/issues/new?labels=enhancement&title=feat(new%20plugin)%3A%20%5BInsert%20your%20title%20here%5D&template=feature.md"
           target="_blank"
+          rel="noopener noreferrer"
           rightIcon="plus-circle"
         >
           Request a new Plugin
@@ -234,7 +235,7 @@ function SteamSpeakComponents(props) {
         <div className="filter">
           <div className="filter--label">
             <Link
-              to={useBaseUrl('/docs/about/instances/')}
+              to={useBaseUrl('/docs/about/what-is-steamspeak/')}
               title="Learn more about SteamSpeak's instance types"
             >
               Instance names <i className="feather icon-info" />

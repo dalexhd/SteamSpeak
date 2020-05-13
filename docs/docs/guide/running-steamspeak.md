@@ -3,12 +3,16 @@ id: running-steamspeak
 title: Running SteamSpeak
 ---
 
-:::important
+import Alert from '@site/src/components/Alert';
+import CodeBlock from '@theme/CodeBlock';
 
-**Be sure** that you've configured your [bot](../../setup/configuration/bot) correctly before running the following command.
 
-:::
+<Alert type="info" closable="true">
 
-```bash
-yarn run start:backend
-```
+**Be sure** that you built [SteamSpeak](/SteamSpeak/docs/guide/preparing-for-production) application correctly before running the following command.
+
+</Alert>
+
+<CodeBlock className="language-bash" path="~/SteamSpeak">
+  yarn run start:backend
+</CodeBlock>
