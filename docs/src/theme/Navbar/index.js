@@ -11,13 +11,7 @@ import useHideableNavbar from '@theme/hooks/useHideableNavbar';
 import useLockBodyScroll from '@theme/hooks/useLockBodyScroll';
 import useLogo from '@theme/hooks/useLogo';
 import { fetchNewRelease } from '@site/src/exports/newRelease';
-
 import styles from './styles.module.css';
-
-// TODO: Remove this line in next version
-if (typeof window !== 'undefined') {
-  localStorage.removeItem('theme');
-}
 
 function navLinkAttributes(label, right) {
   const attrs = { label };
