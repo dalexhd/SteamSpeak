@@ -123,7 +123,7 @@ class Commit
 
   private
     def parse_commit_message!(message)
-      match = message.match(/^(?<type>[a-z]*)(\((?<scope>[a-z0-9_, ]*)\))?(?<breaking_change>!)?: (?<description>.*?)( \(#(?<pr_number>[0-9]*)\))?$/)
+      match = message.match(/^(?<type>[a-z]*)(\((?<scope>[a-z0-9_,\- ]*)\))?(?<breaking_change>!)?: (?<description>.*?)( \(#(?<pr_number>[0-9]*)\))?$/)
 
       if match.nil?
         raise <<~EOF
