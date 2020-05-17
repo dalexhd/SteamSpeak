@@ -24,7 +24,7 @@ Pub.on('message', async (channel, key, paylaod) => {
 	let value = await Cache.get(key);
 	switch (channel) {
 		case EVENT_SET:
-			if (!key.includes('shadow:')) Cache.set(`shadow:${key}`, paylaod);
+			if (!key.includes('shadow:') && value) Cache.set(`shadow:${key}`, value);
 			if (config.debug) log.info(`Key "${key}" set!`, 'cache');
 			break;
 		case EVENT_EXPIRED:

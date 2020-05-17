@@ -74,7 +74,7 @@ steamUser.on('user', async (sid, data) => {
 	//Check if the user is verified.
 	if (await VerifiedClient.exists({ steamId })) {
 		const user = await VerifiedClient.findOne({ steamId });
-		if (!user) return;
+		if (!user || !(await Ts3.getClientByUID(user.uid))) return;
 		if (typeof user.groupId === 'undefined') {
 			log.info('User has not group. Lets assign it.', 'steam');
 			groupNumber++;
