@@ -2518,16 +2518,6 @@ module.exports = {
     package_managers: {},
     platforms: {},
     services: {
-      redis: {
-        logo_path: '/img/logos/redis.svg',
-        icon_path: '/img/icons/redis.svg',
-        title: 'Redis'
-      },
-      mongodb: {
-        logo_path: '/img/logos/mongodb.svg',
-        icon_path: '/img/icons/mongodb.svg',
-        title: 'MongoDB'
-      },
       steam: {
         logo_path: '/img/logos/steam.svg',
         icon_path: '/img/icons/steam.svg',

@@ -103,7 +103,7 @@ Navigate to `packages/server/config` directory and modify previusly generated fi
 
 <Alert type="info">
 
-SteamSpeak uses **Redis** as caching solution. Follow [this tutorial][docs.installation.redis] to get it working on your server.
+SteamSpeak uses **Redis** as caching solution. Follow  <a href="https://www.digitalocean.com/community/tutorial_collections/how-to-install-and-secure-redis" target="_blank" rel="noopener noreferrer">this tutorial</a> to get it working on your server.
 
 </Alert>
 
@@ -173,7 +173,7 @@ Debug redis connection.
 
 <Alert type="info">
 
-SteamSpeak uses **MongoDB** as caching solution. Follow [this tutorial][docs.installation.mongodb] to get it working on your server.
+SteamSpeak uses **MongoDB** as database solution. Follow  <a href="https://www.digitalocean.com/community/tutorial_collections/33" target="_blank" rel="noopener noreferrer">this tutorial</a> to get it working on your server.
 
 </Alert>
 
@@ -776,6 +776,4 @@ Admin uids that should be able to login into the web admin panel.
 </Tabs>
 </Steps>
 
-[docs.installation.redis]: /SteamSpeak/guides/tags/service-redis
-[docs.installation.mongodb]: /SteamSpeak/guides/tags/service-mongo-db
 [docs.getting-started.2fa]: /SteamSpeak/guides/getting-started/enable-steam-two-factor-authentication/

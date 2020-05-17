@@ -25,24 +25,26 @@ function Guides({ filtering, items }) {
     (item) => item.content.metadata.categories[0].name === 'getting-started'
   );
   const installationGuides = items.filter(
-    (item) => item.content.metadata.categories[0].name === 'installation'
+    (item) => item?.content.metadata.categories[0].name === 'installation'
   );
   const installationCategory =
-    installationGuides[0].content.metadata.categories[0];
+    installationGuides[0]?.content.metadata.categories[0];
   return (
     <>
       <section>
         <GuideItems items={gettingStartedGuides} staggered />
       </section>
-      <section>
-        <AnchoredH2 id={installationCategory.permalink}>
-          {installationCategory.title}
-        </AnchoredH2>
-        {installationCategory.description && (
-          <div className="sub-title">{installationCategory.description}</div>
-        )}
-        <GuideItems items={installationGuides} large />
-      </section>
+      {installationGuides.length > 0 && (
+        <section>
+          <AnchoredH2 id={installationCategory.permalink}>
+            {installationCategory.title}
+          </AnchoredH2>
+          {installationCategory.description && (
+            <div className="sub-title">{installationCategory.description}</div>
+          )}
+          <GuideItems items={installationGuides} large />
+        </section>
+      )}
     </>
   );
 }
