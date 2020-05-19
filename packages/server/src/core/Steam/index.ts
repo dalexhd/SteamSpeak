@@ -14,6 +14,7 @@ const steamUser = new SteamUser({
 	language: config.language || 'english'
 });
 steamUser.setOption('debug', config.debug || false);
+steamUser.setOption('enablePicsCache', true);
 
 const community = new SteamCommunity();
 

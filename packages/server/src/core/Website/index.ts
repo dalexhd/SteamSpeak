@@ -8,6 +8,7 @@ import log from '@utils/log';
 
 // Define api routes
 import apiRoutes from './api/routes';
+import generatorRoutes from './generator/routes';
 
 const app = express();
 app.use(cors(config.cors));
@@ -23,6 +24,9 @@ if (!fs.existsSync(path.join(__dirname, '../../../../client/dist/index.html'))) 
 app.use(express.static(path.join(__dirname, '../../../../client/dist')));
 // Use Api routes
 app.use('/api', apiRoutes);
+
+// Use svg generator routes
+app.use('/generator', generatorRoutes);
 
 // Handles any requests that don't match the ones above
 app.get('*', (req, res) => {
