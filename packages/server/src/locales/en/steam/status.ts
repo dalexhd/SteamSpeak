@@ -19,5 +19,6 @@ export default {
 	[LookingToTrade]: 'Looking to trade',
 	[LookingToPlay]: 'Looking to play',
 	[Invisible]: 'Invisible',
-	[Max]: 'Max'
+	[Max]: 'Max',
+	Playing: 'Playing'
 };
