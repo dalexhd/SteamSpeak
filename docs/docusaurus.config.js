@@ -15,6 +15,7 @@ module.exports = {
     discordUrl: 'https://discord.gg/st4nsXw'
   },
   themeConfig: {
+    defaultDarkMode: true,
     navbar: {
       hideOnScroll: true,
       logo: {
