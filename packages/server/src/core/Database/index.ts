@@ -6,7 +6,9 @@ let Database;
 
 function buildURI(): string {
 	if (config.user && config.password) {
-		return `mongodb://${config.user}:${config.password}@${config.host}:${config.port}`;
+		return `mongodb${config.srv ? '+srv' : ''}://${config.user}:${config.password}@${config.host}:${
+			config.port
+		}`;
 	}
 	log.warn('Connecting to database without credentials.', 'database');
 	return `mongodb://${config.host}:${config.port}/${config.database}`;
