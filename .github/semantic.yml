@@ -1,5 +1,5 @@
 # Always validate the PR title, and ignore the commits
-titleOnly: true
+titleAndCommits: true
 
 types:
   - chore               # An internal change this is not observable by users.
@@ -13,3 +13,4 @@ scopes:
   - deps
   - deps-dev
   - img compression
+  - breaking
