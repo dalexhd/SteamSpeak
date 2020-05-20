@@ -182,6 +182,7 @@ SteamSpeak uses **MongoDB** as caching solution. Follow [this tutorial][docs.ins
 export default {
 	host: 'localhost',
 	port: 27017,
+	srv: false,
 	user: '',
 	password: '',
 	database: 'steam_speak',
@@ -223,6 +224,24 @@ The host to connect to.
 
 #### port
 The port of the MongoDB instance.
+</Field>
+<Field
+  defaultValue={false}
+  enumValues={null}
+  examples={[false, true]}
+  groups={[]}
+  name={"srv"}
+  path={null}
+  relevantWhen={null}
+  required={true}
+  type={"boolean"}
+  link={["Mongoosejs documentation", "https://docs.mongodb.com/manual/reference/connection-string/#dns-seedlist-connection-format"]}
+  unit={null}
+  warnings={[]}
+  >
+
+#### srv
+Use tsl (or the equivalent ssl) connection.
 </Field>
 <Field
   enumValues={null}
