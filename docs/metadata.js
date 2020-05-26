@@ -147,7 +147,7 @@ module.exports = {
   //   }
   // },
   latest_release: {
-    version: '0.6.0'
+    version: '0.7.0'
   },
   releases: {
     '0.0.1': {
@@ -2486,12 +2486,171 @@ module.exports = {
       description: '',
       highlights: [],
       insertions_count: 6495,
-      last_version: '0.6.0',
+      last_version: '0.5.0',
       permalink: '/releases/0.6.0/',
       title: 'SteamSpeak v0.6.0',
       type: 'initial dev',
       type_url: 'https://semver.org/#spec-item-4',
       version: '0.6.0',
+      whats_next: []
+    },
+    '0.7.0': {
+      codename: '',
+      commits: [
+        {
+          author: 'dalexhd',
+          breaking_change: false,
+          date: '2020-05-15 01:31:10 +0000',
+          deletions_count: 6,
+          description: 'Add dark default theme.',
+          files_count: 2,
+          highlight_permalink: null,
+          insertions_count: 1,
+          message: 'docs: Add dark default theme.',
+          pr_number: null,
+          scopes: [],
+          sha: '285693dd46825198675fc6a157a30fe1844a86e2',
+          type: 'docs'
+        },
+        {
+          author: 'dalexhd',
+          breaking_change: false,
+          date: '2020-05-17 22:59:48 +0000',
+          deletions_count: 27,
+          description: 'create groups only if connected.',
+          files_count: 5,
+          highlight_permalink: null,
+          insertions_count: 42,
+          message: 'fix: create groups only if connected.',
+          pr_number: null,
+          scopes: [],
+          sha: '8138de7a9a56369419f08603ebaf9c07947e6273',
+          type: 'fix'
+        },
+        {
+          author: 'dalexhd',
+          breaking_change: false,
+          date: '2020-05-14 22:05:00 +0000',
+          deletions_count: 1,
+          description: 'Check if config present before build.',
+          files_count: 3,
+          highlight_permalink: null,
+          insertions_count: 42,
+          message: 'fix: Check if config present before build.',
+          pr_number: null,
+          scopes: [],
+          sha: '5a643e373801f53fbcfdb306d587d79c90dee892',
+          type: 'fix'
+        },
+        {
+          author: 'dalexhd',
+          breaking_change: false,
+          date: '2020-05-17 20:15:10 +0000',
+          deletions_count: 3,
+          description: 'Install packages before running SteamSpeak.',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 21,
+          message: 'chore: Install packages before running SteamSpeak.',
+          pr_number: null,
+          scopes: [],
+          sha: '577e77cb8cf522cfa1b6fc7564e591120600499c',
+          type: 'chore'
+        },
+        {
+          author: 'dalexhd',
+          breaking_change: false,
+          date: '2020-05-14 22:10:16 +0000',
+          deletions_count: 2,
+          description: 'Resolve tsbuildsum not found on first build.',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 1,
+          message: 'fix: Resolve tsbuildsum not found on first build.',
+          pr_number: null,
+          scopes: [],
+          sha: 'fec2bf97918c98d6a1858c88bec7189807dfdcc9',
+          type: 'fix'
+        },
+        {
+          author: 'dalexhd',
+          breaking_change: false,
+          date: '2020-05-17 23:55:19 +0000',
+          deletions_count: 959,
+          description: 'Add digitalocean guides.',
+          files_count: 14,
+          highlight_permalink: null,
+          insertions_count: 39,
+          message: 'docs: Add digitalocean guides.',
+          pr_number: null,
+          scopes: [],
+          sha: 'f739e346a9169fbe610a8e8603041eb8e83d2255',
+          type: 'docs'
+        },
+        {
+          author: 'dalexhd',
+          breaking_change: false,
+          date: '2020-05-19 19:42:44 +0000',
+          deletions_count: 18,
+          description: 'Add TS5 client steam banner status.',
+          files_count: 21,
+          highlight_permalink: null,
+          insertions_count: 749,
+          message: 'feat: Add TS5 client steam banner status.',
+          pr_number: null,
+          scopes: [],
+          sha: 'ec3fb30d9f8b893eb66451aeb2816ba42dc62d60',
+          type: 'feat'
+        },
+        {
+          author: 'dalexhd',
+          breaking_change: false,
+          date: '2020-05-20 11:55:41 +0000',
+          deletions_count: 1,
+          description: 'Add srv parametter to mongodb.',
+          files_count: 3,
+          highlight_permalink: null,
+          insertions_count: 23,
+          message: 'feat(breaking): Add srv parametter to mongodb.',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'breaking'
+            }
+          ],
+          sha: '5c971b833a1a1cb5dd2f943a10bb5f0d45442f79',
+          type: 'feat'
+        },
+        {
+          author: 'dalexhd',
+          breaking_change: false,
+          date: '2020-05-20 11:59:34 +0000',
+          deletions_count: 1,
+          description: 'Change from titleOnly to titleAndCommits.',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 2,
+          message: 'chore: Change from titleOnly to titleAndCommits.',
+          pr_number: null,
+          scopes: [],
+          sha: 'b1e15fe5cad213cd819c5eecc37f88bd25110368',
+          type: 'chore'
+        }
+      ],
+      compare_url:
+        'https://github.com/dalexhd/SteamSpeak/compare/v0.6.0...v0.7.0',
+      date: '2020-05-26',
+      deletions_count: 53,
+      description: '',
+      highlights: [],
+      insertions_count: 880,
+      last_version: '0.6.0',
+      permalink: '/releases/0.7.0/',
+      title: 'SteamSpeak v0.7.0',
+      type: 'initial dev',
+      type_url: 'https://semver.org/#spec-item-4',
+      version: '0.7.0',
       whats_next: []
     }
   },

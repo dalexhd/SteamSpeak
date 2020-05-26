@@ -1,6 +1,38 @@
 # Changelog
 
-## [v0.6.0](https://github.com/dalexhd/steamspeak/tree/v0.6.0) (2020-05-13)
+## [v0.7.0](https://github.com/dalexhd/steamspeak/tree/v0.7.0) (2020-05-26)
+
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.6.0...v0.7.0)
+
+![image](https://i.imgur.com/ktA2pst.gif)
+
+> Quite similar to discord's rich presence, right?
+> Discord will hate this... :grimacing:
+
+
+:boom: Breaking Changes:
+
+- feat\(breaking\): Add srv parametter to mongodb. [\#110](https://github.com/dalexhd/SteamSpeak/pull/110) ([dalexhd](https://github.com/dalexhd))
+
+:rocket: New Features:
+
+- feat: Add TS5 client steam banner status. [\#109](https://github.com/dalexhd/SteamSpeak/pull/109) ([dalexhd](https://github.com/dalexhd))
+
+:bug: Bug Fixes:
+
+- fix: Resolve tsbuildsum not found on first build. [\#108](https://github.com/dalexhd/SteamSpeak/pull/108) ([dalexhd](https://github.com/dalexhd))
+- fix: Create groups only if connected. [\#105](https://github.com/dalexhd/SteamSpeak/pull/105) ([dalexhd](https://github.com/dalexhd))
+
+:memo: Documentation:
+
+- docs: Add official installation guides. [\#107](https://github.com/dalexhd/SteamSpeak/pull/107) ([dalexhd](https://github.com/dalexhd))
+- docs: Add dark default theme. [\#103](https://github.com/dalexhd/SteamSpeak/pull/103) ([dalexhd](https://github.com/dalexhd))
+
+:star2: Chore:
+
+- chore: Check if config is present before build. [\#106](https://github.com/dalexhd/SteamSpeak/pull/106) ([dalexhd](https://github.com/dalexhd))
+
+## [v0.6.0](https://github.com/dalexhd/steamspeak/tree/v0.6.0) (2020-05-14)
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.5.0...v0.6.0)
 

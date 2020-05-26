@@ -58,12 +58,11 @@ def create_release_meta_file!(current_commits, new_version)
   # sha, this commit would also show up in the next release.
   new_commits =
     current_commits.select do |current_commit|
-      !existing_commits.any? do |existing_commit|
+      existing_commits.select do |existing_commit|
         existing_commit.fetch("sha") == current_commit.fetch("sha") ||
           existing_commit.fetch("pr_number") == current_commit.fetch("pr_number")
       end
     end
-
   if new_commits.any?
     if File.exists?(release_meta_path)
       words =
@@ -224,21 +223,6 @@ def get_new_version(last_version, commits)
   end
 end
 
-def migrate_highlights(new_version)
-  Dir.glob("#{HIGHLIGHTS_ROOT}/*.md").to_a.each do |highlight_path|
-    content = File.read(highlight_path)
-    release_line = "\nrelease: \"nightly\"\n"
-
-    if content.include?(release_line)
-      new_content = content.replace(release_line, "\nrelease: \"#{new_version}\"\n")
-
-      File.open(highlight_path, 'w+') do |file|
-        file.write(new_content)
-      end
-    end
-  end
-end
-
 def new_feature?(commit)
   !commit.fetch("message").match(/^feat/).nil?
 end
@@ -323,7 +307,3 @@ last_version = Version.new(last_tag.gsub(/^v/, ''))
 commits = get_commits_since(last_version)
 new_version = get_new_version(last_version, commits)
 create_release_meta_file!(commits, new_version)
-
-Printer.title("Migrating all nightly associated highlights to #{new_version}...")
-
-migrate_highlights(new_version)
