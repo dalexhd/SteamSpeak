@@ -1,6 +1,6 @@
 import Events from '@core/Events';
 import lang from '@locales/index';
-import * as crypto from 'crypto';
+import crypto from 'crypto';
 import Cache from '@core/Cache';
 import { findClients } from './auth';
 import log from '@utils/log';

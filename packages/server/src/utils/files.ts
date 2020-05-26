@@ -55,4 +55,29 @@ const validatePlugin = async function (plugin: object): Promise<void> {
 	});
 };
 
-export { getFiles, validatePlugin };
+/**
+ * Validate game config
+ * @param {Object} game File object
+ */
+const validateGame = async function (game: object): Promise<void> {
+	return new Promise((resolve, reject) => {
+		const schema = Joi.object({
+			appId: Joi.number().required(),
+			name: Joi.string().required(),
+			config: Joi.object({
+				enabled: Joi.boolean().required(),
+				data: [Joi.object(), Joi.array()]
+			})
+		});
+		schema
+			.validateAsync(game)
+			.then((result) => {
+				resolve(result.value);
+			})
+			.catch((err) => {
+				reject(err);
+			});
+	});
+};
+
+export { getFiles, validatePlugin, validateGame };

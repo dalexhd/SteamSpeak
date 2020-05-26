@@ -1,5 +1,5 @@
 import { Router } from 'express';
-import { clientDescrtiption } from '../controllers/svg';
+import { clientDescrtiption } from '../controllers/widget';
 
 const router = Router();
 
