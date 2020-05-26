@@ -53,14 +53,15 @@ BOLD				=	$(shell printf "\033[1m")
 UP					=	$(shell printf "\033[5A")
 
 ##@ Build
-all:		## Build all files
+all:		## Build all files.
 			@make ts
 
 ##@ Help
 help:		## View all available commands.
 			$(shell $(TARGETS_EXE))
-			@echo ${CYAN} Repository: ${UND}${BOLD}$(OUTPUT)${CYAN}${X}${CYAN}${UND}       Author: $(AUTHOR)${X}
-			@echo ${CYAN} Last commit:${X}
+			@echo ${CYAN} Repository: ${UND}${BOLD}$(OUTPUT)${CYAN}${X}${CYAN}       Author: $(AUTHOR)${X}
+			@echo
+			@echo ${CYAN} ${UND}Last commit data${X}
 			@echo ${CYAN} Date: $(LAST_COMMIT_DATE)
 			@echo ${CYAN} Hash: $(LAST_COMMIT_HASH)${X}
 			@echo ${CYAN} Message: $(LAST_COMMIT_MESSAGE)${X}
@@ -82,36 +83,30 @@ TOKEN_SCRIPT = \
 
 ##@ Misc
 
-config:		## Create config files
+config:		## Create config files.
 			@if [ ! -d "packages/server/src/config/old.config" ]; then mkdir packages/server/src/config/old.config; fi
 			@find packages/server/src/config -maxdepth 1 -iname \*.ts -not -iname \*.sawmple.ts -type f -exec bash -c 'for f; do cp "$$f" "packages/server/src/config/old.config/$$(basename $$f)"; done' sh {} +
 			@echo ${B}Created a restore point inside the ${W}packages/server/src/config/old.config ${B}folder.${X}
 			@find packages/server/src/config -maxdepth 1 -iname \*.sample.ts -type f -exec bash -c 'for f; do cp "$$f" "$${f/.sample}"; done' sh {} +
 			@echo
 
-check-ts:
-			@scripts/check-ts.sh
-
-check-config:
+check-config:	## Check if SteamSpeak has been configured and also if there's any missing library.
 			@scripts/check-config.sh
 
-plugin-tsconfig:
-			@scripts/plugin-tsconfig.sh
 
-
-re:			## Call clean => all
+re:			## Call clean => all.
 			@make clean
 			@make all
 
 ##@ Development
-release: 	## Release a new SteamSpeak version
+release: 	## Release a new SteamSpeak version.
 			@make release-prepare
 			@make generate CHECK_URLS=false
 
-ts:			## Run docker image
+ts:			## Run docker image.
 			@echo ${B}Running: ${R}$(OUTPUT)${X}
 			@echo
-			$(DOCKER) run -d --name=teamspeak -p 9987:9987/udp -p 10011:10011/tcp -p 10022:10022/tcp -p 30033:30033/tcp -e TS3SERVER_LICENSE=accept -e TS3SERVER_QUERY_PROTOCOLS=raw,ssh -e TS3SERVER_IP_WHITELIST=whitelist.txt -e TS3SERVER_LOG_QUERY_COMMANDS=1 teamspeak ts3server serveradmin_password=SteamSpeak -v /docker/TeamSpeak/query_ip_whitelist.txt:/var/ts3server/whitelist.txt
+			$(DOCKER) run -d --name=teamspeak -p 9987:9987/udp -p 10011:10011/tcp -p 10022:10022/tcp -p 30033:30033/tcp -e TS3SERVER_LICENSE=accept -e TS3SERVER_QUERY_PROTOCOLS=raw,ssh -e TS3SERVER_LOG_QUERY_COMMANDS=1 teamspeak ts3server serveradmin_password=SteamSpeak
 			$(DOCKER) logs teamspeak 2>&1 | grep login | awk '{split($$0, i, ", "); print i[1]}' | tr -d '\t\r\" ' | cut -d "=" -f 2 | xargs -I {} echo "${B}Username: ${W}${BOLD}"{}${X}
 			$(DOCKER) logs teamspeak 2>&1 | grep login | awk '{split($$0, i, ", "); print i[2]}' | tr -d '\t\r\" ' | cut -d "=" -f 2 | xargs -I {} echo "${B}Password: ${W}${BOLD}"{}${X}
 			@echo
@@ -120,21 +115,20 @@ ts:			## Run docker image
 			@echo ${B}IP: ${G}${BOLD}$(IP)${X}
 			@echo
 
-clean:		## Clean docker image
+clean:		## Clean docker image.
 			@echo ${B}Stoping container...${X}
 			$(DOCKER) stop teamspeak > /dev/null 2>&1
 			$(DOCKER) rm teamspeak -f  > /dev/null 2>&1
 			@echo ${B}Stoping container...${X}
 
-##@ Releasing
-release-prepare: ## Prepares the release with metadata and highlights
+release-prepare: ## Prepares the release with metadata and highlights.
 			@scripts/run.sh checker scripts/release-prepare.rb
 
-check-generate: ## Checks for pending `make generate` changes
+check-generate: ## Checks for pending `make generate` changes.
 			@scripts/run.sh checker scripts/check-generate.sh
 
 export CHECK_URLS ?= true
-generate: ## Generates files across the repo using the data in /.meta
+generate: ## Generates files across the repo using the data in /.meta.
 			@scripts/run.sh checker scripts/generate.rb
 
 .PHONY:		all build clean re
