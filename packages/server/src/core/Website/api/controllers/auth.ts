@@ -1,7 +1,7 @@
 import { Ts3, TeamSpeakClient } from '@core/TeamSpeak';
 import lang from '@locales/index';
 import '@utils/string';
-import * as crypto from 'crypto';
+import crypto from 'crypto';
 import Cache from '@core/Cache';
 import log from '@utils/log';
 import config from '@config/website';
