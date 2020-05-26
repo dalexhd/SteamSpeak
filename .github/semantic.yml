@@ -10,6 +10,7 @@ types:
   - perf                # Any user observable performance improvement.
 scopes:
   - new plugin
+  - new game
   - deps
   - deps-dev
   - img compression
