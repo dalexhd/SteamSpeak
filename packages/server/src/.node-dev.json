@@ -1,0 +1,6 @@
+{
+  "ignore": [
+    "src/core/Steam/games",
+    "src/core/TeamSpeak/plugins"
+  ]
+}

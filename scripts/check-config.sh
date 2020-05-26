@@ -1,12 +1,11 @@
 #!/usr/bin/env bash
 
-# check-ts.sh
+# check-config.sh
 #
 # SUMMARY
 #
-#   Checks the sum of the server directory and
-#   if it's different from previus launch, it
-#   recompiles typescript incrementally.
+#   Check if SteamSpeak has been configured
+#   and also if there's any missing library
 
 set -eou pipefail
 
@@ -50,6 +49,4 @@ if [ ! -d "$OLDCONFIG_FOLDER" ]; then
             echo "Please answer yes or no.";;
       esac
   done
-else
-  echo "$OLDCONFIG_FOLDER Exists...";
 fi

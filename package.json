@@ -21,7 +21,6 @@
     "start:server": "yarn --cwd ./packages/server start",
     "dev:server": "yarn --cwd ./packages/server dev",
     "start:client": "yarn --cwd ./packages/client serve",
-    "plugin:refresh": "yarn --cwd ./packages/server plugin:refresh",
     "lint:server": "yarn --cwd ./packages/server lint",
     "lint:client": "yarn --cwd ./packages/client run lint",
     "build": "lerna run build",
