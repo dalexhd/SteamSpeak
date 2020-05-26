@@ -1,4 +1,5 @@
 module.exports = {
+  stars: 15,
   plugins: {
     hostMessage: {
       name: 'host-message',
@@ -94,58 +95,6 @@ module.exports = {
       show: false
     }
   ],
-  // guides: {
-  //   'getting-started': {
-  //     children: {},
-  //     description:
-  //       'Take SteamSpeak from zero to production in under 20 minutes.',
-  //     guides: [
-  //       {
-  //         author_github: 'https://github.com/dalexhd',
-  //         description: null,
-  //         id: '/getting-started/enable-steam-two-factor-authentication',
-  //         last_modified_on: null,
-  //         path:
-  //           'website/guides/getting-started/enable-steam-two-factor-authentication.md',
-  //         series_position: null,
-  //         title: 'Enabling Steam 2FA'
-  //       }
-  //     ],
-  //     name: 'getting-started',
-  //     series: true,
-  //     title: 'Getting Started'
-  //   },
-  //   installation: {
-  //     children: {},
-  //     description: 'Learn how to install SteamSpeak.',
-  //     guides: [
-  //       {
-  //         author_github: 'https://github.com/dalexhd',
-  //         description: null,
-  //         id:
-  //           '/installation/how-to-install-and-configure-redis-on-ubuntu-16-04',
-  //         last_modified_on: null,
-  //         path:
-  //           'docs/guides/installation/how-to-install-and-configure-redis-on-ubuntu-16-04.md',
-  //         series_position: null,
-  //         title: 'How To Install and Configure Redis on Ubuntu 16.04'
-  //       },
-  //       {
-  //         author_github: 'https://github.com/dalexhd',
-  //         description: null,
-  //         id: '/installation/how-to-install-and-secure-redis-on-ubuntu-18-04',
-  //         last_modified_on: null,
-  //         path:
-  //           'docs/guides/installation/how-to-install-and-secure-redis-on-ubuntu-18-04.md',
-  //         series_position: null,
-  //         title: 'How To Install and Secure Redis on Ubuntu 18.04'
-  //       }
-  //     ],
-  //     name: 'installation',
-  //     series: true,
-  //     title: 'Installation'
-  //   }
-  // },
   latest_release: {
     version: '0.7.0'
   },
