@@ -14,6 +14,11 @@ import { fetchNewRelease } from '@site/src/exports/newRelease';
 import styles from './styles.module.css';
 
 function navLinkAttributes(label, right) {
+  const context = useDocusaurusContext();
+  const { siteConfig = {} } = context;
+  const {
+    metadata: { stars }
+  } = siteConfig.customFields;
   const attrs = { label };
   switch (label.toLowerCase()) {
     case 'chat':
@@ -41,7 +46,7 @@ function navLinkAttributes(label, right) {
     }
 
     case 'github':
-      attrs.badge = '11';
+      attrs.badge = stars;
       attrs.hideText = false;
       attrs.icon = 'github';
       return attrs;
