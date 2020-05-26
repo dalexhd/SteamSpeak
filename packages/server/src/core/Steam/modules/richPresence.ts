@@ -1,7 +1,9 @@
 import { steamUser } from '@core/Steam';
 import SteamUser from 'steam-user';
 import { Ts3 } from '@core/TeamSpeak';
+import { getPresenceString } from '@utils/steam';
 import config from '@config/steam';
+import webConfig from '@config/website';
 import VerifiedClient from '@core/Database/models/verifiedClient';
 import lang from '@locales/index';
 import log from '@utils/log';
@@ -74,16 +76,20 @@ steamUser.on('user', async (sid, data) => {
 	//Check if the user is verified.
 	if (await VerifiedClient.exists({ steamId })) {
 		const user = await VerifiedClient.findOne({ steamId });
-		if (!user) return;
+		if (!user || !(await Ts3.getClientByUID(user.uid))) return;
+		const presenceString = await getPresenceString(data);
+		const client = await Ts3.getClientByUID(user.uid);
 		if (typeof user.groupId === 'undefined') {
 			log.info('User has not group. Lets assign it.', 'steam');
 			groupNumber++;
-			Ts3.serverGroupCreate(`#${groupNumber} SteamSpeak`).then((serverGroup) => {
+			Ts3.serverGroupCreate(`#${groupNumber} SteamSpeak`).then(async (serverGroup) => {
 				Promise.all([
 					serverGroup.addClient(user.dbid),
 					serverGroup.addPerm('i_group_show_name_in_tree', 2),
 					serverGroup.rename(
-						`#${groupNumber} ${lang.steam.status[data.persona_state] || lang.steam.status[0]}`
+						`#${groupNumber} ${
+							presenceString || lang.steam.status[data.persona_state] || lang.steam.status[0]
+						}`
 					)
 				]).then(() => {
 					user.groupId = serverGroup.sgid;
@@ -95,7 +101,9 @@ steamUser.on('user', async (sid, data) => {
 		} else {
 			Ts3.serverGroupRename(
 				user.groupId,
-				`#${user.groupNumber} ${lang.steam.status[data.persona_state] || lang.steam.status[0]}`
+				`#${user.groupNumber} ${
+					presenceString || lang.steam.status[data.persona_state] || lang.steam.status[0]
+				}`
 			).catch(async (err) => {
 				if (err.id === 2560) {
 					user.groupId = undefined;
@@ -105,6 +113,20 @@ steamUser.on('user', async (sid, data) => {
 					steamUser.getPersonas([user.steamId]);
 				}
 			});
+		}
+		if (data.game_played_app_id) {
+			steamUser.getProductInfo([data.game_played_app_id], [], function (err, apps, packages) {
+				const app = apps[data.game_played_app_id];
+				client?.edit({
+					client_description: `[img]${webConfig.hostname}/generator/widget/client-description?icon=${app.appinfo.common.clienticon}&appid=${data.game_played_app_id}&name=${app.appinfo.common.name}&data=${presenceString}[/img]`
+				});
+			});
+		} else {
+			if ((await client?.getInfo())?.client_description !== '') {
+				client?.edit({
+					client_description: ''
+				});
+			}
 		}
 	}
 });

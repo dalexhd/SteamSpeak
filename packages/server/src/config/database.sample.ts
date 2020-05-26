@@ -4,6 +4,7 @@
 export default {
 	host: 'localhost',
 	port: 27017,
+	srv: false,
 	user: '',
 	password: '',
 	database: 'steam_speak',

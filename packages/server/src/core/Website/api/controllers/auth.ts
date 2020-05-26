@@ -13,26 +13,29 @@ import { Request, Response } from 'express';
  *
  * @param {object} req The express request instance
  * @param {object} filter The filter to apply to the clientList command.
+ * @param {boolean} isAdmin Find clients that are whitelisted inside website config file.
  */
 export const findClients = async function (
 	req: Request,
-	filter: object
+	filter: object,
+	isAdmin = false
 ): Promise<TeamSpeakClient[]> {
 	const ip = (req.headers['cf-connecting-ip'] ||
 		req.headers['x-forwarded-for'] ||
 		req.connection.remoteAddress) as string;
-	const clients = await Ts3.clientList({
+	let clients = await Ts3.clientList({
 		connection_client_ip: ip.replace('::ffff:', ''),
 		...filter
 	});
-	// TODO: Here we should distinguish if we're searching admins or not.
-	const result = clients.filter((client) => {
-		return config.admins.includes(client.uniqueIdentifier);
-	});
-	if (clients.length > 0 && result.length === 0)
-		throw { statusCode: 400, message: lang.error.not_an_admin };
+	if (isAdmin) {
+		//Here we are filtering website config authorized admin uids.
+		clients = clients.filter((client) => {
+			return config.admins.includes(client.uniqueIdentifier);
+		});
+		if (clients.length > 0) throw { statusCode: 400, message: lang.error.not_an_admin };
+	}
 	if (clients.length === 0) throw { statusCode: 404, message: lang.error.ip_not_connected };
-	return result;
+	return clients;
 };
 
 /**
@@ -59,9 +62,13 @@ const createToken = function (uid: string): string {
 export const find = async function (req: Request, res: Response): Promise<any> {
 	log.info('Received find request from remote.', 'website');
 	try {
-		const clients = await findClients(req, {
-			client_type: 0
-		});
+		const clients = await findClients(
+			req,
+			{
+				client_type: 0
+			},
+			true
+		);
 		return res.status(200).json(clients);
 	} catch (error) {
 		return res.status(error.statusCode || 400).json({
@@ -80,10 +87,14 @@ export const find = async function (req: Request, res: Response): Promise<any> {
 export const send = async function (req: Request, res: Response): Promise<any> {
 	log.info(`Received send request to ${req.body.dbid} from remote.`, 'website');
 	try {
-		const [client] = await findClients(req, {
-			client_type: 0,
-			client_database_id: req.body.dbid
-		});
+		const [client] = await findClients(
+			req,
+			{
+				client_type: 0,
+				client_database_id: req.body.dbid
+			},
+			true
+		);
 		const token = crypto.randomBytes(3).toString('hex');
 		client
 			.message(
@@ -112,10 +123,14 @@ export const send = async function (req: Request, res: Response): Promise<any> {
 export const login = async function (req: Request, res: Response): Promise<any> {
 	log.info(`Received login request from ${req.body.dbid}.`, 'website');
 	try {
-		const [client] = await findClients(req, {
-			client_type: 0,
-			client_database_id: req.body.dbid
-		});
+		const [client] = await findClients(
+			req,
+			{
+				client_type: 0,
+				client_database_id: req.body.dbid
+			},
+			true
+		);
 		const sendCache = JSON.parse((await Cache.get(`${client.databaseId}:token`)) as string);
 
 		if (typeof sendCache === 'undefined')
