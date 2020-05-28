@@ -55,7 +55,7 @@ export const info: UncommonPluginConfig = {
 	name: 'Change channel',
 	description: 'This plugin allows you to change multiple channels name at different interval.',
 	config: {
-		enabled: true,
+		enabled: false,
 		data: [
 			{
 				enabled: true,

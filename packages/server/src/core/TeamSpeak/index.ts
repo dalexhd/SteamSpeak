@@ -153,6 +153,8 @@ function loadPlugins(): void {
 								}
 								Ts3.plugins.set(plugin.info.name, plugin);
 								log.info(`Loaded plugin ${plugin.info.name}`, 'ts3');
+							} else {
+								log.info(`${plugin.info.name} disabled. Skipping`, 'ts3');
 							}
 						})
 						.catch((err) => {

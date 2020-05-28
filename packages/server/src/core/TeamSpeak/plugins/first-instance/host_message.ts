@@ -65,7 +65,7 @@ export const info: CommonPluginConfig = {
 	description:
 		'This plugin allows you to change default host message with useful server information.',
 	config: {
-		enabled: true,
+		enabled: false,
 		data: {
 			showQueryClients: false,
 			hostMessage: `
