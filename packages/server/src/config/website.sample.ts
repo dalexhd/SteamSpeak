@@ -19,5 +19,5 @@ export default {
 			expiresIn: '2h'
 		}
 	},
-	admins: [''] //Array of admin uids that should be ablo to login into the web admin panel.
+	admins: [''] //Admin TeamSpeak unique identifiers that have access to the web admin panel.
 };

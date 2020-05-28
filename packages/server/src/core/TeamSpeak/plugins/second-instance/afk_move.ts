@@ -11,12 +11,18 @@ export const main = async function (): Promise<void> {
 	clients.forEach(async (client) => {
 		if (client.isAfk(data.minTime) && client.cid !== data.dest) {
 			Cache.set(`afkChecker:${client.databaseId}`, client.cid);
-			client.move(data.dest);
-			client.poke('You have been moved to an AFK channel!');
-			log.info(
-				`${info.name} (DBID: ${client.databaseId}) has been moved to the afk channel.`,
-				'ts3'
-			);
+			client
+				.move(data.dest)
+				.then(() => {
+					client.poke('You have been moved to an AFK channel!');
+					log.info(
+						`${info.name} (DBID: ${client.databaseId}) has been moved to the afk channel.`,
+						'ts3'
+					);
+				})
+				.catch((err) => {
+					log.error(`${info.name} ch[id: ${data.dest}] error: ${err}`, 'ts3');
+				});
 		} else if (!client.isAfk(data.minTime) && client.cid === data.dest) {
 			const cid = (await Cache.get(`afkChecker:${client.databaseId}`)) as string;
 			if (cid !== undefined) {

@@ -115,7 +115,7 @@ function DocSidebarItem({ item, level, onItemClick, collapsible }) {
             {...(isInternalUrl(href)
               ? {
                   activeClassName: 'menu__link--active',
-                  exact: true,
+                  exact: 'true',
                   onClick: onItemClick
                 }
               : {
@@ -203,8 +203,7 @@ function DocSidebar(props) {
             key={isClient}
             src={logoImageUrl}
             alt={logoAlt}
-            height="40"
-            width="auto"
+            style={{ height: '42px', width: '100%' }}
           />
         )}
         {title != null && <strong>{title}</strong>}

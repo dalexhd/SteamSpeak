@@ -25,7 +25,7 @@ initEvents();
 function initEvents(): void {
 	Ts3.on('ready', onReady);
 	Ts3.on('error', (err) => log.error(err.message, 'ts3'));
-	Ts3.on('flooding', (err) => console.log('Flood protection activated', err.msg, err));
+	Ts3.on('flooding', (err) => console.log('Flood protection activated', err.message));
 	if (config.debug) {
 		Ts3.on('debug', (ev) => {
 			const { type, data } = ev;
@@ -71,7 +71,7 @@ function subscribeEvents(): void {
 		Ts3.registerEvent('textprivate')
 	])
 		.then(() => {
-			log.success('Subscribed to all Events', 'ts3');
+			log.success('Subscribed to all Events.', 'ts3');
 			listenEvents();
 		})
 		.catch((error) => log.error(error));
@@ -93,7 +93,7 @@ function listenEvents(): void {
 			Ts3.registerEvent('textchannel'),
 			Ts3.registerEvent('textprivate')
 		]).then(() => {
-			log.success('Subscribed to all Events', 'ts3');
+			log.success('Subscribed to all Events.', 'ts3');
 		});
 	});
 	beforeExit();
@@ -117,15 +117,19 @@ function loadInstances(): void {
 	const { instances } = config;
 	Object.keys(instances).forEach(function (name) {
 		if (instances[name].enabled) {
-			spawn('node', [`${__dirname}/index.js`, '--trace-warnings'], {
+			spawn(`ts-node -r tsconfig-paths/register ${__dirname}/index.ts`, ['--trace-warnings'], {
 				env: {
 					INSTANCE: name,
-					PATH: process.env.PATH
+					PATH: process.env.PATH,
+					TS_NODE_FILES: 'true',
+					NODE_ENV: 'production'
 				},
 				cwd: process.cwd(),
 				shell: true,
 				stdio: 'inherit'
 			});
+		} else {
+			log.warn(`Instance ${name} is disabled. Skipping...`, 'ts3');
 		}
 	});
 }
@@ -136,7 +140,7 @@ function loadInstances(): void {
 function loadPlugins(): void {
 	getFiles(`${__dirname}/plugins/${instance}`)
 		.then((files) => {
-			const jsfiles = flattenArray(files).filter((f) => f.split('.').pop() === 'js');
+			const jsfiles = flattenArray(files).filter((f) => f.split('.').pop() === 'ts');
 			jsfiles.forEach((file) => {
 				try {
 					// eslint-disable-next-line @typescript-eslint/no-var-requires
@@ -180,7 +184,6 @@ function loadPlugins(): void {
 			});
 		})
 		.then(() => {
-			watchTsPlugins();
 			watchPlugins();
 		});
 }
@@ -201,9 +204,9 @@ function watchPlugins(): void {
 			}
 			if (fs.existsSync(path.resolve(file))) {
 				try {
+					delete require.cache[require.resolve(path.resolve(file))];
 					// eslint-disable-next-line @typescript-eslint/no-var-requires
 					const plugin = require(path.resolve(file));
-					delete require.cache[require.resolve(path.resolve(file))];
 					validatePlugin(plugin.info)
 						.then(() => {
 							if (plugin.info.config.enabled) {
@@ -216,6 +219,7 @@ function watchPlugins(): void {
 								if (typeof plugin['unload'] !== 'undefined') {
 									plugin.unload();
 								}
+								Ts3.plugins.delete(plugin.info.name);
 								log.info(`Unloaded plugin ${plugin.info.name}`, 'ts3');
 							}
 						})
@@ -229,37 +233,6 @@ function watchPlugins(): void {
 			} else {
 				log.info(`Detected removal of plugin ${fileName}, unloading.`);
 			}
-		});
-}
-
-/**
- * Watch plugins
- */
-function watchTsPlugins(): void {
-	chokidar
-		.watch(path.resolve(__dirname, `../../../src/core/TeamSpeak/plugins/${instance}`), {
-			ignoreInitial: true
-		})
-		.on('all', (event, file) => {
-			const fileName = path.basename(file);
-			const tsFile = `./${path
-				.relative(
-					path.resolve(__dirname, '../../../'),
-					`src/core/TeamSpeak/plugins/${instance}/${fileName}`
-				)
-				.replace(/\\/g, '/')}`;
-			spawn(
-				'make plugin-tsconfig && yarn run plugin:refresh && rm packages/server/tsconfig-plugin.json',
-				{
-					cwd: path.resolve(__dirname, '../../../../../'),
-					shell: true,
-					stdio: 'inherit',
-					env: {
-						PLUGIN_PATH: tsFile,
-						PATH: process.env.PATH
-					}
-				}
-			);
 		});
 }
 

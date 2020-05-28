@@ -40,7 +40,7 @@ module.exports = {
         { to: 'community/', label: 'Community', position: 'right' },
         { to: 'releases/', label: 'Download', position: 'right' },
         {
-          href: 'https://github.com/dalexhd/steamspeak',
+          href: 'https://github.com/dalexhd/SteamSpeak',
           label: 'GitHub',
           position: 'right'
         }
@@ -83,7 +83,7 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/dalexhd/steamspeak'
+              href: 'https://github.com/dalexhd/SteamSpeak'
             }
           ]
         }
@@ -120,7 +120,7 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/dalexhd/steamspeak/edit/master/docs/',
+          editUrl: 'https://github.com/dalexhd/SteamSpeak/edit/master/docs/',
           showLastUpdateAuthor: true,
           showLastUpdateTime: true
         },
