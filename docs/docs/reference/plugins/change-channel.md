@@ -24,7 +24,7 @@ export const info: UncommonPluginConfig = {
 		enabled: true,
 		data: [
 			{
-				enabled: true,
+				enabled: false,
 				channelId: 118,
 				changes: [
 					{

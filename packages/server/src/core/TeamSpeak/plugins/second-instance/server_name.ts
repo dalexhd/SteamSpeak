@@ -69,7 +69,7 @@ export const info: CommonPluginConfig = {
 	description:
 		'This plugin allows you to provide useful information to your server clients by changing the server name.',
 	config: {
-		enabled: true,
+		enabled: false,
 		data: {
 			showQueryClients: false,
 			serverName: 'SteamSpeak Server - [DATE] - [[ONLINE]/[MAX_CLIENTS] | [%]%]',

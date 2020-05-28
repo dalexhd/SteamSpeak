@@ -50,7 +50,7 @@ export const info: CommonPluginConfig = {
 	description:
 		'This plugin allows you to display relevant server information on the configured channels.',
 	config: {
-		enabled: true,
+		enabled: false,
 		data: [
 			{
 				enabled: true,

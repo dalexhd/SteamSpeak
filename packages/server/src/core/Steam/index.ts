@@ -57,6 +57,8 @@ function loadGames(): void {
 							}
 							steamUser.games.set(game.info.appId, game);
 							log.info(`Loaded game ${game.info.name}.`, 'steam');
+						} else {
+							log.info(`${game.info.name} disabled. Skipping`, 'steam');
 						}
 					})
 					.catch((err) => {
