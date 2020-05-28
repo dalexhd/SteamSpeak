@@ -132,7 +132,7 @@ const checkDescriptionBanner = async (
 	if (data.game_played_app_id) {
 		steamUser.getProductInfo([data.game_played_app_id], [], function (err, apps) {
 			const app = apps[data.game_played_app_id];
-			let url = `${webConfig.hostname}/api/generator/widget/client-description?icon=${app.appinfo.common.clienticon}&appid=${data.game_played_app_id}&name=${app.appinfo.common.name}&data=${presenceString}`;
+			let url = `${webConfig.hostname}/api/widget/client-description?icon=${app.appinfo.common.clienticon}&appid=${data.game_played_app_id}&name=${app.appinfo.common.name}&data=${presenceString}`;
 			const shorten = shortid.generate();
 			Cache.set(`shorten:${shorten}`, url, 'ex', 3600);
 			let client_description = `[img]${webConfig.hostname}/api/s/${shorten}[/img]`;
