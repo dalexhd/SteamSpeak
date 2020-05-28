@@ -14,5 +14,5 @@ import CodeBlock from '@theme/CodeBlock';
 </Alert>
 
 <CodeBlock className="language-bash" path="~/SteamSpeak">
-  yarn run start:backend
+  yarn run start:server
 </CodeBlock>
