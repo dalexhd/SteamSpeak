@@ -4,19 +4,9 @@ import config from '@config/database';
 
 let Database;
 
-function buildURI(): string {
-	if (config.user && config.password) {
-		return `mongodb${config.srv ? '+srv' : ''}://${config.user}:${config.password}@${config.host}:${
-			config.port
-		}`;
-	}
-	log.warn('Connecting to database without credentials.', 'database');
-	return `mongodb://${config.host}:${config.port}/${config.database}`;
-}
-
 mongoose
 	.connect(
-		buildURI(),
+		config.uri || 'mongodb://localhost:27017/steam_speak',
 		config.opts || { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }
 	)
 	.then((db) => {
