@@ -32,7 +32,7 @@ export const findClients = async function (
 		clients = clients.filter((client) => {
 			return config.admins.includes(client.uniqueIdentifier);
 		});
-		if (clients.length > 0) throw { statusCode: 400, message: lang.error.not_an_admin };
+		if (clients.length === 0) throw { statusCode: 400, message: lang.error.not_an_admin };
 	}
 	if (clients.length === 0) throw { statusCode: 404, message: lang.error.ip_not_connected };
 	return clients;
