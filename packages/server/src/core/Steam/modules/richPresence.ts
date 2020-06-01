@@ -14,8 +14,9 @@ let groupNumber: number;
 
 const syncNumbers = async (): Promise<void> => {
 	const connectedClients = await Ts3.clientList({
-		client_type: 0
+		clientType: 0
 	});
+
 	const connectedUids = connectedClients.map((client) => client.uniqueIdentifier);
 	const users = await VerifiedClient.find();
 	const verifiedOfflineUsers = users.filter(
@@ -27,7 +28,7 @@ const syncNumbers = async (): Promise<void> => {
 	groupNumber = verifiedOnlineUsers.length;
 	if (verifiedOfflineUsers.length > 0) {
 		verifiedOfflineUsers.forEach((user) => {
-			Ts3.serverGroupDel(user.groupId, 1);
+			Ts3.serverGroupDel(user.groupId, true);
 			user.groupId = undefined;
 			user.groupNumber = undefined;
 			user.save();
@@ -39,19 +40,30 @@ const syncNumbers = async (): Promise<void> => {
 			(current, next) => current.groupNumber - next.groupNumber
 		);
 		Ts3.serverGroupList({
-			type: 1
+			type: 1,
+			namemode: 2
 		}).then((serverGroups) => {
 			verifiedOnlineUsers.forEach((user, index) => {
 				const number = index + 1;
-				const serverGroup = serverGroups.find((e) => e.sgid === user.groupId);
-				if (serverGroup && user.groupNumber !== number) {
-					Ts3.serverGroupRename(
-						user.groupId,
-						serverGroup.name.replace(/^#([0-9])\s+(.*?)$/, `#${number} $2`)
-					);
-					user.groupNumber = number;
-					user.save();
-				}
+				const steamGroups = serverGroups.filter((e) => e.name.match(/^#([0-9]+)\s+(.*?)$/));
+				steamGroups.forEach(async (serverGroup) => {
+					if (serverGroup.sgid === user.groupId && user.groupNumber !== number) {
+						Ts3.serverGroupRename(
+							user.groupId,
+							serverGroup.name.replace(/^#([0-9]+)\s+(.*?)$/, `#${number} $2`)
+						);
+						user.groupNumber = number;
+						user.save();
+					} else if (serverGroup.sgid !== user.groupId) {
+						//In case the user has multiple SteamSpeak groups, delete them.
+						//This is determined if the group starts with "#" REGEX(/^#([0-9]+)\s+(.*?)$/)) and if the group name mode is 2 (right tag)
+						serverGroup.del(true);
+						log.warn(
+							`Online client [dbid: ${user.dbid}] has SteamSpeak corrupted serverGroup [sgid: ${serverGroup.sgid}]. Deleting...`,
+							'steam'
+						);
+					}
+				});
 			});
 		});
 	}
@@ -63,7 +75,7 @@ const friendDeleted = async (senderID): Promise<void> => {
 	const steamId = senderID.getSteamID64();
 	const user = await VerifiedClient.findOne({ steamId });
 	if (typeof user?.groupId !== 'undefined') {
-		Ts3.serverGroupDel(user.groupId, 1);
+		Ts3.serverGroupDel(user.groupId, true);
 		groupNumber--;
 		syncNumbers();
 	}
@@ -72,7 +84,8 @@ const friendDeleted = async (senderID): Promise<void> => {
 const checkServerGroup = async (
 	user: VerifiedClientDocument,
 	presenceString: string,
-	data: any
+	data: any,
+	client: TeamSpeakClient | undefined
 ): Promise<void> => {
 	if (typeof user.groupId === 'undefined') {
 		log.info('User has not group. Lets assign it.', 'steam');
@@ -80,24 +93,35 @@ const checkServerGroup = async (
 		Ts3.serverGroupCreate(`#${groupNumber} SteamSpeak`).then(async (serverGroup) => {
 			Promise.all([
 				serverGroup.addClient(user.dbid),
-				serverGroup.addPerm('i_group_show_name_in_tree', 2),
+				serverGroup.addPerm({ permname: 'i_group_show_name_in_tree', permvalue: 2 }),
 				serverGroup.rename(
 					`#${groupNumber} ${
 						presenceString || lang.steam.status[data.persona_state] || lang.steam.status[0]
 					}`
 				)
-			]).then(() => {
-				user.groupId = serverGroup.sgid;
-				user.groupNumber = groupNumber;
-				user.save();
-				log.info(`ServerGroup assigned to ${user.steamId}`, 'steam');
-			});
+			])
+				.then(() => {
+					user.groupId = serverGroup.sgid;
+					user.groupNumber = groupNumber;
+					user.save();
+					log.info(
+						`ServerGroup assigned to ${client?.nickname} [steamID: ${user.steamId}]`,
+						'steam'
+					);
+				})
+				.catch((err) => {
+					log.error(
+						`richPresence richPresence[sgCreateName: #${groupNumber} SteamSpeak] error: ${err.message}. Deleting group...`,
+						'steam'
+					);
+					serverGroup.del(true);
+				});
 		});
 	} else {
 		const groupName = `#${user.groupNumber} ${
 			presenceString || lang.steam.status[data.persona_state] || lang.steam.status[0]
 		}`;
-		const serverGroup = await Ts3.getServerGroupByID(user.groupId);
+		const serverGroup = await Ts3.getServerGroupById(user.groupId);
 		if (serverGroup?.name !== groupName) {
 			serverGroup
 				?.rename(groupName)
@@ -135,28 +159,28 @@ const checkDescriptionBanner = async (
 			let url = `${webConfig.hostname}/api/widget/client-description?icon=${app.appinfo.common.clienticon}&appid=${data.game_played_app_id}&name=${app.appinfo.common.name}&data=${presenceString}`;
 			const shorten = shortid.generate();
 			Cache.set(`shorten:${shorten}`, url, 'ex', 3600);
-			let client_description = `[img]${webConfig.hostname}/api/s/${shorten}[/img]`;
+			let clientDescription = `[img]${webConfig.hostname}/api/s/${shorten}[/img]`;
 			if (data.game_lobby_id !== '0') {
 				url = `steam://joinlobby/${data.game_played_app_id}/${data.game_lobby_id}/${data.steamId}`;
 				const shorten_1 = shortid.generate();
 				Cache.set(`shorten:${shorten_1}`, url, 'ex', 3600);
-				client_description = `[url=${webConfig.hostname}/api/s/${shorten_1}][img]${webConfig.hostname}/api/s/${shorten}[/img][/url]`;
+				clientDescription = `[url=${webConfig.hostname}/api/s/${shorten_1}][img]${webConfig.hostname}/api/s/${shorten}[/img][/url]`;
 			}
 			client
 				?.edit({
-					client_description
+					clientDescription
 				})
 				.then(() => {
-					log.info(`Changed ${client.nickname} description to "${client_description}"`, 'steam');
+					log.info(`Changed ${client.nickname} description to "${clientDescription}"`, 'steam');
 				});
 		});
 	} else {
-		if ((await client?.getInfo())?.client_description) {
+		if ((await client?.getInfo())?.clientDescription) {
 			client
 				?.edit({
-					client_description: ''
+					clientDescription: ''
 				})
-				.then((value) => {
+				.then(() => {
 					log.info(`Removed ${client.nickname} description`, 'steam');
 				});
 		}
@@ -189,11 +213,11 @@ steamUser.on('user', async (sid, data) => {
 	//Check if the user is verified.
 	const user = await VerifiedClient.findOne({ steamId });
 	if (!user) return;
-	const client = await Ts3.getClientByUID(user.uid);
+	const client = await Ts3.getClientByUid(user.uid);
 	if (!client) return;
 	const presenceString = await getPresenceString(data);
 	Promise.all([
-		checkServerGroup(user, presenceString, data),
+		checkServerGroup(user, presenceString, data, client),
 		checkDescriptionBanner(client, presenceString, Object.assign({ steamId }, data)),
 		checkPlayingGame(client, data, user)
 	]);
@@ -214,7 +238,7 @@ Ts3.on('clientdisconnect', async (ev) => {
 	const { client } = ev;
 	const user = await VerifiedClient.findOne({ uid: client?.uniqueIdentifier });
 	if (typeof user?.groupId !== 'undefined') {
-		Ts3.serverGroupDel(user.groupId, 1);
+		Ts3.serverGroupDel(user.groupId, true);
 		user.groupId = undefined;
 		user.groupNumber = undefined;
 		user.save();

@@ -2,23 +2,24 @@ import { Ts3 } from '@core/TeamSpeak';
 import { convertToMilliseconds } from '@utils/time';
 import log from '@utils/log';
 import moment from 'moment';
+import { ClientDisconnectEvent, ClientConnectEvent } from 'ts3-nodejs-library';
 
 let loaded: ReturnType<typeof setInterval>;
 
 export const main = async function (): Promise<void> {
-	const { data } = this.info.config;
-	const info = await Ts3.serverInfo();
+	const { data } = info.config;
+	const serverInfo = await Ts3.serverInfo();
 	const edited_name = {
 		'[ONLINE]': data.showQueryClients
-			? info.virtualserver_clientsonline
-			: info.virtualserver_clientsonline - info.virtualserver_queryclientsonline,
-		'[MAX_CLIENTS]': info.virtualserver_maxclients,
+			? serverInfo.virtualserverClientsonline
+			: serverInfo.virtualserverClientsonline - serverInfo.virtualserverQueryclientsonline,
+		'[MAX_CLIENTS]': serverInfo.virtualserverMaxclients,
 		'[DATE]': moment().format(data.format),
 		'[%]': Math.round(
 			((data.showQueryClients
-				? info.virtualserver_clientsonline
-				: info.virtualserver_clientsonline - info.virtualserver_queryclientsonline) /
-				info.virtualserver_maxclients) *
+				? serverInfo.virtualserverClientsonline
+				: serverInfo.virtualserverClientsonline - serverInfo.virtualserverQueryclientsonline) /
+				serverInfo.virtualserverMaxclients) *
 				100
 		)
 	};
@@ -28,35 +29,35 @@ export const main = async function (): Promise<void> {
 		name = name.replace(key, edited_name[key]);
 	}
 	Ts3.serverEdit({
-		virtualserver_name: name
+		virtualserverName: name
 	})
 		.then(() => {
-			log.info(`${this.info.name} to: ${name}`, 'ts3');
+			log.info(`${info.name} to: ${name}`, 'ts3');
 		})
 		.catch((err) => {
-			log.error(`${this.info.name} error: ${err}`, 'ts3');
+			log.error(`${info.name} error: ${err}`, 'ts3');
 		});
 };
 
 export const load = async function (): Promise<void> {
-	const { interval } = this.info.config;
-	this.main();
+	const { interval } = info.config;
+	main();
 	loaded = setInterval(async () => {
-		this.main();
+		main();
 	}, convertToMilliseconds(interval));
 };
 
-export const clientconnect = async function (ev): Promise<void> {
+export const clientconnect = async function (ev: ClientConnectEvent): Promise<void> {
 	const { client } = ev;
-	if (client.type !== 1) {
-		this.main();
+	if (client.type === 0) {
+		main();
 	}
 };
 
-export const clientdisconnect = async function (ev): Promise<void> {
+export const clientdisconnect = async function (ev: ClientDisconnectEvent): Promise<void> {
 	const { client } = ev;
-	if (client.type !== 1) {
-		this.main();
+	if (client?.type === 0) {
+		main();
 	}
 };
 

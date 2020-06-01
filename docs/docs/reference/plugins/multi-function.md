@@ -54,8 +54,8 @@ export const info: CommonPluginConfig = {
 			weeks: 0,
 			days: 0,
 			hours: 0,
-			minutes: 0,
-			seconds: 5
+			minutes: 5,
+			seconds: 0
 		}
 	}
 };

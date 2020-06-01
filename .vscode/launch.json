@@ -5,13 +5,23 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "type": "node",
-            "request": "launch",
-            "name": "Iniciar programa",
-            "skipFiles": [
-                "<node_internals>/**"
-            ],
-            "program": "${workspaceFolder}\\packages\\server\\index.js"
+          //TODO: Fix hot reaload creating multiple instances in DEV environment.
+          "name": "ts-node-dev",
+          "type": "node",
+          "request": "launch",
+          "protocol": "inspector",
+          "cwd": "${workspaceRoot}/packages/server",
+          "runtimeExecutable": "${workspaceRoot}/node_modules/.bin/ts-node-dev",
+          "args": [
+              "-r",
+              "tsconfig-paths/register",
+              "${workspaceRoot}/packages/server/src/index.ts"
+          ],
+          "restart": true,
+          "env": {
+            "TS_NODE_FILES": "true",
+            "NODE_ENV": "production"
+          }
         }
     ]
 }

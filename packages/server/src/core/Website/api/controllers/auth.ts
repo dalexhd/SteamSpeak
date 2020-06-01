@@ -7,6 +7,7 @@ import log from '@utils/log';
 import config from '@config/website';
 import jwt from 'jsonwebtoken';
 import { Request, Response } from 'express';
+import { ClientEntry } from 'ts3-nodejs-library/lib/types/ResponseTypes';
 
 /**
  * Find clients with the request ip.
@@ -17,16 +18,18 @@ import { Request, Response } from 'express';
  */
 export const findClients = async function (
 	req: Request,
-	filter: object,
+	filter: Partial<ClientEntry>,
 	isAdmin = false
 ): Promise<TeamSpeakClient[]> {
 	const ip = (req.headers['cf-connecting-ip'] ||
 		req.headers['x-forwarded-for'] ||
+		process.env.ENV_DOCKER0 ||
 		req.connection.remoteAddress) as string;
 	let clients = await Ts3.clientList({
-		connection_client_ip: ip.replace('::ffff:', ''),
+		connectionClientIp: ip.replace('::ffff:', ''),
 		...filter
 	});
+	if (clients.length === 0) throw { statusCode: 404, message: lang.error.ip_not_connected };
 	if (isAdmin) {
 		//Here we are filtering website config authorized admin uids.
 		clients = clients.filter((client) => {
@@ -34,7 +37,6 @@ export const findClients = async function (
 		});
 		if (clients.length === 0) throw { statusCode: 400, message: lang.error.not_an_admin };
 	}
-	if (clients.length === 0) throw { statusCode: 404, message: lang.error.ip_not_connected };
 	return clients;
 };
 
@@ -65,7 +67,7 @@ export const find = async function (req: Request, res: Response): Promise<any> {
 		const clients = await findClients(
 			req,
 			{
-				client_type: 0
+				clientType: 0
 			},
 			true
 		);
@@ -90,8 +92,8 @@ export const send = async function (req: Request, res: Response): Promise<any> {
 		const [client] = await findClients(
 			req,
 			{
-				client_type: 0,
-				client_database_id: req.body.dbid
+				clientType: 0,
+				clientDatabaseId: req.body.dbid
 			},
 			true
 		);
@@ -126,8 +128,8 @@ export const login = async function (req: Request, res: Response): Promise<any> 
 		const [client] = await findClients(
 			req,
 			{
-				client_type: 0,
-				client_database_id: req.body.dbid
+				clientType: 0,
+				clientDatabaseId: req.body.dbid
 			},
 			true
 		);
@@ -160,7 +162,7 @@ export const login = async function (req: Request, res: Response): Promise<any> 
 export const me = async function (req: Request, res: Response): Promise<any> {
 	try {
 		const decoded = jwt.verify(req.token, config.jwt.secret) as { uid: string };
-		const client = await Ts3.getClientByUID(decoded.uid);
+		const client = await Ts3.getClientByUid(decoded.uid);
 		return res.status(200).json({ userData: client });
 	} catch (error) {
 		return res.status(error.statusCode || 401).json({
@@ -179,7 +181,7 @@ export const me = async function (req: Request, res: Response): Promise<any> {
 export const refreshToken = async function (req: Request, res: Response): Promise<any> {
 	try {
 		const decoded = jwt.verify(req.token, config.jwt.secret) as { uid: string };
-		const client = (await Ts3.getClientByUID(decoded.uid)) as TeamSpeakClient;
+		const client = (await Ts3.getClientByUid(decoded.uid)) as TeamSpeakClient;
 		const accessToken = createToken(client.uniqueIdentifier);
 		return res.status(200).json({
 			status: 'success',

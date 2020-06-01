@@ -34,10 +34,11 @@ export const main = async function (
 		});
 		queue.on('task_finish', function (taskId, result) {
 			const rankId = result.response.ranking.rank_id;
-			const nextRankGroupId = info.config.data.ranks[rankId];
+			const nextRankGroupId = info.config.data.ranks[rankId].toString();
 			const delGroups = client?.servergroups?.filter(
 				(serverGroup) =>
-					info.config.data.ranks.includes(serverGroup) && serverGroup !== nextRankGroupId
+					info.config.data.ranks.map(String).includes(serverGroup) &&
+					serverGroup !== nextRankGroupId
 			);
 			if (delGroups && delGroups.length > 0) {
 				client?.delGroups(delGroups);
