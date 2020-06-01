@@ -10,5 +10,3 @@ paths:
   "docs/**":
     - "Do you linted the code?"
     - "Have you added the new version on metadata.js?"
-  "packages/server/src/core/Website/api/controllers/auth.ts":
-    - "Do you replaced findClients() IP variable?"

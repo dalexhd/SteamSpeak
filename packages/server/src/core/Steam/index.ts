@@ -141,7 +141,7 @@ function loadModules(): void {
  */
 async function initUsers(): Promise<void> {
 	const connectedClients = await Ts3.clientList({
-		client_type: 0
+		clientType: 0
 	});
 	const verifiedUsers = await VerifiedClient.find({
 		uid: { $in: connectedClients.map((client) => client.uniqueIdentifier) }

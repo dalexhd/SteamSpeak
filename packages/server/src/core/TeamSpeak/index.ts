@@ -43,38 +43,21 @@ function initEvents(): void {
  */
 function onReady(): void {
 	if (!initialized) {
+		const { server_id, channel_id } = config;
 		Promise.all([
-			Ts3.useBySid(config.server_id || 1),
+			Ts3.useBySid(server_id.toString() || '1'),
 			Ts3.whoami().then((info) => {
-				config.channel_id !== 1 && Ts3.clientMove(info.client_id, config.channel_id);
+				config.channel_id !== 1 && Ts3.clientMove(info.clientId, channel_id.toString());
 			})
 		])
 			.then(() => {
-				subscribeEvents();
+				listenEvents();
 			})
 			.catch((err) => {
 				log.error(err, 'ts3');
 			});
 		initialized = true;
 	}
-}
-
-/**
- * On connection ready, subscribe to events of ts3.
- */
-function subscribeEvents(): void {
-	Promise.all([
-		Ts3.registerEvent('server'),
-		Ts3.registerEvent('channel', 0),
-		Ts3.registerEvent('textserver'),
-		Ts3.registerEvent('textchannel'),
-		Ts3.registerEvent('textprivate')
-	])
-		.then(() => {
-			log.success('Subscribed to all Events.', 'ts3');
-			listenEvents();
-		})
-		.catch((error) => log.error(error));
 }
 
 /**
@@ -86,15 +69,6 @@ function listenEvents(): void {
 		// eslint-disable-next-line @typescript-eslint/no-empty-function
 		Ts3.reconnect().catch(() => {});
 		log.success('reconnected!', 'ts3');
-		Promise.all([
-			Ts3.registerEvent('server'),
-			Ts3.registerEvent('channel', 0),
-			Ts3.registerEvent('textserver'),
-			Ts3.registerEvent('textchannel'),
-			Ts3.registerEvent('textprivate')
-		]).then(() => {
-			log.success('Subscribed to all Events.', 'ts3');
-		});
 	});
 	beforeExit();
 	instance ? loadPlugins() : loadInstances();
@@ -122,7 +96,8 @@ function loadInstances(): void {
 					INSTANCE: name,
 					PATH: process.env.PATH,
 					TS_NODE_FILES: 'true',
-					NODE_ENV: 'production'
+					NODE_ENV: process.env.NODE_ENV,
+					FORCE_COLOR: 'true'
 				},
 				cwd: process.cwd(),
 				shell: true,
@@ -184,6 +159,7 @@ function loadPlugins(): void {
 					});
 				});
 			});
+			log.success('Subscribed to all Events.', 'ts3');
 		})
 		.then(() => {
 			watchPlugins();

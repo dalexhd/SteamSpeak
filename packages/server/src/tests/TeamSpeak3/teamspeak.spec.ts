@@ -23,11 +23,11 @@ describe('TeamSpeak3', () => {
 	});
 	describe('Commands', () => {
 		it('should verify parameters of #serverGroupClientList()', async () => {
-			const data = Ts3.serverGroupClientList(1);
+			const data = Ts3.serverGroupClientList('1');
 			expect(data).not.toBe(null);
 		});
 		it('should verify parameters of #sendTextMessage()', async () => {
-			const data = await Ts3.sendTextMessage(10, 2, 'Test message');
+			const data = await Ts3.sendTextMessage('10', 2, 'Test message');
 			expect(data).not.toBe(null);
 		});
 	});

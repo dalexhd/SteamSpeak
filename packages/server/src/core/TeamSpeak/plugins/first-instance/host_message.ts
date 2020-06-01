@@ -2,6 +2,7 @@ import { Ts3 } from '@core/TeamSpeak';
 import { convertToMilliseconds } from '@utils/time';
 import log from '@utils/log';
 import moment from 'moment';
+import { ClientDisconnectEvent, ClientConnectEvent } from 'ts3-nodejs-library';
 
 let loaded: ReturnType<typeof setInterval>;
 
@@ -10,15 +11,15 @@ export const main = async function (): Promise<void> {
 	const serverInfo = await Ts3.serverInfo();
 	const replacements = {
 		'[SERVER_ONLINE]': data.showQueryClients
-			? serverInfo.virtualserver_clientsonline
-			: serverInfo.virtualserver_clientsonline - serverInfo.virtualserver_queryclientsonline,
-		'[SERVER_MAX_CLIENTS]': serverInfo.virtualserver_maxclients,
+			? serverInfo.virtualserverClientsonline
+			: serverInfo.virtualserverClientsonline - serverInfo.virtualserverQueryclientsonline,
+		'[SERVER_MAX_CLIENTS]': serverInfo.virtualserverMaxclients,
 		'[DATE]': moment().format(data.format),
 		'[%]': Math.round(
 			((data.showQueryClients
-				? serverInfo.virtualserver_clientsonline
-				: serverInfo.virtualserver_clientsonline - serverInfo.virtualserver_queryclientsonline) /
-				serverInfo.virtualserver_maxclients) *
+				? serverInfo.virtualserverClientsonline
+				: serverInfo.virtualserverClientsonline - serverInfo.virtualserverQueryclientsonline) /
+				serverInfo.virtualserverMaxclients) *
 				100
 		)
 	};
@@ -28,7 +29,7 @@ export const main = async function (): Promise<void> {
 		message = message.replace(key, replacements[key]);
 	}
 	Ts3.serverEdit({
-		virtualserver_hostmessage: message
+		virtualserverHostmessage: message
 	}).catch((err) => {
 		log.error(`${info.name} error: ${err}`, 'ts3');
 	});
@@ -42,16 +43,16 @@ export const load = async function (): Promise<void> {
 	}, convertToMilliseconds(interval));
 };
 
-export const clientconnect = async function (ev): Promise<void> {
+export const clientconnect = async function (ev: ClientConnectEvent): Promise<void> {
 	const { client } = ev;
-	if (client.type !== 1) {
+	if (client.type === 0) {
 		main();
 	}
 };
 
-export const clientdisconnect = async function (ev): Promise<void> {
+export const clientdisconnect = async function (ev: ClientDisconnectEvent): Promise<void> {
 	const { client } = ev;
-	if (client.type !== 1) {
+	if (client?.type === 0) {
 		main();
 	}
 };

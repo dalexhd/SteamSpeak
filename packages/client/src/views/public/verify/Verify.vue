@@ -25,8 +25,8 @@
 										<vs-select-item
 											v-for="(client, index) in clients"
 											:key="index"
-											:value="client.client_database_id"
-											:text="client.client_nickname"
+											:value="client.clientDatabaseId"
+											:text="client.clientNickname"
 										/>
 									</vs-select>
 									<div class="flex justify-left flex-wrap mt-4">

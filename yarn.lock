@@ -4801,7 +4801,7 @@ btoa-lite@^1.0.0:
   resolved "https://registry.yarnpkg.com/btoa-lite/-/btoa-lite-1.0.0.tgz#337766da15801210fdd956c22e9c6891ab9d0337"
   integrity sha1-M3dm2hWAEhD92VbCLpxokaudAzc=
 
-buffer-crc32@^0.2:
+buffer-crc32@^0.2, buffer-crc32@^0.2.13:
   version "0.2.13"
   resolved "https://registry.yarnpkg.com/buffer-crc32/-/buffer-crc32-0.2.13.tgz#0d333e3f00eac50aa1454abd30ef8c2a5d9a7242"
   integrity sha1-DTM+PwDqxQqhRUq9MO+MKl2ackI=
@@ -16797,11 +16797,12 @@ ts-pnp@^1.1.6:
   resolved "https://registry.yarnpkg.com/ts-pnp/-/ts-pnp-1.2.0.tgz#a500ad084b0798f1c3071af391e65912c86bca92"
   integrity sha512-csd+vJOb/gkzvcCHgTGSChYpy5f1/XKNsmvBGO4JXS+z1v2HobugDz4s1IeFXM3wZB44uczs+eazB5Q/ccdhQw==
 
-ts3-nodejs-library@^2.4.1:
-  version "2.4.4"
-  resolved "https://registry.yarnpkg.com/ts3-nodejs-library/-/ts3-nodejs-library-2.4.4.tgz#70cdaa2684f7e4cdcacc07f2db1743095853774f"
-  integrity sha512-rO/CfmiNUt4/D7er6HtyMN538XzOSJ4lQoP+JQBz7acf7YrdFJtc5o75F6mTE1OhPywLSKSfyWKJMYJeDN3bKA==
+ts3-nodejs-library@^3.0.4:
+  version "3.0.4"
+  resolved "https://registry.yarnpkg.com/ts3-nodejs-library/-/ts3-nodejs-library-3.0.4.tgz#7cebf8e2eadcc9457fcd4a7789df2a1bfa0ac480"
+  integrity sha512-TGb/0CW93LWiUpbJ1BeaG1wX5Cgstwq7XT1na/RSY10l3gqSY0sqCQTSKnwlSl/aXQDcwwzQDsP1anHk69lViw==
   dependencies:
+    buffer-crc32 "^0.2.13"
     ssh2 "^0.8.9"
 
 tsconfig-paths@^3.9.0:

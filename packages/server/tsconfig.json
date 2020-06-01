@@ -18,7 +18,7 @@
         "@locales/*": ["src/locales/*"],
         "@utils/*": ["src/utils/*"]
       },
-      "typeRoots": ["ts3-nodejs-library", "../../node_modules/@types", "./src/types"]
+      "typeRoots": ["../../node_modules/ts3-nodejs-library/src/types", "../../node_modules/@types", "./src/types"],
   },
   "include": [
       "./src/**/*"

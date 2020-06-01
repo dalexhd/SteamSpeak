@@ -45,8 +45,7 @@ const Log = {
 					break;
 			}
 			let instance = '';
-			if (process.env.INSTANCE)
-				instance = chalk.bgGreen.black(`[${startCase(process.env.INSTANCE)}]`);
+			if (process.env.INSTANCE) instance = chalk.black(`[${startCase(process.env.INSTANCE)}]`);
 			prefix = chalk.cyan(
 				`[${this.time()}]${chalk[color].bold(
 					` ${instance}[${type.charAt(0).toUpperCase()}${type.slice(1)}]`
@@ -113,7 +112,7 @@ const Log = {
 	 * @param {string} type Optional type
 	 */
 	success(log: string, type?: string): void {
-		this.print(log, '#007E33', type);
+		this.print(log, '#28A745', type);
 	},
 
 	/**

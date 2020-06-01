@@ -2,12 +2,13 @@ import { Ts3 } from '@core/TeamSpeak';
 import { convertToMilliseconds } from '@utils/time';
 import log from '@utils/log';
 import Cache from '@core/Cache';
+import { ClientDisconnectEvent } from 'ts3-nodejs-library';
 
 let loaded: ReturnType<typeof setInterval>;
 
 export const main = async function (): Promise<void> {
 	const { data } = info.config;
-	const clients = await Ts3.clientList({ client_type: 0 });
+	const clients = await Ts3.clientList({ clientType: 0 });
 	clients.forEach(async (client) => {
 		if (client.isAfk(data.minTime) && client.cid !== data.dest) {
 			Cache.set(`afkChecker:${client.databaseId}`, client.cid);
@@ -26,7 +27,7 @@ export const main = async function (): Promise<void> {
 		} else if (!client.isAfk(data.minTime) && client.cid === data.dest) {
 			const cid = (await Cache.get(`afkChecker:${client.databaseId}`)) as string;
 			if (cid !== undefined) {
-				client.move(parseInt(cid));
+				client.move(cid);
 				Cache.del(`afkChecker:${client.databaseId}`);
 				client.poke('You have been moved back to your channel!');
 				log.info(
@@ -49,9 +50,9 @@ export const unload = function (): void {
 	clearInterval(loaded);
 };
 
-export const clientdisconnect = async function (ev): Promise<void> {
+export const clientdisconnect = async function (ev: ClientDisconnectEvent): Promise<void> {
 	const { client } = ev;
-	if (client.type !== 1) {
+	if (client?.type === 1) {
 		Cache.del(`afkChecker:${client.databaseId}`);
 	}
 };
@@ -63,14 +64,13 @@ export const info: CommonPluginConfig = {
 	config: {
 		enabled: false,
 		data: {
-			goBack: true,
 			dest: 2,
 			minTime: {
 				weeks: 0,
 				days: 0,
 				hours: 0,
-				minutes: 0,
-				seconds: 5
+				minutes: 20,
+				seconds: 0
 			}
 		},
 		interval: {
@@ -78,7 +78,7 @@ export const info: CommonPluginConfig = {
 			days: 0,
 			hours: 0,
 			minutes: 0,
-			seconds: 5
+			seconds: 10
 		}
 	}
 };
