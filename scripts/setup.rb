@@ -28,7 +28,7 @@ require_relative "util"
 # Constants
 #
 
-HOST = "https://dalexhd.github.io/SteamSpeak/".freeze
+HOST = "https://steamspeak.netlify.app/".freeze
 DOCS_BASE_PATH = "/docs".freeze
 GUIDES_BASE_PATH = "/guides".freeze
 HIGHLIGHTS_BASE_PATH = "/highlights".freeze
