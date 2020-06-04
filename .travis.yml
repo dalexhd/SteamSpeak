@@ -22,19 +22,3 @@ script:
   - yarn run test
 after_script:
   - docker stop teamspeak
-jobs:
-  include:
-    - stage: deploy
-      before_install: skip
-      install: skip
-      script: skip
-      after_script: skip
-      before_deploy:
-        - yarn run docs:install && yarn run docs:build
-      deploy:
-        provider: pages:git
-        token: ${GH_TOKEN}
-        name: ${GH_NAME}
-        email: ${GH_EMAIL}
-        local_dir: docs/build/
-        edge: true # opt in to dpl v2

@@ -93,4 +93,4 @@ If you are unsure how to get the code, then add: https://steamcommunity.com/id/t
 
 ![Shared_secret](https://i.imgur.com/nKz5mSc.png)
 
-[docs.about.concepts]: /SteamSpeak/docs/about/what-is-steamspeak/
+[docs.about.concepts]: /docs/about/what-is-steamspeak/

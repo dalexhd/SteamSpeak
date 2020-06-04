@@ -707,4 +707,4 @@ Admin TeamSpeak unique identifiers that have access to the web admin panel.
 </Tabs>
 </Steps>
 
-[docs.getting-started.2fa]: /SteamSpeak/guides/getting-started/enable-steam-two-factor-authentication/
+[docs.getting-started.2fa]: /guides/getting-started/enable-steam-two-factor-authentication/

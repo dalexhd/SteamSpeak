@@ -10,9 +10,7 @@
     "ci": "yarn lint && yarn prettier:diff",
     "lint": "eslint \"**/*.js\" --fix && stylelint \"**/*.css\" --fix",
     "prettier": "prettier --config .prettierrc --write \"**/*.{js,md}\"",
-    "prettier:diff": "prettier --config .prettierrc --list-different \"**/*.{js,md}\"",
-    "snyk-protect": "snyk protect",
-    "prepublish": "npm run snyk-protect"
+    "prettier:diff": "prettier --config .prettierrc --list-different \"**/*.{js,md}\""
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-alpha.54",
@@ -33,8 +31,7 @@
     "react-modal": "^3.11.2",
     "react-select": "^3.0.8",
     "timeago-react": "^3.0.0",
-    "titleize": "^2.1.0",
-    "snyk": "^1.316.2"
+    "titleize": "^2.1.0"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
@@ -60,6 +57,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "snyk": true
+  }
 }

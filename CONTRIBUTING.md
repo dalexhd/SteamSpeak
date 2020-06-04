@@ -1,6 +1,6 @@
 # Contributing to SteamSpeak
 
-[SteamSpeak](https://dalexhd.github.io/SteamSpeak/) is a tool that power ups your TeamSpeak3 server. If you're interested in contributing to SteamSpeak, hopefully this document makes the process for contributing clear.
+[SteamSpeak](https://steamspeak.netlify.app/) is a tool that power ups your TeamSpeak3 server. If you're interested in contributing to SteamSpeak, hopefully this document makes the process for contributing clear.
 
 The [Open Source Guides](https://opensource.guide/) website has a collection of resources for individuals, communities, and companies who want to learn how to run and contribute to an open source project. Contributors and people new to open source alike will find the following guides especially useful:
 
@@ -12,10 +12,10 @@ The [Open Source Guides](https://opensource.guide/) website has a collection of 
 
 There are many ways to contribute to SteamSpeak, and many of them do not involve writing any code. Here's a few ideas to get started:
 
-- Simply start using SteamSpeak. Go through the [Getting Started](https://dalexhd.github.io/SteamSpeak/docs/setup/installation) guide. Does everything work as expected? If not, we're always looking for improvements. Let us know by [opening an issue](#reporting-new-issues).
+- Simply start using SteamSpeak. Go through the [Getting Started](https://steamspeak.netlify.app/docs/setup/installation) guide. Does everything work as expected? If not, we're always looking for improvements. Let us know by [opening an issue](#reporting-new-issues).
 - Look through the [open issues](https://github.com/dalexhd/steamspeak/issues). Provide workarounds, ask for clarification, or suggest labels.
 - If you find an issue you would like to fix, [open a pull request](#your-first-pull-request). Issues tagged as [_Good first issue_](https://github.com/dalexhd/steamspeak/labels/Good%20first%20issue) are a good place to get started.
-- Read through the [SteamSpeak docs](https://dalexhd.github.io/SteamSpeak/docs/setup/installation). If you find anything that is confusing or can be improved, you can make edits by clicking "Edit" at the end of most docs.
+- Read through the [SteamSpeak docs](https://steamspeak.netlify.app/docs/setup/installation). If you find anything that is confusing or can be improved, you can make edits by clicking "Edit" at the end of most docs.
 - Take a look at the [features requested](https://github.com/dalexhd/steamspeak/labels/enhancement) by others in the community and consider opening a pull request if you see something you want to work on.
 
 ### Join our Discord Channel
@@ -36,7 +36,7 @@ SteamSpeak has three primary branches: `master`, `dev` and `gh-pages`.
 
 `dev` is where the development takes place.
 
-`gh-pages` contains the [SteamSpeak documentation](https://dalexhd.github.io/SteamSpeak/). This branch is pushed to by Travis CI and not generally managed manually.
+`gh-pages` contains the [SteamSpeak documentation](https://steamspeak.netlify.app/). This branch is pushed to by Travis CI and not generally managed manually.
 
 ## Bugs
 
