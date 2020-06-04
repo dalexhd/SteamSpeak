@@ -1,5 +1,84 @@
 # Changelog
 
+## [v0.8.0](https://github.com/dalexhd/steamspeak/tree/v0.8.0) (2020-06-04)
+
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.7.0...v0.8.0)
+
+<div align="center">
+
+![image](https://i.imgur.com/ytZnG2L.gif)
+
+> Less bugs, multi game plugins, faster documentation. I almost forgot, SteamSpeak now supports CS:GO integration 👾
+</div>
+<details><summary>Upgrade guide</summary>
+<p>
+
+### Breaking changes:
+#### Plugins
+- Afk kick
+	- Changed plugin interval from "seconds: 5" to "seconds: 10"
+	- Changed kick interval from "seconds: 5" to "minutes: 30"
+- Afk move
+	 -	Changed plugin interval from "seconds: 5" to "seconds: 10"
+	 -	Changed move interval from "seconds: 5" to "minutes: 20"
+- Change channel
+	- Now it's disabled by default
+	- Replaced config data changes keys. From channel_name to channelName & channel_description to channelDescription
+	- Changed plugin interval from "seconds: 3" to "seconds: 5"
+- Multi function
+	- Changed plugin interval from "seconds: 5" to "minutes: 5"
+#### Database
+- verified client (NOTE: You'll need to update your database manually)
+	- Changed dbid type from number to string.
+	- Changed groupId type from number to string.
+
+### Notes:
+#### Steam Modules
+ - rich presence
+	- Now SteamSpeak uses Regex to filter steamGroups. The used regex is: https://regex101.com/r/TexROh/1
+	IMPORTANT: Now groups (only if the group's type is query and namemode is set to 2) that contains "*#[number] [rich presence]*" are considered SteamSpeak groups. This means that you should not create a group with the same pattern and same properties to prevent SteamSpeak deleting them. This is done to prevent group duplication bug.
+
+</p>
+</details>
+
+:boom: Breaking Changes:
+
+- chore\(deps\): bump ts3-nodejs-library from 2.4.4 to 3.0.4 [\#130](https://github.com/dalexhd/SteamSpeak/pull/130) ([dalexhd](https://github.com/dalexhd))
+- feat\(breaking\): Disable all plugins by default. [\#124](https://github.com/dalexhd/SteamSpeak/pull/124) ([dalexhd](https://github.com/dalexhd))
+- feat\(breaking\): Add uri to database config. [\#122](https://github.com/dalexhd/SteamSpeak/pull/122) ([dalexhd](https://github.com/dalexhd))
+- feat\(breaking\): Add ts-node compilation environment. [\#116](https://github.com/dalexhd/SteamSpeak/pull/116) ([dalexhd](https://github.com/dalexhd))
+
+:rocket: New Features:
+
+- Add option to disable website. [\#120](https://github.com/dalexhd/SteamSpeak/issues/120)
+- feat\(new game\): Add CS:GO game. [\#118](https://github.com/dalexhd/SteamSpeak/pull/118) ([dalexhd](https://github.com/dalexhd))
+- feat: Add multiple game environment. [\#117](https://github.com/dalexhd/SteamSpeak/pull/117) ([dalexhd](https://github.com/dalexhd))
+
+:bug: Bug Fixes:
+
+- fix: Admin dashboard login. [\#123](https://github.com/dalexhd/SteamSpeak/pull/123) ([dalexhd](https://github.com/dalexhd))
+
+:memo: Documentation:
+
+- docs: Migrate to netlify. [\#131](https://github.com/dalexhd/SteamSpeak/pull/131) ([dalexhd](https://github.com/dalexhd))
+- docs: Add stars to metadata. [\#115](https://github.com/dalexhd/SteamSpeak/pull/115) ([dalexhd](https://github.com/dalexhd))
+
+:wrench: Dependencies:
+
+- chore\(deps-dev\): bump @typescript-eslint/parser from 2.31.0 to 3.0.2 [\#129](https://github.com/dalexhd/SteamSpeak/pull/129) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- chore\(deps\): bump echarts from 4.7.0 to 4.8.0 [\#128](https://github.com/dalexhd/SteamSpeak/pull/128) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- chore\(deps-dev\): bump tailwindcss from 1.4.5 to 1.4.6 [\#127](https://github.com/dalexhd/SteamSpeak/pull/127) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- chore\(deps-dev\): bump lerna from 3.20.2 to 3.22.0 [\#126](https://github.com/dalexhd/SteamSpeak/pull/126) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- chore\(deps\): bump ioredis from 4.16.3 to 4.17.3 [\#125](https://github.com/dalexhd/SteamSpeak/pull/125) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- chore\(deps\): bump activesupport from 6.0.2.1 to 6.0.3.1 in /scripts [\#119](https://github.com/dalexhd/SteamSpeak/pull/119) ([dependabot[bot]](https://github.com/apps/dependabot))
+
+:star2: Chore:
+
+- chore\(img compression\): Optimize images [\#133](https://github.com/dalexhd/SteamSpeak/pull/133) ([imgbot[bot]](https://github.com/apps/imgbot))
+- chore: Add sponsorship button. [\#132](https://github.com/dalexhd/SteamSpeak/pull/132) ([dalexhd](https://github.com/dalexhd))
+- chore: Remove unused docker file. [\#114](https://github.com/dalexhd/SteamSpeak/pull/114) ([dalexhd](https://github.com/dalexhd))
+- chore\(ci\): Add new game scope to semantic. [\#113](https://github.com/dalexhd/SteamSpeak/pull/113) ([dalexhd](https://github.com/dalexhd))
+
 ## [v0.7.0](https://github.com/dalexhd/steamspeak/tree/v0.7.0) (2020-05-26)
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.6.0...v0.7.0)
@@ -47,6 +126,7 @@
 :memo: Documentation:
 
 - docs: Add hotjar analytics. [\#99](https://github.com/dalexhd/SteamSpeak/pull/99) ([dalexhd](https://github.com/dalexhd))
+- docs: Add new documentation theme [\#49](https://github.com/dalexhd/SteamSpeak/pull/49) ([dalexhd](https://github.com/dalexhd))
 
 :wrench: Dependencies:
 
@@ -102,10 +182,6 @@
 :rocket: New Features:
 
 - feat: Add multi instance teamspeak bots. [\#51](https://github.com/dalexhd/SteamSpeak/pull/51) ([dalexhd](https://github.com/dalexhd))
-
-:memo: Documentation:
-
-- docs: Add new documentation theme [\#49](https://github.com/dalexhd/SteamSpeak/pull/49) ([dalexhd](https://github.com/dalexhd))
 
 ## [v0.4.0](https://github.com/dalexhd/steamspeak/tree/v0.4.0) (2020-04-20)
 
