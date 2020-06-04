@@ -4,8 +4,8 @@ const metadata = require('./metadata');
 module.exports = {
   title: 'SteamSpeak',
   tagline: 'Steam and TeamSpeak integration, done right!',
-  url: 'https://dalexhd.github.io',
-  baseUrl: '/SteamSpeak/',
+  url: 'https://steamspeak.netlify.app',
+  baseUrl: '/',
   favicon: 'img/favicon-16x16.png',
   organizationName: 'dalexhd', // Usually your GitHub org/user name.
   projectName: 'SteamSpeak', // Usually your repo name.
@@ -40,7 +40,7 @@ module.exports = {
         { to: 'community/', label: 'Community', position: 'right' },
         { to: 'releases/', label: 'Download', position: 'right' },
         {
-          href: 'https://github.com/dalexhd/steamspeak',
+          href: 'https://github.com/dalexhd/SteamSpeak',
           label: 'GitHub',
           position: 'right'
         }
@@ -83,15 +83,15 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/dalexhd/steamspeak'
+              href: 'https://github.com/dalexhd/SteamSpeak'
             }
           ]
         }
       ],
       logo: {
-        alt: 'SteamSpeak',
-        src: '/img/logo-light.svg',
-        href: 'https://dalexhd.github.io/SteamSpeak/'
+        src: '/img/netlify-color-bg.svg',
+        alt: 'Deploys by Netlify',
+        href: 'https://www.netlify.com'
       },
       copyright: `Copyright © ${new Date().getFullYear()} SteamSpeak.`
     },
@@ -120,7 +120,7 @@ module.exports = {
       {
         docs: {
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/dalexhd/steamspeak/edit/master/docs/',
+          editUrl: 'https://github.com/dalexhd/SteamSpeak/edit/master/docs/',
           showLastUpdateAuthor: true,
           showLastUpdateTime: true
         },

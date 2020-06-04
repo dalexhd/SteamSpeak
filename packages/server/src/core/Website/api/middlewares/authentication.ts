@@ -20,8 +20,7 @@ export const authenticate = async function (
 		}
 		// 2) verify token
 		const decoded = jwt.verify(token, config.jwt.secret) as { uid: string };
-		const client = await Ts3.getClientByUID(decoded.uid);
-		req.client = client;
+		req.client = await Ts3.getClientByUid(decoded.uid);
 		req.role = 'admin';
 		req.token = token;
 		next();

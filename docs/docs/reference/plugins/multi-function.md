@@ -22,7 +22,7 @@ export const info: CommonPluginConfig = {
 	description:
 		'This plugin allows you to display relevant server information on the configured channels.',
 	config: {
-		enabled: true,
+		enabled: false,
 		data: [
 			{
 				enabled: true,
@@ -54,8 +54,8 @@ export const info: CommonPluginConfig = {
 			weeks: 0,
 			days: 0,
 			hours: 0,
-			minutes: 0,
-			seconds: 5
+			minutes: 5,
+			seconds: 0
 		}
 	}
 };

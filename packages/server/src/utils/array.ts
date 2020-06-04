@@ -11,4 +11,13 @@ const flattenArray = function (arr: string[], result: string[] = []): string[] {
 	return result;
 };
 
-export { flattenArray };
+const difference = function (dst, src): object {
+	const changes = {};
+	Object.keys(src).forEach((key) => {
+		if (JSON.stringify(dst[key]) === JSON.stringify(src[key])) return;
+		changes[key] = { from: dst[key], to: src[key] };
+	});
+	return changes;
+};
+
+export { flattenArray, difference };

@@ -25,8 +25,8 @@
 										<vs-select-item
 											v-for="(client, index) in clients"
 											:key="index"
-											:value="client.client_database_id"
-											:text="client.client_nickname"
+											:value="client.clientDatabaseId"
+											:text="client.clientNickname"
 										/>
 									</vs-select>
 									<div class="flex justify-left flex-wrap mt-4">
@@ -79,7 +79,7 @@ export default {
 					this.steam = steam;
 				})
 				.catch((error) => {
-					this.$router.push({ name: 'home' });
+					this.$router.push({ name: 'login' });
 					this.$vs.notify({
 						title: 'Error',
 						text: error?.response?.data?.message || error.message,
@@ -123,7 +123,7 @@ export default {
 				})
 				.then((response) => {
 					this.$vs.loading.close('#ts3-loader > .con-vs-loading');
-					this.$router.push({ name: 'home' });
+					this.$router.push({ name: 'login' });
 					this.$vs.notify({
 						title: 'Success',
 						text: response.data.message,

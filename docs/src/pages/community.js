@@ -74,7 +74,7 @@ function Community() {
               </div>
               <div className="col">
                 <a
-                  href="https://github.com/dalexhd/steamspeak"
+                  href="https://github.com/dalexhd/SteamSpeak"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="panel panel--button"
@@ -82,7 +82,7 @@ function Community() {
                   <div className="panel--icon">
                     <i className="feather icon-github" />
                   </div>
-                  <div className="panel--title">Github dalexhd/steamspeak</div>
+                  <div className="panel--title">Github dalexhd/SteamSpeak</div>
                   <div className="panel--description">
                     Issues, code, and development
                   </div>

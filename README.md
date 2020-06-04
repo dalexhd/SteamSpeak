@@ -1,6 +1,6 @@
 <div align="center">
 
-[![Logo](https://i.imgur.com/60jQUwY.gif)](https://dalexhd.github.io/SteamSpeak/)
+[![Logo](https://i.imgur.com/60jQUwY.gif)](https://steamspeak.netlify.app/)
 
 ## Steam and TeamSpeak integration, done right!
 
@@ -21,7 +21,7 @@
 [![GitHub code size in bytes](https://img.shields.io/github/languages/code-size/dalexhd/steamspeak?label=Code%20size&maxAge=3600)](https://github.com/dalexhd/SteamSpeak)
 
 
-[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://dalexhd.github.io/SteamSpeak)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-love.svg)](https://steamspeak.netlify.app)
 [![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/dalexhd/steamspeak)
 
 </div>
@@ -34,7 +34,7 @@ SteamSpeak is a Node.js and VueJS application which allows you to power up your 
 
 <div align="center">
 
-[![Logo](https://raw.githubusercontent.com/dalexhd/resources/master/demo.gif)](https://dalexhd.github.io/SteamSpeak/)
+[![Logo](https://raw.githubusercontent.com/dalexhd/resources/master/demo.gif)](https://steamspeak.netlify.app/)
 
 </div>
 
@@ -44,7 +44,7 @@ SteamSpeak is a Node.js and VueJS application which allows you to power up your 
 
 ## Install and Upgrade Guide
 
-For system requirements, installation/upgrade guides, troubleshooting etc., head over to the [Official Documentation](https://dalexhd.github.io/SteamSpeak/).
+For system requirements, installation/upgrade guides, troubleshooting etc., head over to the [Official Documentation](https://steamspeak.netlify.app/).
 
 ## Caution
 **SteamSpeak is currently in development stage**. We recommend you to wait until the v1.0.0 gets released.

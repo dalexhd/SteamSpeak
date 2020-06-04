@@ -3,13 +3,9 @@
   "version": "0.7.0",
   "main": "index.js",
   "scripts": {
-    "start": "yarn run check-sum && cross-env NODE_ENV=production node dist/index.js",
-    "start:dev": "yarn run check-sum && cross-env NODE_ENV=development node dist/index.js",
-    "dev": "tsc-watch --project . --outDir ./dist --onSuccess \"yarn run start:dev\"",
-    "check-sum": "cd ../../ && make check-ts",
-    "prebuild": "cd ../../ && make check-config",
-    "build": "tsc --build tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./dist",
-    "plugin:refresh": "tsc -p tsconfig-plugin.json && tscpaths -p tsconfig-plugin.json -s src -o dist",
+    "start": "cross-env TS_NODE_FILES=true NODE_ENV=production ts-node -r tsconfig-paths/register src/index.ts",
+    "dev": "cross-env NODE_ENV=development TS_NODE_FILES=true ts-node-dev --exit-child -r tsconfig-paths/register src/index.ts",
+    "prestart": "cd ../../ && make check-config",
     "test": "jest tests/ --runInBand",
     "lint": "eslint '*/**/*.{js,ts}' --quiet --fix"
   },
@@ -21,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "@hapi/joi": "^17.1.1",
+    "better-queue": "^3.8.10",
     "body-parser": "^1.19.0",
     "canvas": "^2.6.1",
     "chalk": "^4.0.0",
@@ -35,6 +32,7 @@
     "mock-require": "^3.0.3",
     "moment": "^2.24.0",
     "mongoose": "^5.9.6",
+    "shortid": "^2.2.15",
     "should": "^13.2.3",
     "sinon": "^9.0.1",
     "steam": "1.4.1",
@@ -42,13 +40,14 @@
     "steam-user": "^4.13.2",
     "steamcommunity": "^3.41.3",
     "steamid": "^1.1.3",
-    "ts3-nodejs-library": "^2.4.1"
+    "ts3-nodejs-library": "^3.0.4"
   },
   "bugs": {
     "url": "https://github.com/dalexhd/SteamSpeak/issues"
   },
   "homepage": "https://github.com/dalexhd/SteamSpeak#readme",
   "devDependencies": {
+    "@types/better-queue": "^3.8.2",
     "@types/body-parser": "^1.19.0",
     "@types/chalk": "^2.2.0",
     "@types/chokidar": "^2.1.3",
@@ -60,9 +59,12 @@
     "@types/jsonwebtoken": "^8.3.9",
     "@types/lodash": "^4.14.150",
     "@types/mongoose": "^5.5.43",
+    "@types/node": "^14.0.5",
+    "@types/shortid": "^0.0.29",
     "@types/sinon": "^9.0.0",
+    "@types/steamid": "^1.1.0",
     "@typescript-eslint/eslint-plugin": "^2.30.0",
-    "@typescript-eslint/parser": "^2.30.0",
+    "@typescript-eslint/parser": "^3.0.2",
     "babel-cli": "^6.26.0",
     "babel-eslint": "10.1.0",
     "babel-jest": "^25.4.0",
@@ -78,7 +80,8 @@
     "prettier": "^2.0.5",
     "ts-jest": "^25.4.0",
     "ts-loader": "^7.0.2",
-    "tsc-watch": "^4.2.3",
+    "ts-node-dev": "^1.0.0-pre.44",
+    "tsconfig-paths": "^3.9.0",
     "tscpaths": "^0.0.9",
     "typescript": "^3.4.3"
   },

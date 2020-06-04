@@ -8,11 +8,11 @@ export const main = async function (): Promise<void> {
 	const { data } = info.config;
 	const serverInfo = await Ts3.serverInfo();
 	const replacements = {
-		'[PING]': serverInfo.virtualserver_total_ping,
-		'[PACKETLOSS]': serverInfo.virtualserver_total_packetloss_total,
-		'[CHANNELS]': serverInfo.virtualserver_channelsonline,
-		'[UPLOAD]': serverInfo.virtualserver_total_bytes_uploaded,
-		'[DOWNLOAD]': serverInfo.virtualserver_total_bytes_downloaded
+		'[PING]': serverInfo.virtualserverTotalPing,
+		'[PACKETLOSS]': serverInfo.virtualserverTotalPacketlossTotal,
+		'[CHANNELS]': serverInfo.virtualserverChannelsonline,
+		'[UPLOAD]': serverInfo.virtualserverTotalBytesUploaded,
+		'[DOWNLOAD]': serverInfo.virtualserverTotalBytesDownloaded
 	};
 	data.forEach((channel) => {
 		let name = channel.name;
@@ -21,13 +21,12 @@ export const main = async function (): Promise<void> {
 			name = name.replace(key, replacements[key]);
 		}
 		Ts3.channelEdit(channel.channelId, {
-			channel_name: name
+			channelName: name
 		})
 			.then(() => {
 				log.info(`${info.name} ch[id: ${channel.channelId}] to: ${name}`, 'ts3');
 			})
 			.catch((err) => {
-				if (err.id === 771) return;
 				log.error(`${info.name} ch[id: ${channel.channelId}] error: ${err}`, 'ts3');
 			});
 	});
@@ -50,7 +49,7 @@ export const info: CommonPluginConfig = {
 	description:
 		'This plugin allows you to display relevant server information on the configured channels.',
 	config: {
-		enabled: true,
+		enabled: false,
 		data: [
 			{
 				enabled: true,
@@ -82,8 +81,8 @@ export const info: CommonPluginConfig = {
 			weeks: 0,
 			days: 0,
 			hours: 0,
-			minutes: 0,
-			seconds: 5
+			minutes: 5,
+			seconds: 0
 		}
 	}
 };

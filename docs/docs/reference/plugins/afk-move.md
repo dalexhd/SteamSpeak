@@ -22,16 +22,15 @@ export const info: CommonPluginConfig = {
 	description:
 		'This plugin allows you to automatically move afk people after x time to your desired channel.',
 	config: {
-		enabled: true,
+		enabled: false,
 		data: {
-			goBack: true,
 			dest: 2,
 			minTime: {
 				weeks: 0,
 				days: 0,
 				hours: 0,
-				minutes: 0,
-				seconds: 5
+				minutes: 20,
+				seconds: 0
 			}
 		},
 		interval: {
@@ -39,7 +38,7 @@ export const info: CommonPluginConfig = {
 			days: 0,
 			hours: 0,
 			minutes: 0,
-			seconds: 5
+			seconds: 10
 		}
 	}
 };

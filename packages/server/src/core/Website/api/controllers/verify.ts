@@ -1,6 +1,6 @@
 import Events from '@core/Events';
 import lang from '@locales/index';
-import * as crypto from 'crypto';
+import crypto from 'crypto';
 import Cache from '@core/Cache';
 import { findClients } from './auth';
 import log from '@utils/log';
@@ -30,7 +30,7 @@ export const check = async function (req: Request, res: Response): Promise<any> 
 	try {
 		const steamData = await findSecret(req);
 		const clients = await findClients(req, {
-			client_type: 0
+			clientType: 0
 		});
 		res.status(200).json({ steam: steamData, clients });
 	} catch (error) {
@@ -52,8 +52,8 @@ export const send = async function (req: Request, res: Response): Promise<any> {
 	try {
 		const steamData = await findSecret(req);
 		const [client] = await findClients(req, {
-			client_type: 0,
-			client_database_id: req.body.dbid
+			clientType: 0,
+			clientDatabaseId: req.body.dbid
 		});
 		const token = crypto.randomBytes(3).toString('hex');
 		client
@@ -94,8 +94,8 @@ export const login = async function (req: Request, res: Response): Promise<any> 
 	try {
 		const steamData = await findSecret(req);
 		const [client] = await findClients(req, {
-			client_type: 0,
-			client_database_id: req.body.dbid
+			clientType: 0,
+			clientDatabaseId: req.body.dbid
 		});
 		const sendCache = JSON.parse((await Cache.get(`${client.databaseId}:verifyToken`)) as string);
 

@@ -2,7 +2,7 @@ import { steamUser } from '@core/Steam';
 import { Ts3 } from '@core/TeamSpeak';
 import web_config from '@config/website';
 import SteamUser from 'steam-user';
-import * as crypto from 'crypto';
+import crypto from 'crypto';
 import Cache from '@core/Cache';
 import Events from '@core/Events';
 import lang from '@locales/index';
@@ -36,6 +36,7 @@ steamUser.on('friendRelationship', (senderID, relationship) => {
 	}
 });
 
+//TODO: Translate this messages.
 // Called when steam bot receives a message
 steamUser.on('friendMessage', async (senderID, message) => {
 	const steamId = senderID.getSteamID64();
@@ -54,7 +55,7 @@ steamUser.on('friendMessage', async (senderID, message) => {
 	}
 });
 
-const startVerification = async (senderID) => {
+const startVerification = async (senderID): Promise<void> => {
 	const steamId = senderID.getSteamID64();
 	const secret = crypto.randomBytes(20).toString('hex');
 	let userData = await steamUser.getPersonas([senderID]);
@@ -70,23 +71,18 @@ const startVerification = async (senderID) => {
 	);
 };
 
-const friendDeleted = async (senderID) => {
+const friendDeleted = async (senderID): Promise<void> => {
 	const steamId = senderID.getSteamID64();
 	const User = await VerifiedClient.findOne({ steamId });
 	if (User) {
-		const [client] = await Ts3.clientList({
-			client_type: 0,
-			client_unique_identifier: User.uid
-		});
+		const client = await Ts3.getClientByUid(User.uid);
 		User.remove(() => {
-			if (client) {
-				client.poke(lang.steam.friend.deleted);
-			}
+			client?.poke(lang.steam.friend.deleted);
 		});
 	}
 };
 
-const newFriend = async (senderID) => {
+const newFriend = async (senderID): Promise<void> => {
 	steamUser.addFriend(senderID).then(() => {
 		startVerification(senderID);
 	});

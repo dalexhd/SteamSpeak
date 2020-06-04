@@ -17,8 +17,8 @@
 						<vs-select-item
 							v-for="(client, index) in clients"
 							:key="index"
-							:value="client.client_database_id"
-							:text="client.client_nickname"
+							:value="client.clientDatabaseId"
+							:text="client.clientNickname"
 						/>
 					</vs-select>
 					<vs-button @click="send">Send code</vs-button>

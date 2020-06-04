@@ -21,7 +21,7 @@ export const info: CommonPluginConfig = {
 	name: 'AFK kick',
 	description: 'This plugin allows you to automatically kick afk people after x time.',
 	config: {
-		enabled: true,
+		enabled: false,
 		data: {
 			ignoredGroups: [],
 			ignoredChannels: [],
@@ -29,8 +29,8 @@ export const info: CommonPluginConfig = {
 				weeks: 0,
 				days: 0,
 				hours: 0,
-				minutes: 0,
-				seconds: 5
+				minutes: 30,
+				seconds: 0
 			}
 		},
 		interval: {
@@ -38,7 +38,7 @@ export const info: CommonPluginConfig = {
 			days: 0,
 			hours: 0,
 			minutes: 0,
-			seconds: 5
+			seconds: 10
 		}
 	}
 };

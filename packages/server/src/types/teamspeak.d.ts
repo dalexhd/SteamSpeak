@@ -59,12 +59,12 @@ declare module 'ts3-nodejs-library' {
 
 declare module 'ts3-nodejs-library/lib/types/ResponseTypes' {
 	interface ServerInfo {
-		virtualserver_total_ping: number;
-		virtualserver_total_packetloss_total: number;
-		virtualserver_channelsonline: number;
-		virtualserver_total_bytes_uploaded: number;
-		virtualserver_total_bytes_downloaded: number;
-		virtualserver_clientsonline: number;
-		virtualserver_queryclientsonline: number;
+		virtualserverTotalPing: number;
+		virtualserverTotalPacketlossTotal: number;
+		virtualserverChannelsonline: number;
+		virtualserverTotalBytesUploaded: number;
+		virtualserverTotalBytesDownloaded: number;
+		virtualserverClientsonline: number;
+		virtualserverQueryclientsonline: number;
 	}
 }

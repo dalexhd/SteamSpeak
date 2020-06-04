@@ -8,12 +8,12 @@ const VerifiedClientSchema = new Schema({
 		index: true,
 		unique: true
 	},
-	dbid: Number,
+	dbid: String,
 	steamId: {
 		type: String,
 		unique: true
 	},
-	groupId: Number,
+	groupId: String,
 	groupNumber: Number
 });
 

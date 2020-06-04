@@ -46,3 +46,6 @@
 - color: "ffffff"
   description: This will not be worked on
   name: wontfix
+- color: "ce2d2d"
+  description: Pull requests that update Ruby code
+  name: ruby

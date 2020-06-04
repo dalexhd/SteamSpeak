@@ -8,7 +8,7 @@ import CodeBlock from '@theme/CodeBlock';
 
 <Alert type="info" closable="true">
 
-**Be sure** that you've configured your [bot](/SteamSpeak/docs/setup/configuration/bot) correctly before running the following command.
+**Be sure** that you've configured your [bot](/docs/setup/configuration/bot) correctly before running the following command.
 
 </Alert>
 

@@ -84,7 +84,7 @@ function Footer() {
                 </a>
                 &nbsp;&nbsp;&nbsp;&nbsp;
                 <a
-                  href="https://github.com/dalexhd/steamspeak"
+                  href="https://github.com/dalexhd/SteamSpeak"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -143,7 +143,7 @@ function Footer() {
             <br />
             <small>
               <a
-                href="https://github.com/dalexhd/steamspeak/security/policy"
+                href="https://github.com/dalexhd/SteamSpeak/security/policy"
                 target="_blank"
                 rel="noopener noreferrer"
               >
@@ -151,7 +151,7 @@ function Footer() {
               </a>
               &nbsp;&bull;&nbsp;
               <a
-                href="https://github.com/dalexhd/steamspeak/blob/master/PRIVACY.md"
+                href="https://github.com/dalexhd/SteamSpeak/blob/master/PRIVACY.md"
                 target="_blank"
                 rel="noopener noreferrer"
               >

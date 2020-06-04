@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 declare global {
 	interface VerifiedClientDocument extends Document {
 		uid: string;
-		dbid: number;
+		dbid: string;
 		steamId: string;
 		groupId: any;
 		groupNumber: any;

@@ -92,7 +92,7 @@ function Components({ components, headingLevel, pathTemplate, titles }) {
         )}
         <hr />
         <Jump
-          to="https://github.com/dalexhd/steamspeak/issues/new?labels=enhancement&title=feat(new%20plugin)%3A%20%5BInsert%20your%20title%20here%5D&template=feature.md"
+          to="https://github.com/dalexhd/SteamSpeak/issues/new?labels=enhancement&title=feat(new%20plugin)%3A%20%5BInsert%20your%20title%20here%5D&template=feature.md"
           target="_blank"
           rel="noopener noreferrer"
           rightIcon="plus-circle"

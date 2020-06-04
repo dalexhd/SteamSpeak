@@ -180,117 +180,29 @@ SteamSpeak uses **MongoDB** as database solution. Follow  <a href="https://www.d
 
 ```typescript title=&sim;/SteamSpeak/packages/server/src/config/database.ts
 export default {
-	host: 'localhost',
-	port: 27017,
-	srv: false,
-	user: '',
-	password: '',
-	database: 'steam_speak',
+	uri: 'mongodb://localhost:27017/steam_speak',
 	opts: { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }
 };
 ```
 
 <Fields filters={true}>
 <Field
-  defaultValue={"localhost"}
+  defaultValue={"mongodb://localhost:27017/steam_speak"}
   enumValues={null}
-  examples={["localhost", "127.0.0.1", "172.26.0.1", "192.168.1.22", "217.127.3.11"]}
+  examples={["mongodb://localhost:27017/SteamSpeak", "mongodb://localhost", "mongodb://sysop:moon@localhost", "mongodb://sysop:moon@localhost/records", "mongodb://%2Ftmp%2Fmongodb-27017.sock", "mongodb://db1.example.net,db2.example.com/?replicaSet=test", "mongodb://localhost,localhost:27018,localhost:27019/?replicaSet=test", "mongodb://example1.com,example2.com,example3.com/?replicaSet=test&readPreference=secondary", "mongodb://example1.com,example2.com,example3.com/?replicaSet=test&w=majority&wtimeoutMS=2000", "mongodb://router1.example.com:27017,router2.example2.com:27017,router3.example3.com:27017/"]}
   groups={[]}
-  name={"host"}
+  name={"uri"}
   path={null}
   relevantWhen={null}
   required={true}
   type={"string"}
+  link={["MongoDB documentation", "https://docs.mongodb.com/manual/reference/connection-string/"]}
   unit={null}
   warnings={[]}
   >
 
-#### host
-The host to connect to.
-</Field>
-<Field
-  defaultValue={27017}
-  enumValues={null}
-  examples={[27017, 4452]}
-  groups={[]}
-  name={"port"}
-  path={null}
-  relevantWhen={null}
-  required={true}
-  type={"number"}
-  unit={null}
-  warnings={[]}
->
-
-#### port
-The port of the MongoDB instance.
-</Field>
-<Field
-  defaultValue={false}
-  enumValues={null}
-  examples={[false, true]}
-  groups={[]}
-  name={"srv"}
-  path={null}
-  relevantWhen={null}
-  required={true}
-  type={"boolean"}
-  link={["Mongoosejs documentation", "https://docs.mongodb.com/manual/reference/connection-string/#dns-seedlist-connection-format"]}
-  unit={null}
-  warnings={[]}
-  >
-
-#### srv
-Use tsl (or the equivalent ssl) connection.
-</Field>
-<Field
-  enumValues={null}
-  examples={["admin", "root"]}
-  groups={[]}
-  name={"user"}
-  path={null}
-  relevantWhen={null}
-  required={false}
-  type={"string"}
-  unit={null}
-  warnings={[]}
->
-
-#### user
-Username for authentication.
-</Field>
-<Field
-  enumValues={null}
-  examples={["1234", "admin", "abc123"]}
-  groups={[]}
-  name={"password"}
-  path={null}
-  relevantWhen={null}
-  required={false}
-  type={"string"}
-  unit={null}
-  warnings={[]}
->
-
-#### password
-Password for authentication.
-</Field>
-<Field
-  defaultValue={"steam_speak"}
-  enumValues={null}
-  examples={["steam_speak", "steamspeak"]}
-  groups={[]}
-  name={"database"}
-  path={null}
-  relevantWhen={null}
-  required={true}
-  type={"string"}
-  unit={null}
-  warnings={[]}
->
-
-#### database
-The name of the database we want to use.
+#### uri
+The URI connection string
 </Field>
 <Field
   defaultValue={{ useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }}
@@ -700,7 +612,7 @@ export default {
 			expiresIn: '2h'
 		}
 	},
-	admins: [''] //Array of admin uids that should be ablo to login into the web admin panel.
+	admins: [''] //Array of admin TeamSpeak unique identifiers that have access to the web admin panel.
 };
 ```
 <Fields>
@@ -788,11 +700,11 @@ JWT options.
 >
 
 #### admins
-Admin uids that should be able to login into the web admin panel.
+Admin TeamSpeak unique identifiers that have access to the web admin panel.
 </Field>
 </Fields>
 </TabItem>
 </Tabs>
 </Steps>
 
-[docs.getting-started.2fa]: /SteamSpeak/guides/getting-started/enable-steam-two-factor-authentication/
+[docs.getting-started.2fa]: /guides/getting-started/enable-steam-two-factor-authentication/

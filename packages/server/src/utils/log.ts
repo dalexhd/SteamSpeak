@@ -45,8 +45,7 @@ const Log = {
 					break;
 			}
 			let instance = '';
-			if (process.env.INSTANCE)
-				instance = chalk.bgGreen.black(`[${startCase(process.env.INSTANCE)}]`);
+			if (process.env.INSTANCE) instance = chalk.black(`[${startCase(process.env.INSTANCE)}]`);
 			prefix = chalk.cyan(
 				`[${this.time()}]${chalk[color].bold(
 					` ${instance}[${type.charAt(0).toUpperCase()}${type.slice(1)}]`
@@ -57,7 +56,7 @@ const Log = {
 		}
 		let message = log;
 		if (color) {
-			message = chalk[color](message);
+			message = chalk.hex(color)(message);
 		}
 		console.log(`${prefix} ${message}`);
 	},
@@ -68,7 +67,7 @@ const Log = {
 	 * @param {string} type Optional type
 	 */
 	info(log: string, type?: string): void {
-		this.print(log, 'gray', type);
+		this.print(log, '#0099CC', type);
 	},
 
 	/**
@@ -86,7 +85,7 @@ const Log = {
 	 * @param {string} type Optional type
 	 */
 	debug(log: string, type?: string): void {
-		this.print(log, 'cyan', type);
+		this.print(log, '#00FFFF', type);
 	},
 
 	/**
@@ -95,7 +94,7 @@ const Log = {
 	 * @param {string} type Optional type
 	 */
 	warn(log: string, type?: string): void {
-		this.print(log, 'yellow', type);
+		this.print(`⚠️ ${log}`, '#FF8800', type);
 	},
 
 	/**
@@ -104,7 +103,7 @@ const Log = {
 	 * @param {string} type Optional type
 	 */
 	error(log: string, type?: string): void {
-		this.print(log, 'red', type);
+		this.print(`❌ ${log}`, '#CC0000', type);
 	},
 
 	/**
@@ -113,7 +112,7 @@ const Log = {
 	 * @param {string} type Optional type
 	 */
 	success(log: string, type?: string): void {
-		this.print(log, 'green', type);
+		this.print(log, '#28A745', type);
 	},
 
 	/**
@@ -122,7 +121,7 @@ const Log = {
 	 * @param {string} type Optional type
 	 */
 	event(log: string, type?: string): void {
-		this.print(log, 'magenta', type);
+		this.print(log, '#FF00FF', type);
 	}
 };
 

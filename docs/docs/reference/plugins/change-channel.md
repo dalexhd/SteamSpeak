@@ -21,23 +21,23 @@ export const info: UncommonPluginConfig = {
 	name: 'Change channel',
 	description: 'This plugin allows you to change multiple channels name at different interval.',
 	config: {
-		enabled: true,
+		enabled: false,
 		data: [
 			{
-				enabled: true,
+				enabled: false,
 				channelId: 118,
 				changes: [
 					{
-						channel_name: '[cspacer]Welcome',
-						channel_description: 'Welcome'
+						channelName: '[cspacer]Welcome',
+						channelDescription: 'Welcome'
 					},
 					{
-						channel_name: '[cspacer]to',
-						channel_description: 'to'
+						channelName: '[cspacer]to',
+						channelDescription: 'to'
 					},
 					{
-						channel_name: '[cspacer]SteamSpeak',
-						channel_description: 'SteamSpeak'
+						channelName: '[cspacer]SteamSpeak',
+						channelDescription: 'SteamSpeak'
 					}
 				],
 				interval: {
@@ -45,10 +45,11 @@ export const info: UncommonPluginConfig = {
 					days: 0,
 					hours: 0,
 					minutes: 0,
-					seconds: 3
+					seconds: 5
 				}
 			}
 		]
 	}
 };
+
 ```

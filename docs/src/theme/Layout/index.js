@@ -13,7 +13,7 @@ import { useLocation } from 'react-router-dom';
 
 import './styles.css';
 
-const STEAMSPEAK_HOST = 'https://dalexhd.github.io/SteamSpeak/';
+const STEAMSPEAK_HOST = 'https://steamspeak.netlify.app/';
 
 function Layout(props) {
   const { siteConfig = {} } = useDocusaurusContext();
