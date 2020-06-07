@@ -1,0 +1,28 @@
+[releases."0.8.0"]
+date = 2020-06-04
+commits = [
+{sha = "f47296187ff3e483b52f99ff83c309ebd1ffaf07", message = "chore: Remove unused docker file.", author = "DalexHD", date = 2020-05-26T11:24:30Z, files_count = 1, deletions_count = 3},
+{sha = "104b80fbbb550100ac624b2e83b2ed0ac9c1aef5", message = "docs: Add stars to metadata.", author = "DalexHD", date = 2020-05-26T11:27:10Z, files_count = 2, insertions_count = 7, deletions_count = 53},
+{sha = "71fb782d348f51dfd2764d004ed4ad794227303c", message = "chore: Add new game scope to semantic.", author = "DalexHD", date = 2020-05-26T11:46:33Z, files_count = 1, insertions_count = 1},
+{sha = "47839197500b51c2577e76fd252c6191097dc2aa", message = "feat(breaking): Add ts-node compilation environment.", author = "DalexHD", date = 2020-05-26T11:19:25Z, files_count = 9, insertions_count = 177, deletions_count = 238},
+{sha = "7124a5644dd3b272821435e47e169c8808e7eb41", message = "feat(new game): Add CS:GO game.", author = "DalexHD", date = 2020-05-26T12:37:47Z, files_count = 1, insertions_count = 101},
+{sha = "ea231fde0f1a6b5e0b63b396ea4f734019a8a076", message = "feat: Add multiple game environment.", author = "DalexHD", date = 2020-05-26T12:39:30Z, files_count = 13, insertions_count = 292, deletions_count = 113},
+{sha = "8d41f88dc9cdecbd4c7ec013e5d57742171c63cd", message = "chore(deps): bump activesupport from 6.0.2.1 to 6.0.3.1 in /scripts", author = "dependabot[bot]", date = 2020-05-26T19:58:45Z, files_count = 1, insertions_count = 7, deletions_count = 7},
+{sha = "cfa05c1cc4d9f92095571aeccba15ea893a70bde", message = "feat(breaking): Add uri to database config.", author = "DalexHD", date = 2020-05-28T09:54:14Z, files_count = 3, insertions_count = 11, deletions_count = 117},
+{sha = "21eca191fee3ce70cc28e35750245110a9594357", message = "fix: Admin dashboard login.", author = "DalexHD", date = 2020-05-28T10:03:14Z, files_count = 1, insertions_count = 1, deletions_count = 1},
+{sha = "8aade3a1274ab80e5d9757236aaec714df8d9e5c", message = "fix: Steam widget url not working.", author = "DalexHD", date = 2020-05-28T10:33:02Z, files_count = 2, insertions_count = 2, deletions_count = 1},
+{sha = "940d69fa2d1f72ad36d5fda9621525ae74ca522f", message = "chore: Refactor code.", author = "DalexHD", date = 2020-05-28T10:46:14Z, files_count = 11, insertions_count = 48, deletions_count = 66},
+{sha = "db917d61e82bcf80031d67b6f1cb920cdddea8db", message = "chore(ci): Add ruby label.", author = "DalexHD", date = 2020-05-28T10:49:04Z, files_count = 2, insertions_count = 4},
+{sha = "4b2b044a290b0f4b2ca2bdef3dc82ffccf9aa289", message = "chore: Redirect to login on verification.", author = "DalexHD", date = 2020-05-28T11:44:23Z, files_count = 1, insertions_count = 2, deletions_count = 2},
+{sha = "8f31262af5a17a2d5da74cee582d346a000fbb6f", message = "feat(breaking): Disable all plugins by default.", author = "DalexHD", date = 2020-05-28T19:47:32Z, files_count = 14, insertions_count = 16, deletions_count = 12},
+{sha = "aa6bb7dd35e8db23175dcb9bb8c49ad3ae99c1c8", message = "docs: Fix start server command.", author = "DalexHD", date = 2020-05-28T19:52:41Z, files_count = 1, insertions_count = 1, deletions_count = 1},
+{sha = "33c9ce41b200296b27e8a5b6f6f1e9f800bc09f7", message = "chore(deps-dev): bump tailwindcss from 1.4.5 to 1.4.6", author = "dependabot-preview[bot]", date = 2020-06-01T06:49:43Z, files_count = 1, insertions_count = 3, deletions_count = 3},
+{sha = "8f7d7379d60e8bf03533b30af5184c245bc00f61", message = "chore(deps-dev): bump lerna from 3.20.2 to 3.22.0", author = "dependabot-preview[bot]", date = 2020-06-01T08:02:57Z, files_count = 1, insertions_count = 120, deletions_count = 120},
+{sha = "b79b749b19ee0dc2b45f7bb81ffcc5104b38d7da", message = "chore(deps): bump ioredis from 4.16.3 to 4.17.3", author = "dependabot-preview[bot]", date = 2020-06-01T08:03:36Z, files_count = 1, insertions_count = 3, deletions_count = 3},
+{sha = "d28d156b4a45becef5a84d1874c4f59f68d90b9b", message = "chore(deps): bump echarts from 4.7.0 to 4.8.0", author = "dependabot-preview[bot]", date = 2020-06-01T08:04:01Z, files_count = 1, insertions_count = 8, deletions_count = 8},
+{sha = "30f5c55918376d72a2469e7cc877d64fd223f446", message = "chore(deps): bump ts3-nodejs-library from 2.4.4 to 3.0.4", author = "DalexHD", date = 2020-06-01T11:07:40Z, files_count = 32, insertions_count = 218, deletions_count = 217},
+{sha = "803613465a602733710c841799209ee107617b2b", message = "chore(deps-dev): bump @typescript-eslint/parser from 2.31.0 to 3.0.2", author = "dependabot-preview[bot]", date = 2020-06-01T09:44:21Z, files_count = 2, insertions_count = 35, deletions_count = 7},
+{sha = "87be225fc3540971aba02d5be27138e429da5702", message = "docs: Migrate to netlify.", author = "DalexHD", date = 2020-06-02T10:40:30Z, files_count = 17, insertions_count = 113, deletions_count = 1609},
+{sha = "d4e46ab124566c2083c31364876c9e3b30d69f7a", message = "chore: Add sponsorship button.", author = "DalexHD", date = 2020-06-04T15:55:24Z, files_count = 1, insertions_count = 1},
+{sha = "767eb0696a7ca67571928b766e5ddecb63589011", message = "chore(img compression): Optimize images", author = "ImgBotApp", date = 2020-06-04T14:03:28Z, files_count = 6, insertions_count = 6, deletions_count = 938}
+]

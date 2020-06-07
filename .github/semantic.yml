@@ -16,3 +16,4 @@ scopes:
   - img compression
   - breaking
   - ci
+  - bug

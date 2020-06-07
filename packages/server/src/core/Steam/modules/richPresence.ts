@@ -13,6 +13,7 @@ import log from '@utils/log';
 let groupNumber: number;
 
 const syncNumbers = async (): Promise<void> => {
+	//TODO: Use algorithm to find server groups by all possible steam values
 	const connectedClients = await Ts3.clientList({
 		clientType: 0
 	});
@@ -44,6 +45,7 @@ const syncNumbers = async (): Promise<void> => {
 			namemode: 2
 		}).then((serverGroups) => {
 			verifiedOnlineUsers.forEach((user, index) => {
+				const client = connectedClients.find((client) => client.databaseId === user.dbid);
 				const number = index + 1;
 				const steamGroups = serverGroups.filter((e) => e.name.match(/^#([0-9]+)\s+(.*?)$/));
 				steamGroups.forEach(async (serverGroup) => {
@@ -54,7 +56,10 @@ const syncNumbers = async (): Promise<void> => {
 						);
 						user.groupNumber = number;
 						user.save();
-					} else if (serverGroup.sgid !== user.groupId) {
+					} else if (
+						client?.servergroups.includes(serverGroup.sgid) &&
+						serverGroup.sgid !== user.groupId
+					) {
 						//In case the user has multiple SteamSpeak groups, delete them.
 						//This is determined if the group starts with "#" REGEX(/^#([0-9]+)\s+(.*?)$/)) and if the group name mode is 2 (right tag)
 						serverGroup.del(true);

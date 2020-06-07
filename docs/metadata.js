@@ -96,7 +96,7 @@ module.exports = {
     }
   ],
   latest_release: {
-    version: '0.7.0'
+    version: '0.8.0'
   },
   releases: {
     '0.0.1': {
@@ -2600,6 +2600,452 @@ module.exports = {
       type: 'initial dev',
       type_url: 'https://semver.org/#spec-item-4',
       version: '0.7.0',
+      whats_next: []
+    },
+    '0.8.0': {
+      codename: '',
+      commits: [
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-05-26 11:24:30 +0000',
+          deletions_count: 3,
+          description: 'Remove unused docker file.',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 0,
+          message: 'chore: Remove unused docker file.',
+          pr_number: null,
+          scopes: [],
+          sha: 'f47296187ff3e483b52f99ff83c309ebd1ffaf07',
+          type: 'chore'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-05-26 11:27:10 +0000',
+          deletions_count: 53,
+          description: 'Add stars to metadata.',
+          files_count: 2,
+          highlight_permalink: null,
+          insertions_count: 7,
+          message: 'docs: Add stars to metadata.',
+          pr_number: null,
+          scopes: [],
+          sha: '104b80fbbb550100ac624b2e83b2ed0ac9c1aef5',
+          type: 'docs'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-05-26 11:46:33 +0000',
+          deletions_count: 0,
+          description: 'Add new game scope to semantic.',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 1,
+          message: 'chore: Add new game scope to semantic.',
+          pr_number: null,
+          scopes: [],
+          sha: '71fb782d348f51dfd2764d004ed4ad794227303c',
+          type: 'chore'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-05-26 11:19:25 +0000',
+          deletions_count: 238,
+          description: 'Add ts-node compilation environment.',
+          files_count: 9,
+          highlight_permalink: null,
+          insertions_count: 177,
+          message: 'feat(breaking): Add ts-node compilation environment.',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'breaking'
+            }
+          ],
+          sha: '47839197500b51c2577e76fd252c6191097dc2aa',
+          type: 'feat'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-05-26 12:37:47 +0000',
+          deletions_count: 0,
+          description: 'Add CS:GO game.',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 101,
+          message: 'feat(new game): Add CS:GO game.',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'new game'
+            }
+          ],
+          sha: '7124a5644dd3b272821435e47e169c8808e7eb41',
+          type: 'feat'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-05-26 12:39:30 +0000',
+          deletions_count: 113,
+          description: 'Add multiple game environment.',
+          files_count: 13,
+          highlight_permalink: null,
+          insertions_count: 292,
+          message: 'feat: Add multiple game environment.',
+          pr_number: null,
+          scopes: [],
+          sha: 'ea231fde0f1a6b5e0b63b396ea4f734019a8a076',
+          type: 'feat'
+        },
+        {
+          author: 'dependabot[bot]',
+          breaking_change: false,
+          date: '2020-05-26 19:58:45 +0000',
+          deletions_count: 7,
+          description: 'bump activesupport from 6.0.2.1 to 6.0.3.1 in /scripts',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 7,
+          message:
+            'chore(deps): bump activesupport from 6.0.2.1 to 6.0.3.1 in /scripts',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: '8d41f88dc9cdecbd4c7ec013e5d57742171c63cd',
+          type: 'chore'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-05-28 09:54:14 +0000',
+          deletions_count: 117,
+          description: 'Add uri to database config.',
+          files_count: 3,
+          highlight_permalink: null,
+          insertions_count: 11,
+          message: 'feat(breaking): Add uri to database config.',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'breaking'
+            }
+          ],
+          sha: 'cfa05c1cc4d9f92095571aeccba15ea893a70bde',
+          type: 'feat'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-05-28 10:03:14 +0000',
+          deletions_count: 1,
+          description: 'Admin dashboard login.',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 1,
+          message: 'fix: Admin dashboard login.',
+          pr_number: null,
+          scopes: [],
+          sha: '21eca191fee3ce70cc28e35750245110a9594357',
+          type: 'fix'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-05-28 10:33:02 +0000',
+          deletions_count: 1,
+          description: 'Steam widget url not working.',
+          files_count: 2,
+          highlight_permalink: null,
+          insertions_count: 2,
+          message: 'fix: Steam widget url not working.',
+          pr_number: null,
+          scopes: [],
+          sha: '8aade3a1274ab80e5d9757236aaec714df8d9e5c',
+          type: 'fix'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-05-28 10:46:14 +0000',
+          deletions_count: 66,
+          description: 'Refactor code.',
+          files_count: 11,
+          highlight_permalink: null,
+          insertions_count: 48,
+          message: 'chore: Refactor code.',
+          pr_number: null,
+          scopes: [],
+          sha: '940d69fa2d1f72ad36d5fda9621525ae74ca522f',
+          type: 'chore'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-05-28 10:49:04 +0000',
+          deletions_count: 0,
+          description: 'Add ruby label.',
+          files_count: 2,
+          highlight_permalink: null,
+          insertions_count: 4,
+          message: 'chore(ci): Add ruby label.',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'ci'
+            }
+          ],
+          sha: 'db917d61e82bcf80031d67b6f1cb920cdddea8db',
+          type: 'chore'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-05-28 11:44:23 +0000',
+          deletions_count: 2,
+          description: 'Redirect to login on verification.',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 2,
+          message: 'chore: Redirect to login on verification.',
+          pr_number: null,
+          scopes: [],
+          sha: '4b2b044a290b0f4b2ca2bdef3dc82ffccf9aa289',
+          type: 'chore'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-05-28 19:47:32 +0000',
+          deletions_count: 12,
+          description: 'Disable all plugins by default.',
+          files_count: 14,
+          highlight_permalink: null,
+          insertions_count: 16,
+          message: 'feat(breaking): Disable all plugins by default.',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'breaking'
+            }
+          ],
+          sha: '8f31262af5a17a2d5da74cee582d346a000fbb6f',
+          type: 'feat'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-05-28 19:52:41 +0000',
+          deletions_count: 1,
+          description: 'Fix start server command.',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 1,
+          message: 'docs: Fix start server command.',
+          pr_number: null,
+          scopes: [],
+          sha: 'aa6bb7dd35e8db23175dcb9bb8c49ad3ae99c1c8',
+          type: 'docs'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-06-01 06:49:43 +0000',
+          deletions_count: 3,
+          description: 'bump tailwindcss from 1.4.5 to 1.4.6',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 3,
+          message: 'chore(deps-dev): bump tailwindcss from 1.4.5 to 1.4.6',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps-dev'
+            }
+          ],
+          sha: '33c9ce41b200296b27e8a5b6f6f1e9f800bc09f7',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-06-01 08:02:57 +0000',
+          deletions_count: 120,
+          description: 'bump lerna from 3.20.2 to 3.22.0',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 120,
+          message: 'chore(deps-dev): bump lerna from 3.20.2 to 3.22.0',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps-dev'
+            }
+          ],
+          sha: '8f7d7379d60e8bf03533b30af5184c245bc00f61',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-06-01 08:03:36 +0000',
+          deletions_count: 3,
+          description: 'bump ioredis from 4.16.3 to 4.17.3',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 3,
+          message: 'chore(deps): bump ioredis from 4.16.3 to 4.17.3',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: 'b79b749b19ee0dc2b45f7bb81ffcc5104b38d7da',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-06-01 08:04:01 +0000',
+          deletions_count: 8,
+          description: 'bump echarts from 4.7.0 to 4.8.0',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 8,
+          message: 'chore(deps): bump echarts from 4.7.0 to 4.8.0',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: 'd28d156b4a45becef5a84d1874c4f59f68d90b9b',
+          type: 'chore'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-06-01 11:07:40 +0000',
+          deletions_count: 217,
+          description: 'bump ts3-nodejs-library from 2.4.4 to 3.0.4',
+          files_count: 32,
+          highlight_permalink: null,
+          insertions_count: 218,
+          message: 'chore(deps): bump ts3-nodejs-library from 2.4.4 to 3.0.4',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: '30f5c55918376d72a2469e7cc877d64fd223f446',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-06-01 09:44:21 +0000',
+          deletions_count: 7,
+          description: 'bump @typescript-eslint/parser from 2.31.0 to 3.0.2',
+          files_count: 2,
+          highlight_permalink: null,
+          insertions_count: 35,
+          message:
+            'chore(deps-dev): bump @typescript-eslint/parser from 2.31.0 to 3.0.2',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps-dev'
+            }
+          ],
+          sha: '803613465a602733710c841799209ee107617b2b',
+          type: 'chore'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-06-02 10:40:30 +0000',
+          deletions_count: 1609,
+          description: 'Migrate to netlify.',
+          files_count: 17,
+          highlight_permalink: null,
+          insertions_count: 113,
+          message: 'docs: Migrate to netlify.',
+          pr_number: null,
+          scopes: [],
+          sha: '87be225fc3540971aba02d5be27138e429da5702',
+          type: 'docs'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-06-04 15:55:24 +0000',
+          deletions_count: 0,
+          description: 'Add sponsorship button.',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 1,
+          message: 'chore: Add sponsorship button.',
+          pr_number: null,
+          scopes: [],
+          sha: 'd4e46ab124566c2083c31364876c9e3b30d69f7a',
+          type: 'chore'
+        },
+        {
+          author: 'ImgBotApp',
+          breaking_change: false,
+          date: '2020-06-04 14:03:28 +0000',
+          deletions_count: 938,
+          description: 'Optimize images',
+          files_count: 6,
+          highlight_permalink: null,
+          insertions_count: 6,
+          message: 'chore(img compression): Optimize images',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'img compression'
+            }
+          ],
+          sha: '767eb0696a7ca67571928b766e5ddecb63589011',
+          type: 'chore'
+        }
+      ],
+      compare_url:
+        'https://github.com/dalexhd/SteamSpeak/compare/v0.7.0...v0.8.0',
+      date: '2020-06-04',
+      deletions_count: 1856,
+      description: '',
+      highlights: [],
+      insertions_count: 1056,
+      last_version: '0.7.0',
+      permalink: '/releases/0.8.0/',
+      title: 'SteamSpeak v0.8.0',
+      type: 'initial dev',
+      type_url: 'https://semver.org/#spec-item-4',
+      version: '0.8.0',
       whats_next: []
     }
   },
