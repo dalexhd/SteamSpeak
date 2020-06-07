@@ -96,7 +96,7 @@ module.exports = {
     }
   ],
   latest_release: {
-    version: '0.8.0'
+    version: '0.8.1'
   },
   releases: {
     '0.0.1': {
@@ -3046,6 +3046,45 @@ module.exports = {
       type: 'initial dev',
       type_url: 'https://semver.org/#spec-item-4',
       version: '0.8.0',
+      whats_next: []
+    },
+    '0.8.1': {
+      codename: '',
+      commits: [
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-06-07 17:14:39 +0000',
+          deletions_count: 2,
+          description: 'delete regex steamspeak groups.',
+          files_count: 3,
+          highlight_permalink: null,
+          insertions_count: 7,
+          message: 'fix(bug): delete regex steamspeak groups.',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'bug'
+            }
+          ],
+          sha: '6f6f4af07ac401c0a2c681c6aa1aaf014f0c016a',
+          type: 'fix'
+        }
+      ],
+      compare_url:
+        'https://github.com/dalexhd/SteamSpeak/compare/v0.8.0...v0.8.1',
+      date: '2020-06-07',
+      deletions_count: 2,
+      description: '',
+      highlights: [],
+      insertions_count: 7,
+      last_version: '0.8.0',
+      permalink: '/releases/0.8.1/',
+      title: 'SteamSpeak v0.8.1',
+      type: 'initial dev',
+      type_url: 'https://semver.org/#spec-item-4',
+      version: '0.8.1',
       whats_next: []
     }
   },
