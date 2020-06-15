@@ -1,0 +1,5 @@
+[releases."0.8.1"]
+date = 2020-06-07
+commits = [
+{sha = "6f6f4af07ac401c0a2c681c6aa1aaf014f0c016a", message = "fix(bug): delete regex steamspeak groups.", author = "DalexHD", date = 2020-06-07T17:14:39Z, files_count = 3, insertions_count = 7, deletions_count = 2}
+]

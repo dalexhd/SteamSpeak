@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.8.1](https://github.com/dalexhd/steamspeak/tree/v0.8.1) (2020-06-07)
+
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.8.0...v0.8.1)
+
+:bug: Bug Fixes:
+
+- fix\(bug\): delete regex steamspeak groups. [\#137](https://github.com/dalexhd/SteamSpeak/pull/137) ([dalexhd](https://github.com/dalexhd))
+
 ## [v0.8.0](https://github.com/dalexhd/steamspeak/tree/v0.8.0) (2020-06-04)
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.7.0...v0.8.0)
@@ -126,7 +134,6 @@
 :memo: Documentation:
 
 - docs: Add hotjar analytics. [\#99](https://github.com/dalexhd/SteamSpeak/pull/99) ([dalexhd](https://github.com/dalexhd))
-- docs: Add new documentation theme [\#49](https://github.com/dalexhd/SteamSpeak/pull/49) ([dalexhd](https://github.com/dalexhd))
 
 :wrench: Dependencies:
 
@@ -182,6 +189,10 @@
 :rocket: New Features:
 
 - feat: Add multi instance teamspeak bots. [\#51](https://github.com/dalexhd/SteamSpeak/pull/51) ([dalexhd](https://github.com/dalexhd))
+
+:memo: Documentation:
+
+- docs: Add new documentation theme [\#49](https://github.com/dalexhd/SteamSpeak/pull/49) ([dalexhd](https://github.com/dalexhd))
 
 ## [v0.4.0](https://github.com/dalexhd/steamspeak/tree/v0.4.0) (2020-04-20)
 
