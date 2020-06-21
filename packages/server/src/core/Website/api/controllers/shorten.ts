@@ -5,8 +5,9 @@ import { Request, Response } from 'express';
 /**
  * Redirect to the shortened url.
  *
- * @param {object} req The express request instance
- * @param {object} res The express response instance
+ * @param {Request} req The express request instance
+ * @param {Response} res The express response instance
+ * @returns {Promise<any>}
  */
 export const shorten = async function (req: Request, res: Response): Promise<any> {
 	const url = (await Cache.get(`shorten:${req.params.hash}`)) as string;

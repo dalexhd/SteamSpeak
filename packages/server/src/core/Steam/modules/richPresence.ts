@@ -9,6 +9,7 @@ import Cache from '@core/Cache';
 import VerifiedClient from '@core/Database/models/verifiedClient';
 import lang from '@locales/index';
 import log from '@utils/log';
+import crypto from 'crypto';
 
 let groupNumber: number;
 
@@ -155,29 +156,32 @@ const checkServerGroup = async (
  */
 const checkDescriptionBanner = async (
 	client: TeamSpeakClient | undefined,
-	presenceString: string,
-	data: any
+	presenceString: string | undefined,
+	data: any,
+	steamId: string
 ): Promise<void> => {
+	const clientInfo = await client?.getInfo();
 	if (data.game_played_app_id) {
-		steamUser.getProductInfo([data.game_played_app_id], [], function (err, apps) {
+		steamUser.getProductInfo([data.game_played_app_id], [], function async(err, apps) {
 			const app = apps[data.game_played_app_id];
 			let url = `${webConfig.hostname}/api/widget/client-description?icon=${app.appinfo.common.clienticon}&appid=${data.game_played_app_id}&name=${app.appinfo.common.name}&data=${presenceString}`;
-			const shorten = shortid.generate();
+			const shorten = crypto.createHash('sha1').update(url).digest('hex').substring(0, 8);
 			Cache.set(`shorten:${shorten}`, url, 'ex', 3600);
 			let clientDescription = `[img]${webConfig.hostname}/api/s/${shorten}[/img]`;
 			if (data.game_lobby_id !== '0') {
-				url = `steam://joinlobby/${data.game_played_app_id}/${data.game_lobby_id}/${data.steamId}`;
-				const shorten_1 = shortid.generate();
+				url = `steam://joinlobby/${data.game_played_app_id}/${data.game_lobby_id}/${steamId}`;
+				const shorten_1 = crypto.createHash('sha1').update(url).digest('hex').substring(0, 8);
 				Cache.set(`shorten:${shorten_1}`, url, 'ex', 3600);
 				clientDescription = `[url=${webConfig.hostname}/api/s/${shorten_1}][img]${webConfig.hostname}/api/s/${shorten}[/img][/url]`;
 			}
-			client
-				?.edit({
-					clientDescription
-				})
-				.then(() => {
-					log.info(`Changed ${client.nickname} description to "${clientDescription}"`, 'steam');
-				});
+			clientInfo?.clientDescription !== clientDescription &&
+				client
+					?.edit({
+						clientDescription
+					})
+					.then(() => {
+						log.info(`Changed ${client.nickname} description to "${clientDescription}"`, 'steam');
+					});
 		});
 	} else {
 		if ((await client?.getInfo())?.clientDescription) {
@@ -220,10 +224,10 @@ steamUser.on('user', async (sid, data) => {
 	if (!user) return;
 	const client = await Ts3.getClientByUid(user.uid);
 	if (!client) return;
-	const presenceString = await getPresenceString(data);
+	const presenceString = await steamUser.getPresenceString(data, user.groupNumber);
 	Promise.all([
 		checkServerGroup(user, presenceString, data, client),
-		checkDescriptionBanner(client, presenceString, Object.assign({ steamId }, data)),
+		checkDescriptionBanner(client, presenceString, data, steamId),
 		checkPlayingGame(client, data, user)
 	]);
 });
