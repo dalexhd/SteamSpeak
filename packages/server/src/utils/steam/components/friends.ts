@@ -1,15 +1,30 @@
 import { steamUser } from '@core/Steam';
 import lang from '@locales/index';
 import SteamUser from 'steam-user';
+import SteamID from 'steamid';
+
+/**
+ * Check if the bot is friend of steamId
+ *
+ * @param {(SteamID | string)} steamId- Either a SteamID object of the user to check, or a string which can parse into one.
+ * @returns {boolean} true or false
+ */
+SteamUser.prototype.isFriendOf = function (steamId: SteamID | string): boolean {
+	if (typeof steamId == 'string') {
+		return steamUser.myFriends.hasOwnProperty(steamId); // Looks like it's already a SteamID
+	}
+	return steamUser.myFriends.hasOwnProperty(steamId.getSteamID64());
+};
+
 /**
  * Get user rich presence string
  *
- * @param {any} steamData The user steam data
+ * @param {SteamUser.PersonaData} steamData The user steam data
  * @param {number} groupNumber The number assigned to the user
  * @returns {(Promise<string | undefined>)} The rich presence string or undefined
  */
 SteamUser.prototype.getPresenceString = async function (
-	steamData: any,
+	steamData: SteamUser.PersonaData,
 	groupNumber: number
 ): Promise<string | undefined> {
 	if (steamData.rich_presence.length > 0) {

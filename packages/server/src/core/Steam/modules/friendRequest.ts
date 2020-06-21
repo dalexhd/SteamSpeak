@@ -7,6 +7,7 @@ import Cache from '@core/Cache';
 import Events from '@core/Events';
 import lang from '@locales/index';
 import VerifiedClient from '@core/Database/models/verifiedClient';
+import SteamID from 'steamid';
 
 Events.on('verificationExpired', (data) => {
 	const _data = JSON.parse(data);
@@ -16,7 +17,7 @@ Events.on('verificationExpired', (data) => {
 	);
 });
 
-Events.on('verificationSuccess', (steamId) => {
+Events.on('verificationSuccess', (steamId: string) => {
 	steamUser.chatMessage(steamId, lang.message.success_verification);
 	steamUser.getPersonas([steamId]);
 });
@@ -58,8 +59,7 @@ steamUser.on('friendMessage', async (senderID, message) => {
 const startVerification = async (senderID): Promise<void> => {
 	const steamId = senderID.getSteamID64();
 	const secret = crypto.randomBytes(20).toString('hex');
-	let userData = await steamUser.getPersonas([senderID]);
-	userData = userData.personas[steamId];
+	const userData = (await steamUser.getPersonas([senderID])).personas[steamId];
 	Object.assign(userData, { steamId });
 	Cache.set(`verification:${secret}`, JSON.stringify(userData), 'ex', 600);
 	steamUser.chatMessage(
@@ -71,7 +71,7 @@ const startVerification = async (senderID): Promise<void> => {
 	);
 };
 
-const friendDeleted = async (senderID): Promise<void> => {
+const friendDeleted = async (senderID: SteamID): Promise<void> => {
 	const steamId = senderID.getSteamID64();
 	const User = await VerifiedClient.findOne({ steamId });
 	if (User) {
@@ -82,7 +82,7 @@ const friendDeleted = async (senderID): Promise<void> => {
 	}
 };
 
-const newFriend = async (senderID): Promise<void> => {
+const newFriend = async (senderID: SteamID): Promise<void> => {
 	steamUser.addFriend(senderID).then(() => {
 		startVerification(senderID);
 	});

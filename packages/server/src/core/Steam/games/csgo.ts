@@ -67,7 +67,7 @@ export const load = async function (): Promise<void> {
 };
 
 export const unload = function (): void {
-	steamUser.gamesPlayed();
+	steamUser.gamesPlayed([]);
 };
 
 export const info = {
