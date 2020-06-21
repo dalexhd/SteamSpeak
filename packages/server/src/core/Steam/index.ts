@@ -11,6 +11,8 @@ const steamUser = new SteamUser({
 	language: config.language || 'english'
 });
 
+let loaded = false;
+
 steamUser.setOption('debug', config.debug || false);
 steamUser.setOption('enablePicsCache', true);
 
@@ -22,20 +24,27 @@ steamUser.logOn({
 	...(config.shared_secret !== '' && { twoFactorCode: SteamTotp.getAuthCode(config.shared_secret) })
 });
 
-steamUser.once('loggedOn', function () {
+steamUser.on('loggedOn', function () {
 	log.success('logged in.', 'steam');
 	const { Online } = SteamUser.EPersonaState;
 	steamUser.setPersona(Online, config.bot_name || '[SteamSpeak] - BOT');
 	steamUser.webLogOn();
-	steamUser.once('webSession', function (sessionID, cookies) {
-		log.success('Got web session', 'steam');
-		community.setCookies(cookies);
-	});
-	Promise.all([steamUser.loadGames(), steamUser.watchGames(), steamUser.loadModules()]).then(() => {
-		initUsers();
-	});
+	if (!loaded) {
+		loaded = true;
+		Promise.all([steamUser.loadGames(), steamUser.watchGames(), steamUser.loadModules()]).then(
+			() => {
+				initUsers();
+			}
+		);
+	} else {
+		steamUser.gamesPlayed(Array.from(steamUser.games.keys()).map(Number));
+	}
 });
 
+steamUser.on('webSession', function (sessionID, cookies) {
+	log.success('Got web session', 'steam');
+	community.setCookies(cookies);
+});
 steamUser.on('error', function (err) {
 	log.error(`Logon error: ${err.message}`, 'steam');
 });
