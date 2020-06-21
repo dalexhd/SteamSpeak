@@ -1,14 +1,13 @@
 import { steamUser } from '@core/Steam';
 import SteamUser from 'steam-user';
-import shortid from 'shortid';
 import { Ts3, TeamSpeakClient } from '@core/TeamSpeak';
-import { getPresenceString } from '@utils/steam';
 import { difference } from '@utils/array';
 import webConfig from '@config/website';
 import Cache from '@core/Cache';
 import VerifiedClient from '@core/Database/models/verifiedClient';
 import lang from '@locales/index';
 import log from '@utils/log';
+import SteamID from 'steamid';
 import crypto from 'crypto';
 
 let groupNumber: number;
@@ -77,7 +76,7 @@ const syncNumbers = async (): Promise<void> => {
 
 syncNumbers();
 
-const friendDeleted = async (senderID): Promise<void> => {
+const friendDeleted = async (senderID: SteamID): Promise<void> => {
 	const steamId = senderID.getSteamID64();
 	const user = await VerifiedClient.findOne({ steamId });
 	if (typeof user?.groupId !== 'undefined') {
@@ -89,8 +88,8 @@ const friendDeleted = async (senderID): Promise<void> => {
 
 const checkServerGroup = async (
 	user: VerifiedClientDocument,
-	presenceString: string,
-	data: any,
+	presenceString: string | undefined,
+	data: SteamUser.PersonaData,
 	client: TeamSpeakClient | undefined
 ): Promise<void> => {
 	if (typeof user.groupId === 'undefined') {
@@ -157,7 +156,7 @@ const checkServerGroup = async (
 const checkDescriptionBanner = async (
 	client: TeamSpeakClient | undefined,
 	presenceString: string | undefined,
-	data: any,
+	data: SteamUser.PersonaData,
 	steamId: string
 ): Promise<void> => {
 	const clientInfo = await client?.getInfo();
@@ -204,7 +203,7 @@ const checkDescriptionBanner = async (
  */
 const checkPlayingGame = async (
 	client: TeamSpeakClient | undefined,
-	data: any,
+	data: SteamUser.PersonaData,
 	user: VerifiedClientDocument
 ): Promise<void> => {
 	const steamCache = JSON.parse((await Cache.get(`${client?.databaseId}:steamData`)) as string);

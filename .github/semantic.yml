@@ -17,3 +17,4 @@ scopes:
   - breaking
   - ci
   - bug
+  - typescript
