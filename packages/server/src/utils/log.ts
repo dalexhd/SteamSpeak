@@ -13,9 +13,10 @@ const Log = {
 
 	/**
 	 * Print into the console pretty logs.
-	 * @param log The string you want to log
-	 * @param color Output color
-	 * @param type Optional type
+	 *
+	 * @param {string} log The string you want to log
+	 * @param {string} color Output color
+	 * @param {string} [type] Optional type
 	 */
 	print(log: string, color: string, type?: string): void {
 		let prefix;
@@ -63,8 +64,9 @@ const Log = {
 
 	/**
 	 * Print a info log message with a timestamp.
-	 * @param {string} log
-	 * @param {string} type Optional type
+	 *
+	 * @param {string} log The string you want to log
+	 * @param {string} [type] Optional type
 	 */
 	info(log: string, type?: string): void {
 		this.print(log, '#0099CC', type);
@@ -72,26 +74,29 @@ const Log = {
 
 	/**
 	 * Print a verbose log message with a timestamp.
-	 * @param {string} log
-	 * @param {string} type Optional type
+	 *
+	 * @param {string} log The string you want to log
+	 * @param {string} [type] Optional type
 	 */
 	verbose(log: string, type?: string): void {
 		this.info(log, type);
 	},
 
 	/**
-	 * Print a debuglog message with a timestamp.
-	 * @param {string} log
-	 * @param {string} type Optional type
+	 * Print a debug log message with a timestamp.
+	 *
+	 * @param {string} log The string you want to log
+	 * @param {string} [type] Optional type
 	 */
 	debug(log: string, type?: string): void {
 		this.print(log, '#00FFFF', type);
 	},
 
 	/**
-	 * Print a log warning message with a timestamp.
-	 * @param {string} log
-	 * @param {string} type Optional type
+	 * Print a warning log message with a timestamp.
+	 *
+	 * @param {string} log The string you want to log
+	 * @param {string} [type] Optional type
 	 */
 	warn(log: string, type?: string): void {
 		this.print(`⚠️ ${log}`, '#FF8800', type);
@@ -99,8 +104,9 @@ const Log = {
 
 	/**
 	 * Print an error log message with a timestamp.
-	 * @param {string} log
-	 * @param {string} type Optional type
+	 *
+	 * @param {string} log The string you want to log
+	 * @param {string} [type] Optional type
 	 */
 	error(log: string, type?: string): void {
 		this.print(`❌ ${log}`, '#CC0000', type);
@@ -108,17 +114,19 @@ const Log = {
 
 	/**
 	 * Print a success log message with a timestamp.
-	 * @param {string} log
-	 * @param {string} type Optional type
+	 *
+	 * @param {string} log The string you want to log
+	 * @param {string} [type] Optional type
 	 */
 	success(log: string, type?: string): void {
 		this.print(log, '#28A745', type);
 	},
 
 	/**
-	 * Print a event log message with a timestamp.
-	 * @param {string} log
-	 * @param {string} type Optional type
+	 * Print an event log message with a timestamp.
+	 *
+	 * @param {string} log The string you want to log
+	 * @param {string} [type] Optional type
 	 */
 	event(log: string, type?: string): void {
 		this.print(log, '#FF00FF', type);

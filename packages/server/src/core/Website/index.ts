@@ -5,6 +5,7 @@ import * as path from 'path';
 import bodyParser from 'body-parser';
 import fs from 'fs';
 import log from '@utils/log';
+import open from 'open';
 
 // Define api routes
 import apiRoutes from './api/routes';
@@ -33,3 +34,5 @@ const port = config.port;
 app.listen(port);
 
 console.info(`Website is UP: ${config.hostname || 'localhost'}`);
+
+if (process.env.NODE_ENV === 'development') open(`${config.hostname || 'localhost'}`);

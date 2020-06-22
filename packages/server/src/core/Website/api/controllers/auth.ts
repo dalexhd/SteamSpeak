@@ -12,9 +12,10 @@ import { ClientEntry } from 'ts3-nodejs-library/lib/types/ResponseTypes';
 /**
  * Find clients with the request ip.
  *
- * @param {object} req The express request instance
- * @param {object} filter The filter to apply to the clientList command.
- * @param {boolean} isAdmin Find clients that are whitelisted inside website config file.
+ * @param {Request} req The express request instance
+ * @param {Partial<ClientEntry>} filter The filter to apply to the clientList command.
+ * @param {boolean} [isAdmin=false] Find clients that are whitelisted inside website config file.
+ * @returns {Promise<TeamSpeakClient[]>} Clients found
  */
 export const findClients = async function (
 	req: Request,
@@ -44,6 +45,7 @@ export const findClients = async function (
  * Create JWT token for the user.
  *
  * @param {string} uid The client unique identifier.
+ * @returns {string}
  */
 const createToken = function (uid: string): string {
 	return jwt.sign(
@@ -58,8 +60,9 @@ const createToken = function (uid: string): string {
 /**
  * Check if the user is connected to the server.
  *
- * @param {object} req The express request instance
- * @param {object} res The express response instance
+ * @param {Request} req The express request instance
+ * @param {Response} res The express response instance
+ * @returns {Promise<any>}
  */
 export const find = async function (req: Request, res: Response): Promise<any> {
 	log.info('Received find request from remote.', 'website');
@@ -83,8 +86,9 @@ export const find = async function (req: Request, res: Response): Promise<any> {
 /**
  * Send to the selected user a secret validation token.
  *
- * @param {object} req The express request instance
- * @param {object} res The express response instance
+ * @param {Request} req The express request instance
+ * @param {Response} res The express response instance
+ * @returns {Promise<any>}
  */
 export const send = async function (req: Request, res: Response): Promise<any> {
 	log.info(`Received send request to ${req.body.dbid} from remote.`, 'website');
@@ -122,6 +126,13 @@ export const send = async function (req: Request, res: Response): Promise<any> {
 	}
 };
 
+/**
+ * Login on the panel
+ *
+ * @param {Request} req The express request instance
+ * @param {Response} res The express response instance
+ * @returns {Promise<any>}
+ */
 export const login = async function (req: Request, res: Response): Promise<any> {
 	log.info(`Received login request from ${req.body.dbid}.`, 'website');
 	try {
@@ -159,6 +170,13 @@ export const login = async function (req: Request, res: Response): Promise<any> 
 	}
 };
 
+/**
+ *	Get the current authenticated user
+ *
+ * @param {Request} req The express request instance
+ * @param {Response} res The express response instance
+ * @returns {Promise<any>}
+ */
 export const me = async function (req: Request, res: Response): Promise<any> {
 	try {
 		const decoded = jwt.verify(req.token, config.jwt.secret) as { uid: string };
@@ -175,8 +193,9 @@ export const me = async function (req: Request, res: Response): Promise<any> {
 /**
  * Refresh logged user token
  *
- * @param {object} req The express request instance
- * @param {object} res The express response instance
+ * @param {Request} req The express request instance
+ * @param {Response} res The express response instance
+ * @returns {Promise<any>}
  */
 export const refreshToken = async function (req: Request, res: Response): Promise<any> {
 	try {
