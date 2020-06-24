@@ -34,7 +34,7 @@ import Steps from '@site/src/components/Steps';
 
 ## Edit files
 
-<Steps headingDepth={3}>
+<Steps>
 
 ### vue.config.js
 
@@ -274,3 +274,64 @@ You should't edit this.
 </TabItem>
 </Tabs>
 </Steps>
+
+## Reverse proxy
+SteamSpeak is only accessible over HTTP. To make the app available over HTTPS you need to set up a reverse proxy (e.g. Apache or NGINX). There are tons of guides on the internet how to setup a reverse proxy with free ssl certificate. Below are just example vhost/server block files for Apache and NGINX.
+
+<Tabs
+  block
+  className="rounded"
+  defaultValue="nginx"
+  values={[
+    { label: `Nginx`, value: 'nginx', class: '' },
+    { label: `Apache`, value: 'apache', class: '' }
+  ]}
+>
+<TabItem value="nginx">
+
+```nginx
+server {
+  listen 80;
+  listen [::]:80;
+  server_name steamspeak.example.com
+  return 301 https://$host$request_uri;
+}
+
+server {
+  listen 443 ssl;
+  server_name steamspeak.example.com
+
+  location / {
+    proxy_pass http://127.0.0.1:3000;
+  }
+
+  # Let certbot install certificates for you or remove those if you don't use ssl
+  ssl_certificate /etc/letsencrypt/live/steamspeak.example.com/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/steamspeak.example.com/privkey.pem;
+  include /etc/letsencrypt/options-ssl-nginx.conf;
+  ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+}
+```
+</TabItem>
+
+<TabItem value="apache">
+
+```apache
+<IfModule mod_ssl.c>
+  <VirtualHost *:443>
+    ServerName steamspeak.example.com
+    ServerAdmin webmaster@example.com
+
+    # Reverse Proxy enabled. See https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html
+    ProxyPass "/" "http://127.0.0.1:3000/"
+    ProxyPassReverse "/" "http://127.0.0.1:3000/"
+
+    # Certificates
+    Include /etc/letsencrypt/options-ssl-apache.conf
+    SSLCertificateFile /etc/letsencrypt/live/steamspeak.example.com/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/steamspeak.example.com/privkey.pem
+  </VirtualHost>
+</IfModule>
+```
+</TabItem>
+</Tabs>

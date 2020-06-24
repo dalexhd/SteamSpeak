@@ -40,8 +40,8 @@
 }
 
 .steps .steps--feedback {
-	border-top: 1px solid var(--ifm-hr-border-color);
-	font-weight: 500;
+  font-weight: 500;
+  text-align: right;
 }
 
 /**
