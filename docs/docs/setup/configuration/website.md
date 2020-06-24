@@ -47,6 +47,7 @@ This file contains most of the website related configuration. After editing this
   values={[
     { label: `chainWebpack`, value: 'chainWebpack', class: '' },
     { label: 'transpileDependencies', value: 'transpileDependencies' },
+    { label: 'productionSourceMap', value: 'productionSourceMap' },
     { label: 'pwa', value: 'pwa' },
     { label: 'devServer', value: 'devServer' },
     { label: 'css', value: 'css' }
@@ -54,7 +55,7 @@ This file contains most of the website related configuration. After editing this
 >
 <TabItem value="chainWebpack">
 
-```js
+```js title=&sim;/SteamSpeak/packages/client/vue.config.js
 chainWebpack: (config) => {
   config.plugin('html').tap((args) => {
     args[0].title = 'SteamSpeak';
@@ -115,11 +116,19 @@ You should't edit this.
 </Alert>
 
 </TabItem>
+<TabItem value="productionSourceMap">
 
+<Alert type="warning">
+You should't edit this unless you want to expose client source.
+</Alert>
+
+</TabItem>
 <TabItem value="pwa">
-One important feature, it's that you can download the "panel" as an Android/iOS application.
+<Alert type="info">
+SteamSpeak is a Progressive Web App (PWA). You can use it on your smartphone like a real app even though it is just a webpage.
+</Alert>
 
-```js
+```js title=&sim;/SteamSpeak/packages/client/vue.config.js
 pwa: {
   name: 'SteamSpeak',
   themeColor: '#448aff',

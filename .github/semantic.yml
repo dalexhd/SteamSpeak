@@ -18,3 +18,4 @@ scopes:
   - ci
   - bug
   - typescript
+  - security
