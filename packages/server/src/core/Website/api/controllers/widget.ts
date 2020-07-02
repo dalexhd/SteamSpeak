@@ -40,10 +40,14 @@ export const clientDescrtiption = async function (req: Request, res: Response): 
 						}
 						ctx.drawImage(images[0], 190, 138, 30, 30);
 						ctx.fillStyle = '#fff';
-						ctx.font = 'bold 40px sans-serif';
-						await ctx.drawTextWithEmoji('fill', req.query.name.toString(), 170, 110, 600);
-						ctx.font = 'bold 28px sans-serif';
-						await ctx.drawTextWithEmoji('fill', req.query.data.toString(), 230, 163);
+						if (req.query.name) {
+							ctx.font = 'bold 40px sans-serif';
+							await ctx.drawTextWithEmoji('fill', req.query.name.toString(), 170, 110, 600);
+						}
+						if (req.query.data) {
+							ctx.font = 'bold 28px sans-serif';
+							await ctx.drawTextWithEmoji('fill', req.query.data.toString(), 230, 163);
+						}
 						ctx.drawImage(images[1], 10, 50, 150, 150);
 						res.contentType('image/png').send(canvas.toBuffer());
 					})
