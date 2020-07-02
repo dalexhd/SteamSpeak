@@ -1,4 +1,4 @@
-import './core/TeamSpeak';
+import '@core/TeamSpeak';
 
 /**
  * Check if instance environment variable is set.

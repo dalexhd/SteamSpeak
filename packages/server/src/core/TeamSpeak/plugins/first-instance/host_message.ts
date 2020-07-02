@@ -31,7 +31,7 @@ export const main = async function (): Promise<void> {
 	Ts3.serverEdit({
 		virtualserverHostmessage: message
 	}).catch((err) => {
-		log.error(`${info.name} error: ${err}`, 'ts3');
+		log.error(`${info.name} error: ${err}`, { type: 'ts3' });
 	});
 };
 

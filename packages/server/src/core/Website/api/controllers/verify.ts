@@ -28,7 +28,7 @@ const findSecret = async function (req: Request): Promise<any> {
  * @returns {Promise<any>}
  */
 export const check = async function (req: Request, res: Response): Promise<any> {
-	log.info('Received verification check request from remote.', 'website');
+	log.info('Received verification check request from remote.', { type: 'website' });
 	try {
 		const steamData = await findSecret(req);
 		const clients = await findClients(req, {
@@ -51,7 +51,9 @@ export const check = async function (req: Request, res: Response): Promise<any> 
  * @returns {Promise<any>}
  */
 export const send = async function (req: Request, res: Response): Promise<any> {
-	log.info(`Received verification send request to ${req.body.dbid} from remote.`, 'website');
+	log.info(`Received verification send request to ${req.body.dbid} from remote.`, {
+		type: 'website'
+	});
 	try {
 		const steamData = await findSecret(req);
 		const [client] = await findClients(req, {
@@ -94,7 +96,7 @@ export const send = async function (req: Request, res: Response): Promise<any> {
  * @returns {Promise<any>}
  */
 export const login = async function (req: Request, res: Response): Promise<any> {
-	log.info(`Received login request from ${req.body.dbid}.`, 'website');
+	log.info(`Received login request from ${req.body.dbid}.`, { type: 'website' });
 	try {
 		const steamData = await findSecret(req);
 		const [client] = await findClients(req, {
@@ -110,7 +112,7 @@ export const login = async function (req: Request, res: Response): Promise<any> 
 		} else if (sendCache.ip !== client.connectionClientIp) {
 			throw { statusCode: 403, message: lang.error.ip_mismatch };
 		} else {
-			log.success(`${client.nickname} verified successfully!`, 'website');
+			log.success(`${client.nickname} verified successfully!`, { type: 'website' });
 			VerifiedClient.create({
 				uid: client.uniqueIdentifier,
 				dbid: client.databaseId,

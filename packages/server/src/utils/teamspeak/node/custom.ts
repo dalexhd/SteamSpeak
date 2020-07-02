@@ -26,8 +26,7 @@ TeamSpeak.prototype.loadInstances = function (): void {
 						INSTANCE: name,
 						PATH: process.env.PATH,
 						TS_NODE_FILES: 'true',
-						NODE_ENV: process.env.NODE_ENV,
-						FORCE_COLOR: 'true'
+						NODE_ENV: process.env.NODE_ENV
 					},
 					cwd: process.cwd(),
 					shell: true,
@@ -35,7 +34,7 @@ TeamSpeak.prototype.loadInstances = function (): void {
 				}
 			);
 		} else {
-			log.warn(`Instance ${name} is disabled. Skipping...`, 'ts3');
+			log.warn(`Instance ${name} is disabled. Skipping...`, { type: 'ts3' });
 		}
 	});
 };
@@ -54,16 +53,18 @@ TeamSpeak.prototype.loadPlugins = async function (): Promise<void> {
 								plugin.load();
 							}
 							Ts3.plugins.set(plugin.info.name, plugin);
-							log.info(`Loaded plugin ${plugin.info.name}`, 'ts3');
+							log.info(`Loaded plugin ${plugin.info.name}`, { type: 'ts3' });
 						} else {
-							log.info(`${plugin.info.name} disabled. Skipping`, 'ts3');
+							log.info(`${plugin.info.name} disabled. Skipping`, { type: 'ts3' });
 						}
 					})
 					.catch((err) => {
-						log.error(`Invalid ${plugin.info.name} config: ${err.message}. Skipping`, 'ts3');
+						log.error(`Invalid ${plugin.info.name} config: ${err.message}. Skipping`, {
+							type: 'ts3'
+						});
 					});
 			} catch (err) {
-				log.error(`Issue loading plugin file ${file}: ${err.message}`, 'ts3');
+				log.error(`Issue loading plugin file ${file}: ${err.message}`, { type: 'ts3' });
 			}
 		});
 		[
@@ -86,7 +87,7 @@ TeamSpeak.prototype.loadPlugins = async function (): Promise<void> {
 				});
 			});
 		});
-		log.success('Subscribed to all Events.', 'ts3');
+		log.success('Subscribed to all Events.', { type: 'ts3' });
 	});
 };
 
@@ -115,21 +116,23 @@ TeamSpeak.prototype.watchPlugins = async function (): Promise<void> {
 									plugin.load();
 								}
 								Ts3.plugins.set(plugin.info.name, plugin);
-								log.info(`Loaded plugin ${plugin.info.name}`, 'ts3');
+								log.info(`Loaded plugin ${plugin.info.name}`, { type: 'ts3' });
 							} else {
 								if (typeof plugin['unload'] !== 'undefined') {
 									plugin.unload();
 								}
 								Ts3.plugins.delete(plugin.info.name);
-								log.info(`Unloaded plugin ${plugin.info.name}`, 'ts3');
+								log.info(`Unloaded plugin ${plugin.info.name}`, { type: 'ts3' });
 							}
 						})
 						.catch((err) => {
-							log.error(`Invalid ${plugin.info.name} config: ${err.message}. Skipping`, 'ts3');
+							log.error(`Invalid ${plugin.info.name} config: ${err.message}. Skipping`, {
+								type: 'ts3'
+							});
 						});
 				} catch (err) {
 					if (err.message.includes("Cannot find module '@core/TeamSpeak'")) return;
-					log.warn(`Issue loading plugin file ${fileName}: ${err.message}`, 'ts3');
+					log.warn(`Issue loading plugin file ${fileName}: ${err.message}`, { type: 'ts3' });
 				}
 			} else {
 				log.info(`Detected removal of plugin ${fileName}, unloading.`);

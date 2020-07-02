@@ -24,10 +24,10 @@ export const main = async function (): Promise<void> {
 			channelName: name
 		})
 			.then(() => {
-				log.info(`${info.name} ch[id: ${channel.channelId}] to: ${name}`, 'ts3');
+				log.info(`${info.name} ch[id: ${channel.channelId}] to: ${name}`, { type: 'ts3' });
 			})
 			.catch((err) => {
-				log.error(`${info.name} ch[id: ${channel.channelId}] error: ${err}`, 'ts3');
+				log.error(`${info.name} ch[id: ${channel.channelId}] error: ${err}`, { type: 'ts3' });
 			});
 	});
 };

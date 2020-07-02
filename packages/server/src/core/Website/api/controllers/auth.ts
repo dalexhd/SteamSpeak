@@ -65,7 +65,7 @@ const createToken = function (uid: string): string {
  * @returns {Promise<any>}
  */
 export const find = async function (req: Request, res: Response): Promise<any> {
-	log.info('Received find request from remote.', 'website');
+	log.info('Received find request from remote.', { type: 'website' });
 	try {
 		const clients = await findClients(
 			req,
@@ -91,7 +91,7 @@ export const find = async function (req: Request, res: Response): Promise<any> {
  * @returns {Promise<any>}
  */
 export const send = async function (req: Request, res: Response): Promise<any> {
-	log.info(`Received send request to ${req.body.dbid} from remote.`, 'website');
+	log.info(`Received send request to ${req.body.dbid} from remote.`, { type: 'website' });
 	try {
 		const [client] = await findClients(
 			req,
@@ -134,7 +134,7 @@ export const send = async function (req: Request, res: Response): Promise<any> {
  * @returns {Promise<any>}
  */
 export const login = async function (req: Request, res: Response): Promise<any> {
-	log.info(`Received login request from ${req.body.dbid}.`, 'website');
+	log.info(`Received login request from ${req.body.dbid}.`, { type: 'website' });
 	try {
 		const [client] = await findClients(
 			req,
@@ -153,7 +153,7 @@ export const login = async function (req: Request, res: Response): Promise<any> 
 		} else if (sendCache.ip !== client.connectionClientIp) {
 			throw { statusCode: 403, message: lang.error.ip_mismatch };
 		} else {
-			log.success(`${client.nickname} logged successfully!`, 'website');
+			log.success(`${client.nickname} logged successfully!`, { type: 'website' });
 			Cache.del(`${client.databaseId}:token`);
 			const accessToken = createToken(client.uniqueIdentifier);
 			return res.status(201).json({

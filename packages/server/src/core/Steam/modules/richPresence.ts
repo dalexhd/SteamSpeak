@@ -65,7 +65,7 @@ const syncNumbers = async (): Promise<void> => {
 						serverGroup.del(true);
 						log.warn(
 							`Online client [dbid: ${user.dbid}] has SteamSpeak corrupted serverGroup [sgid: ${serverGroup.sgid}]. Deleting...`,
-							'steam'
+							{ type: 'steam' }
 						);
 					}
 				});
@@ -93,7 +93,7 @@ const checkServerGroup = async (
 	client: TeamSpeakClient | undefined
 ): Promise<void> => {
 	if (typeof user.groupId === 'undefined') {
-		log.info('User has not group. Lets assign it.', 'steam');
+		log.info('User has not group. Lets assign it.', { type: 'steam' });
 		groupNumber++;
 		Ts3.serverGroupCreate(`#${groupNumber} SteamSpeak`).then(async (serverGroup) => {
 			Promise.all([
@@ -109,15 +109,14 @@ const checkServerGroup = async (
 					user.groupId = serverGroup.sgid;
 					user.groupNumber = groupNumber;
 					user.save();
-					log.info(
-						`ServerGroup assigned to ${client?.nickname} [steamID: ${user.steamId}]`,
-						'steam'
-					);
+					log.info(`ServerGroup assigned to ${client?.nickname} [steamID: ${user.steamId}]`, {
+						type: 'steam'
+					});
 				})
 				.catch((err) => {
 					log.error(
 						`richPresence richPresence[sgCreateName: #${groupNumber} SteamSpeak] error: ${err.message}. Deleting group...`,
-						'steam'
+						{ type: 'steam' }
 					);
 					serverGroup.del(true);
 				});
@@ -131,7 +130,7 @@ const checkServerGroup = async (
 			serverGroup
 				?.rename(groupName)
 				.then(() => {
-					log.info(`Renamed group ${user.groupId} to ${groupName}`, 'steam');
+					log.info(`Renamed group ${user.groupId} to ${groupName}`, { type: 'steam' });
 				})
 				.catch(async (err) => {
 					if (err.id === 2560) {
@@ -179,7 +178,9 @@ const checkDescriptionBanner = async (
 						clientDescription
 					})
 					.then(() => {
-						log.info(`Changed ${client.nickname} description to "${clientDescription}"`, 'steam');
+						log.info(`Changed ${client.nickname} description to "${clientDescription}"`, {
+							type: 'steam'
+						});
 					});
 		});
 	} else {
@@ -189,7 +190,7 @@ const checkDescriptionBanner = async (
 					clientDescription: ''
 				})
 				.then(() => {
-					log.info(`Removed ${client.nickname} description`, 'steam');
+					log.info(`Removed ${client.nickname} description`, { type: 'steam' });
 				});
 		}
 	}
@@ -251,7 +252,7 @@ Ts3.on('clientdisconnect', async (ev) => {
 		user.groupNumber = undefined;
 		user.save();
 		groupNumber--;
-		log.info(`TeamSpeak ServerGroup deleted to client ${user.steamId}`, 'steam');
+		log.info(`TeamSpeak ServerGroup deleted to client ${user.steamId}`, { type: 'steam' });
 		syncNumbers();
 	}
 });

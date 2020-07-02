@@ -21,10 +21,10 @@ function initEvents(): void {
 	if (config.debug) {
 		Ts3.on('debug', (ev) => {
 			const { type, data } = ev;
-			if (type === 'send') log.debug(`>>> ${data}`, 'ts3');
+			if (type === 'send') log.debug(`>>> ${data}`, { type: 'ts3' });
 			if (type === 'receive') {
-				if (data.startsWith('error')) log.debug(`<<< ${data}`, 'ts3');
-				log.debug(`<<< ${data.length}`, 'ts3');
+				if (data.startsWith('error')) log.debug(`<<< ${data}`, { type: 'ts3' });
+				log.debug(`<<< ${data.length}`, { type: 'ts3' });
 			}
 		});
 	}
@@ -44,10 +44,11 @@ function onReady(): void {
 			})
 		])
 			.then(() => {
+				log.success('Connected to the ts3 server', { type: 'ts3' });
 				listenEvents();
 			})
 			.catch((err) => {
-				log.error(err, 'ts3');
+				log.error(err, { type: 'ts3' });
 			});
 		initialized = true;
 	}
@@ -58,10 +59,10 @@ function onReady(): void {
  */
 function listenEvents(): void {
 	Ts3.on('close', async () => {
-		log.error('disconnected, trying to reconnect...', 'ts3');
+		log.error('disconnected, trying to reconnect...', { type: 'ts3' });
 		// eslint-disable-next-line @typescript-eslint/no-empty-function
 		Ts3.reconnect().catch(() => {});
-		log.success('reconnected!', 'ts3');
+		log.success('reconnected!', { type: 'ts3' });
 	});
 	beforeExit();
 	instance ? Promise.all([Ts3.loadPlugins(), Ts3.watchPlugins()]) : Ts3.loadInstances();
