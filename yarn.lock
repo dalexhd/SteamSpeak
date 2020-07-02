@@ -3022,22 +3022,22 @@
     "@types/node" "*"
 
 "@types/mongoose@^5.5.43":
-  version "5.7.15"
-  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.7.15.tgz#ee989735177a513c362c7d552fb87c92d3b4efa4"
-  integrity sha512-hVTw3B0AaXhn0LG7ZUaJ1a+9fQDvmwfnIRwGlMq+DQk9bcUJB0ZjlLF17Pxm4Z7/fy1+4EJGFkJyzy3XDSMxVw==
+  version "5.7.29"
+  resolved "https://registry.yarnpkg.com/@types/mongoose/-/mongoose-5.7.29.tgz#247a2b4d26bf4d7e81417261f033908eef6b124e"
+  integrity sha512-+7u1akCerciZ2MG66p6Vy+9Tg7dYcgSeNbDInxdOA5vB5xAZhNiIBj8HESnJmIqOBcWxQ90HpaPWtEwggBqXug==
   dependencies:
     "@types/mongodb" "*"
     "@types/node" "*"
 
 "@types/node@*", "@types/node@>= 8", "@types/node@^14.0.5":
-  version "14.0.13"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.13.tgz#ee1128e881b874c371374c1f72201893616417c9"
-  integrity sha512-rouEWBImiRaSJsVA+ITTFM6ZxibuAlTuNOCyxVbwreu6k6+ujs7DfnU9o+PShFhET78pMBl3eH+AGSI5eOTkPA==
+  version "14.0.5"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.0.5.tgz#3d03acd3b3414cf67faf999aed11682ed121f22b"
+  integrity sha512-90hiq6/VqtQgX8Sp0EzeIsv3r+ellbGj4URKj5j30tLlZvRUpnAe9YbYnjl3pJM93GyXU0tghHhvXHq+5rnCKA==
 
 "@types/node@^13.7.0":
-  version "13.13.12"
-  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.12.tgz#9c72e865380a7dc99999ea0ef20fc9635b503d20"
-  integrity sha512-zWz/8NEPxoXNT9YyF2osqyA9WjssZukYpgI4UYZpOjcyqwIUqWGkcCionaEb9Ki+FULyPyvNFpg/329Kd2/pbw==
+  version "13.13.4"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-13.13.4.tgz#1581d6c16e3d4803eb079c87d4ac893ee7501c2c"
+  integrity sha512-x26ur3dSXgv5AwKS0lNfbjpCakGIduWU1DU91Zz58ONRWrIKGunmZBNv4P7N+e27sJkiGDsw/3fT4AtsqQBrBA==
 
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
@@ -14257,9 +14257,9 @@ postcss@^7.0.1, postcss@^7.0.11, postcss@^7.0.16, postcss@^7.0.18, postcss@^7.0.
     supports-color "^6.1.0"
 
 preact@^10.0.0:
-  version "10.4.4"
-  resolved "https://registry.yarnpkg.com/preact/-/preact-10.4.4.tgz#0bd6d759ec2f8684aaf8c63c7f076191e46528cf"
-  integrity sha512-EaTJrerceyAPatQ+vfnadoopsMBZAOY7ak9ogVdUi5xbpR8SoHgtLryXnW+4mQOwt21icqoVR1brkU2dq7pEBA==
+  version "10.4.5"
+  resolved "https://registry.yarnpkg.com/preact/-/preact-10.4.5.tgz#457fe034d558595864d0663574c2850f0b43d28e"
+  integrity sha512-/GyQOM44xNbM1nx1NWWdEO9RFjOVl3Ji6HTnEP+y9OkfyvJDHXnWJPQnuknrslzu5lZfAtFavS8gka91fbFAPg==
 
 prelude-ls@~1.1.2:
   version "1.1.2"
