@@ -24,16 +24,18 @@ SteamUser.prototype.loadGames = async function (): Promise<void> {
 								game.load();
 							}
 							steamUser.games.set(game.info.appId, game);
-							log.info(`Loaded game ${game.info.name}.`, 'steam');
+							log.info(`Loaded game ${game.info.name}.`, { type: 'steam' });
 						} else {
-							log.info(`${game.info.name} disabled. Skipping`, 'steam');
+							log.info(`${game.info.name} disabled. Skipping`, { type: 'steam' });
 						}
 					})
 					.catch((err) => {
-						log.error(`Invalid ${game.info.name} config: ${err.message}. Skipping`, 'steam');
+						log.error(`Invalid ${game.info.name} config: ${err.message}. Skipping`, {
+							type: 'steam'
+						});
 					});
 			} catch (err) {
-				log.warn(`Issue loading game file ${file}: ${err.message}`, 'steam');
+				log.warn(`Issue loading game file ${file}: ${err.message}`, { type: 'steam' });
 			}
 		});
 	});
@@ -48,9 +50,9 @@ SteamUser.prototype.loadModules = async function (): Promise<void> {
 		jsfiles.forEach((file) => {
 			try {
 				require(path.resolve(file));
-				log.info(`Loaded module ${path.basename(file, '.ts')}.`, 'steam');
+				log.info(`Loaded module ${path.basename(file, '.ts')}.`, { type: 'steam' });
 			} catch (err) {
-				log.warn(`Issue loading module file ${file}: ${err.message}`, 'steam');
+				log.warn(`Issue loading module file ${file}: ${err.message}`, { type: 'steam' });
 			}
 		});
 	});
@@ -82,20 +84,22 @@ SteamUser.prototype.watchGames = function (): void {
 									game.load();
 								}
 								steamUser.games.set(game.info.appId, game);
-								log.info(`Loaded game ${game.info.name}`, 'steam');
+								log.info(`Loaded game ${game.info.name}`, { type: 'steam' });
 							} else {
 								if (typeof game['unload'] !== 'undefined') {
 									game.unload();
 								}
-								log.info(`Unloaded game ${game.info.name}`, 'steam');
+								log.info(`Unloaded game ${game.info.name}`, { type: 'steam' });
 							}
 						})
 						.catch((err) => {
-							log.error(`Invalid ${game.info.name} config: ${err.message}. Skipping`, 'steam');
+							log.error(`Invalid ${game.info.name} config: ${err.message}. Skipping`, {
+								type: 'steam'
+							});
 						});
 				} catch (err) {
 					if (err.message.includes("Cannot find module '@core/Steam'")) return;
-					log.warn(`Issue loading game file ${fileName}: ${err.message}`, 'steam');
+					log.warn(`Issue loading game file ${fileName}: ${err.message}`, { type: 'steam' });
 				}
 			} else {
 				log.info(`Detected removal of game ${fileName}, unloading.`);

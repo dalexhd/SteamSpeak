@@ -8,10 +8,10 @@ mongoose
 		config.opts || { useCreateIndex: true, useNewUrlParser: true, useUnifiedTopology: true }
 	)
 	.then(() => {
-		log.success('Connected to the database!', 'database');
+		log.success('Connected to the database!', { type: 'database' });
 	})
 	.catch((err) => {
-		log.error(err.message, 'database');
+		log.error(err.message, { type: 'database' });
 		process.exit(1);
 	});
 

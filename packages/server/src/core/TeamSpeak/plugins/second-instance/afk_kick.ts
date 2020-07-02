@@ -12,7 +12,9 @@ export const main = async function (): Promise<void> {
 	clients.forEach(async (client) => {
 		if (client.isAfk(data.interval) && client.cid !== data.dest) {
 			client.kickFromServer("You've been kicked out for being afk");
-			log.info(`${info.name} (DBID: ${client.databaseId}) has been kicked for being afk.`, 'ts3');
+			log.info(`${info.name} (DBID: ${client.databaseId}) has been kicked for being afk.`, {
+				type: 'ts3'
+			});
 		}
 	});
 };

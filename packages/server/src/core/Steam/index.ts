@@ -25,7 +25,7 @@ steamUser.logOn({
 });
 
 steamUser.on('loggedOn', function () {
-	log.success('logged in.', 'steam');
+	log.success('logged in.', { type: 'steam' });
 	const { Online } = SteamUser.EPersonaState;
 	steamUser.setPersona(Online, config.bot_name || '[SteamSpeak] - BOT');
 	steamUser.webLogOn();
@@ -42,20 +42,20 @@ steamUser.on('loggedOn', function () {
 });
 
 steamUser.on('webSession', function (sessionID, cookies) {
-	log.success('Got web session', 'steam');
+	log.success('Got web session', { type: 'steam' });
 	community.setCookies(cookies);
 });
 steamUser.on('error', function (err) {
-	log.error(`Logon error: ${err.message}`, 'steam');
+	log.error(`Logon error: ${err.message}`, { type: 'steam' });
 });
 
 steamUser.on('disconnected', function (eresult, msg) {
-	log.error(`Disconnected from steam: [eresult: ${eresult}] ${msg}`, 'steam');
+	log.error(`Disconnected from steam: [eresult: ${eresult}] ${msg}`, { type: 'steam' });
 });
 
 if (config.debug) {
 	steamUser.on('debug', function (message) {
-		log.debug(message, 'steam');
+		log.debug(message, { type: 'steam' });
 	});
 }
 
