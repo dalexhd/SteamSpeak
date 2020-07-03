@@ -1,4 +1,5 @@
 import winston, { format } from 'winston';
+import 'winston-daily-rotate-file';
 const { combine, colorize, timestamp, printf, simple, json } = format;
 import { upperFirst, startCase } from 'lodash';
 
@@ -30,8 +31,11 @@ export default winston.createLogger({
 				})
 			)
 		}),
-		new winston.transports.File({
-			filename: 'logs/combined.log',
+		new winston.transports.DailyRotateFile({
+			filename: 'logs/%DATE%.log',
+			datePattern: 'YYYY-MM-DD-HH',
+			maxSize: '10m',
+			maxFiles: '14d',
 			format: combine(timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), json())
 		})
 	],

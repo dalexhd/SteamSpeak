@@ -19,6 +19,14 @@ function initEvents(): void {
 	Ts3.on('error', (err) => log.error(err.message, 'ts3'));
 	Ts3.on('flooding', (err) => console.log('Flood protection activated', err.message));
 	if (config.debug) {
+		if (config.protocol.toLowerCase() === 'raw' && process.env.EXPOSE_CREDENTIALS !== 'true') {
+			log.error(
+				'⚠️  Debugging RAW connections will expose your server/channels passwords inside logs ⚠️\n\nRun "EXPOSE_CREDENTIALS=true yarn run start:server" or disable debug mode at TeamSpeak configuration file in order to skip this security restriction.\n',
+				{ type: 'ts3' }
+			);
+			Ts3.quit();
+			process.exit(1);
+		}
 		Ts3.on('debug', (ev) => {
 			const { type, data } = ev;
 			if (type === 'send') log.debug(`>>> ${data}`, { type: 'ts3' });
