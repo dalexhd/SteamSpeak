@@ -5,7 +5,7 @@ declare global {
 		uid: string;
 		dbid: string;
 		steamId: string;
-		groupId: any;
-		groupNumber: any;
+		groupId?: any;
+		groupNumber?: any;
 	}
 }
