@@ -1,3 +1,7 @@
 export default {
-	Dashboard: 'Dashboard'
+	Dashboard: 'Dashboard',
+	Logs: 'Logs',
+	Type: 'Type',
+	Message: 'Message',
+	Date: 'Date'
 };
