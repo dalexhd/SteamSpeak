@@ -18,7 +18,6 @@ export default [
 		i18n: 'Dashboard'
 	},
 	{
-	{
 		url: '/logs',
 		name: 'Logs',
 		icon: 'ClockIcon',
