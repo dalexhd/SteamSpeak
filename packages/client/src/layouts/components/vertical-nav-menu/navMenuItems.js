@@ -18,8 +18,10 @@ export default [
 		i18n: 'Dashboard'
 	},
 	{
-		url: '/page2',
-		name: 'Page example',
-		icon: 'FileIcon'
+	{
+		url: '/logs',
+		name: 'Logs',
+		icon: 'ClockIcon',
+		i18n: 'Logs'
 	}
 ];

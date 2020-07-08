@@ -19,3 +19,5 @@ scopes:
   - bug
   - typescript
   - security
+  - client
+  - server

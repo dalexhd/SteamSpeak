@@ -33,9 +33,23 @@ export default winston.createLogger({
 		}),
 		new winston.transports.DailyRotateFile({
 			filename: 'logs/%DATE%.log',
-			datePattern: 'YYYY-MM-DD-HH',
-			maxSize: '10m',
+			datePattern: 'YYYY-MM-DD',
+			maxSize: '20m',
 			maxFiles: '14d',
+			json: true,
+			format: combine(timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), json())
+		}),
+		new winston.transports.File({
+			filename: 'logs/combined.log',
+			maxsize: 50000000, // 15MB
+			maxFiles: 1,
+			format: combine(timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), json())
+		}),
+		new winston.transports.File({
+			filename: 'logs/error.log',
+			level: 'error',
+			maxsize: 50000000, // 15MB
+			maxFiles: 1,
 			format: combine(timestamp({ format: 'YYYY-MM-DD HH:mm:ss' }), json())
 		})
 	],
