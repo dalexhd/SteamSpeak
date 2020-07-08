@@ -17,7 +17,9 @@ declare module 'steam-user' {
 		gifts: null;
 
 		// Friends and users info
-		users: {};
+		users: {
+			[steamId: string]: Interfaces.PersonaData;
+		};
 		groups: {};
 		chats: {};
 		myFriends: {};
