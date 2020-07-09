@@ -66,12 +66,6 @@ export interface PersonaData {
 	avatar_url_medium: string;
 	avatar_url_full: string;
 	rich_presence_string: string;
-	diff: {
-		[K in keyof Partial<Omit<PersonaData, 'diff'>>]: {
-			from: PersonaData[K];
-			to: PersonaData[K];
-		};
-	};
 }
 
 export interface PersonasData {
