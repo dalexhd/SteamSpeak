@@ -38,9 +38,9 @@ const router = new Router({
 					}
 				},
 				{
-					path: '/page2',
-					name: 'page-2',
-					component: () => import('@/views/private/Page2.vue'),
+					path: '/logs',
+					name: 'admin:users',
+					component: () => import('@/views/private/Logs/Index.vue'),
 					meta: {
 						rule: 'admin'
 					}
