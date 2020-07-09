@@ -3,21 +3,21 @@ import GlobalOffensive from 'globaloffensive';
 import { TeamSpeakClient } from '@core/TeamSpeak';
 import log from '@utils/log';
 import BetterQueue from 'better-queue';
-import SteamUser from 'steam-user';
 
 let csgo: any;
 
 export const main = async function (
-	data: SteamUser.PersonaData,
+	data: any,
 	client: TeamSpeakClient | undefined,
-	user: VerifiedClientDocument
+	user: VerifiedClientDocument,
+	diff: any
 ): Promise<void> {
 	if (
-		data.diff?.game_played_app_id?.to === info.appId ||
-		(data.diff?.rich_presence?.from.find((e) => e.key === 'game:state')?.value === 'game' &&
-			data.diff?.rich_presence?.to.find((e) => e.key === 'game:state')?.value === 'lobby' &&
-			data.diff?.rich_presence?.from.find((e) => e.key === 'game:mode')?.value === 'competitive' &&
-			data.diff?.rich_presence?.to.find((e) => e.key === 'game:mode') === undefined)
+		diff?.game_played_app_id?.to === info.appId ||
+		(diff?.rich_presence?.from.find((e) => e.key === 'game:state')?.value === 'game' &&
+			diff?.rich_presence?.to.find((e) => e.key === 'game:state')?.value === 'lobby' &&
+			diff?.rich_presence?.from.find((e) => e.key === 'game:mode')?.value === 'competitive' &&
+			diff?.rich_presence?.to.find((e) => e.key === 'game:mode') === undefined)
 	) {
 		const { steamId } = user;
 		const queue = new BetterQueue(function (data) {
