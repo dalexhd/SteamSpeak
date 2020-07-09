@@ -14,7 +14,7 @@ export const index = async function (req: Request, res: Response): Promise<any> 
 		log.query(
 			{
 				from: moment().subtract(100, 'years').toDate(),
-				until: moment().add(1, 'days').toDate(),
+				until: moment().toDate(),
 				limit: Number.MAX_SAFE_INTEGER,
 				start: 0,
 				order: 'desc',
