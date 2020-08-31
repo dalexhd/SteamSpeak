@@ -18180,10 +18180,10 @@ vue-clipboard2@^0.3.1:
   dependencies:
     clipboard "^2.0.0"
 
-vue-context@5.1.0:
-  version "5.1.0"
-  resolved "https://registry.yarnpkg.com/vue-context/-/vue-context-5.1.0.tgz#cf007f4728d36c007a8fb7dcf75f61b8c8251343"
-  integrity sha512-PcKbc9mjiUt4fswRR/oA/IJc5oXHjpnKIcATWZcBTDk7CzTvLznkIjq6pGFI8vUtGzABxVMvPq93dpBSRfinxg==
+vue-context@5.2.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/vue-context/-/vue-context-5.2.0.tgz#d027f626af50e717c2afd57859dec30a851167de"
+  integrity sha512-XH3SwDanAcE7ppzVEkXqpMyzkFKUDp8TDh4vBE9UPbT6OHwLIwtANH6ZAakq8q2iV+hGtDDfwYgX12IbZjyNnw==
   dependencies:
     vue-clickaway "^2.2.2"
 
