@@ -157,4 +157,5 @@ export interface CMEventCallback {
 	debug: (message: string) => void;
 	error: (err: Error) => void;
 	disconnected: (eresult: Enums.EResult, msg?: string) => void;
+	friendPersonasLoaded: () => void;
 }

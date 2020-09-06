@@ -61,6 +61,7 @@ declare module 'steam-user' {
 
 		//Custom
 		games: Map<any, any>;
+		friendPersonasLoaded: boolean;
 
 		logOn(options: Interfaces.LogonDetails): void;
 		logOff(): void;

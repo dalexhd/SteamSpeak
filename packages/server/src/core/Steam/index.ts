@@ -53,6 +53,12 @@ steamUser.on('disconnected', function (eresult, msg) {
 	log.error(`Disconnected from steam: [eresult: ${eresult}] ${msg}`, { type: 'steam' });
 });
 
+// Emitted when all personas have been loaded for our entire friends list, and they are all now available in users.
+// This uses `process.nextTick`, so this will emitted after initial friends load.
+steamUser.on('friendPersonasLoaded', () => {
+	steamUser.friendPersonasLoaded = true;
+});
+
 if (config.debug) {
 	steamUser.on('debug', function (message) {
 		log.debug(message, { type: 'steam' });

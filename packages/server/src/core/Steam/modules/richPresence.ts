@@ -8,7 +8,7 @@ import VerifiedClient from '@core/Database/models/verifiedClient';
 import lang from '@locales/index';
 import log from '@utils/log';
 import crypto from 'crypto';
-import { isEmpty } from 'lodash';
+import { isEmpty, omit } from 'lodash';
 
 let groupNumber: number;
 
@@ -229,8 +229,10 @@ const checkPlayingGame = async (
 };
 
 steamUser.on('user', async (sid, data) => {
+	// This solves the problem of assigning multiple server groups to each client on load.
+	if (!steamUser.friendPersonasLoaded) return;
 	const steamId = sid.getSteamID64();
-	data.diff = difference(data, steamUser.users[steamId]);
+	data.diff = difference(omit(steamUser.users[steamId], 'diff'), omit(data, 'diff'));
 	//If there're not changes on the user, skip it.
 	if (isEmpty(data.diff)) return;
 	//Check if the user is verified.

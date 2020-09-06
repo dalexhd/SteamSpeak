@@ -111,3 +111,8 @@ SteamUser.prototype.watchGames = function (): void {
  * SteamSteak games
  */
 SteamUser.prototype.games = new Map();
+
+/**
+ * SteamSteak initial friend load status
+ */
+SteamUser.prototype.friendPersonasLoaded = false;
