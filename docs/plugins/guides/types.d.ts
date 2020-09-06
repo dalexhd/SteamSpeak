@@ -70,4 +70,3 @@ export interface TagModule {
     count: number;
     permalink: string;
 }
-//# sourceMappingURL=types.d.ts.map

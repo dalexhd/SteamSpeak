@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import path from 'path';
 import {normalizeUrl, docuHash, aliasedSitePath} from '@docusaurus/utils';
 
@@ -175,6 +174,7 @@ export default function pluginContentRelease(
                       const aliasedSource = aliasedSitePath(mdxPath, siteDir);
                       return path.join(
                         dataDir,
+                        'default/',
                         `${docuHash(aliasedSource)}.json`,
                       );
                     },
