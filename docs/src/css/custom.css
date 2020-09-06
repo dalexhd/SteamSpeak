@@ -1976,7 +1976,6 @@ section {
 section .sub-title {
 	color: var(--ifm-color-emphasis-600);
 	font-size: 1.15em;
-	margin-top: calc(var(--ifm-heading-margin-bottom) * -0.9);
 	margin-bottom: var(--ifm-heading-margin-bottom);
 }
 
