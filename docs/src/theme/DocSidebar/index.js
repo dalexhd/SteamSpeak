@@ -3,8 +3,9 @@ import React, { useState } from 'react';
 import Link from '@docusaurus/Link';
 import SVG from 'react-inlinesvg';
 
-import classnames from 'classnames';
-import isInternalUrl from '@docusaurus/utils';
+import clsx from 'clsx';
+
+import isInternalUrl from '@docusaurus/isInternalUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useLockBodyScroll from '@theme/hooks/useLockBodyScroll';
 import InstanceBadge from '@site/src/components/InstanceBadge';
@@ -36,7 +37,7 @@ function DocSidebarItem({ item, level, onItemClick, collapsible }) {
 
       if (level === 1) {
         return (
-          <li className={classnames('menu__list-item')} key={label}>
+          <li className={clsx('menu__list-item')} key={label}>
             <div className="title">{label}</div>
             <ul className="menu__list">
               {items.map((childItem) => (
@@ -56,17 +57,17 @@ function DocSidebarItem({ item, level, onItemClick, collapsible }) {
 
       return (
         <li
-          className={classnames('menu__list-item', {
+          className={clsx('menu__list-item', {
             'menu__list-item--collapsed': collapsed
           })}
           key={label}
         >
           <Link
             activeClassName="menu__link--active"
-            className={classnames('menu__link', {
+            className={clsx('menu__link', {
               'menu__link--sublist': collapsible
             })}
-            to={`${categoryHref}/`}
+            to={`${categoryHref}`}
             onClick={
               collapsible && categoryHref === '#!'
                 ? () => setCollapsed(!collapsed)
@@ -103,7 +104,7 @@ function DocSidebarItem({ item, level, onItemClick, collapsible }) {
 
       return (
         <li
-          className={classnames(
+          className={clsx(
             'menu__list-item',
             hidden && 'menu__list-item-hidden'
           )}
@@ -111,7 +112,7 @@ function DocSidebarItem({ item, level, onItemClick, collapsible }) {
         >
           <Link
             className="menu__link"
-            to={`${href}/`}
+            to={`${href}`}
             {...(isInternalUrl(href)
               ? {
                   activeClassName: 'menu__link--active',
@@ -181,22 +182,20 @@ function DocSidebar(props) {
     return null;
   }
 
-  const sidebarData = docsSidebars[currentSidebar];
-
-  if (!sidebarData) {
+  if (!currentSidebar) {
     throw new Error(
       `Cannot find the sidebar "${currentSidebar}" in the sidebar config!`
     );
   }
 
   if (sidebarCollapsible) {
-    sidebarData.forEach((sidebarItem) =>
+    currentSidebar.forEach((sidebarItem) =>
       mutateSidebarCollapsingState(sidebarItem, path)
     );
   }
 
   return (
-    <div className={classnames('docs-sidebar', styles.sidebar)}>
+    <div className={clsx('docs-sidebar', styles.sidebar)}>
       <Link className={styles.sidebarLogo} to={logoLink} {...logoLinkProps}>
         {logoImageUrl != null && (
           <SVG
@@ -209,7 +208,7 @@ function DocSidebar(props) {
         {title != null && <strong>{title}</strong>}
       </Link>
       <div
-        className={classnames('menu', 'menu--responsive', styles.menu, {
+        className={clsx('menu', 'menu--responsive', styles.menu, {
           'menu--show': showResponsiveSidebar
         })}
       >
@@ -223,7 +222,7 @@ function DocSidebar(props) {
         >
           {showResponsiveSidebar ? (
             <span
-              className={classnames(
+              className={clsx(
                 styles.sidebarMenuIcon,
                 styles.sidebarMenuCloseIcon
               )}
@@ -252,7 +251,7 @@ function DocSidebar(props) {
           )}
         </button>
         <ul className="menu__list">
-          {sidebarData.map(
+          {currentSidebar.map(
             (item) =>
               item.items.length > 0 && (
                 <DocSidebarItem

@@ -28,7 +28,7 @@ function Component({
   let template = pathTemplate;
 
   if (!template && type === 'plugin') {
-    template = useBaseUrl('docs/reference/plugins/<name>/');
+    template = useBaseUrl('docs/reference/plugins/<name>');
   }
 
   const path = template.replace('<name>', name);
@@ -235,7 +235,7 @@ function SteamSpeakComponents(props) {
         <div className="filter">
           <div className="filter--label">
             <Link
-              to={useBaseUrl('/docs/about/what-is-steamspeak/')}
+              to={useBaseUrl('/docs/about/what-is-steamspeak')}
               title="Learn more about SteamSpeak's instance types"
             >
               Instance names <i className="feather icon-info" />

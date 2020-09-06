@@ -116,7 +116,9 @@ function DownloadTable({
               <span key={idx}>
                 {idx > 0 ? ' • ' : ''}
                 <Link
-                  to={`/docs/setup/installation/platforms/${platform.name}/`}
+                  to={useBaseUrl(
+                    `/docs/setup/installation/platforms/${platform.name}`
+                  )}
                 >
                   {' '}
                   {platform.title}
@@ -265,7 +267,7 @@ function ReleaseDownload({ version }) {
             )}
           >
             <h2>Ready to get started?</h2>
-            <Jump to={useBaseUrl('/docs/setup/installation/')}>
+            <Jump to={useBaseUrl('/docs/setup/installation')}>
               <i className="feather icon-book-open" /> Follow the installation
               guide
             </Jump>

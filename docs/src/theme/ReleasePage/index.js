@@ -125,7 +125,7 @@ function ReleasePage(props) {
             </div>
             <div className="hero--buttons margin-vert--md">
               <Link
-                to={useBaseUrl(`/releases/${version}/download/`)}
+                to={useBaseUrl(`/releases/${version}/download`)}
                 className="button button--highlight"
               >
                 <i className="feather icon-download" /> Download

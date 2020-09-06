@@ -4,7 +4,7 @@ import Select from 'react-select';
 
 import classnames from 'classnames';
 import queryString from 'query-string';
-import useTabGroupChoiceContext from '@theme/hooks/useTabGroupChoiceContext';
+import useTabGroupChoice from '@theme/hooks/useTabGroupChoice';
 import _ from 'lodash';
 
 const keys = {
@@ -38,8 +38,8 @@ function ListSwitcher({
             role="tab"
             tabIndex="0"
             aria-selected={selectedValue === value}
-            className={classnames('tab-item', {
-              'tab-item--active': selectedValue === value
+            className={classnames('tabs__item', {
+              'tabs__item--active': selectedValue === value
             })}
             key={value}
             ref={(tabControl) => tabRefs.push(tabControl)}
@@ -101,7 +101,7 @@ function Tabs(props) {
     values,
     urlKey
   } = props;
-  const { tabGroupChoices, setTabGroupChoices } = useTabGroupChoiceContext();
+  const { tabGroupChoices, setTabGroupChoices } = useTabGroupChoice();
   const [selectedValue, setSelectedValue] = useState(defaultValue);
 
   if (groupId != null) {

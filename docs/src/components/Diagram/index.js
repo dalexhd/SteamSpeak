@@ -22,10 +22,9 @@ function Diagram({ height, width }) {
 
   return (
     <svg
-      height="294px"
       className="diagram"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 100 100"
+      viewBox="0 0 85 100"
     >
       <g className="logo">
         <g id="mic">
