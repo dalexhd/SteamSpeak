@@ -3,7 +3,9 @@ import { convertToMilliseconds } from '@utils/time';
 
 /**
  * Check if the client is AFK
+ *
  * @param {Interval} minTime The interval object to check
+ * @returns {boolean}
  */
 TeamSpeakClient.prototype.isAfk = function (minTime: Interval): boolean {
 	return (

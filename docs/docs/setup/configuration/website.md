@@ -34,7 +34,7 @@ import Steps from '@site/src/components/Steps';
 
 ## Edit files
 
-<Steps headingDepth={3}>
+<Steps>
 
 ### vue.config.js
 
@@ -47,6 +47,7 @@ This file contains most of the website related configuration. After editing this
   values={[
     { label: `chainWebpack`, value: 'chainWebpack', class: '' },
     { label: 'transpileDependencies', value: 'transpileDependencies' },
+    { label: 'productionSourceMap', value: 'productionSourceMap' },
     { label: 'pwa', value: 'pwa' },
     { label: 'devServer', value: 'devServer' },
     { label: 'css', value: 'css' }
@@ -54,7 +55,7 @@ This file contains most of the website related configuration. After editing this
 >
 <TabItem value="chainWebpack">
 
-```js
+```js title=&sim;/SteamSpeak/packages/client/vue.config.js
 chainWebpack: (config) => {
   config.plugin('html').tap((args) => {
     args[0].title = 'SteamSpeak';
@@ -115,11 +116,19 @@ You should't edit this.
 </Alert>
 
 </TabItem>
+<TabItem value="productionSourceMap">
 
+<Alert type="warning">
+You should't edit this unless you want to expose client source.
+</Alert>
+
+</TabItem>
 <TabItem value="pwa">
-One important feature, it's that you can download the "panel" as an Android/iOS application.
+<Alert type="info">
+SteamSpeak is a Progressive Web App (PWA). You can use it on your smartphone like a real app even though it is just a webpage.
+</Alert>
 
-```js
+```js title=&sim;/SteamSpeak/packages/client/vue.config.js
 pwa: {
   name: 'SteamSpeak',
   themeColor: '#448aff',
@@ -274,3 +283,64 @@ You should't edit this.
 </TabItem>
 </Tabs>
 </Steps>
+
+## Reverse proxy
+SteamSpeak is only accessible over HTTP. To make the app available over HTTPS you need to set up a reverse proxy (e.g. Apache or NGINX). There are tons of guides on the internet how to setup a reverse proxy with free ssl certificate. Below are just example vhost/server block files for Apache and NGINX.
+
+<Tabs
+  block
+  className="rounded"
+  defaultValue="nginx"
+  values={[
+    { label: `Nginx`, value: 'nginx', class: '' },
+    { label: `Apache`, value: 'apache', class: '' }
+  ]}
+>
+<TabItem value="nginx">
+
+```nginx
+server {
+  listen 80;
+  listen [::]:80;
+  server_name steamspeak.example.com
+  return 301 https://$host$request_uri;
+}
+
+server {
+  listen 443 ssl;
+  server_name steamspeak.example.com
+
+  location / {
+    proxy_pass http://127.0.0.1:3000;
+  }
+
+  # Let certbot install certificates for you or remove those if you don't use ssl
+  ssl_certificate /etc/letsencrypt/live/steamspeak.example.com/fullchain.pem;
+  ssl_certificate_key /etc/letsencrypt/live/steamspeak.example.com/privkey.pem;
+  include /etc/letsencrypt/options-ssl-nginx.conf;
+  ssl_dhparam /etc/letsencrypt/ssl-dhparams.pem;
+}
+```
+</TabItem>
+
+<TabItem value="apache">
+
+```apache
+<IfModule mod_ssl.c>
+  <VirtualHost *:443>
+    ServerName steamspeak.example.com
+    ServerAdmin webmaster@example.com
+
+    # Reverse Proxy enabled. See https://httpd.apache.org/docs/2.4/howto/reverse_proxy.html
+    ProxyPass "/" "http://127.0.0.1:3000/"
+    ProxyPassReverse "/" "http://127.0.0.1:3000/"
+
+    # Certificates
+    Include /etc/letsencrypt/options-ssl-apache.conf
+    SSLCertificateFile /etc/letsencrypt/live/steamspeak.example.com/fullchain.pem
+    SSLCertificateKeyFile /etc/letsencrypt/live/steamspeak.example.com/privkey.pem
+  </VirtualHost>
+</IfModule>
+```
+</TabItem>
+</Tabs>

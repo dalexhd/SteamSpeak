@@ -32,10 +32,10 @@ export const main = async function (): Promise<void> {
 		virtualserverName: name
 	})
 		.then(() => {
-			log.info(`${info.name} to: ${name}`, 'ts3');
+			log.info(`${info.name} to: ${name}`, { type: 'ts3' });
 		})
 		.catch((err) => {
-			log.error(`${info.name} error: ${err}`, 'ts3');
+			log.error(`${info.name} error: ${err}`, { type: 'ts3' });
 		});
 };
 

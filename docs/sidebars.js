@@ -30,7 +30,6 @@ module.exports = {
       type: 'category',
       label: 'Reference',
       items: [
-        'reference',
         {
           type: 'category',
           label: 'Plugins',

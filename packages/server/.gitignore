@@ -1,4 +1,5 @@
 /dist
+/logs
 .tsbuildinfo
 .tsbuildsum
 tsconfig-plugin.json

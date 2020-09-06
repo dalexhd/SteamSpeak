@@ -17,3 +17,7 @@ scopes:
   - breaking
   - ci
   - bug
+  - typescript
+  - security
+  - client
+  - server

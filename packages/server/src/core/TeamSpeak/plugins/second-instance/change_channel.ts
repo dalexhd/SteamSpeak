@@ -20,7 +20,7 @@ export const main = async function (channel): Promise<void> {
 				);
 			})
 			.catch((err) => {
-				log.error(`${info.name} ch[id: ${channel.channelId}] error: ${err}`, 'ts3');
+				log.error(`${info.name} ch[id: ${channel.channelId}] error: ${err}`, { type: 'ts3' });
 			});
 	}
 };

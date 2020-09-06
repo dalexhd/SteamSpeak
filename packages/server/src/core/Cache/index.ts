@@ -10,11 +10,11 @@ const EVENT_EXPIRED = '__keyevent@0__:expired';
 const EVENT_DEL = '__keyevent@0__:del';
 
 Cache.on('ready', function () {
-	log.success('Connected to redis.', 'cache');
+	log.success('Connected to redis.', { type: 'cache' });
 });
 
 Cache.on('error', function (error) {
-	log.error(`Error while connecting to redis. ${error.message}`, 'cache');
+	log.error(`Error while connecting to redis. ${error.message}`, { type: 'cache' });
 	process.exit(1);
 });
 
@@ -25,19 +25,19 @@ Pub.on('message', async (channel, key, paylaod) => {
 	switch (channel) {
 		case EVENT_SET:
 			if (!key.includes('shadow:') && value) Cache.set(`shadow:${key}`, value);
-			if (config.debug) log.info(`Key "${key}" set!`, 'cache');
+			if (config.debug) log.info(`Key "${key}" set!`, { type: 'cache' });
 			break;
 		case EVENT_EXPIRED:
 			value = await Cache.get(`shadow:${key}`);
 			if (value) {
 				Events.emit(`${key.split(':')[0]}Expired`, value);
-				if (config.debug) log.info(`shadow:${key}`, 'cache');
+				if (config.debug) log.info(`shadow:${key}`, { type: 'cache' });
 			}
-			if (config.debug) log.info(`Key "${key}" expired!`, 'cache');
+			if (config.debug) log.info(`Key "${key}" expired!`, { type: 'cache' });
 			break;
 		case EVENT_DEL:
 			if (!key.includes('shadow:')) Cache.del(`shadow:${key}`);
-			if (config.debug) log.info(`Key "${key}" deleted!`, 'cache');
+			if (config.debug) log.info(`Key "${key}" deleted!`, { type: 'cache' });
 			break;
 	}
 });

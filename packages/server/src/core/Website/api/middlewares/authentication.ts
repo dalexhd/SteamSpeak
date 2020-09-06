@@ -27,7 +27,8 @@ export const authenticate = async function (
 	} catch (err) {
 		if (err.message === 'invalid token') {
 			return res.status(401).json({ message: lang.error.invalid_token }); // user is forbidden
+		} else {
+			return res.status(err.statusCode || 401).json({ message: lang.error.not_logged_in });
 		}
-		next();
 	}
 };
