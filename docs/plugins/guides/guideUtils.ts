@@ -1,12 +1,16 @@
-import {PluginOptions, Guide} from './types';
-import {LoadContext} from '@docusaurus/types';
+import { PluginOptions, Guide } from './types';
+import { LoadContext } from '@docusaurus/types';
 
-import _ from 'lodash';
-import fs from 'fs-extra';
+import { sortBy } from 'lodash';
+import * as fs from 'fs-extra';
 import globby from 'globby';
 import humanizeString from 'humanize-string';
-import path from 'path';
-import {parse, normalizeUrl, aliasedSitePath} from '@docusaurus/utils';
+import * as path from 'path';
+import {
+  parseMarkdownString,
+  normalizeUrl,
+  aliasedSitePath
+} from '@docusaurus/utils';
 import readingTime from 'reading-time';
 import titleize from 'titleize';
 
@@ -16,18 +20,18 @@ export function truncate(fileString: string, truncateMarker: RegExp) {
 
 export async function generateGuides(
   guideDir: string,
-  {siteConfig, siteDir}: LoadContext,
-  options: PluginOptions,
+  { siteConfig, siteDir }: LoadContext,
+  options: PluginOptions
 ) {
-  const {include, routeBasePath, truncateMarker} = options;
+  const { include, routeBasePath, truncateMarker } = options;
 
   if (!fs.existsSync(guideDir)) {
     return [];
   }
 
-  const {baseUrl = ''} = siteConfig;
+  const { baseUrl = '' } = siteConfig;
   const guideFiles = await globby(include, {
-    cwd: guideDir,
+    cwd: guideDir
   });
 
   const guides: Guide[] = [];
@@ -38,7 +42,7 @@ export async function generateGuides(
       const aliasedSource = aliasedSitePath(source, siteDir);
       const fileString = await fs.readFile(source, 'utf-8');
       const readingStats = readingTime(fileString);
-      const {frontMatter, content, excerpt} = parse(fileString);
+      const { frontMatter, content, excerpt } = parseMarkdownString(fileString);
 
       if (frontMatter.draft && process.env.NODE_ENV === 'production') {
         return;
@@ -53,9 +57,10 @@ export async function generateGuides(
 
         let description = null;
 
-        switch(name) {
+        switch (name) {
           case 'getting-started':
-            description = 'Take SteamSpeak from zero to production in under 20 minutes.';
+            description =
+              'Take SteamSpeak from zero to production in under 20 minutes.';
             break;
 
           case 'installation':
@@ -67,7 +72,11 @@ export async function generateGuides(
           name: name,
           title: title,
           description: description,
-          permalink: normalizeUrl([baseUrl, routeBasePath, categoryParts.join('/')])
+          permalink: normalizeUrl([
+            baseUrl,
+            routeBasePath,
+            categoryParts.join('/')
+          ])
         });
         categoryParts.pop();
       }
@@ -87,7 +96,7 @@ export async function generateGuides(
           permalink: normalizeUrl([
             baseUrl,
             routeBasePath,
-            frontMatter.id || linkName,
+            frontMatter.id || linkName
           ]),
           readingTime: readingStats.text,
           seriesPosition: seriesPosition,
@@ -95,24 +104,26 @@ export async function generateGuides(
           source: aliasedSource,
           tags: tags,
           title: title,
-          truncated: truncateMarker?.test(content) || false,
-        },
+          truncated: truncateMarker?.test(content) || false
+        }
       });
-    }),
+    })
   );
 
-  return _.sortBy(guides, [
-    ((guide) => {
+  return sortBy(guides, [
+    (guide) => {
       let categories = guide.metadata.categories;
 
       if (categories[0].name === 'getting-started') {
-        return ['AA'].concat(categories.map(category => category.name).slice(1));
+        return ['AA'].concat(
+          categories.map((category) => category.name).slice(1)
+        );
       } else {
         return categories;
       }
-    }),
+    },
     'metadata.seriesPosition',
-    ((guide) => guide.metadata.coverLabel.toLowerCase())
+    (guide) => guide.metadata.coverLabel.toLowerCase()
   ]);
 }
 
@@ -120,10 +131,10 @@ export function linkify(
   fileContent: string,
   siteDir: string,
   guidePath: string,
-  guides: Guide[],
+  guides: Guide[]
 ) {
   let fencedBlock = false;
-  const lines = fileContent.split('\n').map(line => {
+  const lines = fileContent.split('\n').map((line) => {
     if (line.trim().startsWith('```')) {
       fencedBlock = !fencedBlock;
     }
@@ -138,11 +149,11 @@ export function linkify(
       const mdLink = mdMatch[1];
       const aliasedPostSource = `@site/${path.relative(
         siteDir,
-        path.resolve(guidePath, mdLink),
+        path.resolve(guidePath, mdLink)
       )}`;
       let guidePermalink = null;
 
-      guides.forEach(guide => {
+      guides.forEach((guide) => {
         if (guide.metadata.source === aliasedPostSource) {
           guidePermalink = guide.metadata.permalink;
         }

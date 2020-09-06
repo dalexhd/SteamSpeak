@@ -1,13 +1,42 @@
-.container {
-	--ifm-sidebar-width: 225px;
+/**
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
 
-	display: flex;
+.docTitle {
+  font-size: 3rem;
+  margin-bottom: calc(var(--ifm-leading-desktop) * var(--ifm-leading));
 }
 
-.leftCol {
-	flex: 0 0 calc(100% - var(--ifm-sidebar-width));
-	max-width: calc(100% - var(--ifm-sidebar-width));
-	padding-right: calc(var(--ifm-spacing-horizontal) * 2);
+.docItemContainer {
+  margin: 0 auto;
+  padding: 0 0.5rem;
+}
+
+@media only screen and (min-width: 997px) {
+  .docItemCol {
+    max-width: calc(100% - var(--ifm-sidebar-width)) !important;
+  }
+}
+
+@media (min-width: 997px) and (max-width: 1320px) {
+  .docItemWrapper {
+    max-width: calc(
+      var(--ifm-container-width) - 300px - var(--ifm-spacing-horizontal) * 2
+    );
+  }
+}
+
+@media only screen and (max-width: 996px) {
+  .docItemContainer {
+    padding: 0 0.3rem;
+  }
+}
+
+.docLastUpdatedAt {
+  font-weight: bold;
 }
 
 .rightCol {
@@ -17,22 +46,17 @@
 	padding-left: var(--ifm-spacing-horizontal);
 }
 
-.docTitle {
-	font-size: 2em;
-	margin-bottom: 0.3em;
-}
-
-.paginator {
-	border-top: 1px solid var(--ifm-hr-border-color);
-	margin: calc(var(--ifm-spacing-vertical) * 2) 0;
-	padding-top: calc(var(--ifm-spacing-vertical) * 2);
-}
-
 .tableOfContents {
 	height: calc(100vh - var(--ifm-navbar-height));
 	overflow-y: auto;
 	position: sticky;
 	top: var(--ifm-navbar-height);
+}
+
+.paginator {
+  border-top: 1px solid var(--ifm-hr-border-color);
+	margin: calc(var(--ifm-spacing-vertical) * 2) 0;
+	padding-top: calc(var(--ifm-spacing-vertical) * 2);
 }
 
 @media (max-width: 996px) {

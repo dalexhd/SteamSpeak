@@ -58,6 +58,16 @@
 	}
 }
 
+.diagram {
+  height: 450px;
+}
+
+@media (max-width: 996px) {
+  .diagram {
+    height: 294px;
+  }
+}
+
 .diagram #headset {
 	animation: diagramLogo 1050ms cubic-bezier(0.39, 0.575, 0.565, 1);
 	animation-delay: 250ms;

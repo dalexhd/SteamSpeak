@@ -219,7 +219,7 @@ function InstallationSection() {
             <Jump to={useBaseUrl('/releases')}>Release</Jump>
           </div>
           <div className="col">
-            <Jump to={useBaseUrl('/docs/setup/installation/')}>Manual</Jump>
+            <Jump to={useBaseUrl('/docs/setup/installation')}>Manual</Jump>
           </div>
         </div>
       </div>
