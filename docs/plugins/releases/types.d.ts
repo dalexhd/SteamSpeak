@@ -34,4 +34,3 @@ export interface Metdata {
     truncated: boolean;
     version: string;
 }
-//# sourceMappingURL=types.d.ts.map
