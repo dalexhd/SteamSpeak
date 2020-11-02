@@ -11831,12 +11831,7 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@^4.0.0, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.2.1, lodash@~4.17.12:
-  version "4.17.20"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
-  integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
-
-lodash@^4.17.19:
+lodash@^4.0.0, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.2.1, lodash@~4.17.12:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
@@ -16377,9 +16372,9 @@ steam@1.4.1:
     steam-resources "github:seishun/node-steam-resources#v1.2.0"
 
 steamcommunity@^3.41.3:
-  version "3.41.4"
-  resolved "https://registry.yarnpkg.com/steamcommunity/-/steamcommunity-3.41.4.tgz#463f12be2e5946e3e9250e958e4e0acc113f71fa"
-  integrity sha512-idL58xS7mXD5wAKZCYB5lNnTIHKuC64613Sb2L13XDpRHcAWd1+MwS2BsGSfcLdUb5GV/96OQ2f8lZQVeC21HA==
+  version "3.41.8"
+  resolved "https://registry.yarnpkg.com/steamcommunity/-/steamcommunity-3.41.8.tgz#2fc444043c432eec9d443c82aed96641b4b16a4e"
+  integrity sha512-Ieva/gZpK5xyLVsLcR76FmKPR7t7PkURv/pT8vK68XqngbCaxvhVdpPUIAms5sKuHHikYq6B/Z4cfGrCPYWffQ==
   dependencies:
     async "^2.6.3"
     cheerio "0.22.0"
