@@ -11831,12 +11831,7 @@ lodash.uniq@^4.5.0:
   resolved "https://registry.yarnpkg.com/lodash.uniq/-/lodash.uniq-4.5.0.tgz#d0225373aeb652adc1bc82e4945339a842754773"
   integrity sha1-0CJTc662Uq3BvILklFM5qEJ1R3M=
 
-lodash@^4.0.0, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.2.1, lodash@~4.17.12:
-  version "4.17.20"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
-  integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
-
-lodash@^4.17.19:
+lodash@^4.0.0, lodash@^4.17.11, lodash@^4.17.12, lodash@^4.17.13, lodash@^4.17.14, lodash@^4.17.15, lodash@^4.17.19, lodash@^4.17.3, lodash@^4.17.4, lodash@^4.2.1, lodash@~4.17.12:
   version "4.17.20"
   resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.20.tgz#b44a9b6297bcb698f1c51a3545a2b3b368d59c52"
   integrity sha512-PlhdFcillOINfeV7Ni6oF1TAEayyZBoZ8bcshTHqOYJYlrqzRK5hagpagky5o4HfCzzd1TRkXPMFq6cKk9rGmA==
@@ -13263,9 +13258,9 @@ open@^6.3.0:
     is-wsl "^1.1.0"
 
 open@^7.0.4:
-  version "7.0.4"
-  resolved "https://registry.yarnpkg.com/open/-/open-7.0.4.tgz#c28a9d315e5c98340bf979fdcb2e58664aa10d83"
-  integrity sha512-brSA+/yq+b08Hsr4c8fsEW2CRzk1BmfN3SAK/5VCHQ9bdoZJ4qa/+AfR0xHjlbbZUyPkUHs1b8x1RqdyZdkVqQ==
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/open/-/open-7.3.0.tgz#45461fdee46444f3645b6e14eb3ca94b82e1be69"
+  integrity sha512-mgLwQIx2F/ye9SmbrUkurZCnkoXyXyu9EbHtJZrICjVAJfyMArdHp3KkixGdZx1ZHFPNIwl0DDM1dFFqXbTLZw==
   dependencies:
     is-docker "^2.0.0"
     is-wsl "^2.1.1"
