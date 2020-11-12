@@ -24,7 +24,7 @@
     "core-js": "^3.6.4",
     "echarts": "^4.7.0",
     "file-saver": "2.0.2",
-    "firebase": "7.14.3",
+    "firebase": "7.15.2",
     "instantsearch.css": "^7.4.2",
     "jsonwebtoken": "^8.5.1",
     "material-design-iconic-font": "^2.2.0",
