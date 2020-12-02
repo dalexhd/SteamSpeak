@@ -1,19 +1,18 @@
 import { steamUser } from '@core/Steam';
 import SteamUser from 'steam-user';
-import shortid from 'shortid';
 import { Ts3, TeamSpeakClient } from '@core/TeamSpeak';
-import { getPresenceString } from '@utils/steam';
 import { difference } from '@utils/array';
 import webConfig from '@config/website';
 import Cache from '@core/Cache';
 import VerifiedClient from '@core/Database/models/verifiedClient';
 import lang from '@locales/index';
 import log from '@utils/log';
+import crypto from 'crypto';
+import { isEmpty, omit } from 'lodash';
 
 let groupNumber: number;
 
 const syncNumbers = async (): Promise<void> => {
-	//TODO: Use algorithm to find server groups by all possible steam values
 	const connectedClients = await Ts3.clientList({
 		clientType: 0
 	});
@@ -65,7 +64,7 @@ const syncNumbers = async (): Promise<void> => {
 						serverGroup.del(true);
 						log.warn(
 							`Online client [dbid: ${user.dbid}] has SteamSpeak corrupted serverGroup [sgid: ${serverGroup.sgid}]. Deleting...`,
-							'steam'
+							{ type: 'steam' }
 						);
 					}
 				});
@@ -76,8 +75,12 @@ const syncNumbers = async (): Promise<void> => {
 
 syncNumbers();
 
-const friendDeleted = async (senderID): Promise<void> => {
-	const steamId = senderID.getSteamID64();
+/**
+ * Delete client assigned group
+ * @param {string} steamId The client SteamID64.
+ * @returns {Promise<void>}
+ */
+const deleteFriend = async (steamId: string): Promise<void> => {
 	const user = await VerifiedClient.findOne({ steamId });
 	if (typeof user?.groupId !== 'undefined') {
 		Ts3.serverGroupDel(user.groupId, true);
@@ -86,14 +89,23 @@ const friendDeleted = async (senderID): Promise<void> => {
 	}
 };
 
+/**
+ * Check the state of the user server group.
+ * This creates, removes, or changes a server group.
+ * @param {VerifiedClientDocument} user The user database document.
+ * @param {(string | undefined)} presenceString The client steam rich presence string.
+ * @param {SteamUser.PersonaData} data The client steam data.
+ * @param {(TeamSpeakClient | undefined)} client The TeamSpeak client.
+ * @returns {Promise<void>}
+ */
 const checkServerGroup = async (
 	user: VerifiedClientDocument,
-	presenceString: string,
-	data: any,
+	presenceString: string | undefined,
+	data: SteamUser.PersonaData,
 	client: TeamSpeakClient | undefined
 ): Promise<void> => {
 	if (typeof user.groupId === 'undefined') {
-		log.info('User has not group. Lets assign it.', 'steam');
+		log.info('User has not group. Lets assign it.', { type: 'steam' });
 		groupNumber++;
 		Ts3.serverGroupCreate(`#${groupNumber} SteamSpeak`).then(async (serverGroup) => {
 			Promise.all([
@@ -109,15 +121,14 @@ const checkServerGroup = async (
 					user.groupId = serverGroup.sgid;
 					user.groupNumber = groupNumber;
 					user.save();
-					log.info(
-						`ServerGroup assigned to ${client?.nickname} [steamID: ${user.steamId}]`,
-						'steam'
-					);
+					log.info(`ServerGroup assigned to ${client?.nickname} [steamID: ${user.steamId}]`, {
+						type: 'steam'
+					});
 				})
 				.catch((err) => {
 					log.error(
 						`richPresence richPresence[sgCreateName: #${groupNumber} SteamSpeak] error: ${err.message}. Deleting group...`,
-						'steam'
+						{ type: 'steam' }
 					);
 					serverGroup.del(true);
 				});
@@ -131,7 +142,7 @@ const checkServerGroup = async (
 			serverGroup
 				?.rename(groupName)
 				.then(() => {
-					log.info(`Renamed group ${user.groupId} to ${groupName}`, 'steam');
+					log.info(`Renamed group ${user.groupId} to ${groupName}`, { type: 'steam' });
 				})
 				.catch(async (err) => {
 					if (err.id === 2560) {
@@ -149,35 +160,42 @@ const checkServerGroup = async (
 /**
  * Generate client description steam banner.
  * This creates a short link containing some data parameters that redirects to the website generated image.
- * @param  {TeamSpeakClient|undefined} client The TeamSpeak client.
- * @param  {string} presenceString The client steam rich presence string.
- * @param  {any} data The client steam data.
+ * @param {(TeamSpeakClient | undefined)} client The TeamSpeak client.
+ * @param {(string | undefined)} presenceString The client steam rich presence string.
+ * @param {SteamUser.PersonaData} data The client steam data.
+ * @param {string} steamId The client steamId
+ * @returns {Promise<void>}
  */
 const checkDescriptionBanner = async (
 	client: TeamSpeakClient | undefined,
-	presenceString: string,
-	data: any
+	presenceString: string | undefined,
+	data: SteamUser.PersonaData,
+	steamId: string
 ): Promise<void> => {
+	const clientInfo = await client?.getInfo();
 	if (data.game_played_app_id) {
-		steamUser.getProductInfo([data.game_played_app_id], [], function (err, apps) {
+		steamUser.getProductInfo([data.game_played_app_id], [], function async(err, apps) {
 			const app = apps[data.game_played_app_id];
 			let url = `${webConfig.hostname}/api/widget/client-description?icon=${app.appinfo.common.clienticon}&appid=${data.game_played_app_id}&name=${app.appinfo.common.name}&data=${presenceString}`;
-			const shorten = shortid.generate();
+			const shorten = crypto.createHash('sha1').update(url).digest('hex').substring(0, 8);
 			Cache.set(`shorten:${shorten}`, url, 'ex', 3600);
 			let clientDescription = `[img]${webConfig.hostname}/api/s/${shorten}[/img]`;
 			if (data.game_lobby_id !== '0') {
-				url = `steam://joinlobby/${data.game_played_app_id}/${data.game_lobby_id}/${data.steamId}`;
-				const shorten_1 = shortid.generate();
+				url = `steam://joinlobby/${data.game_played_app_id}/${data.game_lobby_id}/${steamId}`;
+				const shorten_1 = crypto.createHash('sha1').update(url).digest('hex').substring(0, 8);
 				Cache.set(`shorten:${shorten_1}`, url, 'ex', 3600);
 				clientDescription = `[url=${webConfig.hostname}/api/s/${shorten_1}][img]${webConfig.hostname}/api/s/${shorten}[/img][/url]`;
 			}
-			client
-				?.edit({
-					clientDescription
-				})
-				.then(() => {
-					log.info(`Changed ${client.nickname} description to "${clientDescription}"`, 'steam');
-				});
+			clientInfo?.clientDescription !== clientDescription &&
+				client
+					?.edit({
+						clientDescription
+					})
+					.then(() => {
+						log.info(`Changed ${client.nickname} description to "${clientDescription}"`, {
+							type: 'steam'
+						});
+					});
 		});
 	} else {
 		if ((await client?.getInfo())?.clientDescription) {
@@ -186,7 +204,7 @@ const checkDescriptionBanner = async (
 					clientDescription: ''
 				})
 				.then(() => {
-					log.info(`Removed ${client.nickname} description`, 'steam');
+					log.info(`Removed ${client.nickname} description`, { type: 'steam' });
 				});
 		}
 	}
@@ -194,36 +212,38 @@ const checkDescriptionBanner = async (
 
 /**
  * Check if the client is playing a game which is integrated with SteamSpeak.
- * @param  {TeamSpeakClient|undefined} client The TeamSpeak client.
- * @param  {any} data The client steam data.
- * @param  {VerifiedClientDocument} user The user database document.
+ * @param {(TeamSpeakClient | undefined)} client The TeamSpeak client.
+ * @param {SteamUser.PersonaData} data The client steam data.
+ * @param {VerifiedClientDocument} user The user database document.
+ * @returns {Promise<void>}
  */
 const checkPlayingGame = async (
 	client: TeamSpeakClient | undefined,
-	data: any,
+	data: SteamUser.PersonaData,
 	user: VerifiedClientDocument
 ): Promise<void> => {
-	const steamCache = JSON.parse((await Cache.get(`${client?.databaseId}:steamData`)) as string);
-	const diff = difference(steamCache || {}, data);
-	Cache.set(`${client?.databaseId}:steamData`, JSON.stringify(data));
 	if (data.game_played_app_id && steamUser.games.has(data.game_played_app_id)) {
 		const game = steamUser.games.get(data.game_played_app_id);
-		game.main(data, client, user, diff);
+		game.main(data, client, user);
 	}
 };
 
-// Called when a steam user event gets emitted.
 steamUser.on('user', async (sid, data) => {
+	// This solves the problem of assigning multiple server groups to each client on load.
+	if (!steamUser.friendPersonasLoaded) return;
 	const steamId = sid.getSteamID64();
+	data.diff = difference(omit(steamUser.users[steamId], 'diff'), omit(data, 'diff'));
+	//If there're not changes on the user, skip it.
+	if (isEmpty(data.diff)) return;
 	//Check if the user is verified.
 	const user = await VerifiedClient.findOne({ steamId });
 	if (!user) return;
 	const client = await Ts3.getClientByUid(user.uid);
 	if (!client) return;
-	const presenceString = await getPresenceString(data);
+	const presenceString = await steamUser.getPresenceString(data, user.groupNumber);
 	Promise.all([
 		checkServerGroup(user, presenceString, data, client),
-		checkDescriptionBanner(client, presenceString, Object.assign({ steamId }, data)),
+		checkDescriptionBanner(client, presenceString, data, steamId),
 		checkPlayingGame(client, data, user)
 	]);
 });
@@ -233,7 +253,7 @@ steamUser.on('friendRelationship', (senderID, relationship) => {
 	const { None } = SteamUser.EFriendRelationship;
 	switch (relationship) {
 		case None:
-			friendDeleted(senderID);
+			deleteFriend(senderID.getSteamID64());
 			break;
 	}
 });
@@ -248,7 +268,7 @@ Ts3.on('clientdisconnect', async (ev) => {
 		user.groupNumber = undefined;
 		user.save();
 		groupNumber--;
-		log.info(`TeamSpeak ServerGroup deleted to client ${user.steamId}`, 'steam');
+		log.info(`TeamSpeak ServerGroup deleted to client ${user.steamId}`, { type: 'steam' });
 		syncNumbers();
 	}
 });
@@ -256,6 +276,7 @@ Ts3.on('clientdisconnect', async (ev) => {
 // Called when a TeamSpeak client gets connected.
 Ts3.on('clientconnect', async (ev) => {
 	const { client } = ev;
+	syncNumbers();
 	const user = await VerifiedClient.findOne({ uid: client.uniqueIdentifier });
 	if (user) steamUser.getPersonas([user.steamId]);
 });

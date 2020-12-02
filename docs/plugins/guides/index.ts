@@ -1,5 +1,5 @@
-import _ from 'lodash';
-import path from 'path';
+import {kebabCase, flatMap, uniqBy, uniq} from 'lodash';
+import * as path from 'path';
 import {normalizeUrl, docuHash, aliasedSitePath} from '@docusaurus/utils';
 
 import {
@@ -21,7 +21,7 @@ import {generateGuides} from './guideUtils';
 
 const DEFAULT_OPTIONS: PluginOptions = {
   path: 'guides', // Path to data on filesystem, relative to site dir.
-  routeBasePath: 'guides', // URL Route.
+  routeBasePath: 'guides/', // URL Route.
   include: ['**/*.md', '**/*.mdx'], // Extensions to include.
   guideListComponent: '@theme/GuideListPage',
   guideComponent: '@theme/GuidePage',
@@ -106,7 +106,7 @@ export default function pluginContentGuide(
         // eslint-disable-next-line no-param-reassign
         guide.metadata.tags = tags.map(tag => {
           if (typeof tag === 'string') {
-            const normalizedTag = _.kebabCase(tag);
+            const normalizedTag = kebabCase(tag);
             const permalink = normalizeUrl([tagsPath, normalizedTag]);
             if (!guideTags[normalizedTag]) {
               guideTags[normalizedTag] = {
@@ -133,8 +133,8 @@ export default function pluginContentGuide(
       // Guide categories
       //
 
-      let guideCategories = _.flatMap(guides, (guide => guide.metadata.categories));
-      guideCategories = _.uniqBy(guideCategories, ((guideCategory) => guideCategory.permalink));
+      let guideCategories = flatMap(guides, (guide => guide.metadata.categories));
+      guideCategories = uniqBy(guideCategories, ((guideCategory) => guideCategory.permalink));
 
       return {
         guides,
@@ -275,7 +275,7 @@ export default function pluginContentGuide(
       //
 
       if (guideCategories.length > 0) {
-        let guidePermalinks = _.uniq(guides.map(guide => guide.metadata.permalink));
+        let guidePermalinks = uniq(guides.map(guide => guide.metadata.permalink));
 
         await Promise.all(
           guideCategories.
@@ -372,6 +372,7 @@ export default function pluginContentGuide(
                       const aliasedSource = aliasedSitePath(mdxPath, siteDir);
                       return path.join(
                         dataDir,
+                        'default/',
                         `${docuHash(aliasedSource)}.json`,
                       );
                     },

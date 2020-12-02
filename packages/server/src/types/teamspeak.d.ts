@@ -49,6 +49,11 @@ declare global {
 declare module 'ts3-nodejs-library' {
 	interface TeamSpeak {
 		plugins: any;
+		bot: TeamSpeakClient;
+		//Custom
+		loadInstances(): void;
+		loadPlugins(): void;
+		watchPlugins(): void;
 	}
 
 	interface TeamSpeakClient {

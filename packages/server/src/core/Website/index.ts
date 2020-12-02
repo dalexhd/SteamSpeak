@@ -5,6 +5,7 @@ import * as path from 'path';
 import bodyParser from 'body-parser';
 import fs from 'fs';
 import log from '@utils/log';
+import open from 'open';
 
 // Define api routes
 import apiRoutes from './api/routes';
@@ -16,7 +17,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // Check if the application has been already build.
 if (!fs.existsSync(path.join(__dirname, '../../../../client/dist/index.html'))) {
-	log.error(`Cannot stat website production build. Check: https://bit.ly/2yzXhsD`, 'website');
+	log.error(`Cannot stat website production build. Check: https://bit.ly/2yzXhsD`, {
+		type: 'website'
+	});
 	process.exit(1);
 }
 
@@ -32,4 +35,6 @@ app.get('*', (req, res) => {
 const port = config.port;
 app.listen(port);
 
-console.info(`Website is UP: ${config.hostname || 'localhost'}`);
+log.success(`Website is UP: ${config.hostname || 'localhost'}`, { type: 'website' });
+
+if (process.env.NODE_ENV === 'development') open(`${config.hostname || 'localhost'}`);

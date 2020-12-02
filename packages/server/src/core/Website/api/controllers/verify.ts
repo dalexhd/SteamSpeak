@@ -10,7 +10,8 @@ import { Request, Response } from 'express';
 /**
  * Check request secret.
  *
- * @param {object} req The express request instance
+ * @param {Request} req The express request instance
+ * @returns {Promise<any>}
  */
 const findSecret = async function (req: Request): Promise<any> {
 	const secret = req.body.secret;
@@ -22,11 +23,12 @@ const findSecret = async function (req: Request): Promise<any> {
 /**
  * Check if the user is connected to the server.
  *
- * @param {object} req The express request instance
- * @param {object} res The express response instance
+ * @param {Request} req The express request instance
+ * @param {Response} res The express response instance
+ * @returns {Promise<any>}
  */
 export const check = async function (req: Request, res: Response): Promise<any> {
-	log.info('Received verification check request from remote.', 'website');
+	log.info('Received verification check request from remote.', { type: 'website' });
 	try {
 		const steamData = await findSecret(req);
 		const clients = await findClients(req, {
@@ -44,11 +46,14 @@ export const check = async function (req: Request, res: Response): Promise<any> 
 /**
  * Send to the selected user a secret validation token.
  *
- * @param {object} req The express request instance
- * @param {object} res The express response instance
+ * @param {Request} req The express request instance
+ * @param {Response} res The express response instance
+ * @returns {Promise<any>}
  */
 export const send = async function (req: Request, res: Response): Promise<any> {
-	log.info(`Received verification send request to ${req.body.dbid} from remote.`, 'website');
+	log.info(`Received verification send request to ${req.body.dbid} from remote.`, {
+		type: 'website'
+	});
 	try {
 		const steamData = await findSecret(req);
 		const [client] = await findClients(req, {
@@ -86,11 +91,12 @@ export const send = async function (req: Request, res: Response): Promise<any> {
 /**
  * Login with specified user
  *
- * @param {object} req The express request instance
- * @param {object} res The express response instance
+ * @param {Request} req The express request instance
+ * @param {Response} res The express response instance
+ * @returns {Promise<any>}
  */
 export const login = async function (req: Request, res: Response): Promise<any> {
-	log.info(`Received login request from ${req.body.dbid}.`, 'website');
+	log.info(`Received login request from ${req.body.dbid}.`, { type: 'website' });
 	try {
 		const steamData = await findSecret(req);
 		const [client] = await findClients(req, {
@@ -106,7 +112,7 @@ export const login = async function (req: Request, res: Response): Promise<any> 
 		} else if (sendCache.ip !== client.connectionClientIp) {
 			throw { statusCode: 403, message: lang.error.ip_mismatch };
 		} else {
-			log.success(`${client.nickname} verified successfully!`, 'website');
+			log.success(`${client.nickname} verified successfully!`, { type: 'website' });
 			VerifiedClient.create({
 				uid: client.uniqueIdentifier,
 				dbid: client.databaseId,
@@ -114,9 +120,11 @@ export const login = async function (req: Request, res: Response): Promise<any> 
 			});
 			Events.emit('verificationSuccess', steamData.steamId, client.databaseId);
 			client.message(lang.message.success_verification);
-			Cache.del(`${client.databaseId}:verifyToken`);
-			Cache.del(`verification:${req.body.secret}`);
-			Cache.del(`shadow:verification:${req.body.secret}`);
+			Cache.del(
+				`${client.databaseId}:verifyToken`,
+				`verification:${req.body.secret}`,
+				`shadow:verification:${req.body.secret}`
+			);
 			res.status(201).json({
 				status: 'success',
 				message: lang.message.success_verification

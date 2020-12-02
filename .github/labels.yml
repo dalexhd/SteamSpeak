@@ -49,3 +49,6 @@
 - color: "ce2d2d"
   description: Pull requests that update Ruby code
   name: ruby
+- color: "d17359"
+  description: Pull requests that update TypeScript code
+  name: typescript

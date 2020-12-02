@@ -1,11 +1,32 @@
-import lang from '@locales/index';
 import { steamUser } from '@core/Steam';
+import lang from '@locales/index';
+import SteamUser from 'steam-user';
+import SteamID from 'steamid';
 
 /**
- * Get rich presence string
- * @param {object} steamData The client steam data
+ * Check if the bot is friend of steamId
+ *
+ * @param {(SteamID | string)} steamId- Either a SteamID object of the user to check, or a string which can parse into one.
+ * @returns {boolean} true or false
  */
-const getPresenceString = async function (steamData: any): Promise<any> {
+SteamUser.prototype.isFriendOf = function (steamId: SteamID | string): boolean {
+	if (typeof steamId == 'string') {
+		return steamUser.myFriends.hasOwnProperty(steamId); // Looks like it's already a SteamID
+	}
+	return steamUser.myFriends.hasOwnProperty(steamId.getSteamID64());
+};
+
+/**
+ * Get user rich presence string
+ *
+ * @param {SteamUser.PersonaData} steamData The user steam data
+ * @param {number} groupNumber The number assigned to the user
+ * @returns {(Promise<string | undefined>)} The rich presence string or undefined
+ */
+SteamUser.prototype.getPresenceString = async function (
+	steamData: SteamUser.PersonaData,
+	groupNumber: number
+): Promise<string | undefined> {
 	if (steamData.rich_presence.length > 0) {
 		const rpTokens: any = {};
 		steamData.rich_presence.forEach((token) => {
@@ -13,7 +34,7 @@ const getPresenceString = async function (steamData: any): Promise<any> {
 		});
 		if (!rpTokens.steam_display) {
 			const customName = lang.steam.games[steamData.gameid];
-			return `${lang.steam.status.Playing}: ${customName}`;
+			return `${lang.steam.status.Playing} ${lang.message.to} ${customName}`;
 		}
 
 		let localizationTokens;
@@ -36,7 +57,7 @@ const getPresenceString = async function (steamData: any): Promise<any> {
 			} catch (ex) {
 				// Oh well
 				delete steamData.rich_presence_string;
-				return false;
+				return undefined;
 			}
 		}
 		for (const i in rpTokens) {
@@ -73,12 +94,25 @@ const getPresenceString = async function (steamData: any): Promise<any> {
 	} else if (steamData.game_played_app_id) {
 		const customName = lang.steam.games[steamData.gameid];
 		if (customName) {
-			return `${lang.steam.status.Playing}: ${customName}`;
+			return `${lang.steam.status.Playing} ${lang.message.to} ${customName}`;
 		} else {
-			return lang.steam.status.Playing;
+			const productsInfo = await steamUser.getProductInfo([steamData.game_played_app_id], []);
+			const app = productsInfo.apps[steamData.game_played_app_id];
+			if (
+				`#${groupNumber} ${lang.steam.status.Playing} ${lang.message.to} ${app.appinfo.common.name}`
+					.length <= 30
+			) {
+				return `${lang.steam.status.Playing} ${lang.message.to} ${app.appinfo.common.name}`;
+			} else if (
+				steamData.game_name !== '' &&
+				`#${groupNumber} ${lang.steam.status.Playing} ${lang.message.to} ${steamData.game_name}`
+					.length <= 30
+			) {
+				return `${lang.steam.status.Playing} ${lang.message.to} ${steamData.game_name}`;
+			} else {
+				return lang.steam.status.Playing;
+			}
 		}
 	}
-	return false;
+	return undefined;
 };
-
-export { getPresenceString };

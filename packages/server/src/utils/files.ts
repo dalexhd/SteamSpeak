@@ -4,8 +4,10 @@ import Joi from '@hapi/joi';
 
 /**
  * Get files inside directory
+ *
  * @param {string} dir The directory path
- * @param {boolean} arrayDir
+ * @param {boolean} [arrayDir] Return array directory
+ * @returns {Promise<string[]>} Array of files
  */
 const getFiles = async function (dir: string, arrayDir?: boolean): Promise<string[]> {
 	const files = await fsp.readdir(dir);
@@ -25,7 +27,9 @@ const getFiles = async function (dir: string, arrayDir?: boolean): Promise<strin
 
 /**
  * Validate plugin config
- * @param {Object} plugin File object
+ *
+ * @param {object} plugin File object
+ * @returns {Promise<void>}
  */
 const validatePlugin = async function (plugin: object): Promise<void> {
 	return new Promise((resolve, reject) => {
@@ -57,7 +61,9 @@ const validatePlugin = async function (plugin: object): Promise<void> {
 
 /**
  * Validate game config
- * @param {Object} game File object
+ *
+ * @param {object} game File object
+ * @returns {Promise<void>}
  */
 const validateGame = async function (game: object): Promise<void> {
 	return new Promise((resolve, reject) => {

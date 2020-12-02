@@ -22,7 +22,7 @@ export const main = async function (): Promise<void> {
 					);
 				})
 				.catch((err) => {
-					log.error(`${info.name} ch[id: ${data.dest}] error: ${err}`, 'ts3');
+					log.error(`${info.name} ch[id: ${data.dest}] error: ${err}`, { type: 'ts3' });
 				});
 		} else if (!client.isAfk(data.minTime) && client.cid === data.dest) {
 			const cid = (await Cache.get(`afkChecker:${client.databaseId}`)) as string;

@@ -21,6 +21,7 @@
     "plaintext": false,
     "json": true,
     "javascript": true,
+    "typescript": true,
     "@scm/commit": true // pseudo language id used for scm input
   }
 }

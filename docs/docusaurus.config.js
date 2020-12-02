@@ -14,17 +14,21 @@ module.exports = {
     chatUrl: 'https://gitter.im/SteamSpeak',
     discordUrl: 'https://discord.gg/st4nsXw'
   },
+  onBrokenLinks: 'log',
   themeConfig: {
-    defaultDarkMode: true,
+    colorMode: {
+      defaultMode: 'dark',
+      disableSwitch: true
+    },
     navbar: {
       hideOnScroll: true,
       logo: {
         alt: 'SteamSpeak',
         src: 'img/logo-light.svg'
       },
-      links: [
-        { to: 'plugins/', label: 'Plugins', position: 'left' },
-        { to: 'guides/', label: 'Guides', position: 'left' },
+      items: [
+        { to: 'plugins', label: 'Plugins', position: 'left' },
+        { to: 'guides', label: 'Guides', position: 'left' },
         {
           to: 'docs/about/what-is-steamspeak',
           activeBasePath: 'docs',
@@ -37,8 +41,8 @@ module.exports = {
           label: 'Issues',
           position: 'right'
         },
-        { to: 'community/', label: 'Community', position: 'right' },
-        { to: 'releases/', label: 'Download', position: 'right' },
+        { to: 'community', label: 'Community', position: 'right' },
+        { to: 'releases', label: 'Download', position: 'right' },
         {
           href: 'https://github.com/dalexhd/SteamSpeak',
           label: 'GitHub',
@@ -107,7 +111,10 @@ module.exports = {
     announcementBar: {
       id: 'supportus',
       content:
-        '⭐️ If you like SteamSpeak, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/dalexhd/SteamSpeak">GitHub</a>! ⭐️'
+        '⭐️ If you like SteamSpeak, give it a star on <a target="_blank" rel="noopener noreferrer" href="https://github.com/dalexhd/SteamSpeak">GitHub</a>! ⭐️',
+      backgroundColor: 'var(--ifm-color-primary)', // Defaults to `#fff`.
+      textColor: '#091E42', // Defaults to `#000`.
+      isCloseable: true // Defaults to `true`.
     },
     hotjar: {
       siteId: 1807485,
@@ -128,6 +135,9 @@ module.exports = {
           cacheTime: 600 * 1000, // 600 sec - cache purge period
           changefreq: 'daily',
           priority: 0.5
+        },
+        theme: {
+          customCss: require.resolve('./src/css/custom.css')
         }
       }
     ]
@@ -152,15 +162,25 @@ module.exports = {
   plugins: [
     path.resolve(__dirname, './plugins/releases'),
     path.resolve(__dirname, './plugins/guides'),
-    path.resolve(__dirname, './plugins/hotjar')
-  ],
-  themes: [
+    path.resolve(__dirname, './plugins/hotjar'),
     [
-      '@docusaurus/theme-classic',
+      '@docusaurus/plugin-pwa',
       {
-        customCss: require.resolve('./src/css/custom.css')
+        debug: false,
+        offlineModeActivationStrategies: ['always'],
+        pwaHead: [
+          {
+            tagName: 'link',
+            rel: 'manifest',
+            href: '/manifest.json' // your PWA manifest
+          },
+          {
+            tagName: 'meta',
+            name: 'theme-color',
+            content: '#191927'
+          }
+        ]
       }
-    ],
-    '@docusaurus/theme-search-algolia'
+    ]
   ]
 };
