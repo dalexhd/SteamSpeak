@@ -5,12 +5,12 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import clsx from 'clsx';
 
 import styles from './styles.module.css';
 
-export default function PwaReloadPopup({onReload}) {
+export default function PwaReloadPopup({ onReload }) {
   const [isVisible, setIsVisible] = useState(true);
 
   return (
@@ -24,7 +24,8 @@ export default function PwaReloadPopup({onReload}) {
             onClick={() => {
               setIsVisible(false);
               onReload();
-            }}>
+            }}
+          >
             Refresh
           </button>
 
@@ -32,7 +33,8 @@ export default function PwaReloadPopup({onReload}) {
             aria-label="Close"
             className="close"
             type="button"
-            onClick={() => setIsVisible(false)}>
+            onClick={() => setIsVisible(false)}
+          >
             <span aria-hidden="true">×</span>
           </button>
         </div>

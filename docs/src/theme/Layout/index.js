@@ -43,8 +43,7 @@ function Layout(props) {
     description,
     image,
     keywords,
-    version,
-    permalink
+    version
   } = props;
   const metaTitle = title ? `${title} | ${siteTitle}` : siteTitle;
   const metaImage = image || defaultImage;

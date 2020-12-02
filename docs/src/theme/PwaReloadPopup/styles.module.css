@@ -6,35 +6,35 @@
  */
 
 .popup {
-  position: fixed;
-  bottom: 16px;
-  right: 16px;
-  width: 344px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 999;
+	position: fixed;
+	bottom: 16px;
+	right: 16px;
+	width: 344px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	z-index: 999;
 }
 
 .popup p {
-  margin: 0;
-  color: var(--ifm-heading-color);
+	margin: 0;
+	color: var(--ifm-heading-color);
 }
 
 @media screen and (max-width: 500px) {
-  .popup {
-    width: 100%;
-    bottom: 0;
-    right: 0;
-  }
+	.popup {
+		width: 100%;
+		bottom: 0;
+		right: 0;
+	}
 }
 
 .buttonContainer {
-  display: flex;
-  align-items: center;
+	display: flex;
+	align-items: center;
 }
 
 .buttonContainer :global(.close) {
-  margin: 0;
-  padding: 0;
+	margin: 0;
+	padding: 0;
 }

@@ -59,13 +59,13 @@
 }
 
 .diagram {
-  height: 450px;
+	height: 450px;
 }
 
 @media (max-width: 996px) {
-  .diagram {
-    height: 294px;
-  }
+	.diagram {
+		height: 294px;
+	}
 }
 
 .diagram #headset {

@@ -10,7 +10,6 @@ import Head from '@docusaurus/Head';
 import PagePaginator from '@theme/PagePaginator';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import useBaseUrl from '@docusaurus/useBaseUrl';
-import DocPaginator from '@theme/DocPaginator';
 import DocVersionSuggestions from '@theme/DocVersionSuggestions';
 import TOC from '@theme/TOC';
 import Link from '@docusaurus/Link';

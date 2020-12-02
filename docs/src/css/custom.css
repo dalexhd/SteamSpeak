@@ -96,8 +96,8 @@
 	--ifm-sidebar-border-color: var(--ifm-hr-border-color);
 	--ifm-sidebar-logo-width: 40px;
 	--ifm-sidebar-width: 250px;
-  --ifm-table-stripe-background: var(--ifm-table-background);
-  --ifm-toc-padding-left: 0;
+	--ifm-table-stripe-background: var(--ifm-table-background);
+	--ifm-toc-padding-left: 0;
 }
 
 @keyframes gradientBG {
@@ -918,7 +918,6 @@ h2 {
  *
  * Generic empty state. Used for showing no results, etc.
  */
-
 
 header .badges {
 	float: right;
@@ -2098,7 +2097,6 @@ table {
  *
  * Used as a right hand side navigation for jumping around a document.
  */
-
 
 .table-of-contents .section {
 	border-bottom: 1px solid var(--ifm-hr-border-color);

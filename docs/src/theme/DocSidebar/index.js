@@ -169,12 +169,7 @@ function DocSidebar(props) {
   } = useDocusaurusContext();
   const { logoLink, logoLinkProps, logoImageUrl, logoAlt } = useLogo();
 
-  const {
-    docsSidebars,
-    path,
-    sidebar: currentSidebar,
-    sidebarCollapsible
-  } = props;
+  const { path, sidebar: currentSidebar, sidebarCollapsible } = props;
 
   useLockBodyScroll(showResponsiveSidebar);
 
