@@ -1,5 +1,5 @@
 module.exports = {
-  stars: 15,
+  stars: 27,
   plugins: {
     hostMessage: {
       name: 'host-message',
@@ -96,7 +96,7 @@ module.exports = {
     }
   ],
   latest_release: {
-    version: '0.8.1'
+    version: '0.9.0'
   },
   releases: {
     '0.0.1': {
@@ -3085,6 +3085,992 @@ module.exports = {
       type: 'initial dev',
       type_url: 'https://semver.org/#spec-item-4',
       version: '0.8.1',
+      whats_next: []
+    },
+    '0.9.0': {
+      codename: '',
+      commits: [
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-06-05 20:24:52 +0000',
+          deletions_count: 3,
+          description:
+            '[security] bump websocket-extensions from 0.1.3 to 0.1.4',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 3,
+          message:
+            'chore(deps): [security] bump websocket-extensions from 0.1.3 to 0.1.4',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: '13607e6182e7d707f0d7a5d6503e86c0a78563a8',
+          type: 'chore'
+        },
+        {
+          author: 'snyk-bot',
+          breaking_change: false,
+          date: '2020-06-12 02:32:39 +0000',
+          deletions_count: 1,
+          description: 'packages/client/package.json to reduce vulnerabilities',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 1,
+          message:
+            'fix: packages/client/package.json to reduce vulnerabilities',
+          pr_number: null,
+          scopes: [],
+          sha: '647a76e4838bf8b0242bf83184cb5d93b8825f27',
+          type: 'fix'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-06-21 21:58:29 +0000',
+          deletions_count: 53,
+          description: 'better steam client banner.',
+          files_count: 15,
+          highlight_permalink: null,
+          insertions_count: 216,
+          message: 'enhancement: better steam client banner.',
+          pr_number: null,
+          scopes: [],
+          sha: '642172a0369798ea520bf3171b93ade537d65e85',
+          type: 'enhancement'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-06-21 22:57:21 +0000',
+          deletions_count: 116,
+          description: 'Add steam user types.',
+          files_count: 13,
+          highlight_permalink: null,
+          insertions_count: 736,
+          message: 'chore(typescript): Add steam user types.',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'typescript'
+            }
+          ],
+          sha: 'fc104f0aeacfa51a1b84fdd63d63e07d10d72049',
+          type: 'chore'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-06-21 23:06:34 +0000',
+          deletions_count: 8,
+          description: 'Reconnect to steam after connection lost',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 17,
+          message: 'fix(bug): Reconnect to steam after connection lost',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'bug'
+            }
+          ],
+          sha: '20f686dec6d9e9264f7b662fa57fb2d96c58ae94',
+          type: 'fix'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-06-22 14:20:05 +0000',
+          deletions_count: 219,
+          description: 'Improve the readability of the code.',
+          files_count: 15,
+          highlight_permalink: null,
+          insertions_count: 278,
+          message: 'perf: Improve the readability of the code.',
+          pr_number: null,
+          scopes: [],
+          sha: '7d47501bc794c1c06a70433b3f99ceca0bb06f29',
+          type: 'perf'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-06-24 13:18:44 +0000',
+          deletions_count: 3,
+          description: 'Add reverse proxy setup guide.',
+          files_count: 2,
+          highlight_permalink: null,
+          insertions_count: 64,
+          message: 'docs: Add reverse proxy setup guide.',
+          pr_number: null,
+          scopes: [],
+          sha: '30cc5422d8572e4935b7ed27564dd93f32705c13',
+          type: 'docs'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-06-24 14:57:11 +0000',
+          deletions_count: 14,
+          description: 'Hide sourcemap from production.',
+          files_count: 6,
+          highlight_permalink: null,
+          insertions_count: 15,
+          message: 'fix(security): Hide sourcemap from production.',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'security'
+            }
+          ],
+          sha: '48a7347ca2eaa76299a9b471e83f5c6bea884840',
+          type: 'fix'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-07-01 07:00:42 +0000',
+          deletions_count: 110,
+          description: 'bump @types/mongoose from 5.7.15 to 5.7.29',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 40,
+          message:
+            'chore(deps-dev): bump @types/mongoose from 5.7.15 to 5.7.29',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps-dev'
+            }
+          ],
+          sha: '92e09ba9925d1d55b61c103e7fdabe39fb69e018',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-07-01 08:05:41 +0000',
+          deletions_count: 97,
+          description: 'bump algoliasearch from 4.2.0 to 4.3.0',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 97,
+          message: 'chore(deps): bump algoliasearch from 4.2.0 to 4.3.0',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: 'ae6142bde5803a97a6df38fd3f286bb2e5e27662',
+          type: 'chore'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-07-02 16:27:45 +0000',
+          deletions_count: 962,
+          description: 'Add better logging.',
+          files_count: 22,
+          highlight_permalink: null,
+          insertions_count: 1380,
+          message: 'chore: Add better logging.',
+          pr_number: null,
+          scopes: [],
+          sha: 'a2b2ae78bb7a3fd7e9d1a0bc081e7bfa085dcad1',
+          type: 'chore'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-07-02 20:53:00 +0000',
+          deletions_count: 4,
+          description: 'Set to optional widget labels.',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 8,
+          message: 'chore: Set to optional widget labels.',
+          pr_number: null,
+          scopes: [],
+          sha: '058f81215ee4179906328387fe89ced4067e58f2',
+          type: 'chore'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-07-03 18:18:07 +0000',
+          deletions_count: 4,
+          description: 'Mongoose model creation issue. #152',
+          files_count: 3,
+          highlight_permalink: null,
+          insertions_count: 4,
+          message: 'fix(bug): Mongoose model creation issue. #152',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'bug'
+            }
+          ],
+          sha: '192e2a811300e6cc7e4bea041ea4bb8cc141744d',
+          type: 'fix'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-07-03 19:37:13 +0000',
+          deletions_count: 4,
+          description: 'Add rotating logs system.',
+          files_count: 4,
+          highlight_permalink: null,
+          insertions_count: 27,
+          message: 'feat: Add rotating logs system.',
+          pr_number: null,
+          scopes: [],
+          sha: '622d855c1b4248e5df6ff0cac50179bfc63c02cf',
+          type: 'feat'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-07-08 15:19:35 +0000',
+          deletions_count: 189,
+          description: 'Add logs viewer.',
+          files_count: 15,
+          highlight_permalink: null,
+          insertions_count: 179,
+          message: 'feat(client): Add logs viewer.',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'client'
+            }
+          ],
+          sha: 'a6d83718518a9dca53ffcf8c0c5cd0b422290c77',
+          type: 'feat'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-07-08 13:23:02 +0000',
+          deletions_count: 3,
+          description: 'bump @types/ioredis from 4.16.0 to 4.17.0',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 3,
+          message: 'chore(deps-dev): bump @types/ioredis from 4.16.0 to 4.17.0',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps-dev'
+            }
+          ],
+          sha: 'd35e413d10cc6cc0d8093835213e222e8313796e',
+          type: 'chore'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-07-12 10:37:07 +0000',
+          deletions_count: 32,
+          description: 'Prevent group duplication on bot launch.',
+          files_count: 9,
+          highlight_permalink: null,
+          insertions_count: 67,
+          message: 'fix(bug): Prevent group duplication on bot launch.',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'bug'
+            }
+          ],
+          sha: '93b5ba25c803020e392ac5a857976d6a0ec9541e',
+          type: 'fix'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-07-29 22:26:49 +0000',
+          deletions_count: 6,
+          description: '[security] bump elliptic from 6.5.2 to 6.5.3',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 6,
+          message: 'chore(deps): [security] bump elliptic from 6.5.2 to 6.5.3',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: '4e63ac7bfdb631175f239a02c2f7e5e55710eb8e',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-08-01 12:17:33 +0000',
+          deletions_count: 3,
+          description: '[security] bump lodash from 4.17.15 to 4.17.19',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 3,
+          message:
+            'chore(deps): [security] bump lodash from 4.17.15 to 4.17.19',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: '7b2128eaf162326e0ca184b5c0205b818b6b84f3',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-08-01 12:23:34 +0000',
+          deletions_count: 221,
+          description: 'bump firebase from 7.14.3 to 7.17.1',
+          files_count: 2,
+          highlight_permalink: null,
+          insertions_count: 216,
+          message: 'chore(deps): bump firebase from 7.14.3 to 7.17.1',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: '18402401950aad9dae12d3a896120b64a9a0e3cb',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-08-01 12:24:32 +0000',
+          deletions_count: 337,
+          description: 'bump jest from 25.5.4 to 26.2.2',
+          files_count: 2,
+          highlight_permalink: null,
+          insertions_count: 696,
+          message: 'chore(deps-dev): bump jest from 25.5.4 to 26.2.2',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps-dev'
+            }
+          ],
+          sha: '91e9da8f28f75a50a460516dc3ea72073691836b',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-08-01 12:25:57 +0000',
+          deletions_count: 3,
+          description: 'bump apexcharts from 3.19.2 to 3.20.0',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 3,
+          message: 'chore(deps): bump apexcharts from 3.19.2 to 3.20.0',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: '718b71278d09d48ffad1c81942a9b0a4ac4fd65c',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-08-03 08:04:13 +0000',
+          deletions_count: 5,
+          description: 'bump vue-context from 5.1.0 to 5.2.0',
+          files_count: 2,
+          highlight_permalink: null,
+          insertions_count: 5,
+          message: 'chore(deps): bump vue-context from 5.1.0 to 5.2.0',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: '35f18816cf26e0df3596cd142df4bc04ccb82750',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-08-03 08:05:18 +0000',
+          deletions_count: 12,
+          description: 'bump @vue/cli-plugin-pwa from 4.3.1 to 4.4.6',
+          files_count: 2,
+          highlight_permalink: null,
+          insertions_count: 11,
+          message:
+            'chore(deps-dev): bump @vue/cli-plugin-pwa from 4.3.1 to 4.4.6',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps-dev'
+            }
+          ],
+          sha: 'ab606ab46618c70684573ad5979d8c06d7db0a05',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-08-07 23:49:39 +0000',
+          deletions_count: 3,
+          description: '[security] bump prismjs from 1.20.0 to 1.21.0',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 3,
+          message: 'chore(deps): [security] bump prismjs from 1.20.0 to 1.21.0',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: '041c59dc1c1baa099531310352953be682ead023',
+          type: 'chore'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-09-01 00:25:34 +0000',
+          deletions_count: 0,
+          description: 'Add codeql analysis environment.',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 62,
+          message: 'chore(ci): Add codeql analysis environment.',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'ci'
+            }
+          ],
+          sha: '7645c63ef4ff4e54fc68ba4e9a14f165f2ea0adf',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-09-02 01:42:08 +0000',
+          deletions_count: 4,
+          description: 'bump lodash from 4.17.19 to 4.17.20',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 20,
+          message: 'chore(deps): bump lodash from 4.17.19 to 4.17.20',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: '4900775107e26352143125caa665717dff84d511',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-09-02 01:46:11 +0000',
+          deletions_count: 32,
+          description: 'bump ts-node-dev from 1.0.0-pre.44 to 1.0.0-pre.55',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 40,
+          message:
+            'chore(deps-dev): bump ts-node-dev from 1.0.0-pre.44 to 1.0.0-pre.55',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps-dev'
+            }
+          ],
+          sha: '3978b42e70544e09842341a831e3529a25c38550',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-09-02 01:48:17 +0000',
+          deletions_count: 8,
+          description: 'bump vue-flatpickr-component from 8.1.5 to 8.1.6',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 29,
+          message:
+            'chore(deps): bump vue-flatpickr-component from 8.1.5 to 8.1.6',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: 'bd019921436519f45024a44aabce2275358c6bf2',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-09-02 01:49:35 +0000',
+          deletions_count: 10,
+          description: 'bump @vue/cli-plugin-eslint from 4.3.1 to 4.5.4',
+          files_count: 2,
+          highlight_permalink: null,
+          insertions_count: 31,
+          message:
+            'chore(deps-dev): bump @vue/cli-plugin-eslint from 4.3.1 to 4.5.4',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps-dev'
+            }
+          ],
+          sha: '6053f9c5f64fe032d3ec033187a1306be1b463b9',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-09-03 14:43:02 +0000',
+          deletions_count: 14,
+          description: '[security] bump bl from 2.2.0 to 2.2.1',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 4,
+          message: 'chore(deps): [security] bump bl from 2.2.0 to 2.2.1',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: '993d7659b8e00e587dbc64e4d9d51c9ce468ffda',
+          type: 'chore'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-09-06 18:58:00 +0000',
+          deletions_count: 2,
+          description: 'Add steamspeak running guide.',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 105,
+          message: 'docs: Add steamspeak running guide.',
+          pr_number: null,
+          scopes: [],
+          sha: 'c3e2fb83a6102acccba0ec90853ab20772df76c8',
+          type: 'docs'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-09-06 19:07:34 +0000',
+          deletions_count: 3513,
+          description: 'Update documentation core version.',
+          files_count: 55,
+          highlight_permalink: null,
+          insertions_count: 4764,
+          message: 'docs: Update documentation core version.',
+          pr_number: null,
+          scopes: [],
+          sha: '888a92e768d6e1698d21bdc85d0b5917cfedbe0e',
+          type: 'docs'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-09-06 21:25:56 +0000',
+          deletions_count: 380,
+          description: 'Fix enoent docusaurus file system.',
+          files_count: 17,
+          highlight_permalink: null,
+          insertions_count: 656,
+          message: 'docs: Fix enoent docusaurus file system. (#179)',
+          pr_number: 179,
+          scopes: [],
+          sha: '646b9cb85f36fd74d8976a10551976608d9df1a8',
+          type: 'docs'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-10-02 01:05:35 +0000',
+          deletions_count: 12,
+          description: '[security] bump http-proxy from 1.18.0 to 1.18.1',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 10,
+          message:
+            'chore(deps): [security] bump http-proxy from 1.18.0 to 1.18.1',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: '5300464be7e2dab95720fa9ca50e263263b2dddb',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-10-02 01:07:15 +0000',
+          deletions_count: 6,
+          description: 'bump vue from 2.6.11 to 2.6.12',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 6,
+          message: 'chore(deps): bump vue from 2.6.11 to 2.6.12',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: 'b503093bab17b37d7559b7bd9348d7426afa6467',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-10-02 01:10:31 +0000',
+          deletions_count: 5,
+          description: 'bump @vue/cli-plugin-vuex from 4.3.1 to 4.5.6',
+          files_count: 2,
+          highlight_permalink: null,
+          insertions_count: 5,
+          message:
+            'chore(deps-dev): bump @vue/cli-plugin-vuex from 4.3.1 to 4.5.6',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps-dev'
+            }
+          ],
+          sha: '5854ca84d4c893e7187a286cd51dbab0d11f6490',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-10-02 01:14:03 +0000',
+          deletions_count: 35,
+          description: 'bump eslint-plugin-import from 2.21.2 to 2.22.1',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 9,
+          message:
+            'chore(deps-dev): bump eslint-plugin-import from 2.21.2 to 2.22.1',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps-dev'
+            }
+          ],
+          sha: '495c75628344a0cede66b8cccb5fb23d04bb31f9',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-10-02 01:15:14 +0000',
+          deletions_count: 136,
+          description: 'bump firebase from 7.17.1 to 7.22.0',
+          files_count: 2,
+          highlight_permalink: null,
+          insertions_count: 121,
+          message: 'chore(deps): bump firebase from 7.17.1 to 7.22.0',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: '7bef202c01a3160b6da547cc4f2343c095f37a96',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-11-01 04:47:40 +0000',
+          deletions_count: 12,
+          description: '[security] bump node-fetch from 2.6.0 to 2.6.1',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 2,
+          message:
+            'chore(deps): [security] bump node-fetch from 2.6.0 to 2.6.1',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: '65d7c949049c9883b23ece6586db5793975ee403',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-11-02 08:04:14 +0000',
+          deletions_count: 9,
+          description: 'bump steamcommunity from 3.41.4 to 3.41.8',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 4,
+          message: 'chore(deps): bump steamcommunity from 3.41.4 to 3.41.8',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: '1dd1c1423d4533776effc59e84f957508f5ca3f3',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-11-02 08:04:42 +0000',
+          deletions_count: 9,
+          description: 'bump open from 7.0.4 to 7.3.0',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 4,
+          message: 'chore(deps-dev): bump open from 7.0.4 to 7.3.0',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps-dev'
+            }
+          ],
+          sha: '23ce6599003b17542e4887312697ad7d7b6aae89',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-11-02 08:05:09 +0000',
+          deletions_count: 9,
+          description: 'bump vue-select from 3.10.3 to 3.10.8',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 4,
+          message: 'chore(deps): bump vue-select from 3.10.3 to 3.10.8',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: '0358ce0a50c5863ca25147bf7d10c1716bfd6ec8',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-11-02 08:23:57 +0000',
+          deletions_count: 3,
+          description: 'bump vue-router from 3.3.4 to 3.4.8',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 3,
+          message: 'chore(deps): bump vue-router from 3.3.4 to 3.4.8',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: 'ca872aec917c174e184e1c96ec2648cf220da3d0',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-11-24 23:10:45 +0000',
+          deletions_count: 3,
+          description: '[security] bump highlight.js from 9.18.1 to 9.18.5',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 3,
+          message:
+            'chore(deps): [security] bump highlight.js from 9.18.1 to 9.18.5',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: '381eb346b4ad00eed56d9daca915d037e9602d8e',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-12-01 05:31:53 +0000',
+          deletions_count: 15,
+          description: 'bump axios from 0.19.2 to 0.21.0',
+          files_count: 2,
+          highlight_permalink: null,
+          insertions_count: 8,
+          message: 'chore(deps): bump axios from 0.19.2 to 0.21.0',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: 'd969f03d84fa87291212d627ed105a605f000bfc',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-12-01 05:33:54 +0000',
+          deletions_count: 5,
+          description: 'bump file-saver from 2.0.2 to 2.0.5',
+          files_count: 2,
+          highlight_permalink: null,
+          insertions_count: 5,
+          message: 'chore(deps): bump file-saver from 2.0.2 to 2.0.5',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: 'db6d7ad9ffd6b6051bd877c5631ee27ff4c25966',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-12-01 05:36:59 +0000',
+          deletions_count: 3,
+          description: 'bump @types/mongoose from 5.7.29 to 5.10.1',
+          files_count: 1,
+          highlight_permalink: null,
+          insertions_count: 3,
+          message:
+            'chore(deps-dev): bump @types/mongoose from 5.7.29 to 5.10.1',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps-dev'
+            }
+          ],
+          sha: 'e999b8af8b10a56cd7d1a8e74dd4a8eee93b2623',
+          type: 'chore'
+        },
+        {
+          author: 'dependabot-preview[bot]',
+          breaking_change: false,
+          date: '2020-12-01 05:41:45 +0000',
+          deletions_count: 5,
+          description:
+            'bump material-design-icons-iconfont from 5.0.1 to 6.1.0',
+          files_count: 2,
+          highlight_permalink: null,
+          insertions_count: 5,
+          message:
+            'chore(deps): bump material-design-icons-iconfont from 5.0.1 to 6.1.0',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'deps'
+            }
+          ],
+          sha: 'c3fe7dd6cc62e9a3fe290fc0dbb555641904a77a',
+          type: 'chore'
+        },
+        {
+          author: 'DalexHD',
+          breaking_change: false,
+          date: '2020-12-02 21:16:16 +0000',
+          deletions_count: 77,
+          description: 'lint styles and code.',
+          files_count: 10,
+          highlight_permalink: null,
+          insertions_count: 71,
+          message: 'chore(ci): lint styles and code.',
+          pr_number: null,
+          scopes: [
+            {
+              component: {},
+              name: 'ci'
+            }
+          ],
+          sha: 'deaac8800286959f4b0441c4348ee66f6a882fb5',
+          type: 'chore'
+        }
+      ],
+      compare_url:
+        'https://github.com/dalexhd/SteamSpeak/compare/v0.8.1...v0.9.0',
+      date: '2020-12-02',
+      deletions_count: 2821,
+      description: '',
+      highlights: [],
+      insertions_count: 4463,
+      last_version: '0.8.1',
+      permalink: '/releases/0.9.0/',
+      title: 'SteamSpeak v0.9.0',
+      type: 'initial dev',
+      type_url: 'https://semver.org/#spec-item-4',
+      version: '0.9.0',
       whats_next: []
     }
   },
