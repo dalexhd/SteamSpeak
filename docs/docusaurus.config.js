@@ -4,7 +4,7 @@ const metadata = require('./metadata');
 module.exports = {
   title: 'SteamSpeak',
   tagline: 'Steam and TeamSpeak integration, done right!',
-  url: 'https://steamspeak.netlify.app',
+  url: 'https://steamspeak.dalexhd.dev',
   baseUrl: '/',
   favicon: 'img/favicon-16x16.png',
   organizationName: 'dalexhd', // Usually your GitHub org/user name.
