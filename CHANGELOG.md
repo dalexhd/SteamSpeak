@@ -1,5 +1,13 @@
 # Changelog
 
+## [v0.9.1](https://github.com/dalexhd/steamspeak/tree/v0.9.1) (2021-01-23)
+
+[Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.9.0...v0.9.1)
+
+:rocket: New Features:
+
+- feat: Update domain of domentation to dalexhd.dev [\#212](https://github.com/dalexhd/SteamSpeak/pull/212) ([dalexhd](https://github.com/dalexhd))
+
 ## [v0.9.0](https://github.com/dalexhd/steamspeak/tree/v0.9.0) (2020-12-02)
 
 [Full Changelog](https://github.com/dalexhd/steamspeak/compare/v0.8.1...v0.9.0)
@@ -33,11 +41,11 @@
 - chore\(deps\): \[security\] bump node-fetch from 2.6.0 to 2.6.1 [\#189](https://github.com/dalexhd/SteamSpeak/pull/189) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - chore\(deps\): \[security\] bump http-proxy from 1.18.0 to 1.18.1 [\#182](https://github.com/dalexhd/SteamSpeak/pull/182) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - chore\(deps\): \[security\] bump bl from 2.2.0 to 2.2.1 [\#176](https://github.com/dalexhd/SteamSpeak/pull/176) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- chore\(deps\): \[security\] bump prismjs from 1.20.0 to 1.21.0 [\#168](https://github.com/dalexhd/SteamSpeak/pull/168) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - chore\(deps\): \[security\] bump lodash from 4.17.15 to 4.17.19 [\#162](https://github.com/dalexhd/SteamSpeak/pull/162) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - chore\(deps\): \[security\] bump elliptic from 6.5.2 to 6.5.3 [\#161](https://github.com/dalexhd/SteamSpeak/pull/161) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - fix\(deps\): Security upgrade vue-instantsearch from 2.7.1 to 3.0.0 [\#140](https://github.com/dalexhd/SteamSpeak/pull/140) ([snyk-bot](https://github.com/snyk-bot))
 - chore\(deps\): \[security\] bump websocket-extensions from 0.1.3 to 0.1.4 [\#136](https://github.com/dalexhd/SteamSpeak/pull/136) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- chore\(deps\): \[security\] bump prismjs from 1.20.0 to 1.21.0 [\#168](https://github.com/dalexhd/SteamSpeak/pull/168) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 
 :memo: Documentation:
 
@@ -47,10 +55,6 @@
 
 :wrench: Dependencies:
 
-- chore\(deps\): bump material-design-icons-iconfont from 5.0.1 to 6.1.0 [\#201](https://github.com/dalexhd/SteamSpeak/pull/201) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- chore\(deps-dev\): bump @types/mongoose from 5.7.29 to 5.10.1 [\#199](https://github.com/dalexhd/SteamSpeak/pull/199) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- chore\(deps\): bump file-saver from 2.0.2 to 2.0.5 [\#198](https://github.com/dalexhd/SteamSpeak/pull/198) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- chore\(deps\): bump axios from 0.19.2 to 0.21.0 [\#197](https://github.com/dalexhd/SteamSpeak/pull/197) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - chore\(deps\): bump vue-select from 3.10.3 to 3.10.8 [\#193](https://github.com/dalexhd/SteamSpeak/pull/193) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - chore\(deps-dev\): bump open from 7.0.4 to 7.3.0 [\#192](https://github.com/dalexhd/SteamSpeak/pull/192) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - chore\(deps\): bump vue-router from 3.3.4 to 3.4.8 [\#191](https://github.com/dalexhd/SteamSpeak/pull/191) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
@@ -63,12 +67,16 @@
 - chore\(deps\): bump vue-flatpickr-component from 8.1.5 to 8.1.6 [\#174](https://github.com/dalexhd/SteamSpeak/pull/174) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - chore\(deps-dev\): bump ts-node-dev from 1.0.0-pre.44 to 1.0.0-pre.55 [\#173](https://github.com/dalexhd/SteamSpeak/pull/173) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - chore\(deps\): bump lodash from 4.17.19 to 4.17.20 [\#171](https://github.com/dalexhd/SteamSpeak/pull/171) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- chore\(deps\): bump apexcharts from 3.19.2 to 3.20.0 [\#166](https://github.com/dalexhd/SteamSpeak/pull/166) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- chore\(deps-dev\): bump jest from 25.5.4 to 26.2.2 [\#165](https://github.com/dalexhd/SteamSpeak/pull/165) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
-- chore\(deps\): bump firebase from 7.14.3 to 7.17.1 [\#164](https://github.com/dalexhd/SteamSpeak/pull/164) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - chore\(deps-dev\): bump @types/ioredis from 4.16.0 to 4.17.0 [\#151](https://github.com/dalexhd/SteamSpeak/pull/151) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - chore\(deps\): bump vue-context from 5.1.0 to 5.2.0 [\#150](https://github.com/dalexhd/SteamSpeak/pull/150) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - chore\(deps-dev\): bump @types/mongoose from 5.7.15 to 5.7.29 [\#149](https://github.com/dalexhd/SteamSpeak/pull/149) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- chore\(deps\): bump material-design-icons-iconfont from 5.0.1 to 6.1.0 [\#201](https://github.com/dalexhd/SteamSpeak/pull/201) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- chore\(deps-dev\): bump @types/mongoose from 5.7.29 to 5.10.1 [\#199](https://github.com/dalexhd/SteamSpeak/pull/199) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- chore\(deps\): bump file-saver from 2.0.2 to 2.0.5 [\#198](https://github.com/dalexhd/SteamSpeak/pull/198) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- chore\(deps\): bump axios from 0.19.2 to 0.21.0 [\#197](https://github.com/dalexhd/SteamSpeak/pull/197) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- chore\(deps\): bump apexcharts from 3.19.2 to 3.20.0 [\#166](https://github.com/dalexhd/SteamSpeak/pull/166) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- chore\(deps-dev\): bump jest from 25.5.4 to 26.2.2 [\#165](https://github.com/dalexhd/SteamSpeak/pull/165) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
+- chore\(deps\): bump firebase from 7.14.3 to 7.17.1 [\#164](https://github.com/dalexhd/SteamSpeak/pull/164) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - chore\(deps\): bump algoliasearch from 4.2.0 to 4.3.0 [\#148](https://github.com/dalexhd/SteamSpeak/pull/148) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 - chore\(deps-dev\): bump @vue/cli-plugin-pwa from 4.3.1 to 4.4.6 [\#147](https://github.com/dalexhd/SteamSpeak/pull/147) ([dependabot-preview[bot]](https://github.com/apps/dependabot-preview))
 

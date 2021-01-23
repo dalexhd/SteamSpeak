@@ -1,0 +1,5 @@
+[releases."0.9.1"]
+date = 2021-01-23
+commits = [
+{sha = "3dacd1c126f77415b1299343334fd8f4bc3aeb85", message = "feat: Update domain of domentation to dalexhd.dev", author = "dalexhd", date = 2021-01-23T23:35:42Z, files_count = 7, insertions_count = 22, deletions_count = 16}
+]

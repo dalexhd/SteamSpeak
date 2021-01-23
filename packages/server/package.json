@@ -1,6 +1,6 @@
 {
   "name": "@steamspeak/server",
-  "version": "0.9.1",
+  "version": "0.9.2",
   "main": "index.js",
   "scripts": {
     "start": "cross-env TS_NODE_FILES=true NODE_ENV=production ts-node -r tsconfig-paths/register src/index.ts",

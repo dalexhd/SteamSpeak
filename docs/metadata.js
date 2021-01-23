@@ -96,7 +96,7 @@ module.exports = {
     }
   ],
   latest_release: {
-    version: '0.9.0'
+    version: '0.9.1'
   },
   releases: {
     '0.0.1': {
@@ -4071,6 +4071,40 @@ module.exports = {
       type: 'initial dev',
       type_url: 'https://semver.org/#spec-item-4',
       version: '0.9.0',
+      whats_next: []
+    },
+    '0.9.1': {
+      codename: '',
+      commits: [
+        {
+          author: 'dalexhd',
+          breaking_change: false,
+          date: '2021-01-23 23:35:42 +0000',
+          deletions_count: 16,
+          description: 'Update domain of domentation to dalexhd.dev',
+          files_count: 7,
+          highlight_permalink: null,
+          insertions_count: 22,
+          message: 'feat: Update domain of domentation to dalexhd.dev',
+          pr_number: null,
+          scopes: [],
+          sha: '3dacd1c126f77415b1299343334fd8f4bc3aeb85',
+          type: 'feat'
+        }
+      ],
+      compare_url:
+        'https://github.com/dalexhd/SteamSpeak/compare/v0.9.0...v0.9.1',
+      date: '2021-01-23',
+      deletions_count: 16,
+      description: '',
+      highlights: [],
+      insertions_count: 22,
+      last_version: '0.9.0',
+      permalink: '/releases/0.9.1/',
+      title: 'SteamSpeak v0.9.1',
+      type: 'initial dev',
+      type_url: 'https://semver.org/#spec-item-4',
+      version: '0.9.1',
       whats_next: []
     }
   },
