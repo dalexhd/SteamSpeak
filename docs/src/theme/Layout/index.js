@@ -26,7 +26,7 @@ function Providers({ children }) {
   );
 }
 
-const STEAMSPEAK_HOST = 'https://steamspeak.netlify.app/';
+const STEAMSPEAK_HOST = 'https://steamspeak.dalexhd.dev/';
 
 function Layout(props) {
   const { siteConfig = {} } = useDocusaurusContext();
@@ -61,7 +61,7 @@ function Layout(props) {
     <Providers>
       <Head>
         {/* TODO: Do not assume that it is in english language */}
-        <html lang="en" />
+        <html lang="en" data-theme="dark"/>
 
         <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         {metaTitle && <title>{metaTitle}</title>}

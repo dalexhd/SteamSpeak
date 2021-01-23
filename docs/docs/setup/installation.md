@@ -33,6 +33,12 @@ Clone the SteamSpeak repository on your machine.
 
 ## Install dependencies
 
+First you will need to sinchronise your package list.
+
+<CodeBlock className="language-bash">
+sudo apt update
+</CodeBlock>
+
 Run the following command to install required system dependencies.
 
 <CodeBlock className="language-bash">
