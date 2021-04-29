@@ -1,0 +1,21 @@
+version: 2
+updates:
+- package-ecosystem: npm
+  directory: "/"
+  schedule:
+    interval: monthly
+    time: "04:00"
+  open-pull-requests-limit: 10
+  target-branch: dev
+  assignees:
+  - dalexhd
+  ignore:
+  - dependency-name: vee-validate
+    versions:
+    - ">= 3.a, < 4"
+  - dependency-name: tailwindcss
+    versions:
+    - 1.9.6
+  - dependency-name: prettier
+    versions:
+    - 2.1.2
