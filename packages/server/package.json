@@ -58,7 +58,7 @@
     "@types/cors": "^2.8.5",
     "@types/express": "^4.17.1",
     "@types/glur": "^1.1.0",
-    "@types/hapi__joi": "^16.0.12",
+    "@types/hapi__joi": "^17.1.6",
     "@types/ioredis": "^4.16.0",
     "@types/jest": "^25.2.1",
     "@types/jsonwebtoken": "^8.3.9",
