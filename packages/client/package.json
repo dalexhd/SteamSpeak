@@ -36,7 +36,7 @@
     "prismjs": "^1.19.0",
     "push.js": "^1.0.12",
     "register-service-worker": "^1.7.1",
-    "swiper": "^5.3.6",
+    "swiper": "^6.5.1",
     "vee-validate": "^2.2.8",
     "vue": "^2.6.11",
     "vue-acl": "4.1.10",
