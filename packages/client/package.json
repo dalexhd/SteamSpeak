@@ -13,7 +13,7 @@
   "dependencies": {
     "@chenfengyuan/vue-countdown": "^1.1.5",
     "@mdi/font": "^5.0.45",
-    "ag-grid-community": "^23.0.1",
+    "ag-grid-community": "^25.2.0",
     "ag-grid-vue": "^23.0.0",
     "algoliasearch": "^4.1.0",
     "apexcharts": "^3.17.0",
