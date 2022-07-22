@@ -30,7 +30,7 @@ GEM
     thread_safe (0.3.6)
     toml-rb (2.0.1)
       citrus (~> 3.0, > 3.0)
-    tzinfo (1.2.7)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     unindent (1.0)
     uri_template (0.7.0)
