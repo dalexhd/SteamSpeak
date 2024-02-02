@@ -14,7 +14,7 @@
   },
   "dependencies": {
     "@docusaurus/core": "^2.0.0-alpha.63",
-    "@docusaurus/plugin-pwa": "^2.0.0-alpha.63",
+    "@docusaurus/plugin-pwa": "^2.0.1",
     "@docusaurus/preset-classic": "^2.0.0-alpha.63",
     "@types/fs-extra": "^8.1.0",
     "@types/lodash": "^4.14.149",
