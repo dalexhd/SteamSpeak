@@ -13,7 +13,7 @@
   "dependencies": {
     "@chenfengyuan/vue-countdown": "^1.1.5",
     "@mdi/font": "^5.0.45",
-    "ag-grid-community": "^23.0.1",
+    "ag-grid-community": "^31.3.4",
     "ag-grid-vue": "^23.0.0",
     "algoliasearch": "^4.1.0",
     "apexcharts": "^3.17.0",
@@ -51,7 +51,7 @@
     "vue-flatpickr-component": "^8.1.5",
     "vue-form-wizard": "^0.8.4",
     "vue-fullcalendar": "^1.0.9",
-    "vue-i18n": "^8.15.5",
+    "vue-i18n": "^9.14.5",
     "vue-instantsearch": "^3.0.0",
     "vue-perfect-scrollbar": "^0.2.1",
     "vue-prism-component": "^1.1.1",
